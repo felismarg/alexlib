@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History of English – Exam Study Guide</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  :root {
+    --bg: #111008;
+    --surface: #1c1a0f;
+    --surface2: #252210;
+    --border: #3a3415;
+    --yellow: #facc15;
+    --amber: #f59e0b;
+    --amber-dim: #92610a;
+    --cream: #fef9e7;
+    --cream-dim: #c9b97a;
+    --orange: #fb923c;
+    --red-dim: #7c2d12;
+    --green: #86efac;
+    --green-dim: #14532d;
+    --blue-dim: #1e3a5f;
+    --blue: #93c5fd;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #1c1a0f 0%, #0f0d04 100%);
+    border-bottom: 2px solid var(--yellow);
+    padding: 2rem 1.5rem 1.5rem;
+    text-align: center;
+    position: sticky; top: 0; z-index: 100;
+  }
+  header .eyebrow {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.3rem;
+  }
+  header h1 {
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--yellow);
+    text-shadow: 0 0 40px rgba(250,204,21,0.3);
+    letter-spacing: -0.02em;
+  }
+  header p {
+    font-size: 0.85rem;
+    color: var(--cream-dim);
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+  /* ── NAV ── */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav button {
+    background: none;
+    border: none;
+    color: var(--cream-dim);
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.75rem 1rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
+    border-bottom: 3px solid transparent;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  nav button:hover { color: var(--yellow); background: rgba(250,204,21,0.05); }
+  nav button.active {
+    color: var(--yellow);
+    border-bottom-color: var(--yellow);
+    background: rgba(250,204,21,0.08);
+  }
+  nav button i { font-size: 1rem; }
+  /* ── SECTIONS ── */
+  .section { display: none; padding: 2rem 1.2rem; max-width: 1100px; margin: 0 auto; }
+  .section.active { display: block; }
+  /* ── TYPOGRAPHY ── */
+  h2 {
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    color: var(--yellow);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  h3 {
+    font-size: 1.05rem;
+    color: var(--amber);
+    margin: 1.4rem 0 0.6rem;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  p { margin-bottom: 0.9rem; }
+  strong { color: var(--yellow); }
+  em { color: var(--cream-dim); font-style: italic; }
+  code {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--orange);
+    font-family: monospace;
+    font-size: 0.88em;
+    padding: 0.05em 0.35em;
+  }
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0.5rem; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 1.3rem;
+    padding-left: 1rem;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute; left: -1.55rem; top: 0.55rem;
+    width: 10px; height: 10px;
+    background: var(--yellow); border-radius: 50%;
+    box-shadow: 0 0 8px var(--yellow);
+  }
+  .tl-date {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .tl-label {
+    font-size: 0.97rem;
+    color: var(--cream);
+    margin-top: 0.1rem;
+  }
+  /* ── PERIOD BADGE ── */
+  .period-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .period-card {
+    background: var(--surface);
+    border-left: 4px solid var(--yellow);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.2rem;
+  }
+  .period-card .period-name {
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.2rem;
+  }
+  .period-card .period-dates {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--yellow);
+    margin-bottom: 0.4rem;
+  }
+  .period-card p { font-size: 0.88rem; color: var(--cream-dim); margin: 0; }
+  /* ── EXAM POINTER ── */
+  .exam-pointer {
+    background: linear-gradient(135deg, #2a1a00, #1c1005);
+    border: 1px solid var(--amber);
+    border-left: 4px solid var(--orange);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exam-pointer .ep-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.3rem;
+  }
+  .exam-pointer p { font-size: 0.9rem; margin: 0; color: var(--cream); }
+  /* ── TABLES ── */
+  .tbl-wrap { overflow-x: auto; margin-bottom: 1rem; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.88rem;
+    font-family: Arial, sans-serif;
+  }
+  th {
+    background: var(--surface2);
+    color: var(--yellow);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--yellow);
+  }
+  td {
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--cream);
+  }
+  tr:hover td { background: rgba(250,204,21,0.04); }
+  /* ── SOUND LAW BOXES ── */
+  .law-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  .law-box .law-header {
+    background: rgba(250,204,21,0.1);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1.1rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--yellow);
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .law-body { padding: 0.9rem 1.1rem; }
+  .rule-row {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 0.5rem 1.2rem;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    font-family: monospace;
+  }
+  .rule-row:last-child { border-bottom: none; }
+  .rule-label { color: var(--amber); font-size: 0.75rem; font-weight: 700; font-family: Arial, sans-serif; }
+  .rule-change { color: var(--yellow); font-size: 0.95rem; }
+  .rule-ex { color: var(--cream-dim); font-size: 0.82rem; font-family: Arial, sans-serif; }
+  /* ── GLOSSARY GRID ── */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.7rem;
+  }
+  .gloss-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+  }
+  .gloss-term {
+    font-family: Arial, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--yellow);
+    margin-bottom: 0.25rem;
+  }
+  .gloss-def { font-size: 0.87rem; color: var(--cream-dim); }
+  /* ── FLASHCARDS ── */
+  .fc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.1rem;
+    perspective: 1000px;
+  }
+  .fc {
+    height: 180px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    border-radius: 10px;
+  }
+  .fc.flipped { transform: rotateY(180deg); }
+  .fc-face {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 1.2rem;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+  }
+  .fc-front {
+    background: var(--surface);
+    border: 2px solid var(--yellow);
+  }
+  .fc-front .fc-icon { font-size: 1.6rem; color: var(--yellow); margin-bottom: 0.5rem; }
+  .fc-front .fc-q {
+    font-size: 0.9rem;
+    color: var(--cream);
+    font-family: Georgia, serif;
+    font-style: italic;
+  }
+  .fc-back {
+    background: linear-gradient(135deg, #1c1a0f, #252210);
+    border: 2px solid var(--amber);
+    transform: rotateY(180deg);
+  }
+  .fc-back .fc-a {
+    font-family: Arial, sans-serif;
+    font-size: 0.82rem;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+  .fc-hint {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    color: var(--amber-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-align: center;
+    margin-bottom: 0.7rem;
+  }
+  /* ── Q&A ── */
+  .qa-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+  }
+  .qa-q {
+    background: var(--surface);
+    padding: 0.9rem 1.1rem;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem;
+    user-select: none;
+  }
+  .qa-q:hover { background: var(--surface2); }
+  .qa-q-text {
+    font-size: 0.9rem;
+    color: var(--cream);
+  }
+  .qa-q .qa-num {
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--amber);
+    white-space: nowrap;
+  }
+  .qa-q .qa-arrow { color: var(--yellow); transition: transform 0.25s; flex-shrink: 0; }
+  .qa-item.open .qa-arrow { transform: rotate(180deg); }
+  .qa-a {
+    background: var(--surface2);
+    border-top: 1px solid var(--border);
+    padding: 0.9rem 1.1rem;
+    font-size: 0.88rem;
+    display: none;
+  }
+  .qa-item.open .qa-a { display: block; }
+  .answer-badge {
+    display: inline-block;
+    background: rgba(134,239,172,0.1);
+    border: 1px solid var(--green);
+    border-radius: 4px;
+    color: var(--green);
+    font-family: Arial, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.1em 0.5em;
+    margin-right: 0.4em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  /* ── MISC ── */
+  .tag {
+    display: inline-block;
+    background: rgba(250,204,21,0.1);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--amber);
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.1em 0.5em;
+    margin: 0.15rem;
+    vertical-align: middle;
+  }
+  .info-box {
+    background: rgba(30,58,95,0.4);
+    border: 1px solid #1e3a5f;
+    border-left: 4px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 0.8rem 0;
+  }
+  .info-box p { font-size: 0.9rem; margin: 0; color: var(--cream); }
+  .synth-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    font-family: Arial, sans-serif;
+    margin-bottom: 1rem;
+  }
+  .synth-table th {
+    background: rgba(250,204,21,0.08);
+    color: var(--yellow);
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    border-bottom: 2px solid var(--yellow);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .synth-table td {
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--cream);
+  }
+  .synth-table .col-oe { color: #93c5fd; }
+  .synth-table .col-me { color: #86efac; }
+  .synth-table .col-eme { color: var(--orange); }
+  .synth-table .col-mode { color: var(--yellow); }
+  ul, ol { padding-left: 1.4rem; margin-bottom: 0.8rem; }
+  li { margin-bottom: 0.3rem; font-size: 0.92rem; }
+  .pill {
+    display: inline-block;
+    border-radius: 999px;
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15em 0.7em;
+    margin-left: 0.3em;
+    vertical-align: middle;
+  }
+  .pill-yes { background: rgba(134,239,172,0.15); color: var(--green); border: 1px solid var(--green-dim); }
+  .pill-no { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid #7f1d1d; }
+  /* ── STUDY IMAGES ── */
+  .map-figure {
+    margin: 1.4rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .map-figure img {
+    width: 100%;
+    display: block;
+  }
+  .map-caption {
+    padding: 0.55rem 1rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.76rem;
+    color: var(--cream-dim);
+    background: var(--surface2);
+    border-top: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .map-caption strong { color: var(--amber); }
+  @media (max-width: 600px) {
+    .rule-row { grid-template-columns: 1fr; }
+    .card-grid, .period-grid, .fc-grid { grid-template-columns: 1fr; }
+    header { padding: 1rem; }
+    nav button { font-size: 0.7rem; padding: 0.65rem 0.7rem; }
+  }
+  /* Scroll top btn */
+  #top-btn {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    background: var(--yellow); color: var(--bg);
+    border: none; border-radius: 50%;
+    width: 40px; height: 40px;
+    font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 15px rgba(250,204,21,0.4);
+    z-index: 200;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Universität Potsdam · Anglistik</div>
+  <h1>History of English — Exam Study Guide</h1>
+  <p>From Proto-Indo-European to Early Modern English · All major concepts, laws, and exam traps</p>
+</header>
+
+<nav id="main-nav">
+  <button class="active" onclick="showSection('periods')" data-id="periods">
+    <i class="ti ti-timeline"></i> Periods
+  </button>
+  <button onclick="showSection('sounds')" data-id="sounds">
+    <i class="ti ti-wave-sine"></i> Sound Laws
+  </button>
+  <button onclick="showSection('grammar')" data-id="grammar">
+    <i class="ti ti-book-2"></i> Grammar
+  </button>
+  <button onclick="showSection('lexicon')" data-id="lexicon">
+    <i class="ti ti-language"></i> Lexicon
+  </button>
+  <button onclick="showSection('examqa')" data-id="examqa">
+    <i class="ti ti-help-octagon"></i> Exam Q&amp;A
+  </button>
+  <button onclick="showSection('glossary')" data-id="glossary">
+    <i class="ti ti-abc"></i> Glossary
+  </button>
+  <button onclick="showSection('flashcards')" data-id="flashcards">
+    <i class="ti ti-cards"></i> Flashcards
+  </button>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1 — PERIODS
+═══════════════════════════════════════════════════════ -->
+<section id="periods" class="section active">
+  <h2><i class="ti ti-timeline"></i> Periods of English &amp; External History</h2>
+
+  <div class="period-grid">
+    <div class="period-card">
+      <div class="period-name">Old English (OE)</div>
+      <div class="period-dates">c. 450–1100</div>
+      <p>Anglo-Saxon settlement. Synthetic, heavily inflected language. West Germanic base vocabulary, few loanwords.</p>
+    </div>
+    <div class="period-card">
+      <div class="period-name">Middle English (ME)</div>
+      <div class="period-dates">c. 1100–1500</div>
+      <p>Norman Conquest 1066. Massive French influence. Shift toward analytic structures; loss of grammatical gender.</p>
+    </div>
+    <div class="period-card">
+      <div class="period-name">Early Modern English (EME)</div>
+      <div class="period-dates">c. 1500–1750</div>
+      <p>Printing press (Caxton 1476). Great Vowel Shift. Renaissance loanwords. Shakespeare.</p>
+    </div>
+    <div class="period-card">
+      <div class="period-name">Late/Modern English</div>
+      <div class="period-dates">c. 1750–present</div>
+      <p>Standardisation, grammar books, dictionaries. Analytic language fully established.</p>
+    </div>
+  </div>
+
+  <figure class="map-figure">
+    <img src="images/map-germanic-ie.png" alt="Four maps: Germanic tribe locations in Europe, Anglo-Saxon migration routes to Britain, Indo-European language families, and Old English dialect regions">
+    <figcaption class="map-caption">
+      <strong>Maps 1–4:</strong> (1) Germanic tribes in Europe c. 500 AD — Saxones, Angli, and Jutes visible north of the Rhine/Danube;
+      (2) Migration routes of Angles, Saxons &amp; Jutes across the North Sea to Britain (449 AD);
+      (3) Distribution of Indo-European language branches (Germanic, Celtic, Italic, Slavic, Iranian, Indo-Aryan…);
+      (4) The four Old English dialect regions: Northumbrian, Mercian, West Saxon, Kentish.
+    </figcaption>
+  </figure>
+
+  <div class="exam-pointer">
+    <div class="ep-label">⚡ Exam Trap</div>
+    <p>The exam question (Q43) asks which periods are correct. Note: <strong>Old English = 500–1150 (or c. 450–1100)</strong>; <strong>Early Modern English = 1500–1750</strong> (NOT 1750–1900); <strong>Late Modern English = 18th &amp; 19th century</strong>. Middle English = 1066–1500.</p>
+  </div>
+
+  <h3>Key Timeline of Events</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">c. 200 BC – 400 AD</div><div class="tl-label">Celtic occupation of Britain; Roman conquest (43 AD). Latin enters via trade and military.</div></div>
+    <div class="tl-item"><div class="tl-date">449</div><div class="tl-label">Traditional date of arrival of <strong>Angles, Saxons &amp; Jutes</strong> (recorded by Bede). Celtic languages displaced by West Germanic dialects.</div></div>
+    <div class="tl-item"><div class="tl-date">563 / 597</div><div class="tl-label">Christianisation begins (~563 Iona; 597 Augustine baptises King Ethelbert). Latin alphabet introduced, replacing runes. Major Latin loanwave: <em>mynster, mæsse, munuc.</em></div></div>
+    <div class="tl-item"><div class="tl-date">787–1042</div><div class="tl-label">Viking raids &amp; settlement. Old Norse adstratum influence (they, them, their; sky, skin, egg). Danelaw established (Treaty of Wedmore, 878).</div></div>
+    <div class="tl-item"><div class="tl-date">1066</div><div class="tl-label"><strong>Battle of Hastings.</strong> William the Conqueror (Duke of Normandy) defeats Harold Godwinson. Norman French becomes language of aristocracy and law.</div></div>
+    <div class="tl-item"><div class="tl-date">1204</div><div class="tl-label">King John loses Normandy. English national feeling grows; French prestige declines.</div></div>
+    <div class="tl-item"><div class="tl-date">1337–1453</div><div class="tl-label">Hundred Years' War. England vs. France. French loses further prestige; English returns to courts (1362).</div></div>
+    <div class="tl-item"><div class="tl-date">1476</div><div class="tl-label"><strong>William Caxton</strong> introduces book printing to England. Spelling begins to standardise.</div></div>
+    <div class="tl-item"><div class="tl-date">15th–17th c.</div><div class="tl-label">Great Vowel Shift; Renaissance; inkhorn terms; Hard Word Dictionaries; Purist movement.</div></div>
+    <div class="tl-item"><div class="tl-date">18th c.</div><div class="tl-label">Prescriptive grammar books; proposals for an English Language Academy (never founded).</div></div>
+  </div>
+
+  <figure class="map-figure">
+    <img src="images/map-celtic-kingdoms.png" alt="Four maps: Celtic expansion in Europe, Anglo-Saxon kingdoms, the Danelaw, and surviving Celtic languages today">
+    <figcaption class="map-caption">
+      <strong>Maps 1–4:</strong> (1) Celtic expansion in Europe (Hallstatt/La Tène culture, 500–100 BC) — Celts originally covered much of central and western Europe;
+      (2) Anglo-Saxon kingdoms (the Heptarchy): Northumbria, Mercia, East Anglia, Essex, Kent, Sussex, Wessex;
+      (3) The Danelaw — areas of Britain under Danish control after the Treaty of Wedmore (878);
+      (4) Surviving Celtic languages today: Welsh, Scottish Gaelic, Irish, Breton (France), Cornish, Manx.
+    </figcaption>
+  </figure>
+
+  <h3>The Four Old English Dialects &amp; Tribal Settlement</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Tribe</th><th>Origin</th><th>Settlement Area</th><th>Dialect</th></tr></thead>
+      <tbody>
+        <tr><td>Jutes</td><td>Jutland (Denmark)</td><td>Kent, Isle of Wight <em>(south-east)</em></td><td>Kentish</td></tr>
+        <tr><td>Saxons</td><td>Lower Saxony (N. Germany)</td><td>South of the Thames <em>(south-west)</em></td><td>West Saxon</td></tr>
+        <tr><td>Angles</td><td>South Jutland Peninsula</td><td>Centre &amp; North <em>(Midlands + North)</em></td><td>Mercian &amp; Northumbrian</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="exam-pointer">
+    <div class="ep-label">⚡ Exam Trap — Q6</div>
+    <p>The Saxons settled in the <strong>south</strong> (not south-west alone) and spoke <strong>West Saxon</strong>. The Jutes went to <strong>Kent</strong> (south-east), not the West-Midlands. Frisians also came but had no distinct dialect area recorded.</p>
+  </div>
+
+  <figure class="map-figure">
+    <img src="images/map-vikings-normans.png" alt="Four maps: Normandy in France, Viking homelands in Scandinavia, Viking raids on Britain, and Battle of Hastings 1066">
+    <figcaption class="map-caption">
+      <strong>Maps 1–4:</strong> (1) Normandy — the homeland of William the Conqueror (Duke of Normandy), in northern France;
+      (2) Viking homelands: Norway, Sweden, and Denmark (highlighted), source of Old Norse adstratum influence on English;
+      (3) Viking raids and settlements in Britain and Ireland (787–1042) — routes spreading from Scandinavia;
+      (4) The Norman Conquest 1066: Harold Godwinson marches north to Stamford Bridge (Sept. 25) against Hardrada, then south to Hastings (Oct. 14) against William's invasion force.
+    </figcaption>
+  </figure>
+
+  <h3>Who Was on the Island When the Germanic Tribes Arrived? (Q7)</h3>
+  <p>When the Germanic tribes invaded Britain they found it already inhabited by <strong>Celts</strong> <span class="pill pill-yes">✓</span> and <strong>Picts</strong> <span class="pill pill-yes">✓</span>. The Romans had already left (410 AD). Scandinavians had not yet arrived.</p>
+
+  <h3>Key Historical Figures</h3>
+  <figure class="map-figure">
+    <img src="images/historical-figures.png" alt="Eight portraits of key historical figures in the History of English">
+    <figcaption class="map-caption">
+      <strong>Key figures 1–8</strong> in the history of English: scholars who described sound laws (Grimm, Verner), rulers whose conquests reshaped the language (William the Conqueror, Alfred the Great), early printers, poets (Chaucer), and 18th-century grammarians — each responsible for a documented turning point in the development of English.
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2 — SOUND LAWS
+═══════════════════════════════════════════════════════ -->
+<section id="sounds" class="section">
+  <h2><i class="ti ti-wave-sine"></i> Sound Laws &amp; Phonological Changes</h2>
+
+  <div class="law-box">
+    <div class="law-header"><i class="ti ti-arrow-right"></i> Grimm's Law — First Germanic Sound Shift (~500 BC, PIE → Proto-Germanic)</div>
+    <div class="law-body">
+      <p>Describes regular consonant changes from Proto-Indo-European to Proto-Germanic. Three rules cascade into each other.</p>
+      <div class="rule-row">
+        <div class="rule-label">Rule 1</div>
+        <div class="rule-change">Voiceless stops → Voiceless fricatives<br><code>*p→*f, *t→*θ, *k→*x/h</code></div>
+        <div class="rule-ex">Lat. <em>pater</em> → OE <em>fæder</em><br>Lat. <em>trēs</em> → OE <em>þrī</em><br>Lat. <em>canis</em> → OE <em>hund</em></div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-label">Rule 2</div>
+        <div class="rule-change">Voiced stops → Voiceless stops<br><code>*b→*p, *d→*t, *g→*k</code></div>
+        <div class="rule-ex">Lat. <em>labium</em> → OE <em>lip</em><br>Lat. <em>decem</em> → OE <em>tēon</em><br>Lat. <em>genu</em> → OE <em>cnēo</em></div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-label">Rule 3</div>
+        <div class="rule-change">Voiced aspirates → Voiced stops<br><code>*bʰ→b, *dʰ→d, *gʰ→g</code></div>
+        <div class="rule-ex">Skr. <em>bharāmi</em> → Goth. <em>baira</em><br>Gr. <em>thugátēr</em> → Goth. <em>dauhtar</em></div>
+      </div>
+      <div class="exam-pointer" style="margin-top:0.8rem;">
+        <div class="ep-label">⚡ Exam Trap — Q2 &amp; Q29</div>
+        <p>Grimm's Law is the <strong>First Germanic Sound Shift</strong>. It describes changes to <strong>consonants (stops/fricatives)</strong>, NOT vowels, NOT tense/aspect. It applies to all Germanic languages, <strong>not just High German</strong> (that's the <em>Second</em> Germanic / High German Sound Shift). Grimm's Law does NOT explain exceptions — Verner's Law does.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="law-box">
+    <div class="law-header"><i class="ti ti-arrow-right"></i> Verner's Law — Exceptions to Grimm via Word Stress</div>
+    <div class="law-body">
+      <p>Karl Verner (1875) showed the apparent exceptions to Grimm follow a rule: voiceless fricatives <code>f, θ, x, s</code> → voiced <code>v, ð, ɣ, z</code>, <strong>when all three conditions hold simultaneously:</strong></p>
+      <ul>
+        <li>The sound was <strong>not</strong> in initial position.</li>
+        <li>It stood in a <strong>voiced environment</strong> (between vowels/sonorants).</li>
+        <li>The <strong>immediately preceding syllable was unstressed</strong> (in the PIE form).</li>
+      </ul>
+      <p><strong>Classic example: "father"</strong><br>
+      PIE <code>*pətḗr</code> (stress on 2nd syllable) → Gmc <code>*faþér</code> → Verner: <code>*faðer</code> → <code>*fáder</code> → OE <em>fæder</em>.<br>
+      In <em>brōþir</em> ("brother") stress was on the first syllable → þ preserved.</p>
+      <p>Secondary effect: voiced <code>*z</code> → <code>r</code> (<strong>rhotacism</strong>). Traces: <em>was–were, lose–forlorn</em>.</p>
+      <div class="exam-pointer" style="margin-top:0.8rem;">
+        <div class="ep-label">⚡ Exam Trap — Q52</div>
+        <p><span class="answer-badge">✓</span> Verner's Law explains exceptions to Grimm's Law.<br><span class="answer-badge">✓</span> Grimm's Law: *p→*f, *b→*p, *bh→*b (Rule 1/2/3 in that order).<br><span class="answer-badge">✓</span> Preceding syllable must be <em>unstressed</em> for voicing to occur.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="law-box">
+    <div class="law-header"><i class="ti ti-arrow-right"></i> I-Mutation (I-Umlaut) — Pre-Old English</div>
+    <div class="law-body">
+      <p>A <strong>regressive assimilation</strong>: a vowel changes when <code>/i/</code> or <code>/j/</code> follows in the next syllable. Back vowels move forward; low front vowels are raised. The triggering /i/ or /j/ usually disappeared afterwards — making the alternation look unexplained today.</p>
+      <ul>
+        <li>OE <em>fōt</em> → pl. <em>fēt</em> (ō → ē) → ModE <strong>foot – feet</strong></li>
+        <li>OE <em>mūs</em> → <em>mȳs</em> → ModE <strong>mouse – mice</strong></li>
+        <li>OE <em>mann</em> → <em>menn</em> → ModE <strong>man – men</strong></li>
+        <li>OE <em>tōþ</em> → <em>tēþ</em> → ModE <strong>tooth – teeth</strong></li>
+        <li>Word pairs: <em>long – length</em>, <em>talu – tellan</em> (tale – tell), <em>full – fill</em></li>
+      </ul>
+      <div class="exam-pointer" style="margin-top:0.8rem;">
+        <div class="ep-label">⚡ Exam Trap — Q59 &amp; Q60</div>
+        <p>I-mutation took place in <strong>pre-Old English</strong> (reconstructed OE), NOT Middle English. It is a movement to a <strong>closer and/or more frontal vowel</strong>. It does NOT explain <em>sing–sang</em> (that's <strong>ablaut</strong>). The irregular plural <em>mice</em> is due to <strong>i-mutation</strong>, not analogy or Old Norse.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="law-box">
+    <div class="law-header"><i class="ti ti-arrow-right"></i> Ablaut (Vowel Gradation) — Strong Verb Past Tense</div>
+    <div class="law-body">
+      <p>Inherited from PIE: alternation of the stem vowel in strong verbs to indicate past tense and participle. There are 7 ablaut classes in OE.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Class</th><th>Infinitive</th><th>Past sg.</th><th>Past pl.</th><th>Participle</th></tr></thead>
+          <tbody>
+            <tr><td>I</td><td><em>wrītan</em></td><td><em>wrāt</em></td><td><em>writon</em></td><td><em>gewriten</em></td></tr>
+            <tr><td>II</td><td><em>frēosan</em></td><td><em>frēas</em></td><td><em>fruron</em></td><td><em>gefroren</em></td></tr>
+            <tr><td>III</td><td><em>helpan</em></td><td><em>healp</em></td><td><em>hulpon</em></td><td><em>geholpen</em></td></tr>
+            <tr><td>IV</td><td><em>beran</em></td><td><em>bær</em></td><td><em>bǣron</em></td><td><em>geboren</em></td></tr>
+            <tr><td>V</td><td><em>etan</em></td><td><em>æt</em></td><td><em>ǣton</em></td><td><em>geeten</em></td></tr>
+            <tr><td>VI</td><td><em>faran</em></td><td><em>fōr</em></td><td><em>fōron</em></td><td><em>gefaren</em></td></tr>
+            <tr><td>VII</td><td><em>healdan</em></td><td><em>hēold</em></td><td><em>hēoldon</em></td><td><em>gehealden</em></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>ModE traces: <em>write–wrote</em>, <em>help–helped</em> (now weak), <em>bear–bore</em>.</p>
+      <div class="exam-pointer" style="margin-top:0.8rem;">
+        <div class="ep-label">⚡ Exam Trap — Q16</div>
+        <p>Ablaut is the stem-vowel alternation in <strong>strong verbs</strong>. It did NOT develop in ME; it is inherited from PIE. Option (d) "movement to closer/frontal vowel" describes <strong>i-mutation (umlaut)</strong>, not ablaut.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="law-box">
+    <div class="law-header"><i class="ti ti-arrow-right"></i> The Great Vowel Shift (starts 15th c., EME)</div>
+    <div class="law-body">
+      <p>A change in the <strong>quality of all long vowels only</strong> (NOT short vowels, NOT quantity). High long vowels became diphthongs; lower long vowels were raised.</p>
+      <ul>
+        <li><code>/iː/ → /aɪ/</code>: <em>tyme</em> → <em>time</em></li>
+        <li><code>/uː/ → /aʊ/</code>: <em>hous</em> → <em>house</em></li>
+        <li><code>/eː/ → /iː/</code>: <em>mete</em> → <em>meet</em></li>
+        <li><code>/oː/ → /uː/</code>: <em>mone</em> → <em>moon</em></li>
+      </ul>
+      <div class="exam-pointer" style="margin-top:0.8rem;">
+        <div class="ep-label">⚡ Exam Trap — Q19</div>
+        <p>The GVS affected <strong>long vowels only</strong> (option b ✓). It changed <strong>pronunciation</strong>, not spelling — causing the gap we still see today. It did NOT change the quantity of vowels (option d ✗).</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>OE Phonemes: Key Points for the Exam</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3 style="margin-top:0">Fricatives /f, s, θ/</h3>
+      <p>In OE, only the <strong>voiceless</strong> versions were phonemic. Voiced variants [v], [z], [ð] were <em>allophones</em> (position-dependent). No minimal pairs like ModE <em>feel–veal</em> existed in OE.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Palatalisation of /k/ and /g/</h3>
+      <p>Next to front vowels: <code>/k/ → [tʃ]</code>, <code>/g/ → [j]</code>. ModE: <em>chin, church</em> (OE /k/) vs. <em>kid, get</em> (Norse, no palatalisation). Explains <em>chin/Kinn</em> and <em>yellow/gelb</em>.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">/sk/ → /ʃ/ (palatalisation)</h3>
+      <p>OE palatalised <code>sk → [ʃ]</code>: <em>scip → ship</em>. Old Norse did NOT. Test: hard <code>sk</code> = Scandinavian loanword (<em>sky, skin, skill, skirt</em>); ModE <code>sh</code> = native OE (<em>ship, shall, fish</em>).</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">OE Vowel /y/</h3>
+      <p>A front rounded vowel, existed in OE. Did NOT survive into Standard Modern English (Q56 ✓). In early ME dialects it was often spelled ⟨u⟩; later unrounded and merged with <em>i</em> or <em>e</em>.</p>
+    </div>
+  </div>
+
+  <h3>ME Vowel Changes</h3>
+  <div class="card">
+    <p><strong>Lengthening</strong> occurred in open syllables and before homorganic consonant clusters (<code>-mb, -nd, -ld, -ng, -rd</code>).<br>
+    <strong>Shortening</strong> occurred in closed syllables and in the first syllable of three-syllable words.<br>
+    <strong>Loss of /y/:</strong> Unrounding → merger with /i/ or /e/: <em>fyllan → fill</em>.<br>
+    <strong>Loss of unstressed finals:</strong> apocope (final vowels lost: <em>cynge</em>); syncope (medial vowels: <em>pilgrimes</em>).</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3 — GRAMMAR
+═══════════════════════════════════════════════════════ -->
+<section id="grammar" class="section">
+  <h2><i class="ti ti-book-2"></i> Grammar: From Synthetic to Analytic</h2>
+
+  <div class="info-box">
+    <p>The central narrative of English grammar history is a slow movement from a <strong>synthetic</strong> (heavily inflected) structure in OE to a predominantly <strong>analytic</strong> structure in Modern English — driven by both internal factors (Verner's Law aftermath, stress patterns, functional load) and external contact (Old Norse, Norman French).</p>
+  </div>
+
+  <h3>Synthetic vs. Analytic</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Feature</th><th>Synthetic (OE)</th><th>Analytic (ModE)</th></tr></thead>
+      <tbody>
+        <tr><td>Grammatical relations expressed by…</td><td>Inflectional endings on words</td><td>Word order, prepositions, function words</td></tr>
+        <tr><td>Word order</td><td>Relatively free (SVO, SOV, VSO all possible)</td><td>Fixed (SVO dominant)</td></tr>
+        <tr><td>Adjective agreement</td><td>Yes: case, number, gender</td><td>No</td></tr>
+        <tr><td>Noun cases</td><td>4 cases (Nom., Gen., Dat., Acc.)</td><td>Only genitive <em>-s</em> + pronouns</td></tr>
+        <tr><td>Grammatical gender</td><td>3 (m., f., n.) — grammatical, not natural</td><td>Natural gender only (he/she/it)</td></tr>
+        <tr><td>Tenses via inflection</td><td>Present &amp; past only</td><td>Periphrastic (will have praised)</td></tr>
+        <tr><td>Multiple negation</td><td>Normal &amp; emphatic</td><td>Non-standard (prescriptively wrong)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="exam-pointer">
+    <div class="ep-label">⚡ Exam Trap — Q31</div>
+    <p>Old English is called <strong>synthetic</strong> because it has <strong>many inflections and a relatively free word order</strong> (option b). NOT because it has many free morphemes or function words.</p>
+  </div>
+
+  <h3>OE Noun Morphology — Case &amp; Number</h3>
+  <p>OE nouns inflected for: <strong>case</strong> (Nom./Gen./Dat./Acc.), <strong>number</strong> (sg./pl.), <strong>grammatical gender</strong> (m./f./n.). Multiple declension types existed.</p>
+  <p>Example: <em>stān</em> "stone" (strong masculine noun)</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Case</th><th>Singular</th><th>Plural</th></tr></thead>
+      <tbody>
+        <tr><td>Nominative</td><td><em>stān</em></td><td><em>stānas</em></td></tr>
+        <tr><td>Genitive</td><td><em>stānes</em></td><td><em>stāna</em></td></tr>
+        <tr><td>Dative</td><td><em>stāne</em></td><td><em>stānum</em></td></tr>
+        <tr><td>Accusative</td><td><em>stān</em></td><td><em>stānas</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="exam-pointer">
+    <div class="ep-label">⚡ Exam Trap — Q13</div>
+    <p>OE noun inflections indicate <strong>number</strong> ✓ and <strong>case</strong> ✓. NOT person (that's verb inflection) and NOT mood (also verb inflection).</p>
+  </div>
+
+  <h3>OE Adjective Declension: Strong vs. Weak</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3 style="margin-top:0">Strong (Indefinite) Declension</h3>
+      <p>Used <strong>without</strong> a definite article. Inherited from PIE.<br>Example: <em>gōd mann</em> ("a good man")</p>
+      <p>Inflected for case, number, gender.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Weak (Definite) Declension</h3>
+      <p>Used <strong>after</strong> a definite article/demonstrative. An <em>innovation</em> in Germanic.<br>Example: <em>se gōda mann</em> ("the good man")</p>
+      <p>Also inflected for case, number, gender but with reduced distinctions.</p>
+    </div>
+  </div>
+  <div class="exam-pointer">
+    <div class="ep-label">⚡ Exam Trap — Q23</div>
+    <p>The weak adjective declension is used when there <strong>is</strong> a definite article ✓. It is also called the <strong>definite</strong> declension (NOT the indefinite one — that's the strong). The dental suffix marks <strong>weak verbs</strong>, not adjectives.</p>
+  </div>
+
+  <h3>OE Verb Types</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3 style="margin-top:0">Strong Verbs</h3>
+      <p>Inherited from PIE. Form past tense by <strong>ablaut</strong> (vowel change). 7 classes. Productive in PG/OE, unproductive later; many became "irregular" in ModE.</p>
+      <p>Inflected for: person, number, mood (indicative/subjunctive/imperative), tense (present/past).</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Weak Verbs</h3>
+      <p>Germanic <em>innovation</em>. Form past by adding a <strong>dental suffix</strong> (<em>-ed, -od, -d, -t</em>). Always productive; became the "regular" type in ModE.</p>
+      <p>Example: <em>lufian – lufode – gelufod</em></p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Preterite-Present Verbs</h3>
+      <p>Present forms derive from old PIE past forms → semantically reinterpreted as present. Then needed a <em>new</em> weak past. Source of modern <strong>modal auxiliaries</strong>: <em>can/could, shall/should, may/might, must, ought</em>.</p>
+      <p>No <em>-s</em> in 3rd person sg; no infinitive (*to can).</p>
+    </div>
+  </div>
+
+  <div class="exam-pointer">
+    <div class="ep-label">⚡ Exam Trap — Q14 &amp; Q27</div>
+    <p>OE past tense was expressed by <strong>ablaut</strong> (strong verbs) ✓ and <strong>dental suffix</strong> (weak verbs) ✓. The modern modal auxiliaries derive from OE <strong>preterite-present verbs</strong> ✓ (not strong, weak, or impersonal verbs).</p>
+  </div>
+
+  <h3>ME Developments in Grammar</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Change in ME</th></tr></thead>
+      <tbody>
+        <tr><td>Person &amp; number marking</td><td><strong>Weakened</strong> (fewer distinct endings)</td></tr>
+        <tr><td>Tense</td><td><strong>Strengthened</strong> (new analytic forms: future, perfect, progressive)</td></tr>
+        <tr><td>Mood</td><td><strong>Weakened</strong> (modal verbs take over subjunctive functions)</td></tr>
+        <tr><td>Past marking</td><td>Became <strong>more regular</strong> (weak -ed dominant)</td></tr>
+        <tr><td>Grammatical gender</td><td><strong>Lost</strong> → natural gender</td></tr>
+        <tr><td>3rd person plural pronouns</td><td>Borrowed from Old Norse: <em>they, their, them</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Do-Support &amp; Multiple Negation in EME</h3>
+  <div class="card">
+    <p>In EME, <strong>periphrastic do</strong> rose rapidly in questions, negations, and even affirmative declarative sentences. It was not yet grammatically restricted as in ModE.</p>
+    <p>Multiple negation was standard in OE ("they never had no enemy" = emphatic: "they never had an enemy"). In EME it became increasingly non-standard, eventually condemned by prescriptive grammar.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4 — LEXICON
+═══════════════════════════════════════════════════════ -->
+<section id="lexicon" class="section">
+  <h2><i class="ti ti-language"></i> Lexicon &amp; Borrowings</h2>
+
+  <h3>Layers of English Vocabulary — At a Glance</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Layer</th><th>Period</th><th>Type</th><th>Example Words</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Celtic</strong></td><td>Pre-OE</td><td>Substratum</td>
+          <td>Place names: <em>Avon, Thames, Kent, Devon, cumb</em>; very few common words</td>
+        </tr>
+        <tr>
+          <td><strong>Latin (Continental)</strong></td><td>Pre-OE (on mainland)</td><td>Superstratum</td>
+          <td><em>mīl, strǣt, weall, wīn, butere, cēap</em></td>
+        </tr>
+        <tr>
+          <td><strong>Latin (Settlement)</strong></td><td>OE (via Celts)</td><td>Superstratum</td>
+          <td>Place names: <em>-ceaster</em> (Winchester, Chester, Lancaster)</td>
+        </tr>
+        <tr>
+          <td><strong>Latin (Christianisation)</strong></td><td>OE from 597</td><td>Superstratum</td>
+          <td><em>mynster, mæsse, munuc, nunne, biscop, apostol</em></td>
+        </tr>
+        <tr>
+          <td><strong>Old Norse</strong></td><td>OE/ME (Viking, 787–1042)</td><td>Adstratum</td>
+          <td><em>they, their, them, are, till; sky, skin, skill, egg, cake, anger, bag, low, get, give</em></td>
+        </tr>
+        <tr>
+          <td><strong>Anglo-Norman French</strong></td><td>ME (1066–1250)</td><td>Superstratum</td>
+          <td><em>baron, duke, servant, government, judge, prayer, saint, story</em></td>
+        </tr>
+        <tr>
+          <td><strong>Central French</strong></td><td>ME (1250–1400)</td><td>Superstratum</td>
+          <td><em>parliament, crime, army, battle, dance, music, beef, veal, pork, venison</em></td>
+        </tr>
+        <tr>
+          <td><strong>Latin &amp; Greek (Renaissance)</strong></td><td>EME</td><td>Superstratum</td>
+          <td><em>focus, vacuum, circus, cosmos, skeleton; inkhorn terms</em></td>
+        </tr>
+        <tr>
+          <td><strong>Other (Spanish, Italian, Dutch…)</strong></td><td>EME–ModE</td><td>Various</td>
+          <td>Sp: <em>cannibal, potato, armada</em>; It: <em>opera, fresco</em>; Du: <em>yacht, dock</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>OE Vocabulary: Consociated &amp; Homogeneous</h3>
+  <div class="card">
+    <p>OE vocabulary was ~98% West Germanic. It was <strong>consociated</strong> — large word families built from native material. New words formed through <strong>compounding</strong> (<em>bōccræft</em> "literature") and <strong>derivation</strong> (prefixes <em>ge-, ā-, un-</em>; suffixes <em>-dōm, -ere, -scipe</em>).</p>
+    <p>Special poetic compounds: <strong>kennings</strong> — <em>hronrād</em> ("whale-road") = sea; <em>banhūs</em> ("bone-house") = body.</p>
+  </div>
+
+  <h3>Dissociated vs. Consociated Vocabulary (Q35)</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3 style="margin-top:0">Consociated (OE)</h3>
+      <p>Words grouped into large word families with visible morphological connections. <em>lār</em> → <em>læran, lārhūs, lārēow, lārdōm</em>.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Dissociated (ModE)</h3>
+      <p>Many words isolated in the lexicon with no transparent connection to semantically related words. <em>cow</em> vs. <em>beef</em> (same animal, two unrelated words from two languages).</p>
+    </div>
+  </div>
+  <div class="exam-pointer">
+    <div class="ep-label">⚡ Exam Trap — Q35</div>
+    <p>A <strong>dissociated vocabulary</strong> has many words that show <em>no formal resemblance with semantically related words</em> (option c ✓) and words that are <em>isolated in the lexicon</em> (option b ✓). Modern English has a MORE dissociated vocabulary than OE.</p>
+  </div>
+
+  <h3>Doublets / Synonyms (Q24 &amp; Q47)</h3>
+  <div class="card">
+    <p>Words of the same or similar meaning from two different source languages. <em>Not economical</em> → one often disappears or <em>semantic differentiation</em> occurs.</p>
+    <p><strong>Examples of doublets:</strong></p>
+    <ul>
+      <li>OE <em>weorpan</em> / Norse <em>kasta</em> → "throw" (eventually: <em>cast</em> displaced OE word)</li>
+      <li>OE <em>æg</em> / Norse <em>egg</em> → <em>egg</em> won (Scandinavian origin)</li>
+      <li>Norman Fr. <em>catch</em> / Central Fr. <em>chase</em> → both survived (Q47 ✓)</li>
+      <li>Fr. <em>warden</em> / <em>guardian</em> (two forms of same word via two French dialects)</li>
+      <li>OE <em>shirt</em> / Norse <em>skirt</em> → both survived with different meaning</li>
+    </ul>
+  </div>
+
+  <h3>How to Identify Scandinavian Loanwords</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Test</th><th>OE/Native (→ ModE)</th><th>Old Norse/Scandinavian (→ ModE)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>sk vs. sh</strong></td><td><em>ship, shall, fish, shell</em> (sh)</td><td><em>sky, skin, skill, skirt, bask</em> (sk)</td></tr>
+        <tr><td><strong>k vs. ch</strong></td><td><em>chin, church</em> (ch)</td><td><em>kid, get, give, egg</em> (k/g)</td></tr>
+        <tr><td><strong>Place names</strong></td><td>-ton, -ham, -wick</td><td>-<em>by</em> (Grimsby), -<em>thorpe</em>, -<em>toft</em>, -<em>thwaite</em></td></tr>
+        <tr><td><strong>Function words</strong></td><td>they (originally OE forms fell out)</td><td><em>they, their, them, till, are, though</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Inkhorn Terms &amp; the Purist Movement (Q8, Q28, Q41)</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h3 style="margin-top:0">Inkhorn Terms</h3>
+      <p>Pompous Latinate/Greek words used in EME although perfectly good English equivalents already existed. Criticised as pedantic and unnecessarily obscure. Introduced mainly via scientific books and translations from Latin.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Purist Movement</h3>
+      <p>A manifestation of English <strong>nationalism</strong> in EME. <em>Attacked</em> excessive borrowing; advocated native word formation. Opposed inkhorn terms and foreign loanwords like <em>affirmation</em> or <em>conclusion</em>.</p>
+      <div class="exam-pointer" style="margin-top:0.5rem;">
+        <div class="ep-label">⚡ Trap Q8</div>
+        <p>Purists attacked <em>loan-words</em> (not native coinages) and opposed words like <em>affirmation, conclusion</em> (Latin). Option (a) ✓ nationalism.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Hard Word Dictionaries (Q21)</h3>
+  <div class="card">
+    <p>The <strong>earliest monolingual English dictionaries</strong> (option c ✓). Written in EME to explain difficult (hard) words to <em>less educated readers</em> (option a ✓). First example: Robert Cawdrey's <em>Table Alphabeticall</em> (1604). They did NOT aim to list all English words — that was a later goal.</p>
+  </div>
+
+  <h3>The Cooking/Animal Doublets (ME French Influence)</h3>
+  <p>A classic cultural pattern from the Norman Conquest: the English tended the animals, the Normans ate the prepared food.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Living Animal (OE)</th><th>Cooked Dish (French)</th></tr></thead>
+      <tbody>
+        <tr><td>ox</td><td>beef (Fr. <em>bœuf</em>)</td></tr>
+        <tr><td>sheep</td><td>mutton (Fr. <em>mouton</em>)</td></tr>
+        <tr><td>calf</td><td>veal (Fr. <em>veau</em>)</td></tr>
+        <tr><td>pig</td><td>pork (Fr. <em>porc</em>)</td></tr>
+        <tr><td>deer</td><td>venison (Fr. <em>venaison</em>)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 5 — EXAM Q&A
+═══════════════════════════════════════════════════════ -->
+<section id="examqa" class="section">
+  <h2><i class="ti ti-help-octagon"></i> Exam Q&amp;A — Sample Questions Explained</h2>
+  <p style="color:var(--cream-dim); font-size:0.9rem; margin-bottom:1.2rem;">Click each question to reveal the correct answer(s) and explanation.</p>
+
+  <div id="qa-list"></div>
+
+  <h3 style="margin-top:2rem;">Open Questions — Model Answers</h3>
+
+  <div class="card">
+    <h3 style="margin-top:0">(1) I-Mutation: Process, Effects, and Survival into ModE</h3>
+    <p><strong>When:</strong> Pre-Old English (reconstructed, prehistoric OE phase). Also in other West and North Germanic languages, but not in East Germanic Gothic.</p>
+    <p><strong>What happened:</strong> A regressive assimilation. When <code>/i/</code> or <code>/j/</code> followed in the next syllable, the vowel of the stressed syllable was pulled forward/upward — back vowels became front vowels, low front vowels were raised. The triggering <code>/i/</code> or <code>/j/</code> subsequently disappeared, making the alternation appear irregular today.</p>
+    <p><strong>Effects on OE grammar:</strong> Created alternations in noun plurals, verb forms, and derived word pairs. Examples: <em>fōt–fēt</em>, <em>mūs–mȳs</em>, <em>mann–menn</em>, <em>tōþ–tēþ</em>; word pairs like <em>long–length</em>, <em>talu–tellan</em>.</p>
+    <p><strong>Survival into ModE:</strong> The irregular plurals <em>foot–feet, mouse–mice, man–men, tooth–teeth, goose–geese, louse–lice</em>. Also related word pairs: <em>full–fill, strong–strength, old–elder</em>.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">(2) Synthetic OE Structure &amp; Noun Morphology</h3>
+    <p><strong>Synthetic structure:</strong> OE expressed grammatical relations (who does what to whom) via inflectional endings on nouns, adjectives, articles, and pronouns — not via word order. Word order was therefore relatively free (SVO, SOV, VSO all occurred).</p>
+    <p><strong>OE noun morphology</strong> distinguished: case (Nom./Gen./Dat./Acc.), number (sg./pl.), grammatical gender (m./f./n.). Multiple declension classes existed (strong/weak, a-stems, i-stems, etc.). Articles and adjectives also inflected to agree in case, number, and gender.</p>
+    <p><strong>Difference from ModE:</strong> ModE nouns mark only number (-s plural) and genitive (-'s). No grammatical gender. No case distinctions on nouns (only on pronouns: I–me, he–him). Adjectives are uninflected. Articles are invariable.</p>
+    <p><strong>Categories expressed by inflection in OE:</strong> Nouns → case, number, gender. Adjectives → case, number, gender (strong/weak). Articles/demonstratives → case, number, gender. Pronouns → case, number, gender, person. Verbs → person, number, mood, tense.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">(3) English and High German: Familial Relationship</h3>
+    <p>English and High German are both members of the <strong>Indo-European</strong> language family, specifically the <strong>Germanic</strong> branch, and more specifically both belong to <strong>West Germanic</strong>.</p>
+    <p>However, they diverge within West Germanic: English descends from <strong>North-Sea Germanic (Ingvaeonic) → Anglo-Frisian → Old English</strong>. High German descends from the <strong>southern (Erminonic) branch</strong> of West Germanic and underwent the <strong>Second Germanic (High German) Sound Shift</strong> (which English did NOT undergo: Ger. <em>machen</em> vs. Eng. <em>make</em>; Ger. <em>Wasser</em> vs. Eng. <em>water</em>).</p>
+    <p>So: English and High German are <strong>sibling languages</strong> within West Germanic — they share a common ancestor (West Germanic) but diverged and developed independently, with High German undergoing additional consonant changes that English did not.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 6 — GLOSSARY
+═══════════════════════════════════════════════════════ -->
+<section id="glossary" class="section">
+  <h2><i class="ti ti-abc"></i> Linguistic Glossary</h2>
+  <p style="color:var(--cream-dim); font-size:0.9rem; margin-bottom:1.2rem;">Key terms for the History of English exam — defined precisely.</p>
+  <div class="glossary-grid" id="gloss-grid"></div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 7 — FLASHCARDS
+═══════════════════════════════════════════════════════ -->
+<section id="flashcards" class="section">
+  <h2><i class="ti ti-cards"></i> Flashcards</h2>
+  <p class="fc-hint">Click any card to flip it and reveal the answer.</p>
+  <div class="fc-grid" id="fc-grid"></div>
+</section>
+
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+  <i class="ti ti-arrow-up"></i>
+</button>
+
+<script>
+// ── Navigation ──
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelector(`nav button[data-id="${id}"]`).classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// ── Flashcard data ──
+const cards = [
+  {
+    icon: 'ti-wave-sine',
+    q: "What is Grimm's Law, and what type of change does it describe?",
+    a: "The First Germanic Sound Shift (~500 BC). It describes 3 regular consonant changes from PIE to Proto-Germanic: (1) voiceless stops → voiceless fricatives (p→f, t→θ, k→h); (2) voiced stops → voiceless stops (b→p, d→t, g→k); (3) voiced aspirates → voiced stops (bh→b, dh→d, gh→g)."
+  },
+  {
+    icon: 'ti-arrow-right',
+    q: "What is Verner's Law, and what problem does it solve?",
+    a: "Verner's Law explains exceptions to Grimm. Voiceless fricatives (f, θ, x, s) became voiced when: (1) not word-initial, (2) in a voiced environment, and (3) the preceding syllable was unstressed. Example: PIE *pətḗr → OE fæder (not *fæþer)."
+  },
+  {
+    icon: 'ti-letter-i',
+    q: "Describe i-mutation (i-umlaut). When did it occur, and name two ModE survivals.",
+    a: "Pre-Old English. A back/low vowel assimilates toward a following /i/ or /j/ in the next syllable (regressive assimilation). The trigger later disappeared. Survivals: foot–feet (ō→ē), mouse–mice (ū→ȳ), man–men (a→e), full–fill."
+  },
+  {
+    icon: 'ti-language',
+    q: "What is the difference between a synthetic and an analytic language? Give an example of each.",
+    a: "Synthetic: grammatical relations expressed by inflectional endings; word order relatively free. Example: Old English (case endings on nouns). Analytic: relations expressed by word order, prepositions, function words. Example: Modern English ('of the father' vs. OE genitive ending)."
+  },
+  {
+    icon: 'ti-sword',
+    q: "Name the 3 tribes that came to Britain in 449. Where did each settle, and what dialect did they speak?",
+    a: "Jutes → Kent (SE): Kentish. Saxons → south of Thames (SW): West Saxon. Angles → centre & north (Midlands + N): Mercian & Northumbrian. The Angles' name became collective (Engles → England; Englisc → English)."
+  },
+  {
+    icon: 'ti-crown',
+    q: "What was the linguistic impact of the Norman Conquest (1066)?",
+    a: "French became the language of the aristocracy, law, and church. English survived among ordinary people. Two phases of French borrowing: (1) 1066–1250 Anglo-Norman (baron, duke, prayer); (2) 1250–1400 Central French (parliament, crime, army, beef, dance). Accelerated loss of inflections → analytic structure."
+  },
+  {
+    icon: 'ti-viking',
+    q: "How do you identify a Scandinavian loanword in English? Give examples.",
+    a: "OE palatalised sk → [ʃ]: native words have 'sh' (ship, fish, shall). Old Norse did not palatalise: Scandinavian words keep 'sk' (sky, skin, skill, skirt). Also: borrowed function words they/their/them; place names ending in -by, -thorpe, -toft."
+  },
+  {
+    icon: 'ti-arrows-up',
+    q: "What is the Great Vowel Shift, and which vowels did it affect?",
+    a: "A change in the quality of all LONG vowels only (not short vowels, not quantity), beginning in the 15th century. High long vowels became diphthongs (/iː/→/aɪ/, /uː/→/aʊ/); lower long vowels were raised. This created the gap between English spelling and pronunciation."
+  },
+  {
+    icon: 'ti-book',
+    q: "What is ablaut? How does it differ from i-mutation?",
+    a: "Ablaut = vowel alternation in strong verb stems to mark tense (inherited from PIE): write–wrote, sing–sang. I-mutation = assimilation of a vowel toward a following /i/ or /j/, affecting nouns/derivation: foot–feet. Ablaut is tense-marking; i-mutation is a phonological assimilation creating morphological alternations."
+  },
+  {
+    icon: 'ti-history',
+    q: "What are preterite-present verbs, and what did they become in Modern English?",
+    a: "A group of OE verbs whose present forms derived from old PIE past forms (reinterpreted as present). They then formed new weak pasts. They are the source of all modern MODAL AUXILIARIES: can/could, shall/should, may/might, must, ought. This is why they lack 3rd sg. -s and have no infinitive (*to can)."
+  },
+  {
+    icon: 'ti-arrows-exchange',
+    q: "Explain doublets and give two examples with their origins.",
+    a: "Doublets are two words of the same/similar meaning from different source languages. They are not economical: one often disappears or semantic differentiation occurs. Examples: catch (Anglo-Norman) / chase (Central French); shirt (OE) / skirt (Old Norse); warden (Norman) / guardian (Central French)."
+  },
+  {
+    icon: 'ti-pencil',
+    q: "Who is Sir William Jones, and what is his significance for English historical linguistics?",
+    a: "British judge and scholar (1746–1794). In a famous address of 1786 he noted the striking affinity of Sanskrit with Greek and Latin, arguing all three must spring from a common source no longer existing. This kick-started the comparative study of Indo-European languages and the reconstruction of Proto-Indo-European."
+  },
+  {
+    icon: 'ti-school',
+    q: "Why were grammar books suddenly felt necessary in the 18th century?",
+    a: "Scholars felt English needed correction and was inferior to Latin. They wanted to (a) develop a standard without variation, and (b) fix the language so no further changes would occur. No English Language Academy was ever founded (unlike in France/Italy), but prescriptive grammars served a similar purpose."
+  },
+  {
+    icon: 'ti-layers-difference',
+    q: "What is the difference between a strong verb and a weak verb? Which type gave rise to the modern -ed past tense?",
+    a: "Strong verbs (inherited from PIE) form past by ABLAUT (vowel change): write–wrote. Weak verbs (Germanic innovation) form past by DENTAL SUFFIX (-ed/-od/-d/-t): love–loved. WEAK verbs gave rise to the modern regular -ed past tense. Strong verbs survive as 'irregular' verbs in ModE."
+  }
+];
+
+// ── Q&A data ──
+const qaData = [
+  {n:"Q1", q:"What does English Historical Linguistics study?", a:"(a) ✓ Changes from Old to Modern English (spelling, pronunciation, grammar). (b) ✓ Why those changes occurred. (d) ✓ What happened in the history of English. NOT (c) how language should be defined generally (that's general linguistics/philosophy of language)."},
+  {n:"Q2/29", q:"Grimm's Law: which statements are correct?", a:"(a) ✓ It belongs to the similarities of Germanic languages. (d of Q29) ✓ It is also known as the First Germanic Sound Shift. NOT: it explains exceptions to Verner's Law (it's the other way round). NOT: it describes the change from flexible to fixed word stress in Germanic (that's a separate Germanic peculiarity). NOT: it describes loss of IE tense/aspect distinctions."},
+  {n:"Q3/43", q:"Which statements about Old English are right?", a:"(a) ✓ OE is the period from c. 500 (450) to 1100 (1150). (b) ✓ OE had mainly West Germanic vocabulary with few loanwords. (d) ✓ OE had a vowel system where length was phonologically relevant. NOT (c): growing prestige due to Reformation describes Early Modern English, not OE."},
+  {n:"Q5", q:"Which language family does English belong to?", a:"(c) ✓ English is a West Germanic language. It is NOT East Germanic (that's Gothic), NOT Latin/Romance, NOT Indo-Iranian. English is also Indo-European (so 'Indo-European would be right too' as the sample answer notes)."},
+  {n:"Q7", q:"When the Germanic tribes invaded Britain, they found it inhabited by…", a:"(c) ✓ Picts (northern people). (d) ✓ Celts. The Romans had already left (~410 AD), so NOT Romans. Scandinavians had not arrived yet. Both Celts and Picts were present."},
+  {n:"Q15/37", q:"Which are Germanic languages? / Which is English genetically related to?", a:"Q15: (c) ✓ Icelandic (North Germanic). (d) ✓ English (West Germanic). NOT French (Romance), NOT Scots Gaelic (Celtic). Q37: (c) ✓ Welsh (both are Indo-European — Celtic branch). (d) ✓ Lithuanian (Baltic branch of IE). NOT Chinese (Sino-Tibetan), NOT Finnish (Uralic — NOT Indo-European!)."},
+  {n:"Q16", q:"Ablaut: which statements are correct?", a:"(b) ✓ Ablaut is the alternation of stem vowels in strong verbs to indicate past tense. (c) ✓ It accounts for the vowel difference between 'write' and 'wrote'. NOT (a): ablaut did NOT develop in Middle English — it's inherited from PIE. NOT (d): movement to a closer/frontal vowel describes i-mutation/umlaut."},
+  {n:"Q18", q:"Which statements about ME are RIGHT?", a:"(a) ✓ Person and number marking was WEAKENED in ME. (b) ✓ The category of tense was STRENGTHENED (new analytic tenses). (d) ✓ Past marking became more REGULAR. NOT (c): mood was weakened, not strengthened (modals took over)."},
+  {n:"Q19", q:"The Great Vowel Shift…", a:"(b) ✓ Was a change in the quality of all LONG vowels. NOT (a): it did NOT affect short vowels. NOT (c): it raised vowels (didn't lower front vowels). NOT (d): it was NOT a change in quantity. Note: it also changed pronunciation only, not spelling."},
+  {n:"Q22", q:"In Old English…", a:"(a) ✓ Vowel length was phonologically relevant (gōd 'good' ≠ god 'God'). (d) ✓ The fricatives /s/, /f/, /θ/ had voiced and voiceless allophones (voiced forms [v,z,ð] were positional variants). NOT (b): /k/ and /g/ did NOT fall together — they split via palatalisation. NOT (c): the Second Germanic Sound Shift only affected High German, not Old English."},
+  {n:"Q23", q:"In OE the weak adjective declension…", a:"(a) ✓ Was used when there was a definite article. NOT (b): the dental suffix marks weak VERBS, not adjectives. NOT (c): it wasn't used with all native adjectives — usage depended on the article. NOT (d): the weak declension is the DEFINITE declension, not the indefinite."},
+  {n:"Q27", q:"The Modern English modal auxiliaries derived from OE…", a:"(c) ✓ Preterite-present verbs. Their present forms go back to old PIE past forms, later reinterpreted as present. They then formed new weak pasts. NOT strong, weak, or impersonal verbs."},
+  {n:"Q39", q:"Old English adjectives…", a:"(a) ✓ Had a strong and a weak declension. (c) ✓ Expressed case, number, and gender by inflections. NOT (b): OE had both synthetic (inflected: -er, -est) and early periphrastic comparison — NOT only analytical. NOT (d): OE adjectives were NOT formally invariable — they were heavily inflected."},
+  {n:"Q52", q:"Which statements about Grimm's and Verner's Law are true?", a:"(a) ✓ According to Grimm: *p→*f, *b→*p, *bh→*b (rules 1, 2, 3). (b) ✓ Verner's Law explains exceptions to Grimm's Law. (c) ✓ One condition for voicing (Verner) was that the preceding syllable was unstressed. NOT (d): Grimm's Law affected all Germanic languages, NOT only High German (that's the Second/High German Sound Shift)."},
+  {n:"Q59/60", q:"I-mutation and the plural 'mice'", a:"Q59: (d) ✓ I-mutation includes a movement to a closer and/or more frontal vowel. NOT (a): it took place in pre-OE, not ME. NOT (b): ablaut is the vowel alternation in strong verbs (sing–sang). NOT (c): sing–sang is ablaut. Q60: (b) ✓ The irregular plural 'mice' is due to i-mutation (OE mūs → mȳs, with ū→ȳ before a following /i/ in the plural suffix). NOT analogy (which would give *mouses), NOT Old Norse, NOT ablaut."}
+];
+
+// Build Q&A
+const qaList = document.getElementById('qa-list');
+qaData.forEach((item, i) => {
+  const div = document.createElement('div');
+  div.className = 'qa-item';
+  div.innerHTML = `
+    <div class="qa-q" onclick="toggleQA(this)">
+      <span class="qa-q-text"><span class="qa-num">${item.n}</span> ${item.q}</span>
+      <i class="ti ti-chevron-down qa-arrow"></i>
+    </div>
+    <div class="qa-a">${item.a}</div>
+  `;
+  qaList.appendChild(div);
+});
+function toggleQA(el) {
+  el.parentElement.classList.toggle('open');
+}
+
+// Build Flashcards
+const grid = document.getElementById('fc-grid');
+cards.forEach((c, i) => {
+  const el = document.createElement('div');
+  el.className = 'fc';
+  el.innerHTML = `
+    <div class="fc-face fc-front">
+      <i class="ti ${c.icon} fc-icon"></i>
+      <div class="fc-q">${c.q}</div>
+    </div>
+    <div class="fc-face fc-back">
+      <div class="fc-a">${c.a}</div>
+    </div>
+  `;
+  el.addEventListener('click', () => el.classList.toggle('flipped'));
+  grid.appendChild(el);
+});
+
+// Build Glossary
+const glossTerms = [
+  ["Ablaut", "Vowel alternation in the stem of strong verbs to express tense (inherited from PIE). Example: write–wrote."],
+  ["Adstratum", "Two languages in equal-ranking contact (neither is dominant). Describes Old Norse influence on OE."],
+  ["Allophones", "Positional variants of a phoneme that do not distinguish meaning. In OE, [v] and [f] were allophones of one phoneme."],
+  ["Analogy", "The process of regularising irregular forms on the basis of the dominant pattern. Weak past tense -ed spread by analogy."],
+  ["Analytic language", "A language that expresses grammatical relations via word order, prepositions, and auxiliary verbs rather than inflectional endings. Modern English is analytic."],
+  ["Breaking (OE)", "A phonological process in OE: a front vowel becomes a diphthong before l, r, or h + consonant. *all → eall."],
+  ["Cognates", "Words in different languages descended from the same source word (etymon). English father and Latin pater are cognates."],
+  ["Consociated vocabulary", "A vocabulary with large, morphologically transparent word families. Characteristic of OE."],
+  ["Danelaw", "Area in north and east England under Danish law and custom after the Treaty of Wedmore (878)."],
+  ["Dental suffix", "The -d/-t/-ed suffix that marks past tense in weak (regular) verbs. A Germanic innovation."],
+  ["Dissociated vocabulary", "A vocabulary with many isolated words showing no formal resemblance to semantically related words. Characteristic of ModE."],
+  ["Doublet", "A pair of words in the same language derived from the same source via different routes. Example: catch/chase (both from Latin via different French dialects)."],
+  ["Etymon", "The reconstructed common ancestor word from which cognates in daughter languages descend."],
+  ["Functional load", "The degree to which a phonemic distinction is used to differentiate words. High functional load = more resistant to change."],
+  ["Grammatical gender", "Gender assigned grammatically (not based on natural sex). OE had three grammatical genders (m./f./n.), unlike ModE natural gender."],
+  ["Grimm's Law", "The First Germanic Sound Shift: three rules of consonant change from PIE to Proto-Germanic, described by Jacob Grimm."],
+  ["I-mutation (umlaut)", "Pre-OE regressive assimilation: a vowel changes toward a following /i/ or /j/ in the next syllable."],
+  ["Inflection", "A bound morpheme added to a word to express grammatical categories (case, number, tense, etc.)."],
+  ["Inkhorn terms", "Pompous Latinate/Greek words coined in Early Modern English, criticised as unnecessary borrowings."],
+  ["Kenning", "An OE poetic compound whose meaning is metaphorical rather than literal. hronrād ('whale-road') = sea."],
+  ["Language contact", "Close interaction between speakers of two different languages, often leading to borrowing and structural change."],
+  ["Minimal pair", "Two words differing by only one phoneme, proving that phoneme is meaningful. OE lacked minimal pairs for /f/ vs. /v/."],
+  ["Phoneme", "The smallest unit of sound that distinguishes meaning in a language."],
+  ["Preterite-present verbs", "OE verbs whose present forms derive from old past forms, reinterpreted as present. Source of modern modal auxiliaries."],
+  ["Rhotacism", "The change *z → r, a consequence of Verner's Law. Example: was–were."],
+  ["Substratum", "The language of a conquered/subordinate group that leaves traces in the dominant language. Celtic is a substratum in English."],
+  ["Superstratum", "The language of a ruling/prestige group that influences a subordinate language. Latin and French are superstrata in English."],
+  ["Synthetic language", "A language that expresses grammatical relations via inflectional endings on words. Old English is synthetic."],
+  ["Verner's Law", "Explains exceptions to Grimm: voiceless fricatives became voiced when not word-initial, in a voiced environment, and preceded by an unstressed syllable."],
+  ["West Saxon", "The OE dialect of the Saxons (south of the Thames). Became the literary standard of late Anglo-Saxon England."]
+];
+
+const glossGrid = document.getElementById('gloss-grid');
+glossTerms.forEach(([term, def]) => {
+  const el = document.createElement('div');
+  el.className = 'gloss-item';
+  el.innerHTML = `<div class="gloss-term">${term}</div><div class="gloss-def">${def}</div>`;
+  glossGrid.appendChild(el);
+});
+</script>
+</body>
+</html>

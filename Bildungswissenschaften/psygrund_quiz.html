@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Pädagogische Psychologie — MC-Quiz</title>
+<style>
+  :root {
+    --bg: #1a1c23;
+    --card: #24262f;
+    --card-border: #34374a;
+    --accent: #7aa6d9;
+    --accent-soft: #7aa6d933;
+    --text: #e8e6e1;
+    --text-dim: #9b9a96;
+    --correct: #5fa86b;
+    --correct-bg: #5fa86b22;
+    --wrong: #c25450;
+    --wrong-bg: #c2545022;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px 14px 60px;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  h1 { font-size: 1.3rem; margin: 0 0 4px; font-weight: 650; }
+  .subtitle { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 18px; }
+  .topbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  select, button {
+    font-family: inherit; background: var(--card); color: var(--text);
+    border: 1px solid var(--card-border); border-radius: 10px;
+    padding: 8px 12px; font-size: 0.85rem; cursor: pointer;
+  }
+  select:focus, button:focus { outline: 1px solid var(--accent); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
+  .stat { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 10px 8px; text-align: center; }
+  .stat .num { font-size: 1.3rem; font-weight: 700; }
+  .stat .label { font-size: 0.7rem; color: var(--text-dim); margin-top: 2px; }
+  .card { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; }
+  .progress-track { height: 6px; background: var(--card-border); border-radius: 4px; overflow: hidden; margin-bottom: 16px; }
+  .progress-fill { height: 100%; background: var(--accent); transition: width .3s; }
+  .topic-tag { display: inline-block; font-size: 0.7rem; color: var(--accent); background: var(--accent-soft); padding: 3px 9px; border-radius: 100px; margin-bottom: 6px; font-weight: 600; }
+  .mode-tag { display: inline-block; font-size: 0.65rem; color: var(--text-dim); margin-left: 6px; margin-bottom: 6px; }
+  .question { font-size: 1.05rem; line-height: 1.45; margin: 8px 0 16px; font-weight: 550; }
+  .hint { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 10px; }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #2c2f3a; border: 1px solid var(--card-border);
+    border-radius: 10px; padding: 11px 13px; cursor: pointer;
+    font-size: 0.92rem; line-height: 1.4; transition: background .15s, border-color .15s;
+  }
+  .option:hover:not(.locked) { border-color: var(--accent); }
+  .option .box {
+    flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px;
+    background: var(--card-border); display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700;
+  }
+  .option.selected .box { background: var(--accent); }
+  .option.correct { background: var(--correct-bg); border-color: var(--correct); }
+  .option.correct .box { background: var(--correct); }
+  .option.wrong { background: var(--wrong-bg); border-color: var(--wrong); }
+  .option.wrong .box { background: var(--wrong); }
+  .option.missed { background: var(--correct-bg); border-color: var(--correct); opacity: 0.7; }
+  .option.missed .box { background: var(--correct); }
+  .option.locked { cursor: default; }
+  .explain { margin-top: 14px; padding: 12px 14px; border-radius: 10px; font-size: 0.88rem; line-height: 1.45; background: #2c2f3a; border-left: 3px solid var(--accent); display: none; }
+  .explain.show { display: block; }
+  .explain b { color: var(--accent); }
+  .checkbtn, .nextbtn {
+    margin-top: 16px; width: 100%; background: var(--accent); color: #1a1c23;
+    border: none; font-weight: 700; padding: 12px; border-radius: 10px; font-size: 0.95rem;
+  }
+  .nextbtn { display: none; }
+  .nextbtn.show { display: block; }
+  .done-card { text-align: center; padding: 30px 18px; }
+  .done-card .big { font-size: 2.2rem; font-weight: 800; margin: 6px 0; }
+  .restart { margin-top: 16px; background: var(--accent); color: #1a1c23; border: none; font-weight: 700; padding: 10px 18px; border-radius: 10px; }
+  footer { text-align: center; color: var(--text-dim); font-size: 0.72rem; margin-top: 30px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Pädagogische Psychologie</h1>
+  <div class="subtitle">Multiple-Choice-Quiz · Klausurvorbereitung · 61 Fragen</div>
+
+  <div class="topbar">
+    <select id="topicSelect"></select>
+    <button id="shuffleBtn" title="Reihenfolge mischen">🔀 Mischen</button>
+    <button id="resetProgressBtn" title="Fortschritt zurücksetzen">↺ Reset</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="num" id="statTotal">0</div><div class="label">Fragen</div></div>
+    <div class="stat"><div class="num" id="statCorrect">0</div><div class="label">Richtig</div></div>
+    <div class="stat"><div class="num" id="statPercent">0%</div><div class="label">Quote</div></div>
+  </div>
+
+  <div id="quizArea"></div>
+
+  <footer>Lokaler Fortschritt wird nur in dieser Sitzung gespeichert (kein Browser-Storage verwendet).</footer>
+</div>
+
+<script>
+// type: "single" = genau eine richtige Antwort
+// type: "multi"  = mehrere richtige Antworten (Checkboxen, alle müssen stimmen)
+const QUESTIONS = [
+{topic:"Genetik & Umwelt", type:"multi", q:"Welche Phänomene beschreiben sogenannte Genom-Umwelt-Korrelationen?",
+ options:["Individuen erhalten neben ihren genetischen Anlagen auch die dazu passende Umwelt von ihren Eltern.","Der Einfluss des Genoms ist von Umweltbedingungen abhängig.","Der Einfluss der Umweltbedingungen ist vom Genom abhängig.","Individuen wählen, schaffen oder verändern Umwelten, die zu ihrer genetischen Ausstattung passen.","Individuen rufen aufgrund ihres Genoms bestimmte Reaktionen ihrer sozialen Umwelt hervor."],
+ correct:[0,3,4], explain:"Genom-Umwelt-Korrelationen umfassen 3 Typen: passive (Eltern geben Gene UND passende Umwelt weiter), aktive (Individuen wählen/schaffen passende Umwelten) und evokative (Individuen rufen Reaktionen der Umwelt hervor). Die Aussagen zur wechselseitigen Abhängigkeit von Genom- und Umwelteinfluss beschreiben dagegen Gen-Umwelt-Interaktionen, nicht -Korrelationen."},
+
+{topic:"Lerntheorien", type:"multi", q:"Aus welchen Gründen spielt die Theorie der klassischen Konditionierung für schulische Lernprozesse eine untergeordnete Rolle?",
+ options:["Im Fokus der klassischen Konditionierung stehen Verhaltensweisen, die auf Reflexen basieren.","Die klassische Konditionierung kann erklären, wie neue Verhaltensweisen gelernt werden.","Die klassische Konditionierung geht davon aus, dass es keine individuellen Unterschiede im Lernen gibt.","Kognitive Prozesse spielen in der klassischen Konditionierung keine Rolle.","Selbstreguliertes Lernen dürfte es laut klassischer Konditionierung nicht geben."],
+ correct:[0,3], explain:"Klassische Konditionierung fokussiert reflexbasiertes Verhalten und ignoriert kognitive Prozesse — beides macht sie für komplexes schulisches Lernen ungeeignet. Sie erklärt eher emotionale Reaktionen (z.B. Prüfungsangst) als den Erwerb neuer Fertigkeiten."},
+
+{topic:"Selbstreguliertes Lernen", type:"multi", q:"Welche Aspekte beeinflussen, wie gut ein Schüler bzw. eine Schülerin selbstreguliert lernen kann?",
+ options:["Welche kognitiven Lernstrategien er bzw. sie kennt.","Wie motiviert er bzw. sie ist.","Wie intelligent er bzw. sie ist.","Welche metakognitiven Lernstrategien er bzw. sie kennt.","Wie viel Vorwissen er bzw. sie hat."],
+ correct:[0,1,3,4], explain:"Selbstreguliertes Lernen hängt von kognitiven UND metakognitiven Strategien, Motivation und Vorwissen ab — nicht primär von allgemeiner Intelligenz."},
+
+{topic:"Grundlagen Psychologie", type:"single", q:"Welcher Teilbereich der Psychologie beschäftigt sich damit, wie Menschen neue Informationen verarbeiten und speichern?",
+ options:["Sozialpsychologie","Allgemeine Psychologie","Entwicklungspsychologie","Differentielle Psychologie","Klinische Psychologie"],
+ correct:1, explain:"Die Allgemeine Psychologie untersucht grundlegende psychische Prozesse wie Wahrnehmung, Gedächtnis und Informationsverarbeitung, die bei allen Menschen ähnlich funktionieren."},
+
+{topic:"Intelligenz", type:"multi", q:"Welche Aussagen über Intelligenz sind richtig?",
+ options:["Die Erblichkeit von Intelligenz steigt mit dem Alter.","Hochbegabte Menschen unterscheiden sich in ihrer Intelligenz grundlegend von anderen Menschen.","Die Kristalline Intelligenz bezieht sich auf die erworbenen Fähigkeiten einer Person.","Man geht von der Existenz einer allgemeinen Intelligenz aus, die bei der Bearbeitung aller Intelligenzaufgaben eine Rolle spielt (Generalfaktor).","Die Intelligenz einer Person ist nicht durch die Umwelt veränderbar."],
+ correct:[2,3], explain:"Kristalline Intelligenz = erworbenes Wissen/Fähigkeiten. Der Generalfaktor (g) beschreibt eine allgemeine Intelligenzkomponente, die in allen Aufgaben mitwirkt. Hochbegabung ist graduell, kein grundlegend anderer Mechanismus, und Intelligenz ist sehr wohl umweltveränderbar."},
+
+{topic:"Gehirnentwicklung", type:"single", q:"Welcher der folgenden Prozesse zählt NICHT zu den wichtigsten Prozessen der Gehirnentwicklung?",
+ options:["Die Bildung von neuen Neuronen.","Die Myelinisierung von Neuronen.","Das Absterben von Synapsen","Das Absterben von Neuronen.","Die Bildung von neuen Synapsen"],
+ correct:3, explain:"Neuronenbildung, Myelinisierung, Synapsenbildung und -abbau ('Pruning') sind zentrale Prozesse der Gehirnentwicklung. Das Absterben ganzer Neuronen ist dagegen kein typischer, zentraler Entwicklungsprozess in diesem Kontext."},
+
+{topic:"Selbstreguliertes Lernen", type:"single", q:"Welches Merkmal von Schüler:Innen ist KEINE unmittelbare Voraussetzung für selbstreguliertes Lernen?",
+ options:["Motivation","Metakognition","Vorwissen","Emotionen","Selbstbewusstsein"],
+ correct:4, explain:"Motivation, Metakognition, Vorwissen und Emotionen sind direkte Komponenten/Voraussetzungen selbstregulierten Lernens. Selbstbewusstsein als allgemeines Persönlichkeitsmerkmal zählt nicht zu den unmittelbaren Voraussetzungen."},
+
+{topic:"Expertise", type:"multi", q:"Welche Aussagen zum Expertiseerwerb sind korrekt?",
+ options:["Expertise wird immer im Hinblick auf einen bestimmten Wissensbereich erworben.","Expertise kann als eine Art Problemlösen verstanden werden.","Beim Erwerb von Expertise muss Wissen organisiert werden.","Beim Erwerb von Expertise ist sehr viel Routinewissen notwendig.","Der Erwerb von Expertise ist mit viel Übung verbunden."],
+ correct:[0,1,2,4], explain:"Expertise ist domänenspezifisch, erfordert Wissensorganisation und viel Übung. 'Routinewissen' ist hier nicht der zentrale Faktor — entscheidend ist vielmehr gut organisiertes, flexibel anwendbares Wissen, nicht reines Auswendiglernen von Routinen."},
+
+{topic:"Bronfenbrenner", type:"single", q:"Welchem System gehören in Bronfenbrenners Systemtheorie die Mitschülerinnen und Mitschüler einer Schülerin bzw. eines Schülers an?",
+ options:["Makrosystem","Exosystem","Chronosystem","Mikrosystem","Mesosystem"],
+ correct:3, explain:"Das Mikrosystem umfasst die unmittelbare Lebensumwelt mit direktem persönlichem Kontakt — dazu zählen Familie, Lehrkräfte UND Mitschüler:innen."},
+
+{topic:"Entwicklungstheorien", type:"multi", q:"Welche der folgenden Entwicklungstheorien gehen NICHT von einer aktiven Rolle der Umwelt für die Entwicklung von Menschen aus?",
+ options:["Individualistische Entwicklungstheorien","Endogenistische Entwicklungstheorien","Transaktionale Entwicklungstheorien","Exogenistische Entwicklungstheorien","Aktionale Entwicklungstheorien"],
+ correct:[0,1,4], explain:"Endogenistische Theorien betonen rein biologische/innere Reifungsprozesse (Umwelt passiv). Individualistische und aktionale Theorien betonen primär die aktive Rolle des Individuums selbst, nicht der Umwelt. Exogenistische und transaktionale Theorien betonen dagegen explizit die aktive Rolle der Umwelt."},
+
+{topic:"Störungsbilder", type:"multi", q:"Bei welchen der genannten Störungen handelt es sich um internalisierende Störungen?",
+ options:["Rechenstörung","Störung des Sozialverhaltens","Angststörung","Depressionen","Aufmerksamkeits-Defizit-Hyperaktivitäts-Störung"],
+ correct:[2,3], explain:"Internalisierende Störungen richten sich 'nach innen' (Angst, Depression). Externalisierende Störungen wie Störung des Sozialverhaltens und ADHS richten sich nach außen sichtbar im Verhalten. Rechenstörung ist eine Lernstörung, keine internalisierende Störung."},
+
+{topic:"Entwicklungsaufgaben", type:"multi", q:"Welche Aussagen über Entwicklungsaufgaben sind FALSCH?",
+ options:["Die individuellen Zielsetzungen einer Person können eine Quelle von Entwicklungsaufgaben darstellen.","Biologische Veränderungen sind eine mögliche Quelle für Entwicklungsaufgaben.","Entwicklungsaufgaben lassen sich auch als nicht-normative Lebensereignisse konzeptualisieren.","Entwicklungsaufgaben können durch gesellschaftliche Erwartungen entstehen.","Entwicklungsaufgaben sind Aufgaben, die im Jugendalter an das Individuum gestellt werden."],
+ correct:[2,4], explain:"Entwicklungsaufgaben sind normative Lebensereignisse (nicht nicht-normative) und treten über die gesamte Lebensspanne auf — nicht nur im Jugendalter. Individuelle Ziele, biologische Veränderungen und gesellschaftliche Erwartungen sind dagegen anerkannte Quellen."},
+
+{topic:"Heritabilität", type:"multi", q:"Welche Aussagen über die Heritabilität eines Merkmals sind richtig?",
+ options:["Die Heritabilität kann für einzelne Individuen bestimmt werden","Die Heritabilität kann nur geschätzt werden.","Die Heritabilität gibt den relativen Einfluss von Genom und Umwelt auf ein Merkmal an.","Die Heritabilität kann zwischen 0 und 1 variieren.","Die Heritabilität eines Merkmals ist in verschiedenen Populationen gleich."],
+ correct:[1,2,3], explain:"Heritabilität ist ein Populationsmaß (nicht für Individuen bestimmbar), wird statistisch geschätzt, gibt den relativen Anteil genetischer Varianz an einer Merkmalsvarianz an (0–1) und variiert je nach Population/Umweltbedingungen — sie ist NICHT in allen Populationen gleich."},
+
+{topic:"Soziale Kategorisierung", type:"multi", q:"Welche Aussagen über soziale Kategorisierung sind FALSCH?",
+ options:["Soziale Kategorisierung ist die sozialpsychologische Bezeichnung für Vorurteil","Soziale Kategorisierungen gehen mit der Zuschreibung bestimmter Eigenschaften einher.","Soziale Kategorisierungen ermöglichen eine effiziente Informationsverarbeitung.","Menschen unterscheiden zwischen Eigengruppen und Fremdgruppen","Menschen teilen sich und ihre soziale Umwelt nach wohlüberlegten Kriterien in Gruppen ein."],
+ correct:[0,4], explain:"Soziale Kategorisierung ≠ Vorurteil (sie ist ein neutraler kognitiver Grundprozess, der Vorurteile begünstigen KANN, aber nicht damit identisch ist). Kategorisierung erfolgt zudem meist automatisch/heuristisch, nicht wohlüberlegt."},
+
+{topic:"Entwicklungsbegriff", type:"multi", q:"Welche Aussagen über Entwicklung entsprechen dem modernen Entwicklungsbegriff?",
+ options:["Entwicklung erfolgt in einer unveränderlichen Abfolge von Phasen oder Stufen.","Entwicklung meint Veränderungen hin zu einem positiven Endzustand.","Die Umwelt beeinflusst die Entwicklung von Menschen.","Entwicklung findet über die gesamte Lebensspanne statt.","Menschen sind aktive Gestalter ihrer Entwicklung."],
+ correct:[2,3,4], explain:"Der moderne Entwicklungsbegriff (Lebensspannenperspektive) betont: Entwicklung über die gesamte Lebensspanne, aktive Rolle des Individuums, Umwelteinfluss. Verworfen wurden starre Stufenmodelle und die Annahme eines zwangsläufig positiven Endzustands (Entwicklung kann auch Verlust/Abbau umfassen)."},
+
+{topic:"Emotionen & Lernen", type:"multi", q:"Welche Aussagen über den Einfluss von Emotionen auf den Wissenserwerb sind RICHTIG?",
+ options:["Emotionen beeinflussen die Speicherung von Informationen aus dem Langzeitgedächtnis.","Emotionen beeinflussen die Funktionsweise des Arbeitsgedächtnisses.","Positive Emotionen binden mehr kognitive Ressourcen als negative Emotionen.","Emotionen beeinflussen den Abruf von Informationen aus dem Langzeitgedächtnis.","Negative Emotionen haben immer negative Konsequenzen für den Wissenserwerb."],
+ correct:[1,3], explain:"Emotionen beeinflussen Arbeitsgedächtnis-Funktion und Abruf von LZG-Inhalten. Negative Emotionen sind nicht IMMER schädlich (z.B. kann moderate Angst aktivierend wirken), und der Vergleich 'positive binden mehr Ressourcen als negative' ist so nicht haltbar."},
+
+{topic:"Unterrichtskommunikation", type:"multi", q:"Welche Verhaltensweisen einer Lehrkraft eignen sich, um im Unterricht eine symmetrische Kommunikation mit den Schüler:Innen zu erreichen?",
+ options:["Genau zuhören.","Bestrafen bei Regelverletzung","Lob erteilen.","Raum für eigene Beiträge von Schüler:Innen geben.","Ermöglichen von selbstreguliertem Lernen der Schüler:Innen"],
+ correct:[0,3,4], explain:"Symmetrische Kommunikation bedeutet Begegnung auf Augenhöhe: zuhören, Raum für eigene Beiträge geben, Selbstregulation ermöglichen. Bestrafen und Lob sind dagegen asymmetrische, hierarchische Steuerungsmittel der Lehrkraft."},
+
+{topic:"Arbeitsgedächtnis", type:"multi", q:"Welche der folgenden Aussagen zum Arbeitsgedächtnis sind FALSCH?",
+ options:["Das Arbeitsgedächtnis bezieht seine Informationen aus dem sensorischen Register.","Das Arbeitsgedächtnis bezieht seine Informationen aus dem Langzeitgedächtnis.","Die Speicherdauer des Arbeitsgedächtnisses beträgt wenige Stunden.","Die Speicherkapazität des Arbeitsgedächtnisses ist unbegrenzt.","Durch das sogenannte Chunking kann die Speicherkapazität des Arbeitsgedächtnisses besser genutzt werden."],
+ correct:[2,3], explain:"Das Arbeitsgedächtnis hat eine sehr begrenzte Speicherdauer (Sekunden, nicht Stunden) und eine begrenzte Kapazität (klassisch 7±2 Elemente). Chunking erhöht die effektiv nutzbare Kapazität. Informationen können sowohl aus dem sensorischen Register als auch aus dem Langzeitgedächtnis stammen."},
+
+{topic:"Neuronale Plastizität", type:"multi", q:"Welche Aussagen über die neuronale Plastizität sind RICHTIG?",
+ options:["Es gibt Phasen, in denen das Gehirn besonders empfänglich für bestimmte Erfahrungen ist.","Axone können sich durch Erfahrungen verlängern.","Durch Erfahrungen kann die Effizienz der neuronalen Informationsverarbeitung verändert werden.","Erfahrungen können zum Abbau von Synapsen führen.","Veränderungen des Gehirns finden nur im Kindes- und Jugendalter statt."],
+ correct:[0,1,2,3], explain:"Es gibt sensible Phasen, Axone können wachsen, Effizienz der Verarbeitung wird verändert, und Synapsenabbau ('Pruning') ist Teil der Plastizität. Plastizität besteht jedoch das ganze Leben über — nicht nur im Kindes-/Jugendalter."},
+
+{topic:"Intergruppenkontakt", type:"single", q:"Bei welchem Aspekt handelt es sich um KEINE Bedingung für einen erfolgreichen Intergruppenkontakt?",
+ options:["Eigen- und Fremdgruppen sollten miteinander kooperieren müssen.","Eigen- und Fremdgruppen sollten gemeinsame Ziele verfolgen.","Der Kontakt zwischen Eigen- und Fremdgruppen wird durch Autoritäten, Normen und Gesetze unterstützt.","Eigen- und Fremdgruppen sollten den gleichen Status haben.","Es muss zu einem realen Kontakt zwischen Eigen- und Fremdgruppen kommen."],
+ correct:4, explain:"Die Kontakthypothese (Allport) nennt vier zentrale Bedingungen: gleicher Status, gemeinsame Ziele, Kooperation, institutionelle Unterstützung. Ein 'realer' Kontakt allein ist keine eigenständige, hinreichende Bedingung im engeren Sinn — die anderen vier Qualitätskriterien sind entscheidend, nicht bloß das Stattfinden von Kontakt."},
+
+{topic:"Genetik Grundlagen", type:"multi", q:"Welche Aussagen zu den grundlegenden Prinzipien der Genetik sind FALSCH?",
+ options:["Änderungen im epigenetischen Programm führen zu Änderungen des Genoms.","Die Genaktivität verändert sich im Laufe der Entwicklung eines Menschen.","Genetische Wirkungen folgen im Laufe des Lebens einem kumulativen Prinzip.","Das epigenetische Programm kann auch an Nachkommen eines Organismus vererbt werden.","Der genetische Einfluss auf die Entwicklung ist bei Geburt festgelegt"],
+ correct:[0,4], explain:"Epigenetische Änderungen verändern die Genaktivität (An-/Abschalten), NICHT das Genom (die DNA-Sequenz) selbst. Der genetische Einfluss ist auch nicht bei Geburt 'festgelegt' — Genaktivität verändert sich über die gesamte Entwicklung hinweg kumulativ."},
+
+{topic:"Kognitionen", type:"multi", q:"Welche der folgenden Aktivitäten von Schüler:Innen zählen zu den Kognitionen?",
+ options:["Wahrnehmen eines Tafelbildes.","Lösen einer Mathematikaufgabe.","Sich zur Bearbeitung der Hausaufgaben motivieren.","Trösten eines Mitschülers oder einer Mitschülerin.","Erinnern an die letzte Deutschstunde."],
+ correct:[0,1,4], explain:"Wahrnehmen, Problemlösen und Erinnern sind klassische kognitive Prozesse. Motivation ist ein eigener psychologischer Bereich (nicht Kognition i.e.S.), Trösten ist eine soziale/emotionale Handlung."},
+
+{topic:"Beobachtungslernen", type:"multi", q:"Welche Phasen gehören NICHT zum Beobachtungslernen?",
+ options:["Löschungsphase","Verstärkungsphase","Motivationsphase","Nachbildungsphase","Aufmerksamkeitsphase"],
+ correct:[0,1], explain:"Bandura's Beobachtungslernen umfasst vier Phasen: Aufmerksamkeit, Behaltung/Gedächtnis, Nachbildung (Reproduktion) und Motivation. 'Löschungs-' und 'Verstärkungsphase' gehören dagegen zum Vokabular der operanten Konditionierung, nicht zum Beobachtungslernen."},
+
+{topic:"Selbstreguliertes Lernen", type:"multi", q:"Welche Aussagen zum selbstregulierten Lernen sind FALSCH?",
+ options:["Die Förderung des selbstregulierten Lernens sollte unabhängig von spezifischen Fächern erfolgen.","Lehrkräfte sollten ihren Schüler:Innen unterschiedliche Lernstrategien beibringen.","Schüler:Innen müssen sich ihrer Lernziele bewusst sein.","Unterstützungsmaßnahmen durch die Lehrkräfte sollten beim selbstregulierten Lernen vermieden werden.","Selbstreguliertes Lernen lässt sich als ein interaktiver (iterativer) Prozess verstehen."],
+ correct:[0,3], explain:"Die Förderung selbstregulierten Lernens sollte gerade FACHSPEZIFISCH (also nicht unabhängig vom Fach) erfolgen, da Strategien je nach Inhaltsbereich variieren. Unterstützung durch Lehrkräfte ist zudem wichtig, nicht zu vermeiden — selbstreguliertes Lernen heißt nicht 'allein lassen'."},
+
+{topic:"Big-Fish-Little-Pond-Effekt", type:"multi", q:"Welche Aussagen über den Big-Fish-Little-Pond-Effekt sind richtig?",
+ options:["Das Fähigkeitsselbstkonzept eines Schülers bzw. einer Schülerin ist unabhängig vom Leistungsniveau der Klasse.","In einer leistungsstarken Klasse führen Aufwärtsvergleiche mit anderen Schüler:Innen zu einem niedrigen Fähigkeitsselbstkonzept.","Nach dem Wechsel von der Grundschule auf die weiterführende Schule kommt es in der Regel zu großen Veränderungen im Fähigkeitsselbstkonzept von Schüler:Innen.","Abwärtsvergleiche mit anderen Schüler:Innen führen in der Regel zu einem höheren Fähigkeitsselbstkonzept.","Schüler:Innen in leistungsstarken Klassen haben ein höheres Fähigkeitsselbstkonzept als Schüler:Innen in leistungsschwachen Klassen."],
+ correct:[1,2,3], explain:"Kern des BFLPE: In starken Klassen ('großer Teich') führen Aufwärtsvergleiche zu einem NIEDRIGEREN Selbstkonzept ('kleiner Fisch'), trotz objektiv guter Leistung. Abwärtsvergleiche erhöhen das Selbstkonzept. Beim Schulwechsel ändert sich oft die Bezugsgruppe stark, was zu deutlichen Selbstkonzept-Veränderungen führt. Das Selbstkonzept ist also gerade NICHT unabhängig vom Klassenniveau — und Schüler:innen in starken Klassen haben tendenziell NIEDRIGERE (nicht höhere) Selbstkonzepte."},
+
+{topic:"Stereotype Threat", type:"multi", q:"Welche Phänomene im schulischen Kontext werden NICHT mit der Theorie des Stereotype Threat erklärt?",
+ options:["Schüler:Innen einer sozialen Gruppe haben Angst, ihr Verhalten könnte ein negatives Stereotyp gegen ihre Gruppe bestätigen.","Bestimmte Merkmale von Schüler:Innen aktivieren Stereotype bei ihren Lehrkräften.","Schüler:Innen einer sozialen Gruppe verhalten sich entsprechend des Stereotyps im Sinne einer sich selbsterfüllenden Prophezeiung.","Schüler:Innen unterschiedlicher sozialer Gruppen bedrohen sich aufgrund der Stereotype, die sie übereinander haben.","Die Stereotype von Lehrkräften gegenüber bestimmten Schüler:Innen führen zu einem unterschiedlichen Verhalten ihnen gegenüber."],
+ correct:[1,3,4], explain:"Stereotype Threat beschreibt spezifisch: Die eigene Angst, ein negatives Stereotyp über die eigene Gruppe zu bestätigen — und die daraus resultierende selbsterfüllende Prophezeiung. Stereotype, die Lehrkräfte AKTIVIEREN oder ihr daraus resultierendes Verhalten, sowie wechselseitige Bedrohung zwischen Gruppen, sind eigenständige Phänomene (Lehrererwartungseffekte, Intergruppenkonflikt), nicht Stereotype Threat selbst."},
+
+{topic:"Soziale Gruppenprozesse", type:"multi", q:"Welche Aussagen über psychologische Prozesse in sozialen Gruppen treffen zu?",
+ options:["Je niedriger die Kohäsion einer Gruppe, desto bedeutsamer werden die Normen und Werte der Gruppe für die einzelnen Mitglieder.","In sozialen Gruppen dienen Normen der Orientierung und Koordination des Verhaltens der Mitglieder.","In sozialen Gruppen streben Personen nach Uniformität.","Damit die Mitglieder einer sozialen Gruppe einen Einfluss auf das Verhalten einer Person haben können, müssen sie physisch anwesend sein.","Wenn die individuelle Leistung nicht messbar ist, neigen Personen in sozialen Gruppen dazu, die individuelle Leistung zu reduzieren."],
+ correct:[1,2,4], explain:"Normen dienen der Orientierung/Koordination, Gruppen streben nach Uniformität, und bei nicht-messbarer individueller Leistung tritt Social Loafing auf (Leistungsreduktion). Gruppeneinfluss erfordert KEINE physische Anwesenheit (z.B. internalisierte Normen wirken auch alleine). Höhere (nicht niedrigere) Kohäsion macht Normen bedeutsamer für die Mitglieder."},
+
+{topic:"Fähigkeitsselbstkonzept", type:"multi", q:"Wovon ist das Fähigkeitskonzept im Fach Deutsch von Schülerinnen und Schülern NICHT beeinflusst?",
+ options:["Den Leistungen der MitschülerInnen im Fach Deutsch.","Den eigenen Leistungen im Fach Deutsch zu einem früheren Zeitpunkt.","Den eigenen Leistungen in einem anderen Fach, z.B. in Mathematik.","Den eigenen Leistungen im Fach Deutsch.","Den Leistungen von Schülerinnen und Schülern einer anderen Schule im Fach Deutsch."],
+ correct:[2,4], explain:"Das fachspezifische Selbstkonzept wird durch soziale Vergleiche INNERHALB der eigenen Bezugsgruppe (Klasse) und durch eigene frühere Leistungen geprägt (internal/external frame of reference). Leistungen in einem ANDEREN Fach wirken eher kontrastierend (Internal/External Frame of Reference Model — z.B. gute Matheleistung kann Deutsch-Selbstkonzept sogar SENKEN), und Schüler:innen anderer Schulen sind keine relevante Vergleichsgruppe."},
+
+{topic:"Gedächtnissysteme", type:"single", q:"Welche Aussage über das Gedächtnis ist korrekt?",
+ options:["Inhalte des prozeduralen Gedächtnisses können wir verbalisieren.","Lernergebnisse einer klassischen Konditionierung sind im impliziten Gedächtnis gespeichert.","Autobiographische Erinnerungen werden im semantischen Gedächtnis gespeichert.","Fertigkeiten und Gewohnheiten werden im deklarativen Gedächtnis gespeichert.","Die Inhalte dieser Vorlesung sind im episodischen Gedächtnis gespeichert."],
+ correct:1, explain:"Klassisch konditionierte Reaktionen sind implizites (unbewusstes, nicht-verbalisierbares) Gedächtnis. Prozedurales Wissen (Fertigkeiten) ist NICHT verbalisierbar und gehört zum impliziten, nicht deklarativen Gedächtnis. Autobiographische Erinnerungen sind episodisch, nicht semantisch."},
+
+{topic:"Erinnerung & Abruf", type:"multi", q:"Wodurch wird das Erinnern von Informationen positiv beeinflusst?",
+ options:["Geballtes Wiederholen der Informationen","Ein hoher Grad kognitiver Aktivierung beim Lernen der Informationen.","Positive Emotionen beim Abrufen der Informationen.","Das Vorhandensein von Hinweisreizen beim Erinnern der Informationen.","Häufiges und verteiltes Wiederholen der Informationen."],
+ correct:[1,3,4], explain:"Kognitive Aktivierung beim Lernen, Hinweisreize beim Abruf und verteiltes (statt geballtes/massiertes) Wiederholen fördern das Erinnern nachweislich — das ist der Spacing-Effekt. Geballtes Wiederholen ('cramming') ist dagegen ineffektiver als verteiltes Lernen."},
+
+{topic:"Langzeitgedächtnis", type:"multi", q:"Welche Gedächtnisstrukturen sind NICHT dem Langzeitgedächtnis zugeordnet?",
+ options:["Echoisches Gedächtnis","Semantisches Gedächtnis","Deklaratives Gedächtnis","Implizites Gedächtnis","Ikonisches Gedächtnis"],
+ correct:[0,4], explain:"Echoisches (auditives) und ikonisches (visuelles) Gedächtnis gehören zum sensorischen Register (Ultrakurzzeitgedächtnis), nicht zum Langzeitgedächtnis. Semantisches, deklaratives und implizites Gedächtnis sind dagegen Subsysteme des Langzeitgedächtnisses."},
+
+{topic:"ADHS vs. Depression", type:"multi", q:"Welche Symptome treten nur bei einer Depression, nicht aber bei einer Aufmerksamkeits-Defizit-Hyperaktivitäts-Störung auf?",
+ options:["Konzentrationsprobleme","Verlust an Freude und Interesse","Impulsivität","Antriebslosigkeit","Gedrückte Stimmung"],
+ correct:[1,3,4], explain:"Verlust an Freude/Interesse (Anhedonie), Antriebslosigkeit und gedrückte Stimmung sind Kernsymptome der Depression, nicht von ADHS. Konzentrationsprobleme kommen bei beiden Störungen vor, Impulsivität ist ein klassisches ADHS-Symptom."},
+
+{topic:"Wissenserwerb", type:"multi", q:"Welche Aussagen über die Bedingungen des Wissenserwerbs sind richtig?",
+ options:["Durch das Verwenden von Beispielen kann der Wissenserwerb gefördert werden.","Motivation spielt für den kognitiven Wissenserwerb keine Rolle","Bei einer Überlastung des Arbeitsgedächtnisses ist der Wissenserwerb beeinträchtigt.","Neues Wissen muss im Langzeitgedächtnis konsolidiert (gefestigt) werden.","Das Vorwissen hat keine Bedeutung für den Erwerb von neuem Wissen."],
+ correct:[0,2,3], explain:"Beispiele fördern Wissenserwerb, Überlastung des Arbeitsgedächtnisses (Cognitive Load) beeinträchtigt ihn, und neues Wissen muss konsolidiert werden. Motivation UND Vorwissen sind dagegen sehr wohl bedeutsam für den Wissenserwerb — beide Aussagen, die das Gegenteil behaupten, sind falsch."},
+
+{topic:"Emotionen", type:"single", q:"Bei welcher der folgenden Emotionen handelt es sich NICHT um eine Basisemotion?",
+ options:["Überraschung","Wut/Ärger","Stolz","Scham","Ekel"],
+ correct:2, explain:"Basisemotionen (nach Ekman) sind kulturübergreifend und angeboren: Freude, Wut, Angst, Trauer, Ekel, Überraschung. Stolz und Scham sind dagegen sekundäre, sozial-kognitive ('selbstbewusste') Emotionen, die erst später in der Entwicklung entstehen und kulturell variabler sind."},
+
+{topic:"Exekutive Funktionen", type:"multi", q:"Welche Aussagen über exekutive Funktionen sind FALSCH?",
+ options:["Kognitive Flexibilität und inhibitorische Kontrolle zählen zu den zentralen Fähigkeiten von exekutiven Funktionen.","Kinder mit gut ausgeprägten exekutiven Funktionen lassen sich nicht leicht von ihren Aufgaben ablenken.","Gut ausgeprägte exekutive Funktionen erleichtern das selbstregulierte Lernen.","Kinder mit gut ausgeprägten exekutiven Funktionen haben ein hohes akademisches Selbstkonzept.","Das Arbeitsgedächtnis spielt für exekutive Funktionen keine Rolle."],
+ correct:[3,4], explain:"Exekutive Funktionen umfassen u.a. Arbeitsgedächtnis, kognitive Flexibilität und inhibitorische Kontrolle — das Arbeitsgedächtnis ist sogar eine zentrale Komponente, nicht irrelevant. Gut ausgeprägte exekutive Funktionen führen NICHT automatisch zu hohem akademischem Selbstkonzept — das ist ein eigenständiges psychologisches Konstrukt, kein direkter Folgeeffekt."},
+
+{topic:"Intelligenz & Wissenserwerb", type:"multi", q:"Welche Aussagen über das Verhältnis von Intelligenz und Wissenserwerb in einem Schulfach sind FALSCH?",
+ options:["Fachspezifisches Vorwissen hat einen größeren Einfluss auf den Wissenserwerb in einem Fach als Intelligenz.","Fachspezifisches Wissen ist durch eine hohe Intelligenz kompensierbar.","Eine hohe Intelligenz kann Defizite im fachspezifischen Wissen nicht kompensieren.","Die Bedeutung von Intelligenz für den Wissenserwerb nimmt im Laufe der Schulzeit zu.","Fachspezifisches Wissen kann Intelligenzdefizite kompensieren."],
+ correct:[1,3], explain:"Hohe Intelligenz kann fehlendes fachspezifisches Vorwissen NICHT kompensieren (klassischer Befund: Experten mit niedrigerer Intelligenz, aber viel Fachwissen, übertreffen oft hochintelligente Novizen). Die Bedeutung der Intelligenz nimmt im Laufe der Schulzeit eher AB (nicht zu), während Vorwissen wichtiger wird."},
+
+{topic:"ADHS", type:"multi", q:"Welche Aussagen über die Aufmerksamkeits-Defizit-Hyperaktivitäts-Störung sind RICHTIG?",
+ options:["Für die Diagnose von ADHS sollten standardisierte Testverfahren eingesetzt werden.","ADHS ist zu einem großen Anteil genetisch bedingt","Die Anzahl von SchülerInnen mit ADHS ist in den letzten Jahren gestiegen.","ADHS ist eine Krankheit, die vor allem bei Kindern und Jugendlichen auftritt.","Mediale Reizüberflutung trägt nicht zum Entstehen von ADHS bei."],
+ correct:[0,1,2], explain:"ADHS hat eine hohe genetische Komponente, Diagnosen sollten standardisiert erfolgen, und die Diagnosehäufigkeit ist gestiegen. ADHS tritt aber NICHT nur bei Kindern/Jugendlichen auf (persistiert oft ins Erwachsenenalter), und mediale Reizüberflutung wird durchaus als möglicher Einflussfaktor diskutiert."},
+
+{topic:"Gehirnstrukturen", type:"single", q:"Welche Gehirnstruktur spielt eine zentrale Rolle, wenn ein Kind laufen lernt?",
+ options:["Limbisches System","Kleinhirn","Zwischenhirn","Großhirnrinde","Hirnstamm"],
+ correct:1, explain:"Das Kleinhirn (Cerebellum) ist zentral für Bewegungskoordination, Gleichgewicht und das Erlernen motorischer Abläufe wie Laufen."},
+
+{topic:"Behaviorismus", type:"multi", q:"Welche Aussagen über behavioristische Lerntheorien sind FALSCH?",
+ options:["Behavioristische Lerntheorien betonen, dass Menschen sehr unterschiedlich lernen.","Behavioristische Lerntheorien fokussieren Veränderungen im Verhalten von Menschen.","Behavioristische Lerntheorien gehen davon aus, dass Lernen ein aktiver Prozess ist.","Behavioristische Lerntheorien verstehen Lernen als Informationsverarbeitung.","Behavioristische Lerntheorien beschäftigen sich nicht mit mentalen Prozessen von Menschen."],
+ correct:[0,2,3], explain:"Behaviorismus betont universelle Lerngesetze (nicht individuelle Unterschiede), versteht Lernen als passive Reiz-Reaktions-Verknüpfung (nicht aktiven Prozess) und beschäftigt sich explizit NICHT mit Informationsverarbeitung — das ist das kognitivistische Paradigma. Behaviorismus fokussiert beobachtbares Verhalten und klammert mentale Prozesse bewusst aus ('Blackbox')."},
+
+{topic:"Wissensrepräsentation", type:"single", q:"Warum begünstigt das Erstellen von Mind-Maps den Wissenserwerb?",
+ options:["Weil hier wie bei einem Schema Informationen über spezifische, häufig auftretende Situationen gespeichert werden.","Weil hier wie bei einem Skript Informationen über Abläufe von Handlungen oder Ereignissen gespeichert werden.","Weil hier Propositionen, d.h. sprachliche Informationen auf der Bedeutungsebene gespeichert werden.","Weil hier ein mentales Modell der Informationen gespeichert wird.","Weil hier wie bei einem semantischen Netzwerk Informationen nach ihrer kategorialen Zugehörigkeit gespeichert werden."],
+ correct:4, explain:"Mind-Maps organisieren Wissen in Form von Knoten und Verbindungen entsprechend kategorialer/begrifflicher Zugehörigkeit — das entspricht genau der Struktur eines semantischen Netzwerks."},
+
+{topic:"Identitätsentwicklung", type:"single", q:"Welcher Identitätszustand ist durch einen hohen Grad an Commitment und durch einen niedrigen Grad an Exploration gekennzeichnet?",
+ options:["Konstruktive Identität","Übernommene Identität","Diffuse Identität","Erarbeitete Identität","Moratorium"],
+ correct:1, explain:"Marcias Identitätsstatusmodell: 'Übernommene Identität' (foreclosure) = hohes Commitment, ohne dass eine echte Exploration stattgefunden hat (z.B. Werte/Ziele unkritisch von Eltern übernommen). 'Erarbeitete Identität' hätte HOHE Exploration UND hohes Commitment, 'Moratorium' hohe Exploration ohne Commitment."},
+
+{topic:"Metakognition", type:"multi", q:"Was gehört zum metakognitiven Wissen von Schülerinnen und Schülern?",
+ options:["Das Wissen über die eigenen Stärken und Schwächen beim Lernen.","Das Wissen über Lernstrategien.","Das Wissen über Lerninhalte.","Das Wissen über eigene Fehler im Lernprozess.","Das Wissen über das eigene Vorwissen."],
+ correct:[0,1,3,4], explain:"Metakognitives Wissen ist 'Wissen über das eigene Denken/Lernen': eigene Stärken/Schwächen, Lernstrategien, eigene Fehler, eigenes Vorwissen. Das reine Wissen über die Lerninhalte SELBST ist dagegen kognitives (Fach-)Wissen, kein metakognitives Wissen."},
+
+{topic:"Operante Konditionierung", type:"multi", q:"Welche Verhaltensweisen von Lehrkräften sind Formen der operanten Konditionierung?",
+ options:["Lob für eine richtige Antwort","Befreiung von Hausaufgaben","Zurechtweisung bei Unterrichtsstörungen","Wegnahme des Handys","Demonstrieren eines Lösungswegs"],
+ correct:[0,1,2,3], explain:"Lob (positive Verstärkung), Befreiung von Hausaufgaben (negative Verstärkung), Zurechtweisung (positive Bestrafung) und Handy-Wegnahme (negative Bestrafung) sind alle Formen operanter Konditionierung. Das Demonstrieren eines Lösungswegs ist dagegen Beobachtungslernen/Modelllernen, keine operante Konditionierung."},
+
+{topic:"Jugendalter", type:"multi", q:"Welche Aussagen über die Entwicklung im Jugendalter sind FALSCH?",
+ options:["Die noch nicht abgeschlossene Entwicklung des präfrontalen Kortex führt in der Jugend zu Problemen der Impuls- und Handlungskontrolle.","In der Jugend werden überflüssig angelegte Synapsen eliminiert","Das Bedürfnis nach Autonomie in der Jugend steht im Einklang mit den wenig flexiblen schulischen Anforderungen und Vorgaben.","In der Jugend müssen im Vergleich zu anderen Lebensphasen besonders viele Entwicklungsaufgaben bewältigt werden.","Die hormonell gesteuerten körperlichen Veränderungen in der Pubertät sind die zentralen Ursachen für Problemverhalten in der Jugend."],
+ correct:[2,4], explain:"Das jugendliche Autonomiebedürfnis steht gerade im KONFLIKT mit (nicht im Einklang mit) starren schulischen Vorgaben — das ist eine zentrale Spannungsquelle. Problemverhalten in der Jugend wird heute primär durch die unreife präfrontale Kontrolle (nicht primär durch Hormone) erklärt — die 'hormonelle' Erklärung gilt als überholt/zu einfach."},
+
+{topic:"Lernbegriff", type:"multi", q:"Welche Aussagen über den psychologischen Begriff „Lernen“ sind FALSCH?",
+ options:["Lernen ist ein beobachtbarer Prozess.","Lernen ist ein Prozess der Reifung.","Lernen führt immer zu Änderungen im Verhalten eines Individuums.","Lernen erfolgt durch einen Austausch des Individuums mit seiner Umwelt.","Lernen bezieht sich auf relativ dauerhafte Veränderungen bei einem Individuum."],
+ correct:[0,1,2], explain:"Lernen selbst ist nicht direkt beobachtbar (nur dessen Resultate, z.B. Verhalten), nicht mit Reifung gleichzusetzen (Reifung ist biologisch determiniert, Lernen erfahrungsbasiert) und führt nicht IMMER zu Verhaltensänderung (z.B. latentes Lernen). Lernen erfolgt durch Umweltinteraktion und bezieht sich auf relativ dauerhafte Veränderungen — das ist korrekt."},
+
+{topic:"Individuelle Unterschiede", type:"single", q:"Welche der folgenden Aussagen zu individuellen Unterschieden von Schülerinnen und Schülern ist empirisch NICHT belegt?",
+ options:["SchülerInnen mit hohen Werten auf 'Offenheit für Erfahrungen' sind in der Schule gesellig und kommunikativ.","SchülerInnen mit einem hohen Fähigkeitsselbstkonzept zeigen bei Schwierigkeiten mehr Ausdauer als SchülerInnen mit niedrigem Fähigkeitsselbstkonzept.","SchülerInnen, die gewissenhafter sind, haben im Durchschnitt bessere akademische Leistungen als weniger gewissenhafte SchülerInnen.","SchülerInnen mit einem niedrigen Fähigkeitsselbstkonzept haben bei der Aufgabenbearbeitung mehr handlungsirrelevante Gedanken als SchülerInnen mit hohem Fähigkeitsselbstkonzept.","Extravertierte SchülerInnen sind in der Schule besser als introvertierte SchülerInnen."],
+ correct:0, explain:"'Offenheit für Erfahrungen' bezieht sich auf intellektuelle Neugier, Kreativität und Aufgeschlossenheit für neue Ideen — nicht auf Geselligkeit/Kommunikativität, das ist eine Facette von Extraversion. Diese Verwechslung der Big-Five-Dimensionen ist empirisch nicht haltbar. (Auch 'Extravertierte sind besser' ist nicht generell belegt, aber die klar falsch zugeordnete Aussage zu Offenheit ist hier die eindeutige Antwort.)"},
+
+{topic:"Aufgabenfunktionen", type:"multi", q:"Welche Funktionen können Aufgaben beim schulischen Wissenserwerb haben?",
+ options:["Verstehen von grundlegenden Prinzipien der Lerninhalte.","Diagnose von Lerndefiziten","Entwicklung von selbstregulativen Fähigkeiten.","Übung und Festigung der Lerninhalte.","Strukturierung der Lerninhalte."],
+ correct:[0,2,3,4], explain:"Aufgaben dienen dem Verstehen, der Entwicklung von Selbstregulation, der Übung/Festigung und der Strukturierung von Inhalten. Die Diagnose von Lerndefiziten ist primär eine Funktion von Tests/Assessments, nicht die typische pädagogisch-didaktische Hauptfunktion von Übungsaufgaben im Lernprozess."},
+
+{topic:"Wahrnehmung & Aufmerksamkeit", type:"multi", q:"Welche Aussagen über menschliche Wahrnehmungs- und Aufmerksamkeitsprozesse sind FALSCH?",
+ options:["Beim Prozess der Wahrnehmung wird wie bei einem Foto ein mentales Abbild der äußeren Umwelt erstellt.","Interessen und Gefühle eines Menschen spielen beim Prozess der Wahrnehmung keine Rolle.","Die Ausrichtung der Aufmerksamkeit erfolgt auf Basis von Verhaltensabsichten und äußeren Reizbedingungen.","Beim Prozess der Aufmerksamkeit wird ein Großteil äußerer Reize für die bewusste Wahrnehmung herausgefiltert.","Die Wahrnehmung eines Menschen ist durch die Informationen in seinem Langzeitgedächtnis beeinflusst."],
+ correct:[0,1], explain:"Wahrnehmung ist KEIN passives 'Foto' der Realität, sondern ein aktiver, konstruktiver Prozess, beeinflusst durch Vorwissen, Interessen und Gefühle. Beide Aussagen, die Wahrnehmung als objektives Abbild beschreiben bzw. emotionale/motivationale Einflüsse verneinen, sind daher falsch."},
+
+{topic:"Soziale Gruppe", type:"single", q:"Was ist das wichtigste und zentralste Definitionsmerkmal einer sozialen Gruppe?",
+ options:["Personen müssen sich gegenseitig sympathisch finden","Personen haben eine gemeinsame soziale Identifikation","Personen interagieren miteinander","Personen haben ein gemeinsames Kollektivziel","Personen müssen voneinander abhängig sein"],
+ correct:1, explain:"Nach der sozialpsychologischen Definition (Tajfel/Turner, Social Identity Theory) ist das zentrale Merkmal einer sozialen Gruppe die gemeinsame soziale Identifikation der Mitglieder — das Gefühl, derselben Gruppe anzugehören — nicht primär Sympathie, Interaktion oder Abhängigkeit allein."},
+
+{topic:"Psychologie als Wissenschaft", type:"single", q:"Welche Aussage über das Fach Psychologie und ihre Methoden ist FALSCH?",
+ options:["In der Psychologie werden wissenschaftliche Erkenntnisse auf der Basis von empirischen Daten gewonnen.","Deskriptive Studien der Psychologie dienen der Erklärung von menschlichem Verhalten und Erleben.","Eine der zentralen Methoden der Psychologie ist das Experiment.","Die Psychologie ist die Wissenschaft vom Verhalten und Erleben des Menschen.","Die Psychologie ist im Vergleich zu den Naturwissenschaften eine relativ junge Wissenschaft."],
+ correct:1, explain:"Deskriptive (beschreibende) Studien dienen der reinen Beschreibung von Phänomenen, nicht der Erklärung (Kausalerklärung erfordert i.d.R. experimentelle Designs). Die Gleichsetzung von 'deskriptiv' mit 'erklärend' ist daher falsch."},
+
+{topic:"Mathematisches Wissen", type:"single", q:"Welche mathematische Kompetenz gehört NICHT zur Kategorie des prozeduralen Wissens?",
+ options:["Erkennen eines Quadrats.","Lösen einer Gleichung","Berechnen des Durchschnitts.","Addieren von Zahlen.","Durchführen einer Multiplikation."],
+ correct:0, explain:"Prozedurales Wissen betrifft das 'Wie' — Abläufe und Rechenoperationen (Gleichung lösen, Durchschnitt berechnen, addieren, multiplizieren). Das bloße Erkennen einer geometrischen Form (Quadrat) ist deklaratives/begriffliches Wissen ('Was ist ein Quadrat'), kein prozeduraler Ablauf."},
+
+{topic:"Emotionsdefinition", type:"multi", q:"Welche Aspekte gehören zur psychologischen Definition von Emotion?",
+ options:["Gesichtsausdruck","Gefühle","Kognitionen","Physiologische Veränderungen","Motivation"],
+ correct:[0,1,2,3,4], explain:"Die psychologische Komponentendefinition von Emotion umfasst alle fünf Aspekte: subjektives Gefühlserleben, kognitive Bewertung, physiologische Erregung, Ausdrucksverhalten (Mimik) und Handlungstendenz/Motivation."},
+
+{topic:"Big Five", type:"multi", q:"Eine Schülerin, Anna, arbeitet zuverlässig im Unterricht mit und erledigt immer ihre Hausaufgaben, obwohl sie jede freie Minute mit ihren Freunden verbringt und als Party-Queen bekannt ist. Welche Persönlichkeitseigenschaften des Big-Five-Modells treffen auf Anna zu?",
+ options:["Extraversion","Intellektuelle Neugier","Verträglichkeit","Gewissenhaftigkeit","Geselligkeit"],
+ correct:[0,3], explain:"Anna zeigt zuverlässige Pflichterfüllung (Gewissenhaftigkeit) UND aktives Sozialleben (Extraversion). 'Intellektuelle Neugier' und 'Geselligkeit' sind dagegen keine der fünf Big-Five-Hauptdimensionen, sondern allenfalls Facetten (Neugier gehört zu Offenheit, Geselligkeit zu Extraversion) — als eigenständige Antwortoption hier nicht korrekt."},
+
+{topic:"Soziale Identität & Attribution", type:"multi", q:"Bei welchem der folgenden Phänomene im Kontext der sozialen Identität handelt es sich NICHT um Attributionsprozesse (Zuschreibung von Ursachen)?",
+ options:["Mitglieder der Eigengruppe werden bevorzugt, Mitglieder der Fremdgruppe werden abgewertet oder geschädigt.","Positives Verhalten der Eigengruppe wird eher Personenmerkmalen, negatives eher Situationsmerkmalen zugeschrieben — bei der Fremdgruppe umgekehrt.","Informationen werden eher wahrgenommen und abgespeichert, wenn sie mit den eigenen Vorannahmen übereinstimmen.","Mitglieder der Fremdgruppe werden als einander ähnlicher wahrgenommen als Mitglieder der Eigengruppe.","Merkmale einzelner Mitglieder der Fremdgruppe werden auf die gesamte Gruppe übertragen."],
+ correct:[0,2,3], explain:"Attribution bedeutet konkret die Zuschreibung von URSACHEN für Verhalten (wie in Option 2: Verhalten wird Person oder Situation zugeschrieben). Eigengruppenbevorzugung (Diskriminierung), selektive Informationsverarbeitung (Bestätigungsfehler) und die Wahrnehmung der Fremdgruppen-Homogenität sind eigenständige sozialpsychologische Phänomene, keine Attributionsprozesse im engeren Sinn. Merkmalsübertragung auf die ganze Gruppe (Out-group Homogeneity / Generalisierung) ist ebenfalls kein Attributions-, sondern ein Kategorisierungsprozess."},
+
+{topic:"Skripte", type:"single", q:"Unterrichtssituation: Die Lehrkraft macht ein nonverbales Zeichen, die Kinder blicken zur Lehrkraft, wiederholen das Zeichen, sind aufmerksam und leise, die Lehrkraft begrüßt die Kinder. Mit welcher Form der Wissensrepräsentation lässt sich erklären, dass die Kinder wissen, was zu tun ist?",
+ options:["Mentales Modell","Schemata","Proposition","Semantisches Netzwerk","Skript"],
+ correct:4, explain:"Ein Skript repräsentiert Wissen über typische, routinemäßige ABLÄUFE von Handlungen/Ereignissen (z.B. 'Unterrichtsbeginn-Ritual'). Da es hier um eine eingeübte zeitliche Abfolge von Handlungsschritten geht, ist 'Skript' die passende Repräsentationsform — nicht ein statisches Schema oder Netzwerk."},
+
+{topic:"Gehirnmythen", type:"multi", q:"Welche der folgenden Aussagen zur Funktionsweise des Gehirns sind FALSCH?",
+ options:["Kreativität und Emotionen werden in der rechten Gehirnhälfte verarbeitet.","Rationalität und Logik werden in der linken Gehirnhälfte verarbeitet.","Wir nutzen zu jedem Zeitpunkt unser gesamtes Gehirn","Umwelteinflüsse können die Struktur des Gehirns verändern.","Personen lernen besser, wenn ihnen Informationen entsprechend ihres Lerntyps vermittelt werden."],
+ correct:[0,1,4], explain:"Die strikte 'linke/rechte Gehirnhälfte'-Aufteilung (Logik links, Kreativität rechts) sowie die 'Lerntypen'-Theorie (visuell/auditiv/etc.) gelten als wissenschaftlich widerlegte Neuromythen. Tatsächlich wird das Gehirn ganzheitlich genutzt und ist durch Umwelt formbar (Plastizität) — diese beiden Aussagen sind korrekt."},
+
+{topic:"Metakognitive Strategien", type:"multi", q:"Welche der genannten Lernstrategien sind KEINE metakognitiven Lernstrategien?",
+ options:["Anfertigen eines Zeitplans für die Übung der Lerninhalte.","Erstellen einer Mind-Map zu den Lerninhalten.","Organisation und Strukturierung der Lerninhalte.","Wiederholen der Lerninhalte."],
+ correct:[1,3], explain:"Metakognitive Strategien betreffen die PLANUNG, ÜBERWACHUNG und REGULATION des eigenen Lernprozesses (z.B. Zeitplan erstellen = Planung). Mind-Maps erstellen und Wiederholen sind dagegen kognitive (Organisations- bzw. Wiederholungs-)Strategien, die sich direkt auf die Lerninhalte beziehen, nicht auf die Steuerung des Lernprozesses selbst."},
+
+{topic:"Soziale Vergleiche", type:"multi", q:"Welche Aussagen zu sozialen Vergleichsprozessen sind FALSCH?",
+ options:["Soziale Vergleiche sind insbesondere dann von Bedeutung für Menschen, wenn keine objektiven Bewertungsmaßstäbe vorliegen.","Menschen vergleichen sich am ehesten mit Personen, die ihnen ähnlich sind.","In einer sozialen Gruppe haben Menschen das Bestreben, möglichst einzigartig zu sein.","Menschen versuchen, soziale Vergleiche zu vermeiden.","Soziale Vergleichsprozesse spielen eine zentrale Rolle für das akademische Selbstkonzept von Menschen."],
+ correct:[2,3], explain:"Nach Festingers Theorie sozialer Vergleichsprozesse vergleichen sich Menschen NICHT um einzigartig zu sein, sondern um sich selbst einzuschätzen — und Vergleiche werden nicht vermieden, sondern aktiv gesucht (besonders bei fehlenden objektiven Maßstäben, mit ähnlichen Personen). Beide genannten Aussagen widersprechen damit den Grundannahmen der Theorie."},
+
+{topic:"Intelligenzbegriff", type:"multi", q:"Welche der Fähigkeiten zählen NICHT zum psychologischen Intelligenzbegriff?",
+ options:["Räumliches Denken","Soziale Kompetenz","Bearbeitungsgeschwindigkeit","Empathie","Gedächtnisleistung"],
+ correct:[1,3], explain:"Räumliches Denken, Bearbeitungsgeschwindigkeit und Gedächtnisleistung sind klassische Faktoren psychometrischer Intelligenzmodelle (z.B. CHC-Modell). Soziale Kompetenz und Empathie zählen dagegen zur 'emotionalen/sozialen Intelligenz' — einem eigenständigen, in der klassischen psychometrischen Intelligenzforschung umstrittenen bzw. nicht zum Kernkonstrukt zählenden Bereich."},
+
+{topic:"Neuronale Plastizität (Vertiefung)", type:"multi", q:"Welche Formen der neuronalen Plastizität lassen sich NICHT den Phänomenen der Langzeitpotenzierung zuordnen?",
+ options:["Funktionelle Plastizität","Strukturelle Plastizität","Erfahrungserwartende Plastizität","Differenzierte Plastizität","Erfahrungsabhängige Plastizität"],
+ correct:[2,3,4], explain:"Langzeitpotenzierung (LTP) bezeichnet die anhaltende synaptische Übertragungsverstärkung — ihr werden funktionelle Plastizität (Effizienzänderung bestehender Verbindungen) und strukturelle Plastizität (neue Synapsen/Verbindungen) zugeordnet. Erfahrungserwartende und erfahrungsabhängige Plastizität sind übergeordnete entwicklungspsychologische Kategorien (sensible Phasen vs. lebenslanges Lernen), keine direkten LTP-Mechanismen; 'Differenzierte Plastizität' ist kein etablierter Fachbegriff in diesem Kontext."}
+];
+
+let topics = ["Alle Themen", ...new Set(QUESTIONS.map(q=>q.topic))];
+let currentSet = [];
+let currentIndex = 0;
+let correctCount = 0;
+let answeredCount = 0;
+let wrongTopics = {};
+let locked = false;
+let selectedIndices = [];
+
+const topicSelect = document.getElementById('topicSelect');
+topics.forEach(t=>{
+  const opt = document.createElement('option');
+  opt.value = t; opt.textContent = t;
+  topicSelect.appendChild(opt);
+});
+
+function shuffle(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function buildSet(){
+  const t = topicSelect.value;
+  let pool = t === "Alle Themen" ? QUESTIONS.slice() : QUESTIONS.filter(q=>q.topic===t);
+  currentSet = shuffle(pool.slice());
+  currentIndex = 0; correctCount = 0; answeredCount = 0; wrongTopics = {};
+  renderStats();
+  renderQuestion();
+}
+
+function renderStats(){
+  document.getElementById('statTotal').textContent = answeredCount + "/" + currentSet.length;
+  document.getElementById('statCorrect').textContent = correctCount;
+  const pct = answeredCount ? Math.round(correctCount/answeredCount*100) : 0;
+  document.getElementById('statPercent').textContent = pct + "%";
+}
+
+function arraysEqual(a,b){
+  if(a.length !== b.length) return false;
+  const sa = [...a].sort(), sb = [...b].sort();
+  return sa.every((v,i)=>v===sb[i]);
+}
+
+function renderQuestion(){
+  locked = false;
+  selectedIndices = [];
+  const area = document.getElementById('quizArea');
+  if(currentIndex >= currentSet.length){
+    renderDone();
+    return;
+  }
+  const item = currentSet[currentIndex];
+  const isMulti = item.type === "multi";
+  const letters = ['A','B','C','D','E'];
+  area.innerHTML = `
+    <div class="card">
+      <div class="progress-track"><div class="progress-fill" style="width:${(currentIndex/currentSet.length*100)}%"></div></div>
+      <div><span class="topic-tag">${item.topic}</span><span class="mode-tag">${isMulti ? 'Mehrfachauswahl' : 'Einfachauswahl'}</span></div>
+      <div class="question">${item.q}</div>
+      ${isMulti ? '<div class="hint">Wähle alle zutreffenden Antworten aus, dann auf "Prüfen" klicken.</div>' : ''}
+      <div class="options" id="optionsBox">
+        ${item.options.map((o,i)=>`
+          <div class="option" data-idx="${i}">
+            <div class="box">${letters[i]}</div>
+            <div>${o}</div>
+          </div>`).join('')}
+      </div>
+      <div class="explain" id="explainBox"></div>
+      ${isMulti ? '<button class="checkbtn" id="checkBtn">Prüfen</button>' : ''}
+      <button class="nextbtn" id="nextBtn">Weiter →</button>
+    </div>
+  `;
+  if(isMulti){
+    document.querySelectorAll('.option').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        if(locked) return;
+        const idx = parseInt(el.dataset.idx);
+        if(selectedIndices.includes(idx)){
+          selectedIndices = selectedIndices.filter(i=>i!==idx);
+          el.classList.remove('selected');
+        } else {
+          selectedIndices.push(idx);
+          el.classList.add('selected');
+        }
+      });
+    });
+    document.getElementById('checkBtn').addEventListener('click', ()=>handleMultiCheck(item));
+  } else {
+    document.querySelectorAll('.option').forEach(el=>{
+      el.addEventListener('click', ()=>handleSingleAnswer(el, item));
+    });
+  }
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    currentIndex++;
+    renderQuestion();
+  });
+}
+
+function handleSingleAnswer(el, item){
+  if(locked) return;
+  locked = true;
+  answeredCount++;
+  const idx = parseInt(el.dataset.idx);
+  const opts = document.querySelectorAll('.option');
+  opts.forEach(o=>o.classList.add('locked'));
+  if(idx === item.correct){
+    el.classList.add('correct');
+    correctCount++;
+  } else {
+    el.classList.add('wrong');
+    opts[item.correct].classList.add('correct');
+    wrongTopics[item.topic] = (wrongTopics[item.topic]||0)+1;
+  }
+  showExplain(item);
+}
+
+function handleMultiCheck(item){
+  if(locked) return;
+  locked = true;
+  answeredCount++;
+  const opts = document.querySelectorAll('.option');
+  opts.forEach(o=>o.classList.add('locked'));
+  document.getElementById('checkBtn').style.display = 'none';
+  const correctSet = item.correct;
+  const isFullyCorrect = arraysEqual(selectedIndices, correctSet);
+  opts.forEach((o,i)=>{
+    const wasSelected = selectedIndices.includes(i);
+    const isCorrect = correctSet.includes(i);
+    o.classList.remove('selected');
+    if(isCorrect && wasSelected) o.classList.add('correct');
+    else if(isCorrect && !wasSelected) o.classList.add('missed');
+    else if(!isCorrect && wasSelected) o.classList.add('wrong');
+  });
+  if(isFullyCorrect){
+    correctCount++;
+  } else {
+    wrongTopics[item.topic] = (wrongTopics[item.topic]||0)+1;
+  }
+  showExplain(item);
+}
+
+function showExplain(item){
+  const exp = document.getElementById('explainBox');
+  exp.innerHTML = `<b>Erklärung:</b> ${item.explain}`;
+  exp.classList.add('show');
+  document.getElementById('nextBtn').classList.add('show');
+  renderStats();
+}
+
+function renderDone(){
+  const pct = answeredCount ? Math.round(correctCount/answeredCount*100) : 0;
+  let weakHtml = '';
+  const entries = Object.entries(wrongTopics).sort((a,b)=>b[1]-a[1]);
+  if(entries.length){
+    weakHtml = `<div class="weakbox" style="text-align:left;background:#2c2f3a;border-radius:10px;padding:12px 14px;margin-top:16px;font-size:0.85rem;">` +
+      `<b>Schwachstellen (mehr Fehler):</b>` +
+      entries.map(([t,c])=>`<div style="padding:4px 0;border-bottom:1px solid var(--card-border)">${t}: ${c} Fehler</div>`).join('') +
+      `</div>`;
+  }
+  document.getElementById('quizArea').innerHTML = `
+    <div class="card done-card">
+      <div>Quiz abgeschlossen</div>
+      <div class="big">${correctCount}/${currentSet.length}</div>
+      <div style="color:var(--text-dim)">${pct}% richtig</div>
+      ${weakHtml}
+      <button class="restart" id="restartBtn">Nochmal (neu gemischt)</button>
+    </div>
+  `;
+  document.getElementById('restartBtn').addEventListener('click', buildSet);
+}
+
+topicSelect.addEventListener('change', buildSet);
+document.getElementById('shuffleBtn').addEventListener('click', buildSet);
+document.getElementById('resetProgressBtn').addEventListener('click', buildSet);
+
+buildSet();
+</script>
+</body>
+</html>

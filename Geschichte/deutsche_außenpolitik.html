@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutsche Außenpolitik 1949–heute · Studiendossier</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1520;
+    --bg-soft:#111B28;
+    --surface:#172133;
+    --surface-2:#1E2B40;
+    --border:#2E4060;
+    --gold:#4A9FD4;
+    --gold-bright:#7EC8EE;
+    --cream:#E8F2FA;
+    --cream-dim:#8BAECF;
+    --burgundy:#2A5FA8;
+    --burgundy-bright:#5B9DD4;
+    --font-display:'Cormorant Garamond', Georgia, serif;
+    --font-body:'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --font-sans:'IBM Plex Sans', Arial, sans-serif;
+    --radius:8px;
+    --radius-sm:6px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  ::selection{background:var(--gold); color:var(--bg);}
+  ::-webkit-scrollbar{width:10px; height:10px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:var(--border); border-radius:6px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--gold);}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top, rgba(74,159,212,0.08), transparent 55%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+    color:var(--cream);
+    font-family:var(--font-body);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--gold-bright);}
+  :focus-visible{outline:2px solid var(--gold-bright); outline-offset:2px;}
+
+  /* ===== MASTHEAD ===== */
+  .masthead{
+    border-bottom:2px solid var(--gold);
+    background:linear-gradient(180deg, rgba(74,159,212,0.07), transparent);
+    padding:36px 24px 28px;
+  }
+  .masthead-inner{
+    max-width:1080px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+  .kicker{
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:.72rem;
+    color:var(--gold);
+    margin-bottom:10px;
+  }
+  .masthead h1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:2.7rem;
+    margin:0 0 8px;
+    color:var(--cream);
+    letter-spacing:.01em;
+  }
+  .masthead .lede{
+    font-style:italic;
+    color:var(--cream-dim);
+    max-width:560px;
+    margin:0;
+    font-size:1.05rem;
+  }
+  .stamp-wrap{flex-shrink:0; opacity:.92;}
+  .stamp{width:128px; height:128px; transform:rotate(-7deg);}
+
+  /* ===== NAV ===== */
+  .nav-bar{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:flex;
+    flex-wrap:wrap;
+    gap:2px;
+    justify-content:center;
+    background:rgba(13,21,32,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+    padding:6px 10px;
+  }
+  .nav-btn{
+    font-family:var(--font-sans);
+    font-weight:600;
+    font-size:.82rem;
+    letter-spacing:.02em;
+    color:var(--cream-dim);
+    background:transparent;
+    border:none;
+    border-bottom:3px solid transparent;
+    padding:12px 14px 9px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    transition:color .15s, background .15s, border-color .15s;
+    border-radius:4px 4px 0 0;
+    white-space:nowrap;
+  }
+  .nav-btn i{font-size:1.05rem;}
+  .nav-btn:hover{color:var(--gold-bright); background:rgba(74,159,212,0.08);}
+  .nav-btn.active{color:var(--gold-bright); border-bottom-color:var(--gold); background:rgba(74,159,212,0.11);}
+
+  /* ===== LAYOUT ===== */
+  main.content{max-width:880px; margin:0 auto; padding:38px 24px 80px;}
+  .section{display:none;}
+
+  .section-eyebrow{
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.74rem;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+  .section-title{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:2.15rem;
+    color:var(--cream);
+    margin:0 0 6px;
+  }
+  .section-subtitle{
+    color:var(--cream-dim);
+    font-style:italic;
+    font-size:1.02rem;
+    margin:0 0 26px;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--border);
+  }
+
+  h3.sub{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1.4rem;
+    color:var(--gold-bright);
+    margin:34px 0 13px;
+    padding-bottom:7px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    gap:9px;
+  }
+  h3.sub i{font-size:1.15rem;}
+  h4.sub-sm{
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-size:.85rem;
+    color:var(--gold);
+    margin:22px 0 8px;
+  }
+
+  p{margin:0 0 14px; color:var(--cream-dim);}
+  strong, b{color:var(--cream); font-weight:600;}
+  ul, ol{margin:0 0 14px; padding-left:22px; color:var(--cream-dim);}
+  li{margin-bottom:7px;}
+  li::marker{color:var(--gold);}
+
+  /* ===== THESIS BOX ===== */
+  .thesis-box{
+    background:linear-gradient(135deg, rgba(74,159,212,0.12), rgba(74,159,212,0.02));
+    border-left:4px solid var(--gold);
+    border-radius:var(--radius);
+    padding:20px 24px;
+    margin:18px 0 26px;
+  }
+  .thesis-box h3{
+    font-family:var(--font-display);
+    color:var(--gold-bright);
+    margin:0 0 10px;
+    font-size:1.28rem;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-weight:700;
+  }
+  .thesis-box p, .thesis-box li{color:var(--cream);}
+  .thesis-box ul{margin-bottom:0;}
+
+  /* ===== WARNING / KLAUSUR BOX ===== */
+  .warning-box{
+    background:linear-gradient(135deg, rgba(42,95,168,0.20), rgba(42,95,168,0.04));
+    border-left:4px solid var(--burgundy-bright);
+    border-radius:var(--radius);
+    padding:18px 22px;
+    margin:22px 0;
+  }
+  .warning-box h3{
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    font-size:.86rem;
+    color:var(--burgundy-bright);
+    margin:0 0 9px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:700;
+  }
+  .warning-box p, .warning-box li{color:var(--cream); margin-bottom:0;}
+
+  /* ===== INFO BOX (neutral) ===== */
+  .info-box{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px 20px;
+    margin:18px 0;
+  }
+  .info-box h4{
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    font-size:.8rem;
+    color:var(--gold);
+    margin:0 0 8px;
+    display:flex; align-items:center; gap:7px;
+  }
+  .info-box p, .info-box li{margin-bottom:0; color:var(--cream-dim);}
+
+  /* ===== TABLES ===== */
+  table{width:100%; border-collapse:collapse; margin:14px 0 22px; font-size:.94rem;}
+  thead th{
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    font-size:.72rem;
+    color:var(--gold-bright);
+    background:var(--surface-2);
+    text-align:left;
+    padding:10px 14px;
+    border-bottom:2px solid var(--gold);
+  }
+  tbody td{
+    padding:10px 14px;
+    border-bottom:1px solid var(--border);
+    color:var(--cream-dim);
+    vertical-align:top;
+  }
+  tbody td:first-child, tbody td.emph{color:var(--cream); font-weight:600; white-space:nowrap;}
+  tbody tr:hover td{background:rgba(74,159,212,0.05);}
+
+  /* ===== DEBATE LIST (Kontroversen) ===== */
+  .debate-list{margin:14px 0 22px;}
+  .debate-item{
+    padding:11px 0;
+    border-bottom:1px dotted var(--border);
+    color:var(--cream-dim);
+  }
+  .debate-item:last-child{border-bottom:none;}
+  .debate-item b{color:var(--cream);}
+
+  /* ===== MINI TERM / GLOSSARY GRID ===== */
+  .glossary-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px 30px;
+    margin:18px 0 24px;
+  }
+  .glossary-grid.mini{margin-top:14px;}
+  .glossary-item{border-bottom:1px solid var(--border); padding-bottom:11px;}
+  .glossary-term{
+    font-family:var(--font-sans);
+    font-weight:700;
+    color:var(--gold-bright);
+    text-transform:uppercase;
+    font-size:.78rem;
+    letter-spacing:.045em;
+    margin-bottom:4px;
+    display:block;
+  }
+  .glossary-def{color:var(--cream-dim); font-size:.92rem; line-height:1.55;}
+
+  /* ===== TIMELINE ===== */
+  .timeline-decade{
+    font-family:var(--font-display);
+    font-weight:700;
+    color:var(--gold);
+    font-size:1.3rem;
+    margin:30px 0 4px;
+  }
+  .timeline-decade:first-child{margin-top:6px;}
+  .timeline{margin:0 0 4px;}
+  .timeline-item{
+    display:grid;
+    grid-template-columns:128px 1fr;
+    gap:18px;
+    position:relative;
+    padding:13px 0 13px 22px;
+    border-left:2px solid var(--border);
+    margin-left:6px;
+  }
+  .timeline-item::before{
+    content:'';
+    position:absolute;
+    left:-7px; top:19px;
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--gold);
+    border:2px solid var(--bg-soft);
+  }
+  .timeline-date{
+    font-family:var(--font-sans);
+    font-weight:600;
+    color:var(--gold-bright);
+    font-size:.82rem;
+    letter-spacing:.01em;
+    padding-top:2px;
+  }
+  .timeline-content{color:var(--cream-dim); font-size:.95rem;}
+  .timeline-content strong{color:var(--cream);}
+
+  /* ===== FLASHCARDS ===== */
+  .flashcard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));
+    gap:18px;
+    margin-top:22px;
+  }
+  .flashcard{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 20px 38px;
+    cursor:pointer;
+    min-height:148px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    transition:border-color .18s, transform .15s, background .18s;
+  }
+  .flashcard:hover{border-color:var(--gold); transform:translateY(-2px);}
+  .flashcard.flipped{border-color:var(--gold-bright); background:var(--surface-2);}
+  .fc-label{
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    font-size:.68rem;
+    letter-spacing:.09em;
+    color:var(--gold);
+    margin-bottom:9px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .fc-question{font-family:var(--font-display); font-weight:600; font-size:1.14rem; color:var(--cream); line-height:1.4;}
+  .face-back{display:none;}
+  .flashcard.flipped .face-front{display:none;}
+  .flashcard.flipped .face-back{display:block;}
+  .fc-answer{font-family:var(--font-body); font-size:.93rem; color:var(--cream-dim); line-height:1.55;}
+  .fc-hint{
+    position:absolute; bottom:11px; right:16px;
+    font-family:var(--font-sans);
+    font-size:.66rem;
+    letter-spacing:.04em;
+    color:var(--cream-dim);
+    opacity:.55;
+    text-transform:uppercase;
+  }
+
+  /* ===== FOOTER ===== */
+  .site-footer{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 24px 50px;
+    text-align:center;
+  }
+  .site-footer hr{border:none; border-top:1px solid var(--border); margin:0 0 18px;}
+  .site-footer p{
+    font-family:var(--font-sans);
+    font-size:.78rem;
+    color:var(--cream-dim);
+    opacity:.7;
+    letter-spacing:.02em;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:680px){
+    .masthead h1{font-size:2.05rem;}
+    .stamp{width:96px; height:96px;}
+    .section-title{font-size:1.7rem;}
+    .glossary-grid{grid-template-columns:1fr;}
+    .timeline-item{grid-template-columns:96px 1fr; gap:12px;}
+    .nav-btn{font-size:.74rem; padding:10px 10px 8px;}
+    main.content{padding:28px 16px 60px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div>
+      <div class="kicker">Klausurvorbereitung · Politikwissenschaft &amp; Zeitgeschichte</div>
+      <h1>Deutsche Außenpolitik</h1>
+      <p class="lede">Selbsteinbindung, Westbindung und der Weg von der Bonner zur Berliner Republik — 1949 bis heute</p>
+    </div>
+    <div class="stamp-wrap" aria-hidden="true">
+      <svg class="stamp" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="80" cy="80" r="73" fill="none" stroke="var(--burgundy-bright)" stroke-width="2.5" stroke-dasharray="2 4"/>
+        <circle cx="80" cy="80" r="60" fill="none" stroke="var(--burgundy-bright)" stroke-width="1.3"/>
+        <path id="circlePath" d="M 80,80 m -50,0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0" fill="none"/>
+        <text font-family="IBM Plex Sans, sans-serif" font-size="8.3" fill="var(--burgundy-bright)" letter-spacing="2.4">
+          <textPath href="#circlePath" startOffset="3%">STUDIENDOSSIER · AUSSENPOLITIK DER BRD ·</textPath>
+        </text>
+        <text x="80" y="76" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="700" font-size="17" fill="var(--burgundy-bright)">1949</text>
+        <text x="80" y="95" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="10.5" letter-spacing="1" fill="var(--burgundy-bright)">– HEUTE</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-bar" id="navBar">
+  <button class="nav-btn active" data-section="ueberblick" onclick="showSection('ueberblick')"><i class="ti ti-building-bank"></i><span>Überblick</span></button>
+  <button class="nav-btn" data-section="d1950" onclick="showSection('d1950')"><i class="ti ti-shield-lock"></i><span>1950er</span></button>
+  <button class="nav-btn" data-section="d1960" onclick="showSection('d1960')"><i class="ti ti-compass"></i><span>1960er</span></button>
+  <button class="nav-btn" data-section="d1970ost" onclick="showSection('d1970ost')"><i class="ti ti-handshake"></i><span>1970er Ost</span></button>
+  <button class="nav-btn" data-section="d1970sued" onclick="showSection('d1970sued')"><i class="ti ti-world"></i><span>1970er Süd</span></button>
+  <button class="nav-btn" data-section="d1980" onclick="showSection('d1980')"><i class="ti ti-trending-up"></i><span>1980er</span></button>
+  <button class="nav-btn" data-section="d1990" onclick="showSection('d1990')"><i class="ti ti-flag-3"></i><span>1990er: Macht in der Mitte</span></button>
+  <button class="nav-btn" data-section="d1990sek" onclick="showSection('d1990sek')"><i class="ti ti-shield-half"></i><span>1990er: Sicherheit &amp; Balkan</span></button>
+  <button class="nav-btn" data-section="d2000" onclick="showSection('d2000')"><i class="ti ti-arrows-right"></i><span>2000er: Osterweiterung</span></button>
+  <button class="nav-btn" data-section="d2010" onclick="showSection('d2010')"><i class="ti ti-users"></i><span>2010er: Migration</span></button>
+  <button class="nav-btn" data-section="zeitenwende" onclick="showSection('zeitenwende')"><i class="ti ti-flame"></i><span>Zeitenwende</span></button>
+  <button class="nav-btn" data-section="phasen" onclick="showSection('phasen')"><i class="ti ti-route"></i><span>3-Phasen-Modell</span></button>
+  <button class="nav-btn" data-section="sonderweg" onclick="showSection('sonderweg')"><i class="ti ti-history"></i><span>Sonderweg</span></button>
+  <button class="nav-btn" data-section="zeitstrahl" onclick="showSection('zeitstrahl')"><i class="ti ti-timeline"></i><span>Zeitstrahl</span></button>
+  <button class="nav-btn" data-section="glossar" onclick="showSection('glossar')"><i class="ti ti-book-2"></i><span>Glossar</span></button>
+  <button class="nav-btn" data-section="lernkarten" onclick="showSection('lernkarten')"><i class="ti ti-cards"></i><span>Lernkarten</span></button>
+</nav>
+
+<main class="content">
+
+  <!-- ============================================================ -->
+  <!-- 0. ÜBERBLICK -->
+  <!-- ============================================================ -->
+  <section id="ueberblick" class="section" style="display:block">
+    <div class="section-eyebrow">Az. 0 · Grundlagen</div>
+    <h1 class="section-title">Außenbeziehungen &amp; politische Akteure</h1>
+    <p class="section-subtitle">Das außenpolitische Selbstverständnis der Bundesrepublik zwischen NS-Vergangenheit, Westbindung und globaler Verantwortung</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Übergeordnete Fragestellung</h3>
+      <p>Wie hat sich das außenpolitische Selbstverständnis und die Handlungsfähigkeit Deutschlands im Spannungsfeld zwischen <strong>historischer Last</strong> (NS-Vergangenheit), <strong>struktureller Einbindung</strong> (Westbindung) und <strong>neuer globaler Verantwortung</strong> seit 1949 entwickelt?</p>
+      <ul>
+        <li><strong>Selbsteinbindung als Machtgewinn:</strong> Deutschland erlangte reale Gestaltungsmacht primär durch den bewussten Verzicht auf formale Souveränität.</li>
+        <li><strong>Vom Sicherheitsimporteur zum -exporteur:</strong> Die „Bonner Republik" importierte Sicherheit, die „Berliner Republik" exportiert sie aktiv (Auslandseinsätze).</li>
+        <li><strong>Kontinuität vs. Wandel:</strong> Trotz voller Souveränität seit 1990 bleibt eine „Kultur der Zurückhaltung" prägend, bei schrittweiser Normalisierung.</li>
+      </ul>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-users"></i>Die Akteure: Wer macht deutsche Außenpolitik?</h3>
+    <ul>
+      <li><strong>Exekutivdominanz:</strong> Der Bundeskanzler besitzt die Richtlinienkompetenz, der Außenminister leitet sein Ressort eigenständig — oft bilden beide ein einflussreiches <strong>Tandem</strong>.</li>
+      <li><strong>Das Auswärtige Amt als Querschnittsministerium:</strong> Da fast jedes Fachressort (Finanzen, Umwelt, Verteidigung) internationale Abteilungen hat, koordiniert das AA zunehmend — verliert dabei aber teils die alleinige Federführung.</li>
+      <li><strong>Die Legislative:</strong> Bundestag und Bundesrat haben wachsende Mitwirkungsrechte, insbesondere bei der Europapolitik (Art. 23 GG) und durch den <strong>Parlamentsvorbehalt</strong> bei Bundeswehreinsätzen.</li>
+    </ul>
+
+    <div class="info-box">
+      <h4><i class="ti ti-globe-2"></i>Wichtigste Partner</h4>
+      <p><strong>NATO und EU</strong> als zentrale Wertepartner · <strong>USA</strong> als strategische transatlantische Partnerschaft · <strong>Schwellenländer</strong> (BRICS u. a.) als Schlüsselstaaten des Globalen Südens · die Frage einer „Globalen Allianz der Demokratien" bleibt umstritten.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-stack-2"></i>Die drei (bis vier) Säulen der Außenpolitik</h3>
+    <p>Deutsche Außenpolitik ruht klassisch auf drei Säulen, die gemeinsam Interessen, Frieden und Wohlstand sichern sollen. Eine vierte Säule wird diskutiert.</p>
+    <ul>
+      <li><strong>1. Klassische Diplomatie</strong> — Sicherheit, Werte (Menschenrechte, Rechtsstaatlichkeit) und multilaterale Zusammenarbeit in EU/NATO; das traditionelle Kerngeschäft des AA.</li>
+      <li><strong>2. Außenwirtschaftspolitik</strong> — Förderung von Exportinteressen zur Sicherung des deutschen Wohlstands als stark exportorientierte Volkswirtschaft.</li>
+      <li><strong>3. Auswärtige Kultur- und Bildungspolitik (AKBP)</strong> — die „dritte Säule": Vertrauensaufbau durch <strong>Goethe-Institut</strong> (Sprache/Kultur), <strong>DAAD</strong> (akademische Mobilität), <strong>Deutsche Auslandsschulen</strong> (z. B. Deutsches Internationales Abitur), <strong>Auslandshochschulen</strong> (binational) und das <strong>DAI</strong> (1829 in Rom gegründet, Forschung &amp; Prestige).</li>
+      <li><strong>4. Außenwissenschaftspolitik (diskutiert)</strong> — mögliche vierte Säule; Abgrenzung zu AKBP und Außenwirtschaft bleibt fließend und institutionell unklar.</li>
+    </ul>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: Definition „Zivilmacht"</h3>
+      <p>Drei Pfeiler, die wortwörtlich abrufbar sein sollten: <strong>„Never again"</strong> (Absage an Machtpolitik) · <strong>„Never alone"</strong> (Handeln nur im Bündnis) · <strong>„Politics before force"</strong> (Primat der Politik vor dem Militärischen).</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-table"></i>Vier Paradigmen bundesdeutscher Außenpolitik</h3>
+    <table>
+      <thead><tr><th>Paradigma</th><th>Bedeutung</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">Westbindung</td><td>Verankerung im westlichen Bündnis</td></tr>
+        <tr><td class="emph">Ostpolitik</td><td>Entspannung gegenüber dem Osten</td></tr>
+        <tr><td class="emph">Zivilmacht</td><td>Außenpolitik ohne militärische Machtprojektion</td></tr>
+        <tr><td class="emph">Partneransatz</td><td>Multilaterale Zusammenarbeit statt Unilateralismus</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub"><i class="ti ti-flag"></i>Politikfelder im Überblick</h3>
+    <ul>
+      <li><strong>Sicherheitspolitik:</strong> Wandel von reiner Landesverteidigung im Kalten Krieg hin zu Krisenprävention und globalem Krisenmanagement.</li>
+      <li><strong>Wohlfahrt &amp; Außenwirtschaft:</strong> Sicherung freien Marktzugangs; Wirtschaftspolitik oft als politisches Instrument.</li>
+      <li><strong>Entwicklungspolitik:</strong> versteht sich seit 1998 als „globale Strukturpolitik" gegen Fluchtursachen und für globale öffentliche Güter.</li>
+      <li><strong>Wertebasierte Felder:</strong> Menschenrechts- und Klimapolitik als Teil der „Zivilmacht"-Identität.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-route"></i>Historische Wendepunkte im West-Ost-Verhältnis</h3>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">1949–1955</div><div class="timeline-content">Westintegration unter Adenauer als Voraussetzung für Souveränität.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1969/70</div><div class="timeline-content">Beginn der <strong>Neuen Ostpolitik</strong> (Brandt/Bahr) — „Wandel durch Annäherung".</div></div>
+      <div class="timeline-item"><div class="timeline-date">1990</div><div class="timeline-content">Wiedervereinigung und volle Souveränität — Deutschland wird zur „Macht in der Mitte".</div></div>
+      <div class="timeline-item"><div class="timeline-date">ab 1998</div><div class="timeline-content">„Berliner Republik": erste Kampfeinsätze (Kosovo), stärkere Emanzipation von der Vormacht USA (Irak-Krieg 2003).</div></div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen &amp; Perspektiven</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>Zivilmacht vs. Normalisierung:</b> Kontinuität betont vs. häufigere Nutzung militärischer Gewalt als Bruch mit der Tradition.</div>
+      <div class="debate-item"><b>Interessen vs. Werte:</b> Richtet Deutschland seine Politik zu sehr an Wirtschaftsinteressen aus (z. B. ggü. Russland/China)?</div>
+      <div class="debate-item"><b>„Reluctant Hegemon":</b> Partner fordern deutsche Führung (z. B. Eurokrise), reagieren aber allergisch auf wahrgenommene Dominanz.</div>
+      <div class="debate-item"><b>Ego- vs. Alter-Perspektive:</b> Selbstbild zurückhaltend/moralisch handelnd vs. Fremdbild als „Zahlmeister" oder „Drückeberger".</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>Souveränität durch Integration:</strong> Deutschland gewinnt Einfluss nicht <em>gegen</em>, sondern <em>durch</em> multilaterale Institutionen.</li>
+        <li><strong>Multidimensionaler Sicherheitsbegriff:</strong> „Vernetzte Sicherheit" umfasst ökonomische, soziale und ökologische Dimensionen.</li>
+        <li><strong>Strukturelle Kontinuität bei operativem Wandel:</strong> Grundpfeiler bleiben stabil, werden aber instrumentalistischer und interessengeleiteter ausgelegt.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 1. 1950er -->
+  <!-- ============================================================ -->
+  <section id="d1950" class="section">
+    <div class="section-eyebrow">Az. I · 1949–1959</div>
+    <h1 class="section-title">Begrenzte Souveränität &amp; die Hallstein-Doktrin</h1>
+    <p class="section-subtitle">Wie die junge Bundesrepublik Handlungsfähigkeit zurückgewann — und ihren Alleinvertretungsanspruch gegen die Zweistaatlichkeit verteidigte</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernfrage</h3>
+      <p>Wie konnte die junge BRD im eskalierenden Ost-West-Konflikt staatliche Handlungsfähigkeit zurückgewinnen und ihren Anspruch auf nationale Einheit gegen die faktische Teilung verteidigen?</p>
+      <ul>
+        <li><strong>Souveränität durch Integration:</strong> Adenauer gab formale Rechte ab, um reale Gleichberechtigung und Sicherheit zu gewinnen.</li>
+        <li><strong>Priorität der Westbindung vor der Wiedervereinigung:</strong> Westintegration als Voraussetzung, um aus einer „Position der Stärke" zu verhandeln.</li>
+        <li><strong>Defensive Abwehr durch die Hallstein-Doktrin:</strong> ein völkerrechtliches Notwehrinstrument gegen die Legalisierung der Teilung.</li>
+      </ul>
+    </div>
+
+    <div class="glossary-grid mini">
+      <div class="glossary-item"><span class="glossary-term">Besatzungsstatut</span><span class="glossary-def">Regelwerk der drei Westmächte (1949–55); Vorbehaltsrechte in Außen- und Sicherheitspolitik.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Alleinvertretungsanspruch</span><span class="glossary-def">Position der BRD, einzige legitime, frei gewählte Vertretung des gesamten deutschen Volkes zu sein.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Magnet-Theorie</span><span class="glossary-def">Eine prosperierende, stabile BRD würde die DDR langfristig zur Vereinigung drängen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Politik der Stärke</span><span class="glossary-def">Adenauers Kalkül: unauflösbare Westbindung nötigt die UdSSR zur Preisgabe der DDR.</span></div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-stairs"></i>A. Der Weg zur Souveränität (1949–1955)</h3>
+    <table>
+      <thead><tr><th>Datum</th><th>Ereignis</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">22.11.1949</td><td><strong>Petersberger Abkommen:</strong> Adenauer erhält Demontagestopp im Gegenzug für Beitritt zur Internationalen Ruhrbehörde — erste konsularische Spielräume.</td></tr>
+        <tr><td class="emph">9.5.1950</td><td><strong>Schuman-Plan</strong> → Gründung der EGKS/Montanunion: erste supranationale Behörde, Ende der diskriminierenden Ruhrkontrolle.</td></tr>
+        <tr><td class="emph">1950</td><td><strong>Koreakrieg</strong> löst Furcht vor sowjetischer Aggression aus; USA drängen auf Wehrbeitrag — Adenauer nutzt dies als Hebel gegen das Besatzungsstatut (<strong>Pleven-Plan</strong>: EVG mit deutschen Kontingenten, ohne eigenen Generalstab).</td></tr>
+        <tr><td class="emph">26.5.1952</td><td><strong>Deutschlandvertrag:</strong> Aufhebung des Besatzungsstatuts, volle Zuständigkeit für innere/äußere Angelegenheiten — gekoppelt an die EVG.</td></tr>
+        <tr><td class="emph">30.8.1954</td><td><strong>Scheitern der EVG</strong> am Veto der französischen Nationalversammlung.</td></tr>
+        <tr><td class="emph">23.10.1954</td><td><strong>Pariser Verträge:</strong> Beitritt zu NATO und WEU als Ersatzlösung; Ende des Besatzungsregimes im Mai 1955.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: Souveränität durch Souveränitätsverzicht</h3>
+      <p>Das zentrale Paradoxon: Durch den Beitritt zu EGKS und NATO gab Bonn formale Rechte ab — gewann aber die alliierte Kontrolle (z. B. Ruhrstatut) los und echte Mitsprache hinzu. Diese Formel zieht sich durch <em>die gesamte</em> bundesdeutsche Außenpolitik bis heute.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-building-bank"></i>Exkurs: Der Weg zu den Römischen Verträgen (1957)</h3>
+    <ul>
+      <li>Nach dem EVG-Scheitern initiiert <strong>Jean Monnet</strong> eine neue europäische Bewegung. Frankreich will nur sektorale Integration, Belgien/Benelux (<strong>Spaak</strong>) einen Gemeinsamen Markt mit Zoll- und Wirtschaftsunion.</li>
+      <li><strong>Konferenz von Messina</strong> (Juni 1955): Kommuniqué für Zollunion, Gemeinsamen Markt und Atomgemeinschaft.</li>
+      <li>Bundesregierung gespalten: Wirtschaftsminister <strong>Erhard</strong> skeptisch (Furcht vor dirigistischem Hindernis für Freihandel), Kanzler <strong>Adenauer</strong> politisch pro-Integration — Kompromiss zugunsten der Westbindung.</li>
+      <li><strong>Spaak-Bericht</strong> (1956) als Blaupause, nach Vorbild Montanunion, aber bewusst <em>ohne</em> den Begriff „supranational".</li>
+      <li><strong>25. März 1957:</strong> Unterzeichnung der Römischen Verträge → Gründung von <strong>EWG</strong> und <strong>Euratom</strong>. Erstmals stimmt auch die SPD zu (anders als bei EGKS/EVG).</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-message-circle"></i>B. Die Stalin-Note 1952 — ein Wendepunkt?</h3>
+    <p>Im März 1952 bot die Sowjetunion ein wiedervereinigtes, aber neutralisiertes Deutschland an. <strong>Adenauers Reaktion:</strong> Ablehnung als „Störmanöver", das die Westintegration verhindern und Deutschland sowjetischer Einflussnahme schutzlos aussetzen sollte.</p>
+    <div class="debate-list">
+      <div class="debate-item"><b>Die „verpasste Chance"?</b> In der Forschung umstritten, ob die Note ein ernsthaftes Wiedervereinigungsangebot oder nur ein taktisches Manöver zur Neutralisierung war. SPD und Publizisten wie <strong>Paul Sethe</strong> warfen Adenauer vor, die Einheit für die Westbindung geopfert zu haben.</div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-shield-lock"></i>C. Konsolidierung der Teilung &amp; die Hallstein-Doktrin (ab 1955)</h3>
+    <ul>
+      <li><strong>Adenauers Moskau-Reise (1955):</strong> Zur Heimkehr der letzten Kriegsgefangenen nimmt Bonn diplomatische Beziehungen zur UdSSR auf — die einzige Ausnahme von der Doktrin.</li>
+      <li><strong>Reaktion:</strong> Um keine „Zweistaatlichkeit" anzuerkennen, formuliert Bonn die <strong>Hallstein-Doktrin</strong> — Abbruch der Beziehungen zu jedem Drittstaat, der die DDR diplomatisch anerkennt.</li>
+      <li><strong>Praxis:</strong> 1957 erstmals gegen Jugoslawien angewandt; Entwicklungshilfe wird gezielt als Lockmittel gegen eine DDR-Anerkennung eingesetzt.</li>
+      <li>Hintergrund: Die <strong>Zwei-Staaten-Theorie</strong> der UdSSR setzt sich auf der Genfer Konferenz 1955 durch.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-key"></i>Adenauers geheime Verhandlungsoptionen (1958–1962)</h3>
+    <p>Trotz öffentlichem Festhalten an der Wiedervereinigung erwog Adenauer intern Kompromisslösungen — alle scheiterten am mangelnden sowjetischen Interesse:</p>
+    <ul>
+      <li><strong>„Österreich-Lösung"</strong> (1958): Neutralisierung der DDR gegen Freilassung aus sowjetischem Einflussbereich.</li>
+      <li><strong>Globke-Plan</strong> (1960): völkerrechtliche Anerkennung der DDR, danach Plebiszit über Wiedervereinigung nach fünf Jahren.</li>
+      <li><strong>Burgfriedensplan</strong> (1962): zehnjähriger Stillhaltevertrag gegen humane Erleichterungen.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-star"></i>Vergangenheitspolitik: Reparationen für Israel</h3>
+    <p>Teil der Westpolitik und allgemeinen Anerkennung der Kriegsschuld. Das Treffen <strong>Adenauer–Ben-Gurion</strong> am <strong>4.3.1960</strong> war das erste Treffen beider Staatsmänner. Anmerkung am Rande: Die DDR hat Israel nie anerkannt.</p>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>Wiederbewaffnung:</b> massiver innenpolitischer Widerstand („Ohne-mich-Bewegung") aus Furcht, eine eigene Armee mache die Gräben zum Osten unüberbrückbar.</div>
+      <div class="debate-item"><b>Souveränität vs. Vorbehaltsrechte:</b> Trotz „voller Macht eines souveränen Staates" 1955 behielten die Alliierten Vorbehaltsrechte bezüglich Berlins und „Deutschlands als Ganzes".</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>Westintegration als Staatsräson</strong> der 1950er Jahre — Sicherheit wog schwerer als das Risiko eines neutralen Gesamtstaates.</li>
+        <li><strong>Souveränität durch Einbindung</strong> statt nationaler Alleingänge (EGKS, NATO).</li>
+        <li><strong>Hallstein-Doktrin als völkerrechtlicher Riegel</strong> — definierendes Paradigma der Ära Adenauer.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 2. 1960er -->
+  <!-- ============================================================ -->
+  <section id="d1960" class="section">
+    <div class="section-eyebrow">Az. II · 1960–1969</div>
+    <h1 class="section-title">Die doppelte Westbindung: Atlantiker vs. Gaullisten</h1>
+    <p class="section-subtitle">Zwischen Washingtons Sicherheitsgarantie und der Aussöhnung mit Frankreich</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernfrage</h3>
+      <p>Wie navigierte die BRD zwischen der existenziell notwendigen <strong>Sicherheitsgarantie der USA</strong> und der angestrebten <strong>Integration mit Frankreich</strong>, während sich die globale Strategie von „Massiver Vergeltung" zu „Entspannung" wandelte?</p>
+      <ul>
+        <li><strong>Dilemma der Optionen:</strong> Die doppelte Westbindung war kein Luxus, sondern strukturelle Notwendigkeit — mit tiefen internen Zerrissenheiten.</li>
+        <li><strong>Souveränitätsvorbehalt vs. Handlungsfreiheit:</strong> Adenauer setzte spät auf Paris, Erhard kehrte zum engen Schulterschluss mit Washington zurück.</li>
+        <li><strong>Erosion des Konsenses</strong> durch Flexible Response und Frankreichs NATO-Ausscheren.</li>
+      </ul>
+    </div>
+
+    <div class="glossary-grid mini">
+      <div class="glossary-item"><span class="glossary-term">Atlantiker vs. Gaullisten</span><span class="glossary-def">Prägende Bruchlinie in der CDU/CSU: USA-Priorität (Erhard, Schröder) vs. Frankreich-Anlehnung (Adenauer, Strauß).</span></div>
+      <div class="glossary-item"><span class="glossary-term">Flexible Response</span><span class="glossary-def">US-Strategie unter Kennedy: abgestufte statt automatischer nuklearer Vergeltung — weckt Abkopplungsängste in Bonn.</span></div>
+      <div class="glossary-item"><span class="glossary-term">MLF</span><span class="glossary-def">Multilaterale Atomstreitmacht — US-Vorschlag für nukleare Mitsprache der BRD; Streitpunkt mit Paris.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Polyzentrismus</span><span class="glossary-def">Erkenntnis, dass die bipolare Ordnung durch neue Mächte (China, geeintes Europa) ergänzt wird.</span></div>
+    </div>
+
+    <div class="info-box">
+      <h4><i class="ti ti-map-pin"></i>Zäsur: Mauerbau 1961</h4>
+      <p>Der Bau der Berliner Mauer (13.8.1961) zementiert die Teilung; die Westmächte reagieren zurückhaltend — verteidigt werden nur die <strong>„drei Essentials"</strong> (25.7.1961, Kennedy): Anwesenheitsrecht, freier Zugang, Freiheit West-Berlins. Keine Wiedervereinigungsgarantie.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-route"></i>A. Ära Adenauer: Die Flucht nach Paris (1962–1963)</h3>
+    <ul>
+      <li>Nach Mauerbau und Kuba-Krise (1962) wächst Adenauers Misstrauen: Furcht vor einer US-sowjetischen Verständigung über deutsche Köpfe hinweg.</li>
+      <li>Der <strong>„Zweibund":</strong> exklusive Partnerschaft mit de Gaulle, um die Westbindung unumkehrbar zu machen und Frankreich als Anwalt der deutschen Frage zu gewinnen.</li>
+      <li>Vorgeschichte: erste Begegnung Adenauer–de Gaulle im <strong>September 1958</strong> in Colombey-les-deux-Églises — Adenauer beeindruckt, aber besorgt über de Gaulles NATO-Skepsis.</li>
+      <li><strong>De Gaulles Europavision:</strong> EWG nur wirtschaftlich, politische Zusammenarbeit rein zwischenstaatlich (kein „europäischer Areopag"); eigene <em>Force de Frappe</em> für Frankreichs Weltmachtanspruch.</li>
+      <li><strong>Fouchet-Kommission</strong> (1961/62): Fouchet I (Nov. 1961) sieht eine „unauflösliche Staatenunion" vor; Fouchet II (Jan. 1962) streicht de Gaulle gemeinschaftsorientierte Elemente — sofortige Ablehnung der Partner. Der britische Beitrittsantrag (1961) lähmt den Prozess zusätzlich.</li>
+      <li><strong>Adenauers Dilemma „Quadratur des Kreises":</strong> EWG-Ausbau + NATO-Fortbestand + enge Frankreich-Bindung gleichzeitig — schwer vereinbare Ziele.</li>
+    </ul>
+
+    <h4 class="sub-sm">Der Élysée-Vertrag</h4>
+    <table>
+      <thead><tr><th>Datum</th><th>Ereignis</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">22.1.1963</td><td>Unterzeichnung im Élysée-Palast: regelmäßige Konsultationen (≥ 2×/Jahr Regierungschefs, 4×/Jahr Außen-/Verteidigungsminister), Deutsch-Französisches Jugendwerk, Rüstungskooperation.</td></tr>
+        <tr><td class="emph">Jan. 1963</td><td>De Gaulles Veto gegen den britischen EWG-Beitritt belastet den Vertrag — wird als Unterstützung seiner antibritischen Politik gedeutet.</td></tr>
+        <tr><td class="emph">16.5.1963</td><td>Der Bundestag fügt eine <strong>Präambel</strong> hinzu: Der Vertrag richtet sich nicht gegen NATO und USA.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: Die Präambel als Rettungsanker und Bremsklotz</h3>
+      <p>Die atlantische Präambel sicherte das Verhältnis zu den USA — entfremdete aber de Gaulle, der sich „im Stich gelassen" fühlte, und entwertete den Élysée-Vertrag für Jahre strategisch. Eine doppelte Wirkung, die gerne als Trickfrage geprüft wird.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-arrow-back-up"></i>B. Ära Erhard: Rückkehr zum Atlantizismus (1963–1966)</h3>
+    <ul>
+      <li>Unter Erhard und Außenminister Schröder genießt Washington absolute Priorität — Erhard gilt in Paris fast als „Satellit" der USA.</li>
+      <li>Die <strong>MLF-Debatte</strong> und de Gaulles Rückzug aus der integrierten NATO-Verteidigung (1966) isolieren die BRD zwischen den Stühlen.</li>
+      <li>Erste, vorsichtige <strong>„Politik der Bewegung"</strong> nach Osten (Handelsmissionen) — ohne Durchbruch, da Paris und Washington misstrauisch reagieren.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-handshake"></i>C. Große Koalition: Der ehrliche Makler (1966–1969)</h3>
+    <ul>
+      <li>Kanzler <strong>Kiesinger</strong> versucht, die Sprachlosigkeit zu Paris zu überwinden und zugleich die NATO-Bindung zu wahren.</li>
+      <li><strong>Harmel-Bericht (1967):</strong> Die NATO definiert sich neu durch das Doppel von <strong>militärischer Sicherheit und Entspannung</strong> — ebnet den Weg für eine aktive Ostpolitik innerhalb der Westbindung.</li>
+      <li><strong>Atomwaffensperrvertrag:</strong> massiver Streitpunkt mit den USA; Furcht vor technologischer Benachteiligung und sowjetischer Mitsprache bei ziviler Kernenergie („Morgenthau-Plan im Quadrat").</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>US- vs. französische Sicht:</b> Washington witterte im Élysée-Vertrag zeitweise eine „deutsch-französische Verschwörung"; Paris sah die BRD als unsteten Partner zwischen USA-Anlehnung und späterer Ost-Drift unter Brandt („Finnlandisierung").</div>
+      <div class="debate-item"><b>Innenpolitischer „Glaubenskrieg":</b> Kritiker warfen Erhard Washington-Hörigkeit vor, Adenauer-Gegnern „Eskapismus" Richtung Paris.</div>
+      <div class="debate-item"><b>Sicherheit durch Stärke vs. Entspannung:</b> Bonn hielt offiziell am Primat der Stärke fest, während Bahr/Brandt bereits ab 1963 „Wandel durch Annäherung" forderten.</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>Präambel als Rettungsanker und Bremsklotz</strong> — sicherte die USA-Bindung, blockierte aber Jahre einen eigenständigen europäischen Sicherheitspfeiler.</li>
+        <li><strong>Sicherheitspolitischer Paradigmenwechsel:</strong> Flexible Response zwingt zu politischem statt rein militärischem Einfluss (Nukleare Planungsgruppe der NATO).</li>
+        <li><strong>Westbindung als Bedingung der Ostpolitik:</strong> „Westbindung plus Ostverbindung" — die BRD musste stets das Misstrauen vor einem „neuen Rapallo" entkräften.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3. 1970er OSTPOLITIK -->
+  <!-- ============================================================ -->
+  <section id="d1970ost" class="section">
+    <div class="section-eyebrow">Az. III · 1966–1975</div>
+    <h1 class="section-title">Die Neue Ostpolitik: ein außenpolitischer Paradigmenwechsel</h1>
+    <p class="section-subtitle">„Wandel durch Annäherung" — Status-quo-Anerkennung als Weg zur Überwindung der Teilung</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernfrage</h3>
+      <p>Wie reagierte die BRD auf die Zementierung der Teilung (Mauerbau 1961) und die weltpolitische Entspannung (<em>Détente</em>), um Handlungsspielräume gegenüber dem Osten zurückzugewinnen, ohne die Westbindung zu gefährden?</p>
+      <ul>
+        <li><strong>Anerkennung des Status quo als Voraussetzung für dessen Veränderung.</strong></li>
+        <li><strong>„Wiedervereinigung durch Entspannung"</strong> statt Adenauers „Politik der Stärke".</li>
+        <li><strong>Harmonisierung mit der Weltpolitik</strong> — kein deutscher Sonderweg, sondern Anpassung an die Entspannungsstrategie der Supermächte.</li>
+      </ul>
+    </div>
+
+    <div class="glossary-grid mini">
+      <div class="glossary-item"><span class="glossary-term">Wandel durch Annäherung</span><span class="glossary-def">Egon Bahrs Formel (1963): Kontakt und Handel transformieren kommunistische Regime von innen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Politik der kleinen Schritte</span><span class="glossary-def">Erst technische/humanitäre Fragen lösen (Reiseverkehr, Post), bevor große politische Fragen geklärt werden.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Junktim</span><span class="glossary-def">Bewusste Verknüpfung: Ratifizierung der Ostverträge abhängig vom Erfolg des Vier-Mächte-Abkommens über Berlin.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Modus Vivendi</span><span class="glossary-def">„Vorübergehendes Arrangement" — regelt den faktischen Zustand, ohne die endgültige völkerrechtliche Klärung vorwegzunehmen.</span></div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-arrow-up"></i>A. Entstehung des Paradigmenwechsels (1966–1969)</h3>
+    <p>Die Große Koalition (Kiesinger/Brandt) beginnt vorsichtig mit einer „Politik der Bewegung" — Aufnahme diplomatischer Beziehungen zu Rumänien 1967 — scheitert aber am Widerstand der UdSSR und der Union gegen eine DDR-Anerkennung. <strong>Erkenntnis:</strong> Ohne Verständigung mit Moskau ist kein Fortschritt in der Deutschlandpolitik möglich.</p>
+
+    <h3 class="sub"><i class="ti ti-file-text"></i>B. Das Vertragswerk der sozial-liberalen Koalition (1970–1973)</h3>
+    <table>
+      <thead><tr><th>Datum</th><th>Vertrag</th><th>Inhalt</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">Aug. 1970</td><td>Moskauer Vertrag</td><td>Gewaltverzicht, Anerkennung der Unverletzlichkeit bestehender Grenzen.</td></tr>
+        <tr><td class="emph">Dez. 1970</td><td>Warschauer Vertrag</td><td>Faktische Anerkennung der Oder-Neiße-Linie; <strong>Kniefall Willy Brandts</strong> als Sühnegeste.</td></tr>
+        <tr><td class="emph">1971</td><td>Vier-Mächte-Abkommen Berlin</td><td>Bindung West-Berlins an die BRD, ungehinderter Transit durch die UdSSR.</td></tr>
+        <tr><td class="emph">1972</td><td>Grundlagenvertrag mit der DDR</td><td>Normale, gutnachbarliche Beziehungen auf Basis der Gleichberechtigung — ohne völkerrechtliche Anerkennung.</td></tr>
+        <tr><td class="emph">1973</td><td>Prager Vertrag</td><td>Das Münchner Abkommen von 1938 wird für nichtig erklärt.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub"><i class="ti ti-world"></i>C. Multilateralisierung: die KSZE-Schlussakte von Helsinki (1975)</h3>
+    <p>Die Entspannungspolitik mündet in ein Forum von 35 Staaten: Der Osten erhält die Bestätigung des territorialen Status quo; der Westen setzt im Gegenzug Verpflichtungen zur Einhaltung der <strong>Menschenrechte</strong> (Korb III) durch — was langfristig Oppositionsbewegungen im Osten stärkt.</p>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: Der Brief zur deutschen Einheit</h3>
+      <p>Bei der Vertragsunterzeichnung in Moskau übergab Bonn ein offizielles Dokument: Das Ziel der friedlichen Wiedervereinigung werde durch die Verträge <strong>nicht</strong> aufgegeben. Ein wichtiges Gegengewicht zum häufig zitierten Vorwurf der „Verzichtspolitik".</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>Innenpolitischer „Glaubenskrieg":</b> Die CDU/CSU-Opposition bekämpfte die Verträge als „Ausverkauf deutscher Interessen"; 1972 kam es fast zum Sturz Brandts durch ein konstruktives Misstrauensvotum.</div>
+      <div class="debate-item"><b>Westliche Partner:</b> Henry Kissinger (USA) und Georges Pompidou (Frankreich) befürchteten zeitweise eine deutsche „Schaukelpolitik" (Rapallo-Komplex).</div>
+      <div class="debate-item"><b>Wahrnehmungsunterschiede:</b> Der Osten (UdSSR/DDR) interpretierte die Verträge als Zementierung der Teilung, der Westen (Bahr/Brandt) sah darin lediglich ein Fundament für Wandel durch Annäherung.</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>Vom Vorrang der Einheit zum Vorrang des Friedens:</strong> Entspannung wurde zum Weg, die Nation zusammenzuhalten.</li>
+        <li><strong>Souveränitätsgewinn durch Realitätssinn</strong> — Verzicht auf rechtlich unhaltbare Maximalpositionen.</li>
+        <li><strong>Unverzichtbarkeit der Westbindung:</strong> Neue Ostpolitik war nur möglich, weil Brandt zugleich die Westintegration vertiefte — „Westbindung plus Ostverbindung".</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 4. 1970er NORD-SÜD -->
+  <!-- ============================================================ -->
+  <section id="d1970sued" class="section">
+    <div class="section-eyebrow">Az. IV · 1968–1982</div>
+    <h1 class="section-title">Der Nord-Süd-Konflikt: Entwicklungspolitik als dritte Säule</h1>
+    <p class="section-subtitle">Von der Hallstein-Doktrin zur „Weltinnenpolitik"</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernfrage</h3>
+      <p>Wie wandelte sich die deutsche Entwicklungspolitik in den 1970er Jahren von einem Instrument der Deutschlandpolitik und Exportförderung hin zu eigenständiger <strong>„Weltinnenpolitik"</strong>?</p>
+      <ul>
+        <li><strong>Entwicklungshilfe als Friedenspolitik</strong> — globale soziale Ungleichheit als größte Sicherheitsbedrohung (Eppler).</li>
+        <li><strong>Interdependenz als Handlungszwang</strong> — die Ölkrisen verdeutlichen die wirtschaftliche Verflechtung von Nord und Süd.</li>
+        <li><strong>Multifunktionalität:</strong> moralisch-humanitäre Ziele, außenwirtschaftliche Interessen und sicherheitspolitische Stabilisierung zugleich.</li>
+      </ul>
+    </div>
+
+    <div class="glossary-grid mini">
+      <div class="glossary-item"><span class="glossary-term">Weltinnenpolitik</span><span class="glossary-def">Von C.F. von Weizsäcker geprägt, von Eppler adaptiert: keine rein „äußeren" Angelegenheiten mehr in einer interdependenten Welt.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Grundbedürfnisorientierung</span><span class="glossary-def">Abkehr vom reinen Wirtschaftswachstum hin zu Bildung, Gesundheit und Ernährung für die Ärmsten.</span></div>
+      <div class="glossary-item"><span class="glossary-term">ODA</span><span class="glossary-def">Official Development Assistance — Ziel von 0,7 % des BSP, von der BRD faktisch nie erreicht.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Brandt-Bericht</span><span class="glossary-def">„Das Überleben sichern" (1980): forderte massiven Kapitaltransfer und eine Reform der Weltwirtschaftsordnung.</span></div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-leaf"></i>A. Ära Erhard Eppler (1968–1974): der konzeptionelle Aufbruch</h3>
+    <ul>
+      <li>Das BMZ emanzipiert sich von AA und Wirtschaftsministerium und gewinnt die Federführung für die Kapitalhilfe.</li>
+      <li>Paradigmenwechsel: ökologisch begründete Skepsis gegenüber reinem Wachstum + <strong>Grundbedürfnisstrategie</strong>.</li>
+      <li>Ab 1971 systematischere, länderbezogene Programme (z. B. Tansania, Kenia).</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-droplet"></i>B. Die Ölkrise 1973: die Zäsur</h3>
+    <p>Das OPEC-Ölembargo zeigt der BRD ihre drastische Verwundbarkeit bei Rohstoffimporten. OPEC-Staaten werden selbst bedeutende Geber — das Machtgefüge zwischen Nord und Süd verschiebt sich. Hintergrund: Der <strong>Club-of-Rome-Bericht „Grenzen des Wachstums"</strong> (1972) stellt wachstumsorientierte Entwicklungsmodelle grundsätzlich infrage.</p>
+
+    <h3 class="sub"><i class="ti ti-briefcase"></i>C. Ära Egon Bahr (1974–1976): Realismus und Eigeninteresse</h3>
+    <ul>
+      <li>Wirtschaftsdiplomatie unter dem Eindruck der Rezession: rohstoffpolitische Eigeninteressen rücken in den Vordergrund.</li>
+      <li>Überträgt „Wandel durch Annäherung" auf den Nord-Süd-Kontext (Kooperation unterschiedlicher Systeme).</li>
+      <li>Fokus auf Bilateralismus — Skepsis gegenüber internationalen Organisationen.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-users-group"></i>D. Ära Schlei &amp; Offergeld (1976–1982): Vertiefung und Krise</h3>
+    <ul>
+      <li><strong>Marie Schlei:</strong> erstmals gezielte Frauenförderung als Akteurinnen der Entwicklungspolitik.</li>
+      <li><strong>Rainer Offergeld:</strong> offenes Engagement für Befreiungsbewegungen im südlichen Afrika (z. B. gegen Apartheid) — innenpolitisch hoch umstritten.</li>
+      <li><strong>Brandt-Kommission:</strong> Willy Brandt formuliert eine globale Vision der Zusammenarbeit auf Basis gemeinsamer Interessen.</li>
+    </ul>
+
+    <h4 class="sub-sm">Vier Ären der Entwicklungspolitik im Überblick</h4>
+    <table>
+      <thead><tr><th>Zeitraum</th><th>Verantwortlich</th><th>Schwerpunkt</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">1968–1974</td><td>Erhard Eppler</td><td>Grundbedürfnisstrategie, ökologische Skepsis</td></tr>
+        <tr><td class="emph">1974–1976</td><td>Egon Bahr</td><td>Rohstoff-Realismus, Bilateralismus</td></tr>
+        <tr><td class="emph">1976–1982</td><td>Schlei / Offergeld</td><td>Frauenförderung, Befreiungsbewegungen, Brandt-Kommission</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: zwei unterschiedliche Zäsuren nicht verwechseln</h3>
+      <p>Bis <strong>1969</strong> diente Entwicklungshilfe primär als Belohnung für die Nicht-Anerkennung der DDR (Hallstein-Doktrin). Erst die Neue Ostpolitik beendet diesen Mechanismus. Der Begriff „Weltinnenpolitik" als <em>eigenständiges</em> entwicklungspolitisches Leitbild setzt sich erst <strong>danach</strong>, unter Eppler, durch.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>Interessen vs. Moral:</b> wertebasierte Hilfe (Armutsbekämpfung, Menschenrechte) vs. Exportförderung (Lieferbindung an deutsche Produkte).</div>
+      <div class="debate-item"><b>Kanzler vs. Minister:</b> Eppler/Schlei kämpften für hohe Budgets, Kanzler Schmidt bremste aus ökonomischen Zwängen und „unauffälliger Amtsführung".</div>
+      <div class="debate-item"><b>Instrumentalisierung im Kalten Krieg:</b> die UdSSR sah den Nord-Süd-Konflikt primär als Systemwettbewerb; Brandt wollte ihn aus der Ost-West-Optik lösen.</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>Entwicklungspolitik als dritte, globale Säule</strong> neben West- und Ostpolitik — basierend auf „Weltinnenpolitik".</li>
+        <li><strong>Abkehr vom reinen Wachstum</strong> hin zu ökologischer Nachhaltigkeit und Grundbedürfnisbefriedigung.</li>
+        <li><strong>Souveränitätsgewinn durch Interdependenz</strong> — Einfluss jenseits militärischer Machtmittel.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 5. 1980er -->
+  <!-- ============================================================ -->
+  <section id="d1980" class="section">
+    <div class="section-eyebrow">Az. V · 1979–1989</div>
+    <h1 class="section-title">Eurosklerose und der Neustart der europäischen Integration</h1>
+    <p class="section-subtitle">Vom Stillstand zum Binnenmarkt — die EG auf dem Weg zur Europäischen Union</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernfrage</h3>
+      <p>Wie fand die EG nach der Phase der <strong>„Eurosklerose"</strong> durch das Binnenmarktprojekt und institutionelle Reformen (EEA) zu neuer Dynamik — beeinflusst vom Ende des Ost-West-Konflikts?</p>
+      <ul>
+        <li><strong>Ökonomischer Motor für politische Integration</strong> — Wettbewerbsfähigkeit gegenüber USA und Japan als Hebel.</li>
+        <li><strong>Führungsrolle des „Tandems"</strong> Kohl–Mitterrand–Delors, um nationale Widerstände zu überwinden.</li>
+        <li><strong>Einbindung des vereinten Deutschlands:</strong> Beschleunigung der Integration als strategisches „Einhegungs"-Instrument.</li>
+      </ul>
+    </div>
+
+    <div class="glossary-grid mini">
+      <div class="glossary-item"><span class="glossary-term">Eurosklerose</span><span class="glossary-def">Lähmung des Integrationsprozesses Anfang der 1980er: Strukturprobleme, Rezession, nationale Alleingänge.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Binnenmarkt</span><span class="glossary-def">Raum ohne Binnengrenzen mit freiem Verkehr von Waren, Personen, Dienstleistungen, Kapital — Zieldatum 31.12.1992.</span></div>
+      <div class="glossary-item"><span class="glossary-term">EEA</span><span class="glossary-def">Einheitliche Europäische Akte (1986) — erste große Reform der Römischen Verträge, Mehrheitsentscheidungen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Supranationalismus</span><span class="glossary-def">Übertragung von Hoheitsrechten oberhalb der Nationalstaaten — Gegenpol: Intergouvernementalismus (einstimmige Regierungszusammenarbeit).</span></div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-trending-down"></i>Ursachen der Eurosklerose</h3>
+    <ul>
+      <li><strong>Wirtschaftskrisen:</strong> die Ölschocks 1973/1979 führen zu Stagflation und steigender Arbeitslosigkeit.</li>
+      <li><strong>Strukturelle Blockaden:</strong> die Gemeinsame Agrarpolitik verschlingt das Budget durch Überproduktion („Milchseen", „Butterberge").</li>
+      <li><strong>Britischer Beitragsstreit:</strong> Margaret Thatchers „I want my money back" lähmt die Gemeinschaft über Jahre.</li>
+      <li><strong>Institutionelle Schwäche:</strong> Kommission und Parlament verlieren gegenüber dem Europäischen Rat an Gewicht.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-trending-up"></i>Der Neustart: Delors-Initiativen &amp; EEA</h3>
+    <ul>
+      <li><strong>Jacques Delors</strong> (ab 1985 Kommissionspräsident) wirkt als „Dynamo"; sein Weißbuch zur Vollendung des Binnenmarktes liefert ein konkretes Ziel.</li>
+      <li><strong>Binnenmarktprogramm:</strong> Abbau nichttarifärer Handelshemmnisse für die „vier Freiheiten".</li>
+      <li><strong>Einheitliche Europäische Akte (1986/87):</strong> Mehrheitsentscheidungen für Binnenmarktfragen, formelle Einbeziehung der EPZ, gestärktes Europäisches Parlament.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-world"></i>Geopolitischer Kontext</h3>
+    <ul>
+      <li>Frühe 1980er: NATO-Doppelbeschluss und sowjetischer Einmarsch in Afghanistan — „zweite Eiszeit" des Kalten Krieges.</li>
+      <li>Ab 1985: <strong>Gorbatschows</strong> Glasnost und Perestroika eröffnen neue Spielräume.</li>
+      <li>Nach dem Mauerfall 1989 macht Frankreich (Mitterrand) die Vertiefung der Integration — v. a. die Währungsunion — zur Bedingung für die Zustimmung zur deutschen Einheit.</li>
+    </ul>
+
+    <h4 class="sub-sm">Zwei Theorien zur Währungsunion</h4>
+    <table>
+      <thead><tr><th>Position</th><th>Inhalt</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">Krönungstheorie (D)</td><td>Erst wirtschaftliche Angleichung, dann Währungsunion als „Krönung" des Prozesses.</td></tr>
+        <tr><td class="emph">Lokomotivtheorie (F)</td><td>Die Währungsunion selbst als Motor, der die wirtschaftliche Angleichung erzwingt.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: EEA ≠ Maastricht</h3>
+      <p>Die <strong>Einheitliche Europäische Akte (1986)</strong> schafft die Rechtsgrundlage für den <em>Binnenmarkt</em> und durchbricht erstmals die Einstimmigkeit. Der <strong>Vertrag von Maastricht (1992)</strong> ist ein eigenständiger, späterer Schritt, der u. a. die <em>Europäische Union</em> und die Währungsunion begründet — die beiden Verträge gerne verwechselt.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>Erklärungsansätze:</b> akteurszentriert (die „Chemie" Kohl–Mitterrand–Delors als „Glücksfall") vs. strukturell (zwangsläufige Reaktion auf globalen Wettbewerbsdruck und die Krise des Keynesianismus in Frankreich, Mitterrands Kurswechsel 1983).</div>
+      <div class="debate-item"><b>Zielvorstellungen:</b> Kohl arbeitet langfristig auf einen europäischen Bundesstaat hin, Thatcher lehnt jede Souveränitätsabgabe ab und sieht die EG primär als Freihandelszone.</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>Vollendung des Binnenmarktes bis 1992</strong> als entscheidendes Projekt gegen die Stagnation.</li>
+        <li><strong>Souveränitätsgewinn durch Selbsteinbindung</strong> — Bereitschaft, nationale Kompetenzen (D-Mark) in europäische Institutionen zu überführen.</li>
+        <li><strong>Die EEA als Weichenstellung:</strong> Durchbrechung der Einstimmigkeit, Weg zu Maastricht 1992.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6a. 1990er: MACHT IN DER MITTE -->
+  <!-- ============================================================ -->
+  <section id="d1990" class="section">
+    <div class="section-eyebrow">Az. VI·a · 1990–1998</div>
+    <h1 class="section-title">Die Berliner Republik — Macht in der Mitte</h1>
+    <p class="section-subtitle">Kontinuität versus Wandel: Wie das wiedervereinigte Deutschland seine neue Rolle als Zentralmacht Europas definiert</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernfrage</h3>
+      <p>Wie hat das wiedervereinigte Deutschland nach Erlangung der vollen Souveränität (1990/91) seine neue Rolle als <strong>„Macht in der Mitte"</strong> definiert, und inwieweit blieb die Außenpolitik durch bewährte Muster der alten Bundesrepublik geprägt?</p>
+      <ul>
+        <li><strong>Kontinuitätsthese:</strong> Deutschland hält an Selbsteinbindung, Multilateralismus und Westbindung fest, um Misstrauen der Nachbarn zu zerstreuen.</li>
+        <li><strong>Wandel durch Anpassung:</strong> Die Normalisierung vollzieht sich, da die Gemeinschaft den Schritt vom „Sicherheitsimporteur" zum aktiven <strong>„Sicherheitsexporteur"</strong> erwartet.</li>
+        <li><strong>Doppelte Staatsräson:</strong> Parallelität von nationaler Einheit und europäischer Integration als Fortschreibung der Bonner Deutschlandpolitik im europäischen Rahmen.</li>
+      </ul>
+    </div>
+
+    <div class="glossary-grid mini">
+      <div class="glossary-item"><span class="glossary-term">Zwei-plus-Vier-Vertrag</span><span class="glossary-def">Völkerrechtlicher „Schlüssel" zur Einheit (15. März 1991): alliierte Vorbehaltsrechte enden, Grenzen werden als endgültig festgeschrieben.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Normalisierung</span><span class="glossary-def">Prozess, in dem Deutschland lernt, nationale Interessen selbstbewusster zu formulieren und Militärmacht als ultima ratio zu akzeptieren.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Zentralmacht Europas</span><span class="glossary-def">Lagebeschreibung: Größe, Wirtschaftskraft und Mittellage Deutschlands weisen ihm eine automatische, oft „widerwillige" Führungsrolle zu.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Reflexiver Multilateralismus</span><span class="glossary-def">Instinktives Handeln im Verbund, ohne stets den Nutzen zu kalkulieren — Gegensatz zum instrumentellen Multilateralismus.</span></div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-building-community"></i>A. Grundlagen des Übergangs: Von Bonn nach Berlin</h3>
+    <ul>
+      <li><strong>Ende der Nachkriegsordnung:</strong> Mit Auflösung der UdSSR und des Warschauer Pakts endet die precäre Randlage Deutschlands im bipolaren Konflikt.</li>
+      <li><strong>Geopolitische Herzlage:</strong> Erstmals in seiner Geschichte ist Deutschland ausschließlich von befreundeten Demokratien und Partnern in EU und NATO umgeben.</li>
+      <li><strong>Souveränitätserlangung:</strong> Der Zwei-plus-Vier-Vertrag beendet am 15. März 1991 formal die Besatzungszeit.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-link"></i>B. Kontinuitätslinien &amp; Erwartungen</h3>
+    <ul>
+      <li><strong>Selbsteinbindung als Schutzschild:</strong> Um Ängsten vor einem „Vierten Reich" zu begegnen, forcierte Kohl die Europäische Währungsunion (Maastricht 1992) als „Pfand" für die deutsche Verlässlichkeit.</li>
+      <li><strong>Reflexiver Multilateralismus:</strong> Handeln im Verbund bleibt die „regulative Norm"; Deutschland ordnet kurzfristige Interessen langfristigen stabilen Regeln unter.</li>
+      <li><strong>Erwartungsdruck der USA:</strong> Washington fordert eine „Partnerschaft in der Führung" (Partners in Leadership), was Deutschland aus historischer Sensibilität und Sorge vor Überforderung zunächst zurückhaltend behandelt.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-transform"></i>C. Neue Herausforderungen &amp; Anpassungen</h3>
+    <ul>
+      <li><strong>Vom Importeur zum Exporteur:</strong> Die Balkankriege zeigen, dass zivile Diplomatie ohne militärische Flankierung an Grenzen stößt. Das BVerfG-Urteil 1994 klärt die Rechtslage (Bundeswehr als „Parlamentsheer").</li>
+      <li><strong>Stabilisierung des Ostens:</strong> Deutschland wird zum Hauptanwalt der EU- und NATO-Osterweiterung, um eine stabile Nachbarschaft zu schaffen und historische Verantwortung gegenüber Polen wahrzunehmen.</li>
+      <li><strong>Instrumenteller Multilateralismus:</strong> Ende der 1990er (unter Schröder) wandelt sich die Begründung: Multilateralismus wird zunehmend als Mittel zur Einflussmaximierung und Durchsetzung nationaler Interessen gesehen.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>Großmacht vs. Zivilmacht:</b> Ist Deutschland eine „Großmacht wider Willen", die Macht hinter europäischen Institutionen verschleiert, oder ist die Zivilmacht-Identität dauerhaft handlungsprägend?</div>
+      <div class="debate-item"><b>Militarisierung vs. Verantwortung:</b> Kritiker sahen schleichende Militarisierung; Befürworter (Fischer: Kosovo) argumentierten, dass „Nie wieder Auschwitz" schwerer wiege als „Nie wieder Krieg".</div>
+      <div class="debate-item"><b>Souveränisten vs. Integrationisten:</b> Schröder fordert mehr nationale Eigenständigkeit, Fischer hält am Kurs der Vergemeinschaftung fest.</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>Strukturelle Kontinuität bei operativem Wandel</strong> — Westbindung und NATO bleiben stabil, Methoden ändern sich durch globale Sicherheitspräsenz.</li>
+        <li><strong>Multilateralismus als Interesseninstrument</strong> — von der Werteentscheidung (Bonn) zum pragmatischen Mittel (Berlin).</li>
+        <li><strong>Die „erwachsene Nation"</strong> — Deutschland lernt, gewachsene Macht verantwortungsvoll und eigeninteressierter einzusetzen.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6b. 1990er: SICHERHEITSPOLITIK & BALKAN -->
+  <!-- ============================================================ -->
+  <section id="d1990sek" class="section">
+    <div class="section-eyebrow">Az. VI·b · 1990–1999</div>
+    <h1 class="section-title">Sicherheitspolitik, Bündnisfähigkeit &amp; Balkankriege</h1>
+    <p class="section-subtitle">Vom Sicherheitsimporteur zum Sicherheitsexporteur — der lange Weg zur Normalisierung</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernfrage</h3>
+      <p>Wie transformierte sich Deutschland von einem reinen <strong>„Sicherheitsimporteur"</strong> zu einem aktiven <strong>„Sicherheitsexporteur"</strong>, und wie wurde die Spannung zwischen der traditionellen „Kultur der Zurückhaltung" und neuen Erwartungen aufgelöst?</p>
+      <ul>
+        <li><strong>Bündnisfähigkeit als Staatsräson:</strong> Nach dem Golfkrieg 1991 war klar, dass Ablehnung militärischer Beteiligung die Reputation als verlässlicher Partner gefährdet.</li>
+        <li><strong>Normalisierung durch Krisenmanagement:</strong> Die Balkankriege erzwangen die schrittweise Ausweitung des militärischen Aktionsradius — „Reifeprozess zur erwachsenen Nation".</li>
+        <li><strong>Souveränität durch Verantwortung:</strong> Die volle Souveränität bringt die Pflicht mit, globale Ordnungsfunktionen aktiv mitzugestalten.</li>
+      </ul>
+    </div>
+
+    <div class="glossary-grid mini">
+      <div class="glossary-item"><span class="glossary-term">Bündnisfähigkeit</span><span class="glossary-def">Fähigkeit und Bereitschaft, im Rahmen von NATO, EU, UN nicht nur finanziell, sondern auch operativ-militärisch beizutragen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Out-of-Area-Einsätze</span><span class="glossary-def">Militärische Missionen der Bundeswehr außerhalb des NATO-Bündnisgebiets.</span></div>
+      <div class="glossary-item"><span class="glossary-term">BVerfG-Urteil 1994</span><span class="glossary-def">Bewaffnete Auslandseinsätze in Systemen kollektiver Sicherheit (UN, NATO, WEU) sind zulässig — mit konstitutiver Zustimmung des Bundestages.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Friedensdividende</span><span class="glossary-def">Hoffnung zu Beginn der 1990er: durch das Ende des Kalten Krieges Rüstungsausgaben drastisch kürzen und für zivile Zwecke nutzen.</span></div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-gavel"></i>A. Die Out-of-Area-Debatte &amp; rechtliche Grundlagen</h3>
+    <ul>
+      <li><strong>Anfängliche Blockade (Golfkrieg 1990/91):</strong> Deutschland kauft sich durch massive Zahlungen (<strong>„Scheckbuchdiplomatie"</strong>) frei — international als „Drückebergerei" kritisiert.</li>
+      <li><strong>Schrittweise Gewöhnung:</strong> Humanitäre und logistische Missionen in Kambodscha (1992) und Somalia (1993) bereiten das Terrain für bewaffnete Einsätze.</li>
+      <li><strong>Die rechtliche Lösung 1994:</strong> Das BVerfG beendet den Parteienstreit: Die Bundeswehr ist ein <strong>„Parlamentsheer"</strong> — der <strong>Parlamentsvorbehalt</strong> wird zur zwingenden Bedingung für jeden Einsatz.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-map-pin"></i>B. Die Balkankriege als Katalysator</h3>
+    <ul>
+      <li><strong>Jugoslawien-Zerfall:</strong> Deutschland fühlt sich durch Flüchtlingsströme und geografische Nähe betroffen und erkennt 1991 unilateral Kroatien und Slowenien an.</li>
+      <li><strong>Bosnienkrieg (1992–1995):</strong> Das Scheitern rein diplomatischer Mittel und das Massaker von Srebrenica verdeutlichen die Grenzen der Zivilmacht. Mit IFOR/SFOR in Bosnien (ab 1995) stellt Deutschland erstmals vollumfänglich Truppen für eine NATO-Mission; die <strong>„Kohl-Doktrin"</strong> (kein Einsatz dort, wo die Wehrmacht war) fällt faktisch.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-plane"></i>C. Der Kosovo-Krieg 1999 — die Zäsur</h3>
+    <ul>
+      <li>Der NATO-Einsatz „Allied Force" gegen Serbien markiert den <strong>ersten aktiven Kampfeinsatz der Bundeswehr nach 1945</strong>.</li>
+      <li><strong>Handeln ohne UN-Mandat:</strong> Deutschland beteiligt sich trotz fehlendem Sicherheitsratsbeschluss aus moralischer Verantwortung (Abwendung einer humanitären Katastrophe) — völkerrechtlich problematisch, bündnispolitisch alternativlos.</li>
+      <li><strong>Regierungsfähigkeit von Rot-Grün:</strong> Die Zustimmung der ehemals pazifistisch geprägten Koalition sichert den NATO-Zusammenhalt und beendet die deutsche sicherheitspolitische Sonderrolle.</li>
+    </ul>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: Das moralische Dilemma der 1990er</h3>
+      <p>Die Formel <strong>„Nie wieder Krieg" vs. „Nie wieder Auschwitz"</strong> ist klausurrelevant: Joschka Fischer argumentierte, dass die historische Lehre aus der NS-Vergangenheit die <em>Pflicht</em> zum militärischen Schutz vor Völkermord einschließt — nicht nur das Verbot, Krieg zu führen. Diese Umkehrung der Lernlektion war der entscheidende Legitimationsbruch.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>Moralisierung der Außenpolitik:</b> Fischer rechtfertigte den Kosovo-Einsatz mit „Hypermoralisierung", um die Grünen-Basis zu überzeugen — Kritiker sahen darin eine Instrumentalisierung des Holocausts.</div>
+      <div class="debate-item"><b>Zivilmacht vs. „Normalität":</b> Wissenschaftlicher Streit darüber, ob die Einsätze das Zivilmacht-Profil aufgeben oder ob militärische Kapazität dessen notwendige Ergänzung ist.</div>
+      <div class="debate-item"><b>Innere Zerreißprobe:</b> Bei SPD und Grünen führten Kosovo und Vertrauensfrage zu Afghanistan 2001 zu massiven innerparteilichen Krisen.</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>„Parlamentsheer"-Prinzip:</strong> Die konstitutive Zustimmung des Bundestages ist die wichtigste institutionelle Neuerung nach 1994 — gilt bis heute.</li>
+        <li><strong>Multilateralismus als Handlungsrahmen:</strong> Deutschland handelt militärisch niemals autonom, stets innerhalb internationaler Strukturen (UN, NATO, EU).</li>
+        <li><strong>Wandel des Sicherheitsbegriffs:</strong> Sicherheit meint seit den 1990ern nicht mehr nur Landesverteidigung, sondern Krisenmanagement und den Schutz von Menschenrechten weltweit.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 7. 2000er: OSTERWEITERUNG & RUSSLAND -->
+  <!-- ============================================================ -->
+  <section id="d2000" class="section">
+    <div class="section-eyebrow">Az. VII · 1993–2009</div>
+    <h1 class="section-title">EU-Osterweiterung &amp; die strategische Russlandpolitik</h1>
+    <p class="section-subtitle">„Big Bang" 2004 — Stabilitätsexport und das Dilemma der Mittellage</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernfrage</h3>
+      <p>Wie gestaltete Deutschland die <strong>EU-Osterweiterung</strong>, um Stabilität an seinen Grenzen zu sichern, und wie versuchte es gleichzeitig, Russland durch eine <strong>„strategische Partnerschaft"</strong> einzubinden, ohne die neuen östlichen Partner zu brüskieren?</p>
+      <ul>
+        <li><strong>Stabilitätsexport durch Integration</strong> — die EU-Erweiterung als effektivstes Instrument zur Festigung junger Demokratien.</li>
+        <li><strong>Interdependenz als Sicherheitsgarantie</strong> — „Wandel durch Verflechtung" soll Russland langfristig kooperativ halten.</li>
+        <li><strong>Dilemma der Mittellage</strong> — neue Führungsaufgaben, aber Spannungen zwischen Sicherheitsinteressen der MOE-Staaten und Rücksichtnahme auf Moskau.</li>
+      </ul>
+    </div>
+
+    <div class="glossary-grid mini">
+      <div class="glossary-item"><span class="glossary-term">Kopenhagener Kriterien</span><span class="glossary-def">(1993) Beitrittsbedingungen: 1. Institutionelle Stabilität (Demokratie, Rechtsstaat, Menschenrechte); 2. Funktionsfähige Marktwirtschaft; 3. Übernahme des Acquis communautaire.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Erweiterung vs. Vertiefung</span><span class="glossary-def">Dauerhaftes EU-Dilemma: erst Institutionsreform (Vertiefung), dann neue Mitglieder, oder geopolitische Stabilisierung hat Vorrang?</span></div>
+      <div class="glossary-item"><span class="glossary-term">Wandel durch Verflechtung</span><span class="glossary-def">Leitkonzept Steinmeier/Merkel: enge wirtschaftlich-technologische Kooperation mit Russland soll politische Reformen anstoßen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Acquis communautaire</span><span class="glossary-def">Gesamtheit des geltenden EU-Rechts, das Beitrittskandidaten vollständig übernehmen müssen.</span></div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-arrows-right"></i>A. Die EU-Osterweiterung</h3>
+    <ul>
+      <li><strong>Der „Big Bang" 2004:</strong> Am 1. Mai 2004 treten zehn Staaten der EU bei (Estland, Lettland, Litauen, Polen, Tschechien, Slowakei, Slowenien, Ungarn, Malta, Zypern). 2007 folgen Rumänien und Bulgarien.</li>
+      <li><strong>Deutsche Rolle:</strong> Deutschland agiert als „Anwalt" der MOE-Staaten (insb. Polen) — vitales Interesse an berechenbaren Verhältnissen an der Ostgrenze und an der Verschiebung der „Armutsgrenze" nach Osten.</li>
+      <li><strong>Institutionelle Voraussetzungen:</strong> Verträge von Nizza und Lissabon machen die EU „erweiterungsfähig", insb. bezüglich Stimmgewichtung im Rat.</li>
+    </ul>
+
+    <h4 class="sub-sm">EU-Erweiterungen in der Übersicht</h4>
+    <table>
+      <thead><tr><th>Jahr</th><th>Neue Mitglieder</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">1973</td><td>Großbritannien, Irland, Dänemark</td></tr>
+        <tr><td class="emph">1981</td><td>Griechenland</td></tr>
+        <tr><td class="emph">1986</td><td>Spanien, Portugal</td></tr>
+        <tr><td class="emph">1995</td><td>Österreich, Schweden, Finnland</td></tr>
+        <tr><td class="emph">2004</td><td>Estland, Lettland, Litauen, Polen, Tschechien, Slowakei, Slowenien, Ungarn, Malta, Zypern</td></tr>
+        <tr><td class="emph">2007</td><td>Rumänien, Bulgarien</td></tr>
+        <tr><td class="emph">2013</td><td>Kroatien</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub"><i class="ti ti-snowflake"></i>B. Die strategische Russlandpolitik der 2000er</h3>
+    <ul>
+      <li><strong>Ära Schröder:</strong> personalisierte „Männerfreundschaft" zu Putin („lupenreiner Demokrat"), Fokus auf Energie- und Wirtschaftsinteressen. Vertragsschluss <strong>Nord Stream 1</strong> (2005).</li>
+      <li><strong>Ära Merkel:</strong> nüchternere Politik. „Strategische Partnerschaft" formal bestehen, Kritik an Menschenrechtsverletzungen (z. B. Pussy Riot) deutlicher — ohne wirtschaftliche Verflechtung aufzugeben.</li>
+      <li><strong>Energiepartnerschaft:</strong> Nord Stream 1 sollte die Energieversorgung sichern und Deutschland durch direkte Lieferwege unabhängiger von Transitländern machen.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-alert-small"></i>C. Geopolitische Dynamiken &amp; Reibungspunkte</h3>
+    <ul>
+      <li><strong>Interessenskonflikte mit neuen Partnern:</strong> Polen und Balten kritisieren deutsch-russische Sonderbeziehungen (Nord Stream) als Bedrohung ihrer Sicherheit.</li>
+      <li><strong>NATO-Erweiterung:</strong> Auf dem Gipfel in <strong>Bukarest 2008</strong> verhindert Deutschland (mit Frankreich) die Aufnahme Georgiens und der Ukraine in den Membership Action Plan (MAP) — um Moskau nicht zu provozieren.</li>
+      <li><strong>Östliche Partnerschaft (2009):</strong> Als Reaktion auf Grenzen der Erweiterungsfähigkeit — Ukraine, Moldau u. a. enger anbinden ohne sofortige Beitrittsperspektive.</li>
+    </ul>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: Bukarest 2008 — Weichenstellung mit Folgen</h3>
+      <p>Das deutsche (und französische) Veto gegen die MAP-Aufnahme der Ukraine und Georgiens auf dem NATO-Gipfel 2008 gilt als strategischer Fehler, der im Rückblick Putins Kalkül begünstigte. Es zeigt das Spannungsfeld: Russland nicht provozieren wollen vs. Sicherheitsinteressen der östlichen Partner. Dieser Zusammenhang wird im Kontext der „Zeitenwende" regelmäßig thematisiert.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>Erweiterungsmüdigkeit:</b> Debatte über Integrationskraft der EU nach dem Beitritt von 12 wirtschaftlich heterogenen Staaten.</div>
+      <div class="debate-item"><b>Russlandfreundlichkeit vs. Sicherheit:</b> MOE-Staaten werfen Deutschland naive „Saunadiplomatie" (Kohl/Schröder) bzw. „Kumpanei" mit Putin vor.</div>
+      <div class="debate-item"><b>Energiesicherheit als Waffe:</b> Berlin verteidigt Nord Stream als „reines Wirtschaftsprojekt"; Kritiker sehen darin ein Kremlinstrument zur Spaltung Europas.</div>
+      <div class="debate-item"><b>Werte vs. Realismus:</b> Demokratieförderung vs. Notwendigkeit, mit autoritärem Russland bei globalen Krisen (Iran, Terrorismus) zu kooperieren.</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>Osterweiterung als Wiedervereinigung des Kontinents</strong> — erfolgreichster Abschluss des Ziels, die Teilung Europas zu überwinden.</li>
+        <li><strong>Multilateralismus als Zwangsjacke und Chance</strong> — Deutschland konnte Russland-Interessen nur im EU-Rahmen legitimieren, musste aber das Vetorecht neuer Partner akzeptieren.</li>
+        <li><strong>Scheitern des „Wandels durch Verflechtung"</strong> — trotz massiver wirtschaftlicher Investitionen blieb die erhoffte politische Liberalisierung Russlands aus.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 8. 2010er: MIGRATION & EXTERNALISIERUNG -->
+  <!-- ============================================================ -->
+  <section id="d2010" class="section">
+    <div class="section-eyebrow">Az. VIII · 2015–2020</div>
+    <h1 class="section-title">Fluchtmigration, Externalisierung &amp; die Governance-Krise</h1>
+    <p class="section-subtitle">Wie 2015 Migration zur zentralen Priorität der Außen-, Sicherheits- und Entwicklungspolitik wurde</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernfrage</h3>
+      <p>Wie transformierte die Fluchtmigration 2015/16 die deutsche und europäische Politik von einem Verwaltungsthema zu einer <strong>zentralen Priorität der Außen-, Sicherheits- und Entwicklungspolitik</strong>, die auf Externalisierung von Grenzkontrollen und Stabilisierung von Herkunftsregionen setzt?</p>
+      <ul>
+        <li><strong>Versicherheitlichung der Migration:</strong> 2015 markiert den Ausgangspunkt einer „Securitization" — Migrationskontrolle wird zum alles dominierenden Leitmotiv der europäischen Mittelmeerpolitik.</li>
+        <li><strong>Entwicklungspolitik als Migrationssteuerung:</strong> Die Hilfe wird strategisch zur „globalen Strukturpolitik" ausgebaut, um Fluchtursachen langfristig zu senken.</li>
+        <li><strong>Krise des Multilateralismus:</strong> Weigerung vieler EU-Partner (insb. Osteuropa), einem solidarischen Verteilmechanismus zuzustimmen — Governance-Krise und nationale Alleingänge.</li>
+      </ul>
+    </div>
+
+    <div class="glossary-grid mini">
+      <div class="glossary-item"><span class="glossary-term">Fluchtursachenbekämpfung</span><span class="glossary-def">Präventiver Ansatz: Investitionen in Herkunftsländern (Bildung, Beschäftigung, Klima), um Migration zu verhindern, bevor Menschen aufbrechen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Dublin-Verordnung (Dublin-III)</span><span class="glossary-def">EU-Regelung: zuständig ist der erste Mitgliedstaat, den ein Schutzsuchender betritt — 2015 de facto kollabiert.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Konditionalität</span><span class="glossary-def">EU-Fördergelder und Entwicklungshilfe an Bedingungen knüpfen, z. B. Rechtsstaatlichkeit oder Kooperation bei Rücknahme von Migranten.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Vernetzte Sicherheit</span><span class="glossary-def">„Whole-of-Government"-Ansatz: militärische Stabilisierung, polizeiliche Ausbildung und zivile Aufbauhilfe (BMZ) miteinander verknüpft.</span></div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-urgent"></i>A. Krise des europäischen Asylsystems</h3>
+    <ul>
+      <li><strong>Scheitern von Dublin:</strong> Das System kollabiert 2015, weil Border-Staaten Migranten „durchwinkten" und Deutschland im September 2015 syrische Flüchtlinge aus Ungarn einreisen lässt (<strong>„humanitäre Ausnahmeentscheidung"</strong>).</li>
+      <li><strong>Kontrollverlust:</strong> Massenhafte Zuwanderung ohne sofortige Registrierung wird als staatlicher Kontrollverlust wahrgenommen — löst heftige innerdeutsche Debatten aus.</li>
+      <li><strong>Diplomatische Isolation:</strong> Deutschlands Bemühen um eine verbindliche Flüchtlingsquote scheitert am Widerstand Polens, Ungarns und Tschechiens — spaltet die EU nachhaltig.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-link"></i>B. Verknüpfung von Außen-, Sicherheits- und Entwicklungspolitik</h3>
+    <ul>
+      <li><strong>BMZ-Sonderinitiativen:</strong> Programme wie „Eine Welt ohne Hunger" und massive Unterstützung für Nachbarstaaten des syrischen Bürgerkriegs (Jordanien, Libanon).</li>
+      <li><strong>EU-Treuhandfonds für Afrika:</strong> Kurzfristige Gelder für Migrationssteuerung und wirtschaftliche Perspektiven, gekoppelt an Blockade von Fluchtrouten.</li>
+      <li><strong>Zivile Krisenprävention:</strong> Entwicklungspolitik als Instrument zur Stabilisierung „fragiler Staaten" — um zu verhindern, dass sie Ausgangspunkte massiver Migration werden.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-writing"></i>C. Bilaterale und multilaterale Abkommen</h3>
+    <table>
+      <thead><tr><th>Abkommen</th><th>Inhalt &amp; Kritik</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">EU-Türkei-Abkommen (2016)</td><td>Türkei nimmt alle irregulär über die Ägäis kommenden Flüchtlinge zurück; im Gegenzug 6 Mrd. Euro, Visafreiheit, Belebung der Beitrittsgespräche. Macht die EU erpressbar (Grenzöffnung 2020).</td></tr>
+        <tr><td class="emph">Kooperation in Libyen</td><td>EU unterstützt libysche Küstenwache bei der Abwehr von Flüchtlingen — nimmt dabei gravierende Menschenrechtsverletzungen in libyschen Camps in Kauf.</td></tr>
+        <tr><td class="emph">Migrationspartnerschaften</td><td>Bilaterale Abkommen mit Drittstaaten in Afrika: finanzielle Hilfe und Visaerleichterungen gegen Kooperation beim Grenzschutz und Rücknahme.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: Externalisierung als Paradigmenwechsel</h3>
+      <p>Da eine EU-interne Lösung (verbindliche Quoten) scheiterte, verlagerte sich der Fokus auf den <strong>Grenzschutz durch Drittstaaten</strong> und Rücknahmeabkommen — auch auf Kosten der eigenen Rechtsstaatlichkeitsstandards. Der Begriff <strong>„Versicherheitlichung"</strong> (Securitization) bezeichnet den Prozess, durch den Migration nicht mehr als humanitäres Thema, sondern als Sicherheitsproblem gerahmt wird.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>Werte vs. Realpolitik:</b> Kritiker werfen der EU vor, Menschenrechte und Genfer Konvention der Abschottung zu opfern und sich von Autokraten abhängig zu machen („Festung Europa").</div>
+      <div class="debate-item"><b>Versicherheitlichung der Hilfe:</b> Wird Entwicklungshilfe instrumentalisiert, um Grenzschutz zu betreiben, statt Armut nach humanitären Kriterien zu bekämpfen?</div>
+      <div class="debate-item"><b>Führungsrolle Deutschlands:</b> War Merkels Handeln ein Akt moralischer Größe oder ein arroganter Alleingang, der die Partner überrumpelte?</div>
+      <div class="debate-item"><b>Binnen- vs. Außenschutz:</b> Konflikt zwischen offenen Binnengrenzen (Schengen) und dem Bedürfnis nach hartem Schutz der EU-Außengrenzen.</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>Paradigmenwechsel zur Externalisierung</strong> — da EU-interne Quotenlösung scheiterte, Verlagerung auf Drittstaatenkooperation.</li>
+        <li><strong>Entwicklungspolitik als globale Zukunftsvorsorge</strong> — heute integraler Teil der vernetzten Sicherheit.</li>
+        <li><strong>Governance-Lücke im GEAS</strong> — Schengen ohne echte europäische Asyl- und Migrationspolitik bleibt krisenanfällig.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 8b. ZEITENWENDE 2022 -->
+  <!-- ============================================================ -->
+  <section id="zeitenwende" class="section">
+    <div class="section-eyebrow">Az. VIII·b · 24. Februar 2022 –</div>
+    <h1 class="section-title">Die Zeitenwende — Epochenwechsel in der deutschen Außenpolitik</h1>
+    <p class="section-subtitle">Der russische Angriffskrieg gegen die Ukraine zerstört die Grundannahmen von dreißig Jahren Russlandpolitik</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernfrage</h3>
+      <p>Wie reagiert die Bundesrepublik auf den russischen Angriffskrieg — der <strong>„größte anzunehmende Unfall"</strong> (GAU) der deutschen Außenpolitik — und wie gestaltet sie den damit verbundenen <strong>epokalen Umbruch</strong> ihrer Außen- und Sicherheitspolitik?</p>
+      <ul>
+        <li><strong>Bruch mit Illusionen:</strong> „Zeitenwende" markiert das Ende von „Wandel durch Handel" — wirtschaftliche Verflechtung garantiert keinen Frieden.</li>
+        <li><strong>Militarisierung der Denkweise:</strong> Sicherheit wird wieder von einer militärischen Komponente her gedacht — eine Verschiebung grundlegender Prinzipien.</li>
+        <li><strong>Spannung zwischen Kontinuität und Wandel:</strong> Sondervermögen und 2-Prozent-Ziel ja — bei Waffenlieferungen und Eskalationsvermeidung bleibt Deutschland oft zögerlich.</li>
+      </ul>
+    </div>
+
+    <div class="glossary-grid mini">
+      <div class="glossary-item"><span class="glossary-term">Zeitenwende</span><span class="glossary-def">Von Scholz geprägter Begriff für den Epochenwechsel nach dem 24.2.2022: 100-Mrd.-Sondervermögen, Abkehr von bisherigen außenpolitischen Tabus.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Integrierte Sicherheit</span><span class="glossary-def">Umfassendes Sicherheitskonzept: Diplomatie, Wirtschaft, Energieversorgung sowie Klima- und Umweltschutz ressortübergreifend verknüpft.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Resilienz statt Interdependenz</span><span class="glossary-def">Erkenntnis, dass einseitige Abhängigkeiten (Energie) als Erpressungsmittel genutzt werden können → Fokus auf Widerstandsfähigkeit und Diversifizierung.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Systemrivalität</span><span class="glossary-def">Einordnung autoritärer Staaten (China, Russland) nicht mehr nur als Partner, sondern als Akteure, die alternative, nicht-demokratische Governance-Modelle propagieren.</span></div>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-calendar-event"></i>A. Der Auslöser und die unmittelbare Reaktion</h3>
+    <ul>
+      <li><strong>24. Februar 2022:</strong> Russland startet die vollumfängliche Invasion der Ukraine — verletzt die europäische Friedensordnung und das völkerrechtliche Gewaltverbot fundamental.</li>
+      <li><strong>27. Februar 2022 — die Zeitenwende-Rede:</strong> Kanzler Scholz kündigt im Bundestag ein <strong>Sondervermögen von 100 Milliarden Euro</strong> für die Bundeswehr sowie das dauerhafte Erreichen des <strong>2-Prozent-Ziels der NATO</strong> an.</li>
+      <li><strong>Waffenlieferungen:</strong> Deutschland bricht mit dem Tabu, keine Waffen in aktive Kriegsgebiete zu liefern — zunächst zögerlich, dann Schritt für Schritt eskalierend.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-map"></i>B. Die strategische Neuordnung</h3>
+    <ul>
+      <li><strong>Aufwertung der NATO:</strong> Russland wird nun klar als „größte und unmittelbarste Bedrohung für die Sicherheit im euroatlantischen Raum" benannt.</li>
+      <li><strong>Europäische Souveränität:</strong> Deutschland fordert „Weltpolitikfähigkeit" der EU, einschließlich Abkehr vom Einstimmigkeitsprinzip in der Außenpolitik.</li>
+      <li><strong>Nationale Sicherheitsstrategie:</strong> Erstmals eine umfassende Strategie, die Sicherheit multidimensional (ökonomisch, ökologisch, technologisch) definiert.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-plug-off"></i>C. Wirtschaftliche &amp; energetische Entflechtung</h3>
+    <table>
+      <thead><tr><th>Maßnahme</th><th>Inhalt</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">Ende Nord Stream 2</td><td>Das Pipeline-Projekt wird abrupt gestoppt, nachdem es jahrzehntelang als rein wirtschaftliches Unterfangen verteidigt wurde.</td></tr>
+        <tr><td class="emph">LNG-Terminals</td><td>Deutschland baut unter Hochdruck Flüssiggas-Infrastruktur auf, um russische Gaslieferungen zu ersetzen.</td></tr>
+        <tr><td class="emph">Erneuerbare Energien</td><td>Forcierter Ausbau als langfristige Strategie gegen Energieerpressbarkeit.</td></tr>
+        <tr><td class="emph">De-risking gegenüber China</td><td>Wirtschaftliche Abhängigkeit als geopolitisches Risiko — China gleichzeitig als Partner, Wettbewerber und systemischen Rivalen.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: Zeitenwende ≠ Komplettbruch</h3>
+      <p>Auch nach der Zeitenwende gilt: Deutschland handelt <strong>nicht unilateral</strong>. Die Einbettung in EU und NATO bleibt die zentrale Bedingung für jegliches Handeln — das ist strukturelle Kontinuität. Der <strong>operative Wandel</strong> liegt in der Bereitschaft zur militärischen Abschreckung und Waffenlieferungen. Die Balance zwischen diesen Polen ist der prüfungsrelevante Widerspruch.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-scale"></i>Kontroversen</h3>
+    <div class="debate-list">
+      <div class="debate-item"><b>Zögerlichkeit vs. Verantwortung:</b> Deutschland wird von östlichen Partnern und den USA für zu langsame Umsetzung der Zeitenwende und späte Lieferung schwerer Waffen kritisiert.</div>
+      <div class="debate-item"><b>Pazifismus-Debatte:</b> Tiefe gesellschaftliche Risse zwischen traditionellem Pazifismus und Verfechtern militärischer Abschreckung zur Verteidigung demokratischer Werte.</div>
+      <div class="debate-item"><b>Eskalationsgefahr:</b> Die Bundesregierung betont stets die Notwendigkeit, einen Dritten Weltkrieg durch „rote Linien" zu vermeiden — Kritiker argumentieren, diese Vorsicht könne Russland zum Sieg verhelfen.</div>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-checklist"></i>Fazit: Drei Takeaways</h3>
+      <ul>
+        <li><strong>Paradigmenwechsel zur Wehrhaftigkeit</strong> — die „Kultur der Zurückhaltung" bleibt, wird aber durch militärische Abschreckung im Allianzbündnis ergänzt.</li>
+        <li><strong>Sicherheit durch Souveränität</strong> — Verringerung einseitiger Abhängigkeiten (Energie, kritische Rohstoffe) sichert außenpolitische Handlungsfähigkeit.</li>
+        <li><strong>Multilateralismus als Konstante</strong> — auch in der Zeitenwende handelt Deutschland niemals unilateral; EU und NATO bleiben unverhandelbare Bedingungen.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6. DREI-PHASEN-MODELL -->
+  <!-- ============================================================ -->
+  <section id="phasen" class="section">
+    <div class="section-eyebrow">Az. VI · Langzeitperspektive</div>
+    <h1 class="section-title">Das Drei-Phasen-Modell: West-, Ost- und Weltpolitik</h1>
+    <p class="section-subtitle">Wie sich drei außenpolitische Grundmuster über vier Jahrzehnte wandelten</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Übergreifende Leitfrage</h3>
+      <p>„Ist <strong>Sicherheit durch Selbstbeschränkung</strong> noch zeitgemäß?" Das Modell tiefer Integration und Souveränitätsabgabe funktionierte gut im Kalten Krieg. Offene Fragen heute:</p>
+      <ul>
+        <li>Zerfällt der Westen als gemeinsame Plattform?</li>
+        <li>Funktioniert Entspannungspolitik mit einem Russland, das die Spielregeln ablehnt?</li>
+        <li>Kann Deutschland in einer multipolaren Welt weiterhin Zivilmacht bleiben?</li>
+      </ul>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-compass"></i>Westpolitik — „Gute Beziehungen durch supranationale Integration und Bündnissolidarität"</h3>
+    <table>
+      <thead><tr><th>Jahrzehnt</th><th>Akteure</th><th>Schwerpunkt</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">1950er</td><td>Adenauer / Adenauer</td><td>Westbindung als Deutschlandpolitik (Wiedereingliederung in den Westen)</td></tr>
+        <tr><td class="emph">1990er</td><td>Kohl / Genscher</td><td>Westbindung als Europapolitik (Vertiefung &amp; Erweiterung nach der Wiedervereinigung)</td></tr>
+        <tr><td class="emph">2010er</td><td>Merkel / Steinmeier</td><td>Westbindung als Amerikapolitik (transatlantische Partnerschaft unter Druck durch Trump)</td></tr>
+      </tbody>
+    </table>
+    <p>Kontext: Kohl/Genscher betten die Wiedervereinigung in die EU-Vertiefung ein (Maastricht), symbolische Versöhnung Kohl &amp; Mitterrand in Verdun. Merkel/Steinmeier pflegen die US-Beziehung trotz NSA-Affäre und Trump-Spannungen.</p>
+    <ol>
+      <li><strong>These I:</strong> Rückversicherungspolitik gegenüber Nachbarn — doppelte Motivation aus Vergangenheitspolitik und Schutz vor sowjetischem Einfluss.</li>
+      <li><strong>These II:</strong> Souveränitätsabgabe verstärkte zugleich Deutschlands reale Gestaltungsmacht — EU-Erweiterung verstärkte dies zunächst.</li>
+      <li><strong>These III:</strong> Mit dem Ende des Kalten Krieges zerfällt die Kohäsion des Westens — Berlins Autonomie steigt, die Effektivität sinkt.</li>
+    </ol>
+
+    <h3 class="sub"><i class="ti ti-snowflake"></i>Ostpolitik — „Gute Beziehungen durch intergouvernementale Zusammenarbeit und friedliche Koexistenz"</h3>
+    <table>
+      <thead><tr><th>Jahrzehnt</th><th>Akteure</th><th>Schwerpunkt</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">1970er</td><td>Brandt / Bahr</td><td>Ostpolitik als Deutschlandpolitik (Annäherung DDR, Polen, UdSSR)</td></tr>
+        <tr><td class="emph">1990er</td><td>Kohl / Genscher</td><td>Ostpolitik als Europapolitik (NATO-/EU-Osterweiterung, Einbindung Russlands)</td></tr>
+        <tr><td class="emph">2010er</td><td>Merkel / Steinmeier</td><td>Ostpolitik als Russlandpolitik (Nord Stream 2, Energieabhängigkeit)</td></tr>
+      </tbody>
+    </table>
+    <p>Kontext: Kohl/Genscher verhandeln mit Gorbatschow den 2+4-Vertrag und binden Russland (Jelzin) durch Partnerschaftspolitik ein. Nord Stream 2 als Symbol wirtschaftlicher Verflechtung — wachsende Spannungen nach der Krim-Annexion 2014.</p>
+    <ol>
+      <li><strong>These I:</strong> stets primär Nachbarschaftspolitik — historisch sensibel (Polen, Tschechien) und entspannungsorientiert.</li>
+      <li><strong>These II:</strong> klassische Instrumente (Völkerrecht, Vertragspolitik, Scheckbuchdiplomatie) bleiben nützlich, verlieren aber an Wirkung, da Russland ihnen nicht mehr denselben Wert beimisst.</li>
+      <li><strong>These III:</strong> neue, robustere Instrumente kommen zu spät und zu zögerlich — Kohärenz und Nachhaltigkeit bleiben fraglich.</li>
+    </ol>
+
+    <h3 class="sub"><i class="ti ti-globe"></i>Weltpolitik? — „Gute Beziehungen durch globale Arbeitsteilung, gemeinsame Führung und Interdependenz?"</h3>
+    <table>
+      <thead><tr><th>Jahrzehnt</th><th>Akteure</th><th>Schwerpunkt</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">1970er</td><td>Brandt / Schmidt</td><td>Weltpolitik als Nord-Süd-Dialog (Entwicklungspolitik, Brandt-Kommission)</td></tr>
+        <tr><td class="emph">1990er</td><td>Kohl / Genscher</td><td>Weltpolitik als Balkanpolitik (Jugoslawienkriege als erste militärische Normalisierung)</td></tr>
+        <tr><td class="emph">2010er</td><td>Merkel / Steinmeier</td><td>Weltpolitik als Globale Strukturpolitik (G20, SDGs, Klimaabkommen)</td></tr>
+      </tbody>
+    </table>
+    <p>Kontext: Deutschland erkennt Slowenien/Kroatien früh an und beteiligt sich erstmals seit 1945 an Auslandseinsätzen (Kosovo) — vom Scheckbuch-Diplomaten zum Sicherheitsakteur. Mittelmeerpolitik wurde traditionell an Frankreich/Italien delegiert. Die G20-Präsidentschaft 2017 (Hamburg) markiert globale Strukturpolitik.</p>
+    <ol>
+      <li><strong>These I:</strong> der Zerfall Jugoslawiens erzwingt sicherheitspolitische Normalisierung und neuen Führungsanspruch — aber keine Abkehr vom Zivilmacht-Profil.</li>
+      <li><strong>These II:</strong> Mittelmeerpolitik blieb Arbeitsteilung ohne Lastenteilung — auch nach der Wiedervereinigung unverändert.</li>
+      <li><strong>These III:</strong> Schwellenländer enttäuschen Erwartungen, da sie auf Autonomie bedacht sind und sich nicht als Juniorpartner des Westens sehen — Kooperation gilt in Berlin dennoch als alternativlos.</li>
+    </ol>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: Drei Tabellen, nicht eine</h3>
+      <p>Leicht zu verwechseln: <strong>Brandt/Bahr</strong> stehen für die <em>Ostpolitik</em> der 1970er, <strong>Brandt/Schmidt</strong> für die <em>Weltpolitik</em> derselben Dekade. Gleiche Personen, unterschiedliche Politikfelder, unterschiedliche Hypothesen — in der Klausur klar zuordnen.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 7. SONDERWEG -->
+  <!-- ============================================================ -->
+  <section id="sonderweg" class="section">
+    <div class="section-eyebrow">Az. VII · Historiografie</div>
+    <h1 class="section-title">Der „deutsche Sonderweg" (Winkler)</h1>
+    <p class="section-subtitle">Doppelte Verspätung: später Nationalstaat, noch später Demokratie</p>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Kernthese</h3>
+      <p>Winkler bejaht die Existenz eines deutschen Sonderwegs — verstanden als <strong>doppelte Verspätung</strong>: Deutschland wurde später Nationalstaat und noch später Demokratie als seine westeuropäischen Nachbarn.</p>
+    </div>
+
+    <h3 class="sub"><i class="ti ti-building-castle"></i>Strukturelle Ursachen</h3>
+    <ul>
+      <li>Das <strong>Alte Reich</strong> (HRR) und der <strong>Deutsche Bund</strong> waren keine Nationalstaaten.</li>
+      <li><strong>1848/49:</strong> Der Liberalismus scheitert — Einheit und Freiheit gleichzeitig zu erkämpfen erweist sich als unmöglich.</li>
+      <li><strong>Bismarcks „Revolution von oben"</strong> (1871) löst die Einheitsfrage, nicht aber die Freiheitsfrage.</li>
+      <li>Das Kaiserreich bleibt eine <strong>konstitutionelle</strong>, keine parlamentarische Monarchie.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-alert-octagon"></i>Weimarer Republik: Vorbelastungen</h3>
+    <ul>
+      <li>Elitenkontinuität (Militär, Justiz, Großgrundbesitz)</li>
+      <li>Spaltung der Arbeiterbewegung (SPD vs. KPD)</li>
+      <li>Fehlende Aufarbeitung der Kriegsschuldfrage 1914</li>
+      <li>Reichspräsident als „Ersatzkaiser" — Notverordnungen nach Art. 48</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-skull"></i>Aufstieg des Nationalsozialismus</h3>
+    <ul>
+      <li>Hitler gelangt <strong>nicht</strong> durch Wahlsieg allein an die Macht, sondern durch die Kooperation von Massen und Machteliten (30. Januar 1933).</li>
+      <li>Treibende Kraft: ostelbische Junker und das Hindenburg-Umfeld.</li>
+      <li>Zentrales ideologisches Instrument: der <strong>Reichsmythos</strong> — Deutschland als universales, göttliches Reich.</li>
+      <li>Antisemitismus war ein gesamteuropäisches Phänomen, radikalisierte sich aber nach 1918 in Deutschland besonders. Das „Dritte Reich" entfesselte den Weltkrieg und verübte den Holocaust.</li>
+    </ul>
+
+    <h3 class="sub"><i class="ti ti-git-branch"></i>Kontinuitätsbruch 1945</h3>
+    <p>Anders als 1918: ein echter politischer, gesellschaftlicher und moralischer Bruch. Der Nationalismus wird als Integrationsideologie delegitimiert. <strong>Rollentausch:</strong> Die gemäßigte Rechte wendet sich der supranationalen Integration zu, die gemäßigte Linke übernimmt den nationalen Part.</p>
+
+    <h4 class="sub-sm">Entwicklung des deutschen Selbstverständnisses nach 1945</h4>
+    <table>
+      <thead><tr><th>Phase</th><th>Merkmal</th></tr></thead>
+      <tbody>
+        <tr><td class="emph">Adenauer-Ära</td><td>Nationalstaatliche Rhetorik + supranationale Praxis</td></tr>
+        <tr><td class="emph">Nach Mauerbau 1961</td><td>BRD-bezogener Patriotismus entsteht</td></tr>
+        <tr><td class="emph">Ostverträge (Brandt)</td><td>„Politik der kleinen Schritte"</td></tr>
+        <tr><td class="emph">1980er Jahre</td><td>„Postnationale Demokratie unter Nationalstaaten" (Bracher)</td></tr>
+        <tr><td class="emph">Nach 1990</td><td>Rückkehr zur Normalität: souveräner Nationalstaat in der EU</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <h3><i class="ti ti-alert-triangle"></i>Klausurhinweis: Der Sonderweg endet zweimal</h3>
+      <p>Eine typische Prüfungsfalle: Der Sonderweg endet <strong>nicht nur 1945</strong>. Nach Winkler endet 1945 der <em>antiwestliche Weg des Reiches</em> — 1990 enden zusätzlich der <em>postnationale Weg der BRD</em> und der <em>internationalistische Weg der DDR</em>. Beide Zäsuren gehören zur vollständigen Antwort.</p>
+    </div>
+
+    <div class="thesis-box">
+      <h3><i class="ti ti-quote"></i>Winklers Schlussthese</h3>
+      <p>Es gab einen deutschen Sonderweg. Er endete 1945 (antiwestlicher Weg des Reiches); 1990 endeten auch der postnationale Weg der BRD und der internationalistische Weg der DDR. Das wiedervereinigte Deutschland ist ein <strong>demokratischer, postklassischer Nationalstaat</strong> — nicht weniger souverän als andere EU-Mitglieder.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 8. ZEITSTRAHL -->
+  <!-- ============================================================ -->
+  <section id="zeitstrahl" class="section">
+    <div class="section-eyebrow">Az. VIII · Chronologie</div>
+    <h1 class="section-title">Zeitstrahl: Deutsche Außenpolitik 1949–2017</h1>
+    <p class="section-subtitle">Die wichtigsten Daten auf einen Blick</p>
+
+    <div class="timeline-decade">1949–1955 · Westintegration</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">21.9.1949</div><div class="timeline-content">Besatzungsstatut tritt in Kraft — Vorbehaltsrechte der Westalliierten.</div></div>
+      <div class="timeline-item"><div class="timeline-date">22.11.1949</div><div class="timeline-content">Petersberger Abkommen — Demontagestopp gegen Beitritt zur Ruhrbehörde.</div></div>
+      <div class="timeline-item"><div class="timeline-date">9.5.1950</div><div class="timeline-content">Schuman-Plan — Geburtsstunde der EGKS (Montanunion).</div></div>
+      <div class="timeline-item"><div class="timeline-date">1950</div><div class="timeline-content">Koreakrieg löst die Wiederbewaffnungsdebatte aus; Pleven-Plan für eine EVG.</div></div>
+      <div class="timeline-item"><div class="timeline-date">10.3.1952</div><div class="timeline-content">Stalin-Note — Angebot eines neutralen, wiedervereinigten Deutschlands; von Adenauer abgelehnt.</div></div>
+      <div class="timeline-item"><div class="timeline-date">26.5.1952</div><div class="timeline-content">Deutschlandvertrag — Aufhebung des Besatzungsstatuts, gekoppelt an die EVG.</div></div>
+      <div class="timeline-item"><div class="timeline-date">30.8.1954</div><div class="timeline-content">Scheitern der EVG am Veto der französischen Nationalversammlung.</div></div>
+      <div class="timeline-item"><div class="timeline-date">23.10.1954</div><div class="timeline-content">Pariser Verträge — NATO- und WEU-Beitritt der BRD beschlossen.</div></div>
+      <div class="timeline-item"><div class="timeline-date">Mai 1955</div><div class="timeline-content">Ende des Besatzungsregimes; Hallstein-Doktrin formuliert nach Adenauers Moskau-Reise.</div></div>
+      <div class="timeline-item"><div class="timeline-date">Juni 1955</div><div class="timeline-content">Konferenz von Messina — Auftakt zu EWG und Euratom.</div></div>
+    </div>
+
+    <div class="timeline-decade">1957–1963 · Doppelte Westbindung</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">25.3.1957</div><div class="timeline-content">Römische Verträge — Gründung von EWG und Euratom.</div></div>
+      <div class="timeline-item"><div class="timeline-date">Sept. 1958</div><div class="timeline-content">Erste Begegnung Adenauer–de Gaulle in Colombey-les-deux-Églises.</div></div>
+      <div class="timeline-item"><div class="timeline-date">4.3.1960</div><div class="timeline-content">Treffen Adenauer–Ben-Gurion — Reparationen &amp; Kriegsschuldanerkennung.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1960</div><div class="timeline-content">Globke-Plan — geheimer Vorschlag zur DDR-Anerkennung mit späterem Plebiszit.</div></div>
+      <div class="timeline-item"><div class="timeline-date">13.8.1961</div><div class="timeline-content">Mauerbau — Zementierung der Teilung; nur die „drei Essentials" werden verteidigt.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1961/62</div><div class="timeline-content">Fouchet-Kommission (I &amp; II) scheitert am Widerstand gegen de Gaulles Politische Union.</div></div>
+      <div class="timeline-item"><div class="timeline-date">22.1.1963</div><div class="timeline-content">Élysée-Vertrag — deutsch-französischer Freundschaftsvertrag.</div></div>
+      <div class="timeline-item"><div class="timeline-date">16.5.1963</div><div class="timeline-content">Bundestag fügt atlantische Präambel zum Élysée-Vertrag hinzu.</div></div>
+    </div>
+
+    <div class="timeline-decade">1966–1975 · Neue Ostpolitik</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">1966</div><div class="timeline-content">Frankreich erklärt den Rückzug aus der integrierten NATO-Verteidigung.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1967</div><div class="timeline-content">Harmel-Bericht — NATO definiert sich neu durch Sicherheit und Entspannung.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1969</div><div class="timeline-content">Haager Gipfel: „Vollendung – Vertiefung – Erweiterung"; Beginn der Neuen Ostpolitik (Brandt/Bahr).</div></div>
+      <div class="timeline-item"><div class="timeline-date">Aug. 1970</div><div class="timeline-content">Moskauer Vertrag — Gewaltverzicht und Status-quo-Anerkennung.</div></div>
+      <div class="timeline-item"><div class="timeline-date">Dez. 1970</div><div class="timeline-content">Warschauer Vertrag &amp; Kniefall Willy Brandts in Warschau.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1971</div><div class="timeline-content">Vier-Mächte-Abkommen über Berlin.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1972</div><div class="timeline-content">Grundlagenvertrag mit der DDR; konstruktives Misstrauensvotum gegen Brandt scheitert knapp.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1973</div><div class="timeline-content">Prager Vertrag; Ölkrise; EG-Erweiterung um Großbritannien, Irland, Dänemark.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1975</div><div class="timeline-content">KSZE-Schlussakte von Helsinki — territorialer Status quo gegen Menschenrechtsverpflichtungen.</div></div>
+    </div>
+
+    <div class="timeline-decade">1972–1986 · Nord-Süd &amp; Eurosklerose</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">1972</div><div class="timeline-content">Club-of-Rome-Bericht „Grenzen des Wachstums".</div></div>
+      <div class="timeline-item"><div class="timeline-date">1978</div><div class="timeline-content">Europäisches Währungssystem (EWS) auf Initiative von Schmidt und Giscard d'Estaing.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1980</div><div class="timeline-content">Brandt-Bericht „Das Überleben sichern".</div></div>
+      <div class="timeline-item"><div class="timeline-date">1981</div><div class="timeline-content">EG-Erweiterung um Griechenland.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1985</div><div class="timeline-content">Jacques Delors wird EU-Kommissionspräsident; Gorbatschow Machtantritt in der UdSSR.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1986</div><div class="timeline-content">EG-Erweiterung um Spanien und Portugal; Einheitliche Europäische Akte (EEA).</div></div>
+    </div>
+
+    <div class="timeline-decade">1989–1999 · Wiedervereinigung &amp; Normalisierung</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">1989</div><div class="timeline-content">Mauerfall — Mitterrand macht Integrationsvertiefung zur Bedingung der deutschen Einheit.</div></div>
+      <div class="timeline-item"><div class="timeline-date">3.10.1990</div><div class="timeline-content">Deutsche Wiedervereinigung.</div></div>
+      <div class="timeline-item"><div class="timeline-date">15.3.1991</div><div class="timeline-content">Zwei-plus-Vier-Vertrag tritt in Kraft — formales Ende der Besatzungszeit, volle Souveränität.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1991</div><div class="timeline-content">Golfkrieg — Deutschland zahlt ca. 17 Mrd. DM Scheckbuchdiplomatie statt Truppenbeitrag; Kritik als „Drückebergerei".</div></div>
+      <div class="timeline-item"><div class="timeline-date">1992</div><div class="timeline-content">Vertrag von Maastricht — Währungsunion als Kohl'scher „Preis" für die Akzeptanz der deutschen Einheit.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1992–93</div><div class="timeline-content">Erste Bundeswehr-Missionen: Kambodscha (humanitär), Somalia (logistisch).</div></div>
+      <div class="timeline-item"><div class="timeline-date">1993</div><div class="timeline-content">Kopenhagener Kriterien — EU definiert Beitrittsbedingungen für MOE-Staaten.</div></div>
+      <div class="timeline-item"><div class="timeline-date">12.7.1994</div><div class="timeline-content">BVerfG-Urteil (Streitkräfteurteil) — Bundeswehr als „Parlamentsheer"; Out-of-Area-Einsätze mit Bundestagszustimmung zulässig.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1995</div><div class="timeline-content">Massaker von Srebrenica — IFOR/SFOR Bosnien; erster vollumfänglicher Truppenbeitrag für eine NATO-Mission. „Kohl-Doktrin" fällt faktisch.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1998</div><div class="timeline-content">Beginn der „Berliner Republik" — Rot-Grün (Schröder/Fischer) tritt Regierung an.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1999</div><div class="timeline-content">Kosovo-Krieg „Allied Force" — erster aktiver Kampfeinsatz der Bundeswehr nach 1945, ohne UN-Mandat.</div></div>
+    </div>
+
+    <div class="timeline-decade">2000–2014 · Osterweiterung &amp; strategische Partnerschaft</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">2001</div><div class="timeline-content">11. September — Deutschland tritt ISAF in Afghanistan bei (erster Kampfeinsatz unter UN-Mandat außerhalb Europas).</div></div>
+      <div class="timeline-item"><div class="timeline-date">2003</div><div class="timeline-content">Irak-Krieg — Deutschland (mit Frankreich/Russland) lehnt Beteiligung ab; sichtbare Emanzipation von der Vormacht USA.</div></div>
+      <div class="timeline-item"><div class="timeline-date">1.5.2004</div><div class="timeline-content">EU-Osterweiterung „Big Bang" — zehn neue Mitgliedstaaten; Deutschland ist Hauptanwalt der Erweiterung.</div></div>
+      <div class="timeline-item"><div class="timeline-date">2005</div><div class="timeline-content">Vertragsschluss Nord Stream 1 (Schröder/Putin); Merkel wird Kanzlerin.</div></div>
+      <div class="timeline-item"><div class="timeline-date">2007</div><div class="timeline-content">EG-Erweiterung um Rumänien und Bulgarien; Vertrag von Lissabon.</div></div>
+      <div class="timeline-item"><div class="timeline-date">2008</div><div class="timeline-content">NATO-Gipfel Bukarest — Deutschland verhindert (mit Frankreich) MAP-Aufnahme für Ukraine und Georgien.</div></div>
+      <div class="timeline-item"><div class="timeline-date">2009</div><div class="timeline-content">Östliche Partnerschaft gegründet — Ukraine, Moldau u. a. enger anbinden ohne Beitrittsperspektive.</div></div>
+      <div class="timeline-item"><div class="timeline-date">2014</div><div class="timeline-content">Russland annektiert die Krim — Sanktionspolitik; „Wandel durch Verflechtung" gerät in die Krise.</div></div>
+    </div>
+
+    <div class="timeline-decade">2015–2022 · Fluchtmigration &amp; Zeitenwende</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">Sept. 2015</div><div class="timeline-content">Deutschland lässt syrische Flüchtlinge aus Ungarn einreisen — „humanitäre Ausnahmeentscheidung"; Dublin-System kollabiert faktisch.</div></div>
+      <div class="timeline-item"><div class="timeline-date">2016</div><div class="timeline-content">EU-Türkei-Abkommen — Externalisierung der Grenzkontrollen gegen 6 Mrd. Euro und Visaversprechen.</div></div>
+      <div class="timeline-item"><div class="timeline-date">2017</div><div class="timeline-content">G20-Präsidentschaft in Hamburg — globale Strukturpolitik; Trump-Spannungen in der transatlantischen Allianz.</div></div>
+      <div class="timeline-item"><div class="timeline-date">24.2.2022</div><div class="timeline-content">Russland startet die vollumfängliche Invasion der Ukraine — Bruch der europäischen Friedensordnung.</div></div>
+      <div class="timeline-item"><div class="timeline-date">27.2.2022</div><div class="timeline-content">Kanzler Scholz kündigt im Bundestag die <strong>„Zeitenwende"</strong> an: 100-Mrd.-Sondervermögen für die Bundeswehr, dauerhaftes 2-Prozent-Ziel.</div></div>
+      <div class="timeline-item"><div class="timeline-date">2022</div><div class="timeline-content">Nord Stream 2 gestoppt; Deutschland baut LNG-Terminals, beginnt (zunächst zögerlich) Waffenlieferungen an die Ukraine.</div></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 9. GLOSSAR -->
+  <!-- ============================================================ -->
+  <section id="glossar" class="section">
+    <div class="section-eyebrow">Az. IX · Nachschlagewerk</div>
+    <h1 class="section-title">Glossar</h1>
+    <p class="section-subtitle">Über sechzig zentrale Begriffe der deutschen Außenpolitik</p>
+
+    <div class="glossary-grid">
+      <div class="glossary-item"><span class="glossary-term">Zivilmacht</span><span class="glossary-def">Außenpolitischer Ansatz ohne militärische Machtprojektion: „Never again", „Never alone", „Politics before force".</span></div>
+      <div class="glossary-item"><span class="glossary-term">Westbindung</span><span class="glossary-def">Fundamentale Integration in westliche Institutionen (NATO, EG/EU) nach 1945.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Doppelte Westbindung</span><span class="glossary-def">Gleichzeitige Einbindung in NATO (Sicherheit) und EWG/EU (Politik/Wirtschaft).</span></div>
+      <div class="glossary-item"><span class="glossary-term">Multilateralismus</span><span class="glossary-def">Präferenz, internationale Probleme durch Kooperation statt Alleingänge zu lösen — reflexiv oder instrumentell.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Handelsstaat</span><span class="glossary-def">Staat, der Einfluss durch Welthandel statt territoriale Expansion mehrt.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Zwei-Ebenen-Spiel</span><span class="glossary-def">Außenpolitik findet gleichzeitig international (Verhandlungen) und national (Mobilisierung von Unterstützung) statt.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Hallstein-Doktrin</span><span class="glossary-def">BRD bricht diplomatische Beziehungen ab zu Staaten, die die DDR anerkennen — Ausnahme: UdSSR.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Alleinvertretungsanspruch</span><span class="glossary-def">Position der BRD, die einzige legitime Vertretung des gesamten deutschen Volkes zu sein.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Magnet-Theorie</span><span class="glossary-def">Eine prosperierende BRD übt eine Anziehungskraft aus, die die DDR langfristig zur Vereinigung drängt.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Politik der Stärke</span><span class="glossary-def">Adenauers Kalkül, durch unauflösbare Westbindung die UdSSR zur Preisgabe der DDR zu nötigen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Besatzungsstatut</span><span class="glossary-def">Regelwerk der Westalliierten (1949–55) mit Vorbehaltsrechten in Außen- und Sicherheitspolitik.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Deutschlandvertrag</span><span class="glossary-def">Vertrag von 1952: Aufhebung des Besatzungsstatuts, gekoppelt an die EVG-Ratifizierung.</span></div>
+      <div class="glossary-item"><span class="glossary-term">EVG</span><span class="glossary-def">Europäische Verteidigungsgemeinschaft — scheiterte 1954 am Veto der französischen Nationalversammlung.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Pariser Verträge</span><span class="glossary-def">1954/55: NATO- und WEU-Beitritt der BRD als Ersatz für die gescheiterte EVG.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Atlantiker vs. Gaullisten</span><span class="glossary-def">Innenpolitische Bruchlinie: USA-Priorität (Erhard, Schröder) vs. Frankreich-Anlehnung (Adenauer, Strauß).</span></div>
+      <div class="glossary-item"><span class="glossary-term">Élysée-Vertrag</span><span class="glossary-def">Deutsch-französischer Freundschaftsvertrag (1963) mit regelmäßiger Konsultationspflicht.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Flexible Response</span><span class="glossary-def">US-Militärstrategie unter Kennedy: abgestufte statt automatische nukleare Vergeltung.</span></div>
+      <div class="glossary-item"><span class="glossary-term">MLF</span><span class="glossary-def">Multilaterale Atomstreitmacht — US-Vorschlag für nukleare NATO-Mitsprache, Streitpunkt mit Paris.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Polyzentrismus</span><span class="glossary-def">Erkenntnis der 1960er, dass die bipolare Weltordnung durch neue Mächte ergänzt wird.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Wandel durch Annäherung</span><span class="glossary-def">Egon Bahrs Formel (1963): durch Kontakt und Handel demokratischen Wandel fördern.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Politik der kleinen Schritte</span><span class="glossary-def">Pragmatischer Ansatz, zunächst technisch-humanitäre Fragen zu lösen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Modus Vivendi</span><span class="glossary-def">„Vorübergehendes Arrangement" — regelt den faktischen Zustand ohne endgültige völkerrechtliche Klärung.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Junktim</span><span class="glossary-def">Bewusste Verknüpfung von Verhandlungsgegenständen, z. B. Ostverträge und Berlin-Abkommen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">KSZE-Schlussakte</span><span class="glossary-def">Helsinki 1975: Status-quo-Bestätigung gegen Menschenrechtsverpflichtungen (Korb III).</span></div>
+      <div class="glossary-item"><span class="glossary-term">Weltinnenpolitik</span><span class="glossary-def">Begriff von Weizsäcker/Eppler: keine rein „äußeren" Angelegenheiten mehr in einer interdependenten Welt.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Grundbedürfnisorientierung</span><span class="glossary-def">Abkehr vom reinen Wachstum hin zu Bildung, Gesundheit, Ernährung für die Ärmsten.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Interdependenz</span><span class="glossary-def">Gegenseitige Abhängigkeit von Industrie- und Entwicklungsländern, v. a. bei Rohstoffen und Energie.</span></div>
+      <div class="glossary-item"><span class="glossary-term">ODA</span><span class="glossary-def">Official Development Assistance — Zielmarke von 0,7 % des BSP, faktisch nie erreicht.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Brandt-Bericht</span><span class="glossary-def">„Das Überleben sichern" (1980) — fordert Kapitaltransfer und Reform der Weltwirtschaftsordnung.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Eurosklerose</span><span class="glossary-def">Lähmung des europäischen Integrationsprozesses Anfang der 1980er Jahre.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Binnenmarkt</span><span class="glossary-def">Raum ohne Binnengrenzen mit freiem Verkehr von Waren, Personen, Dienstleistungen, Kapital.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Einheitliche Europäische Akte</span><span class="glossary-def">Reform von 1986: Rechtsgrundlage für den Binnenmarkt, Mehrheitsentscheidungen im Rat.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Supranationalismus / Intergouvernementalismus</span><span class="glossary-def">Hoheitsübertragung an EU-Organe vs. Zusammenarbeit souveräner Regierungen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Kulturnation</span><span class="glossary-def">Deutschland als Gemeinschaft durch Sprache und Kultur — unabhängig von Staatsgrenzen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">AKBP</span><span class="glossary-def">Auswärtige Kultur- und Bildungspolitik — „dritte Säule": Vertrauensaufbau durch Kultur, Sprache, Bildung.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Scheckbuchdiplomatie</span><span class="glossary-def">Einsatz finanzieller Mittel als außenpolitisches Instrument.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Vergangenheitspolitik</span><span class="glossary-def">Außenpolitik, die die NS-Geschichte als Lernlektion und Legitimationsbasis nutzt.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Globale Strukturpolitik</span><span class="glossary-def">Gestaltung internationaler Normen und Institutionen — SDGs, Klimaabkommen, G20.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Reichsmythos</span><span class="glossary-def">Ideologischer Überbau des Nationalsozialismus: Deutschland als universales Reich.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Deutscher Sonderweg</span><span class="glossary-def">Winklers These der doppelten Verspätung — später Nationalstaat, noch später Demokratie.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Zwei-plus-Vier-Vertrag</span><span class="glossary-def">Völkerrechtlicher Schlüssel zur Einheit (15.3.1991): alliierte Vorbehaltsrechte enden, Grenzen endgültig festgeschrieben.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Normalisierung</span><span class="glossary-def">Prozess, in dem Deutschland lernt, nationale Interessen selbstbewusster zu formulieren und Militärmacht als ultima ratio zu akzeptieren.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Zentralmacht Europas</span><span class="glossary-def">Lagebeschreibung: Größe, Wirtschaftskraft und Mittellage Deutschlands weisen ihm eine automatische, oft widerwillige Führungsrolle zu.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Bündnisfähigkeit</span><span class="glossary-def">Fähigkeit und Bereitschaft, im Rahmen von NATO, EU, UN nicht nur finanziell, sondern auch operativ-militärisch beizutragen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Out-of-Area-Einsätze</span><span class="glossary-def">Militärische Missionen der Bundeswehr außerhalb des NATO-Bündnisgebiets.</span></div>
+      <div class="glossary-item"><span class="glossary-term">BVerfG-Urteil 1994</span><span class="glossary-def">Bundeswehr als „Parlamentsheer": Auslandseinsätze in kollektiven Sicherheitssystemen zulässig mit konstitutiver Bundestagszustimmung.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Friedensdividende</span><span class="glossary-def">Hoffnung der frühen 1990er: durch das Ende des Kalten Krieges Rüstungsausgaben kürzen und für zivile Zwecke nutzen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">„Kohl-Doktrin"</span><span class="glossary-def">Selbstbeschränkung: keine Bundeswehreinsätze an Orten, wo die Wehrmacht war — faktisch mit IFOR/SFOR 1995 aufgegeben.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Kopenhagener Kriterien</span><span class="glossary-def">(1993) EU-Beitrittsbedingungen: institutionelle Stabilität, funktionsfähige Marktwirtschaft, Übernahme des Acquis communautaire.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Acquis communautaire</span><span class="glossary-def">Gesamtheit des geltenden EU-Rechts, das Beitrittskandidaten vollständig übernehmen müssen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Wandel durch Verflechtung</span><span class="glossary-def">Leitkonzept Steinmeier/Merkel: enge wirtschaftlich-technologische Kooperation soll politische Reformen in Russland anstoßen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Bukarest-Gipfel 2008</span><span class="glossary-def">NATO-Gipfel, auf dem Deutschland (mit Frankreich) die MAP-Aufnahme der Ukraine und Georgiens verhindert — strategisch umstrittene Weichenstellung.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Dublin-Verordnung</span><span class="glossary-def">EU-Regelung: zuständig für das Asylverfahren ist der erste Mitgliedstaat, den ein Schutzsuchender betritt — 2015 de facto kollabiert.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Fluchtursachenbekämpfung</span><span class="glossary-def">Präventiver Ansatz: Investitionen in Herkunftsländern um Migration zu verhindern, bevor Menschen aufbrechen.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Versicherheitlichung</span><span class="glossary-def">Securitization: Migration wird nicht mehr als humanitäres, sondern als Sicherheitsproblem gerahmt und behandelt.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Konditionalität</span><span class="glossary-def">EU-Fördergelder und Entwicklungshilfe an Bedingungen knüpfen, z. B. Rechtsstaatlichkeit oder Kooperation bei Rücknahme von Migranten.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Vernetzte Sicherheit</span><span class="glossary-def">„Whole-of-Government"-Ansatz: militärische Stabilisierung, polizeiliche Ausbildung und zivile Aufbauhilfe miteinander verknüpft.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Zeitenwende</span><span class="glossary-def">Von Scholz geprägter Begriff für den Epochenwechsel nach dem 24.2.2022: 100-Mrd.-Sondervermögen, Abkehr von außenpolitischen Tabus.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Integrierte Sicherheit</span><span class="glossary-def">Umfassendes Sicherheitskonzept: Diplomatie, Wirtschaft, Energieversorgung sowie Klima- und Umweltschutz ressortübergreifend verknüpft.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Resilienz statt Interdependenz</span><span class="glossary-def">Erkenntnis, dass einseitige Abhängigkeiten als Erpressungsmittel genutzt werden können → Fokus auf Widerstandsfähigkeit und Diversifizierung.</span></div>
+      <div class="glossary-item"><span class="glossary-term">Systemrivalität</span><span class="glossary-def">Einordnung autoritärer Staaten (China, Russland) nicht mehr nur als Partner, sondern als Akteure alternativer, nicht-demokratischer Governance-Modelle.</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 10. LERNKARTEN -->
+  <!-- ============================================================ -->
+  <section id="lernkarten" class="section">
+    <div class="section-eyebrow">Az. X · Selbsttest</div>
+    <h1 class="section-title">Lernkarten</h1>
+    <p class="section-subtitle">Karte antippen, um die Antwort zu sehen — nochmal antippen für die Frage zurück.</p>
+
+    <div class="flashcard-grid" id="flashcardGrid">
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was bedeutet „Zivilmacht" nach dem Drei-Pfeiler-Modell?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer"><strong>„Never again"</strong> (Absage an Machtpolitik), <strong>„Never alone"</strong> (Handeln nur im Bündnis), <strong>„Politics before force"</strong> (Primat der Politik vor dem Militärischen).</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was besagt die Hallstein-Doktrin?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Die BRD bricht diplomatische Beziehungen zu Staaten ab, die die DDR anerkennen (Ausnahme: UdSSR) — ein völkerrechtliches Notwehrinstrument gegen den Verlust des Alleinvertretungsanspruchs.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was bedeutet „Wandel durch Annäherung"?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Egon Bahrs Formel (1963): Durch Kontakt und Handel sollen demokratische Veränderungen in kommunistischen Staaten gefördert werden — statt durch Konfrontation.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Welche drei Verträge bilden den Kern der Neuen Ostpolitik 1970–72?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Moskauer Vertrag (1970), Warschauer Vertrag (1970) und der Grundlagenvertrag mit der DDR (1972).</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Warum scheiterte die EVG, und was folgte daraus?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Die französische Nationalversammlung lehnte die Europäische Verteidigungsgemeinschaft 1954 ab. Folge: die Pariser Verträge brachten 1955 den NATO- und WEU-Beitritt der BRD als Ersatzlösung.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was unterscheidet Atlantiker von Gaullisten?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Atlantiker (Erhard, Schröder) priorisierten die Bindung an die USA/NATO; Gaullisten (Adenauer, Strauß) suchten eine engere Anlehnung an Frankreich unter de Gaulle.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was ist mit der „doppelten Westbindung" gemeint?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Die gleichzeitige Einbindung in die NATO (militärische Sicherheit) und in EWG/EU (wirtschaftlich-politische Integration mit Frankreich als Kern).</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was war die Stalin-Note von 1952?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Ein sowjetisches Angebot eines neutralen, wiedervereinigten Deutschlands — von Adenauer als Störmanöver gegen die Westintegration abgelehnt. Bis heute umstritten als mögliche „verpasste Chance".</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was bewirkte die Einheitliche Europäische Akte (1986)?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Sie schuf die Rechtsgrundlage für den Binnenmarkt, führte Mehrheitsentscheidungen im Rat ein und band die Europäische Politische Zusammenarbeit (EPZ) formell ein.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was bedeutet „Weltinnenpolitik"?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Ein von Weizsäcker/Eppler geprägter Begriff: In einer interdependenten Welt gibt es keine rein „äußeren" Angelegenheiten mehr — globale Probleme wie Hunger oder Umwelt werden wie innenpolitische Strukturprobleme behandelt.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was besagt Winklers These vom „deutschen Sonderweg"?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Deutschland war doppelt verspätet (Nationalstaat, Demokratie). Der Sonderweg endete 1945 (Reich) und zusätzlich 1990 (BRD/DDR) — seitdem ein „demokratischer, postklassischer Nationalstaat".</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was meint das Paradox „Souveränität durch Souveränitätsverzicht"?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Durch bewussten Verzicht auf formale Souveränitätsrechte (z. B. Beitritt zu NATO/EGKS) gewann die BRD reale Gestaltungsmacht und Gleichberechtigung — ein Grundmuster der gesamten Nachkriegsaußenpolitik.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was war der Harmel-Bericht (1967)?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Die NATO definierte sich neu durch das Doppel von militärischer Sicherheit und Entspannung — und ebnete damit den Weg für Brandts Ostpolitik innerhalb der Westbindung.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Wofür steht das „Junktim" in der Neuen Ostpolitik?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Die bewusste Verknüpfung: Die Ratifizierung der Ostverträge wurde an den erfolgreichen Abschluss des Vier-Mächte-Abkommens über Berlin gekoppelt.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was besagte das BVerfG-Urteil von 1994 und warum ist es bis heute relevant?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Bewaffnete Auslandseinsätze in Systemen kollektiver Sicherheit (UN, NATO, WEU) sind verfassungskonform — mit <strong>konstitutiver Zustimmung des Bundestages</strong>. Die Bundeswehr ist seitdem ein „Parlamentsheer".</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was ist der Unterschied zwischen „Nie wieder Krieg" und „Nie wieder Auschwitz"?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Das zentrale moralische Dilemma der 1990er: Joschka Fischer argumentierte (Kosovo 1999), die historische Lehre aus der NS-Vergangenheit schließe die <strong>Pflicht zum Schutz vor Völkermord ein</strong> — auch mit militärischen Mitteln.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was sind die Kopenhagener Kriterien?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">EU-Beitrittsbedingungen von 1993: 1. Institutionelle Stabilität (Demokratie, Rechtsstaat, Menschenrechte, Minderheitenschutz). 2. Funktionsfähige Marktwirtschaft. 3. Übernahme des gesamten <strong>Acquis communautaire</strong>.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was bedeutet „Wandel durch Verflechtung" und warum scheiterte das Konzept?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Leitkonzept Steinmeier/Merkel: enge wirtschaftlich-energetische Kooperation mit Russland soll politische Reformen anstoßen. Scheitern: Trotz massiver Investitionen (Nord Stream) blieb die erhoffte Liberalisierung Russlands aus — Krim 2014 und Ukraine-Invasion 2022 widerlegten die Grundannahme.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was entschied der NATO-Gipfel in Bukarest 2008?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Deutschland (gemeinsam mit Frankreich) verhinderte die Aufnahme der Ukraine und Georgiens in den <strong>Membership Action Plan (MAP)</strong> — um Moskau nicht zu provozieren. Im Rückblick eine der umstrittensten deutschen Außenpolitikentscheidungen.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was ist „Versicherheitlichung" von Migration?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Der Prozess (Securitization), durch den Migration nach 2015 nicht mehr als humanitäres, sondern als <strong>Sicherheitsproblem</strong> gerahmt wird — mit Folgen für die europäische Mittelmeer- und Außenpolitik: Externalisierung, Drittstaatendeals, Grenzschutz durch Autokraten.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was markierte die „Zeitenwende" (27. Februar 2022)?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Scholz' Bundestagsrede nach der russischen Invasion: <strong>100-Mrd.-Sondervermögen</strong> für die Bundeswehr, dauerhaftes <strong>2-Prozent-Ziel</strong> der NATO, Abkehr von bisherigen Tabus (Waffenlieferungen in Kriegsgebiete, Aufgabe von Nord Stream 2). Ende von „Wandel durch Handel".</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="face-front">
+          <div class="fc-label"><i class="ti ti-help-circle"></i>Frage</div>
+          <div class="fc-question">Was bedeutet „Resilienz statt Interdependenz"?</div>
+        </div>
+        <div class="face-back">
+          <div class="fc-label"><i class="ti ti-check"></i>Antwort</div>
+          <div class="fc-answer">Seit 2022 erkannte Leitprinzip: einseitige Abhängigkeiten (z. B. russisches Gas, chinesische Lieferketten) können als <strong>geopolitische Erpressungsmittel</strong> eingesetzt werden. Gegenmaßnahmen: Diversifizierung, LNG-Terminals, De-risking gegenüber China.</div>
+        </div>
+        <div class="fc-hint">Tippen zum Umdrehen</div>
+      </div>
+
+    </div>
+  </section>
+
+<footer class="site-footer">
+  <hr>
+  <p>Studiendossier · Deutsche Außenpolitik 1949–heute · zusammengestellt aus Vorlesungsunterlagen für die Klausurvorbereitung</p>
+</footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(function(sec) {
+      sec.style.display = (sec.id === id) ? 'block' : 'none';
+    });
+    document.querySelectorAll('.nav-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.section === id);
+    });
+    var main = document.querySelector('main.content');
+    if (main) { main.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    showSection('ueberblick');
+  });
+</script>
+
+</body>
+</html>

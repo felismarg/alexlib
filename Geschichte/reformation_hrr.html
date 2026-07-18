@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lernzettel: Das Alte Reich 1495–1618</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  :root {
+    --green-50:  #f0faf4;
+    --green-100: #d9f2e3;
+    --green-200: #b0e5c8;
+    --green-400: #4daf7c;
+    --green-500: #2e8f5e;
+    --green-700: #1a5e3d;
+    --green-900: #0f3825;
+    --amber:     #c07c1a;
+    --amber-bg:  #fef9ec;
+    --red-accent:#c0392b;
+    --red-bg:    #fdf2f2;
+    --ink:       #1e2a22;
+    --ink-soft:  #3d5245;
+    --muted:     #5e7a68;
+    --border:    #cde8d8;
+    --bg:        #f7fdf9;
+    --card-bg:   #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, var(--green-700) 0%, var(--green-500) 100%);
+    color: #fff;
+    padding: 2.2rem 2rem 1.6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 28px;
+    background: var(--bg);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  header h1 {
+    font-size: 2rem;
+    letter-spacing: .04em;
+    font-weight: 700;
+  }
+  header p {
+    font-family: sans-serif;
+    font-size: .9rem;
+    opacity: .82;
+    margin-top: .4rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  /* ── NAV TABS ── */
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: 1.2rem 1.5rem .8rem;
+    background: var(--bg);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav button {
+    font-family: sans-serif;
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: .4rem 1rem;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all .18s;
+  }
+  nav button:hover { background: var(--green-100); color: var(--green-700); }
+  nav button.active {
+    background: var(--green-500);
+    border-color: var(--green-500);
+    color: #fff;
+  }
+  nav button i { margin-right: .35rem; vertical-align: -2px; }
+
+  /* ── SECTIONS ── */
+  .section { display: none; padding: 2rem 1.5rem 3rem; max-width: 960px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  h2 {
+    font-size: 1.5rem;
+    color: var(--green-700);
+    margin-bottom: 1.2rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid var(--green-200);
+  }
+  h3 {
+    font-size: 1.1rem;
+    color: var(--green-700);
+    margin: 1.6rem 0 .6rem;
+    font-weight: 700;
+  }
+  p { margin-bottom: .9rem; }
+  strong { font-weight: 700; color: var(--green-900); }
+
+  /* ── THESIS BOX ── */
+  .thesis {
+    border-left: 5px solid var(--green-500);
+    background: var(--green-50);
+    padding: 1rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.2rem 0;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .thesis .label {
+    font-family: sans-serif; font-size: .72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: var(--green-500); font-style: normal; display: block;
+    margin-bottom: .3rem;
+  }
+
+  /* ── KLAUSUR WARNING ── */
+  .klausur {
+    border-left: 5px solid var(--amber);
+    background: var(--amber-bg);
+    padding: 1rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.4rem 0;
+  }
+  .klausur .label {
+    font-family: sans-serif; font-size: .72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: var(--amber); display: block; margin-bottom: .3rem;
+  }
+
+  /* ── RED PROBLEM BOX ── */
+  .problem {
+    border-left: 5px solid var(--red-accent);
+    background: var(--red-bg);
+    padding: 1rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.2rem 0;
+  }
+  .problem .label {
+    font-family: sans-serif; font-size: .72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: var(--red-accent); display: block; margin-bottom: .3rem;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 1rem 0; border-radius: 8px; border: 1.5px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  thead { background: var(--green-700); color: #fff; font-family: sans-serif; }
+  thead th { padding: .6rem .9rem; text-align: left; font-weight: 600; font-size: .8rem; letter-spacing: .05em; }
+  tbody tr:nth-child(even) { background: var(--green-50); }
+  tbody td { padding: .55rem .9rem; vertical-align: top; border-bottom: 1px solid var(--border); }
+  tbody tr:last-child td { border-bottom: none; }
+
+  /* ── TIMELINE ── */
+  .timeline { margin: 1rem 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 0 1rem;
+    margin-bottom: .7rem;
+    align-items: start;
+  }
+  .tl-date {
+    font-family: sans-serif; font-size: .82rem; font-weight: 700;
+    color: var(--green-500); padding-top: .1rem;
+    text-align: right; white-space: nowrap;
+  }
+  .tl-text {
+    border-left: 2.5px solid var(--green-200);
+    padding-left: .9rem;
+    font-size: .9rem;
+  }
+  .tl-text strong { display: block; font-size: .95rem; }
+
+  /* ── GLOSSAR ── */
+  .glossar {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .glossar-item {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: .9rem 1rem;
+  }
+  .glossar-term {
+    font-family: sans-serif; font-weight: 700; font-size: .88rem;
+    color: var(--green-700); margin-bottom: .3rem;
+  }
+  .glossar-def { font-size: .87rem; color: var(--ink-soft); }
+
+  /* ── CARDS GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: .9rem;
+    margin-top: 1rem;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    font-size: .9rem;
+  }
+  .card-title {
+    font-family: sans-serif; font-weight: 700; font-size: .8rem;
+    text-transform: uppercase; letter-spacing: .06em;
+    color: var(--green-500); margin-bottom: .5rem;
+  }
+
+  /* ── FLASHCARDS ── */
+  .flash-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+  .flash-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    min-height: 140px;
+    cursor: pointer;
+    padding: 1.1rem 1.2rem;
+    position: relative;
+    transition: box-shadow .15s, transform .12s;
+    user-select: none;
+  }
+  .flash-card:hover { box-shadow: 0 4px 16px rgba(46,143,94,.15); transform: translateY(-2px); }
+  .flash-front, .flash-back { width: 100%; }
+  .flash-back { display: none; }
+  .flash-card.flipped .flash-front { display: none; }
+  .flash-card.flipped .flash-back { display: block; }
+  .flash-card.flipped { background: var(--green-50); border-color: var(--green-400); }
+  .flash-q {
+    font-weight: 700; color: var(--green-700); font-size: .95rem; margin-bottom: .4rem;
+  }
+  .flash-hint {
+    font-family: sans-serif; font-size: .72rem; color: var(--muted); position: absolute;
+    bottom: .7rem; right: .9rem;
+  }
+  .flash-a { font-size: .88rem; color: var(--ink-soft); }
+  .flash-a strong { color: var(--green-700); }
+
+  /* two-col layout */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  @media(max-width:600px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* section intro tag */
+  .eyebrow {
+    font-family: sans-serif; font-size: .72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--green-400);
+    margin-bottom: .3rem; display: block;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1><i class="ti ti-crown"></i> Das Alte Reich 1495–1618</h1>
+  <p>Von den Reichsreformen bis zum Vorabend des Dreißigjährigen Krieges</p>
+</header>
+
+<nav>
+  <button class="active" onclick="showSection('reichsreform')"><i class="ti ti-building-fortress"></i>Reichsreform</button>
+  <button onclick="showSection('habsburger')"><i class="ti ti-crown"></i>Habsburger & Karl V.</button>
+  <button onclick="showSection('reformation')"><i class="ti ti-bible"></i>Reformation</button>
+  <button onclick="showSection('religionsfrieden')"><i class="ti ti-scale"></i>Religionsfrieden</button>
+  <button onclick="showSection('konfession')"><i class="ti ti-swords"></i>Konfess. Zeitalter</button>
+  <button onclick="showSection('dreissig')"><i class="ti ti-flame"></i>30-jähr. Krieg</button>
+  <button onclick="showSection('glossar')"><i class="ti ti-book"></i>Glossar</button>
+  <button onclick="showSection('flashcards')"><i class="ti ti-cards"></i>Lernkarten</button>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     1. REICHSREFORM
+════════════════════════════════════════════════ -->
+<section id="reichsreform" class="section active">
+  <span class="eyebrow">Thema 1</span>
+  <h2><i class="ti ti-building-fortress"></i> Reichsreformen um 1495</h2>
+
+  <div class="thesis">
+    <span class="label"><i class="ti ti-quote"></i> Kernthese</span>
+    Der Wormser Reichstag 1495 ist der institutionelle Urknall des frühneuzeitlichen Reiches: Er verrechtlichte Konflikte, schuf bleibende Institutionen – und zementierte den Dualismus zwischen Kaiser und Ständen.
+  </div>
+
+  <h3>Maximilian I. – Eckdaten</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Aspekt</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Lebensdaten</strong></td><td>1459–1519, Sohn Friedrichs III.</td></tr>
+        <tr><td><strong>Burgundische Ehe</strong></td><td>1477 Maria von Burgund → Einstieg in westeuropäische Großpolitik</td></tr>
+        <tr><td><strong>Titel</strong></td><td>Ab 1486 Röm. König; ab 1508 „erwählter Kaiser" (ohne päpstl. Krönung)</td></tr>
+        <tr><td><strong>Motto</strong></td><td><em>Bella gerant alii, tu felix Austria nube</em> – Heiratspolitik als Machtmittel</td></tr>
+        <tr><td><strong>Nachfolger</strong></td><td>Enkel Karl V. (1519)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Ergebnisse des Wormser Reichstags 1495</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Reform</th><th>Inhalt</th><th>Bestand?</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ewiger Landfriede</strong></td><td>Verbot privater Fehde; Rechtspflicht statt Faustrecht</td><td>✅ dauerhaft</td></tr>
+        <tr><td><strong>Reichskammergericht</strong></td><td>Oberstes Gericht, unabhängig vom Kaiser</td><td>✅ dauerhaft</td></tr>
+        <tr><td><strong>Reichsregiment</strong></td><td>Ständischer Regierungsrat</td><td>⚠️ nur 1500–02 &amp; 1521–31</td></tr>
+        <tr><td><strong>Gemeiner Pfennig</strong></td><td>Allgemeine Reichssteuer</td><td>❌ scheiterte</td></tr>
+        <tr><td><strong>Reichskreise</strong></td><td>Regionale Verwaltungseinheiten (später 10)</td><td>✅ dauerhaft</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="klausur">
+    <span class="label"><i class="ti ti-alert-triangle"></i> Klausurhinweis</span>
+    <strong>Dualismus Kaiser – Stände:</strong> Maximilian wollte zentralisierte Monarchie (Burgund-Modell); die Stände wollten Mitwirkungsrechte. Das Ergebnis war <em>immer ein Kompromiss</em> – kein Sieger. Diese Spannung zieht sich durch das gesamte 16. Jahrhundert!
+  </div>
+
+  <h3>Aufbau des Reichstags (nach Reichsmatrikel 1521)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Kollegium</th><th>Mitglieder</th><th>Besonderheit</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kurfürstenrat</strong></td><td>7 Kurfürsten (3 geistl. + 4 weltl.)</td><td>Vorsitz: Erzbischof von Mainz (Erzkanzler)</td></tr>
+        <tr><td><strong>Fürstenrat</strong></td><td>50 geistl. + 24 weltl. Virilstimmen + Kuriatstimmen</td><td>Vorsitz: Österreich oder Salzburg</td></tr>
+        <tr><td><strong>Städterat</strong></td><td>85 Freie und Reichsstädte</td><td>Ab 1648 formal gleichberechtigt</td></tr>
+        <tr><td><strong>Nicht vertreten</strong></td><td>Reichsritterschaft, Reichsdörfer</td><td>Reichsunmittelbar, aber kein Sitz!</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="thesis">
+    <span class="label"><i class="ti ti-info-circle"></i> Merksatz</span>
+    Das Reich war eine <strong>„gemischte Verfassung"</strong> (<em>status mixtus</em>): monarchische (Kaiser), aristokratische (Fürsten) und oligarchische (Kurfürsten) Elemente wirkten zusammen. Es gab keinen Souverän im modernen Sinne.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     2. HABSBURGER & KARL V.
+════════════════════════════════════════════════ -->
+<section id="habsburger" class="section">
+  <span class="eyebrow">Thema 2</span>
+  <h2><i class="ti ti-crown"></i> Die Habsburger und die Wahl Karls V. (1519)</h2>
+
+  <div class="thesis">
+    <span class="label"><i class="ti ti-quote"></i> Kernthese</span>
+    Die Kaiserwahl 1519 zeigt den Dualismus in Reinform: Karl V. versteht sein Amt als universale Ordnungsmacht – die Kurfürsten nutzen die Wahlkapitulation, um das Reich als ständisch strukturierten Verband zu sichern.
+  </div>
+
+  <h3>Die Kaiserwahl 1519 – Dramatischer Wahlkampf</h3>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-user"></i> Karl I. von Spanien</div>
+      Habsburger, Enkel Maximilians. Finanziert von <strong>Jacob Fugger</strong> mit über 500.000 Gulden. Gewählt 28. Juni 1519. Krönung 1520 in Aachen.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-user"></i> Franz I. von Frankreich</div>
+      Hauptkonkurrent. Unterlag trotz Bestechungsversuchen. → Begründet die <strong>habsburgisch-französische Rivalität</strong> für Jahrzehnte.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-coin"></i> Jacob Fugger</div>
+      Augsburger Bankier. Finanzierte die Wahl. Zeigt: Hohe Politik war abhängig von großen Handelsgesellschaften. Karls wirtschaftliche Abhängigkeit als Folge.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-file-text"></i> Wahlkapitulation 1519</div>
+      Erste Wahlkapitulation der Geschichte. Reichsämter für Deutsche, kein fremdes Kriegsvolk. Beginnt <strong>Konstitutionalisierung des Reiches</strong>.
+    </div>
+  </div>
+
+  <h3>Vergleich: Kaiser vs. Stände – Grundspannung</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Kaiser (Karl V.)</th><th>Reichsstände</th></tr></thead>
+      <tbody>
+        <tr><td>Universalmonarchie, eine Christenheit</td><td>Ständische Libertät, territoriale Autonomie</td></tr>
+        <tr><td>Zentralisierung nach burgundischem Vorbild</td><td>Mitwirkungsrechte, Wahlkapitulation als Schranke</td></tr>
+        <tr><td>Religiöse Einheit als Herrschaftsbasis</td><td>Nutzung der Religionskrise für Machtgewinn</td></tr>
+        <tr><td>Kaisertum als gottgewollte Ordnung</td><td>Reich als Konsensverband, nicht Einheitsstaat</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Reichstag zu Worms 1521</h3>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">1521</div>
+      <div class="tl-text"><strong>Reichsmatrikel</strong> – Festlegung der ständischen Beiträge zu Steuern und Heerfolge</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">1521</div>
+      <div class="tl-text"><strong>Luther vor dem Reichstag</strong> – Verweigert den Widerruf seiner Lehren</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">8. Mai 1521</div>
+      <div class="tl-text"><strong>Wormser Edikt</strong> – Reichsacht über Luther, Verbot seiner Schriften</div>
+    </div>
+  </div>
+
+  <div class="klausur">
+    <span class="label"><i class="ti ti-alert-triangle"></i> Klausurhinweis</span>
+    Karl V. war ab 1521 überwiegend abwesend vom Reich. Deshalb konnte das Wormser Edikt nicht konsequent durchgesetzt werden – das war <strong>strukturell</strong>, nicht nur politisch bedingt. Der Kaiser brauchte die Stände für Türken- und Frankreichkriege, konnte also nicht gleichzeitig gegen sie vorgehen.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     3. REFORMATION
+════════════════════════════════════════════════ -->
+<section id="reformation" class="section">
+  <span class="eyebrow">Thema 3</span>
+  <h2><i class="ti ti-bible"></i> Beginn der Reformation und ihre Folgen</h2>
+
+  <div class="thesis">
+    <span class="label"><i class="ti ti-quote"></i> Kernthese</span>
+    Die Reformation war kein rein theologisches Ereignis – sie griff tief in die <strong>Verfassungskrise des Reiches</strong> ein und wurde zum Hebel fürstlicher Machtausdehnung gegenüber Kaiser und Papst.
+  </div>
+
+  <h3>Ursachen der Reformation – Mehrschichtig</h3>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-church"></i> Theologisch</div>
+      Ablasshandel (1517), Kritik am Papsttum, Sehnsucht nach <em>Erneuerung der Christenheit</em>. Luthers Grundsatz: <strong>Sola Fide, Sola Scriptura</strong>.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-printer"></i> Medial</div>
+      Der <strong>Buchdruck</strong> machte Luthers Schriften massenwirksam. Ohne Gutenberg keine Reformation in dieser Form.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-coin"></i> Finanziell</div>
+      <strong>Albrecht von Brandenburg</strong> und der Ablasshandel: Kirchliche Gelder flossen nach Rom. Antiklerikale Stimmung im Reich.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-building-community"></i> Sozial</div>
+      Bauernkrieg 1524/25 als Versuch, Luthers Freiheitsbegriff sozial umzusetzen. Luther distanzierte sich – Fürstenreformation als Folge.
+    </div>
+  </div>
+
+  <h3>Luthers Hauptschriften 1520</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Schrift</th><th>Kernaussage</th></tr></thead>
+      <tbody>
+        <tr><td><em>An den christlichen Adel...</em></td><td>Appell an weltliche Fürsten, die Kirchenreform zu übernehmen</td></tr>
+        <tr><td><em>Von der babylonischen Gefangenschaft der Kirche</em></td><td>Kritik am Sakramentensystem; 7 Sakramente auf 2 reduziert</td></tr>
+        <tr><td><em>Von der Freiheit eines Christenmenschen</em></td><td>Rechtfertigung allein durch Glauben; Freiheit des Gewissens</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Fürstenreformation – Machtverlagerung</h3>
+  <div class="thesis">
+    <span class="label"><i class="ti ti-info-circle"></i> Schlüsselkonzept</span>
+    Ab ca. 1525 übernahmen Landesherren die Führung des reformatorischen Prozesses: <strong>landesherrliches Kirchenregiment</strong> – der Fürst als „Notbischof". Papst ausgeschaltet, Kaiser verliert religiöse Aufsicht, territoriale Staatsbildung gefördert.
+  </div>
+
+  <h3>Zeitleiste: Von Luther zum Schmalkaldischen Bund</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">1517</div><div class="tl-text"><strong>Ablassstreit</strong> – Beginn der öffentlichen Auseinandersetzung</div></div>
+    <div class="tl-item"><div class="tl-date">1521</div><div class="tl-text"><strong>Wormser Edikt</strong> – Reichsacht über Luther</div></div>
+    <div class="tl-item"><div class="tl-date">1524/25</div><div class="tl-text"><strong>Bauernkrieg</strong> – Soziale Eruption; Luther distanziert sich</div></div>
+    <div class="tl-item"><div class="tl-date">1526</div><div class="tl-text"><strong>1. Reichstag zu Speyer</strong> – Wormser Edikt vorläufig ausgesetzt</div></div>
+    <div class="tl-item"><div class="tl-date">1529</div><div class="tl-text"><strong>2. Reichstag zu Speyer</strong> – „Protestation" der Evangelischen → Name „Protestanten"</div></div>
+    <div class="tl-item"><div class="tl-date">1530</div><div class="tl-text"><strong>Reichstag Augsburg</strong> – Verlesung der <em>Confessio Augustana</em></div></div>
+    <div class="tl-item"><div class="tl-date">1531</div><div class="tl-text"><strong>Schmalkaldischer Bund</strong> – Verteidigungsbündnis: Landgraf Philipp v. Hessen + Kurfürst Johann Friedrich v. Sachsen</div></div>
+  </div>
+
+  <div class="problem">
+    <span class="label"><i class="ti ti-alert-circle"></i> Kernproblem</span>
+    Der Schmalkaldische Bund verknüpfte erstmals <strong>religiöse Überzeugungen mit politisch-militärischer Organisation</strong> – ein „Gegen-Körper" zum Kaiser innerhalb des Reichs. Das war verfassungsrechtlich eine Neuheit.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     4. AUGSBURGER RELIGIONSFRIEDEN
+════════════════════════════════════════════════ -->
+<section id="religionsfrieden" class="section">
+  <span class="eyebrow">Thema 4</span>
+  <h2><i class="ti ti-scale"></i> Vom Schmalkaldischen Krieg zum Augsburger Religionsfrieden</h2>
+
+  <div class="thesis">
+    <span class="label"><i class="ti ti-quote"></i> Kernthese</span>
+    Der militärische Sieg Karls V. im Schmalkaldischen Krieg blieb politisch folgenlos. Der <strong>Augsburger Religionsfrieden 1555</strong> gibt die Idee des <em>Corpus Christianum</em> auf und macht rechtliche Koexistenz zweier Konfessionen zur Basis der Reichsverfassung.
+  </div>
+
+  <h3>Weg zum Frieden – Zeitleiste</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">1546–47</div><div class="tl-text"><strong>Schmalkaldischer Krieg</strong> – Karl V. siegt bei Mühlberg; Anführer des Bundes gefangen</div></div>
+    <div class="tl-item"><div class="tl-date">1548</div><div class="tl-text"><strong>Augsburger Interim</strong> – Kaiserliches Religionsdiktat mit kath. Tendenz → breiter Widerstand</div></div>
+    <div class="tl-item"><div class="tl-date">Jan. 1552</div><div class="tl-text"><strong>Vertrag von Chambord</strong> – Aufstandsfürsten unter Moritz v. Sachsen verbünden sich mit Frankreich</div></div>
+    <div class="tl-item"><div class="tl-date">Aug. 1552</div><div class="tl-text"><strong>Passauer Vertrag</strong> – Karl flieht aus Innsbruck; politischer Waffenstillstand; Interim faktisch außer Kraft</div></div>
+    <div class="tl-item"><div class="tl-date">Sept. 1555</div><div class="tl-text"><strong>Augsburger Religionsfrieden</strong> – Ausgehandelt von Ferdinand I. (nicht Karl!)</div></div>
+  </div>
+
+  <h3>Die vier Kernbestimmungen des Augsburger Religionsfriedens</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Begriff</th><th>Inhalt</th><th>Sprengkraft</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Ius reformandi</strong><br><small>„Cuius regio, eius religio"</small></td>
+          <td>Landesherren bestimmen die Konfession in ihrem Gebiet</td>
+          <td>Nur Lutheraner; Calvinisten nicht geschützt!</td>
+        </tr>
+        <tr>
+          <td><strong>Ius emigrandi</strong></td>
+          <td>Untertanen dürfen bei Konfessionswechsel des Herrn mit Vermögen auswandern</td>
+          <td>Keine echte Toleranz – nur Auswanderungsrecht</td>
+        </tr>
+        <tr>
+          <td><strong>Reservatum ecclesiasticum</strong><br><small>(Geistlicher Vorbehalt)</small></td>
+          <td>Konvertierter Bischof verliert Amt und Territorium</td>
+          <td>Von Protestanten nie anerkannt → Kölnischer Krieg 1583!</td>
+        </tr>
+        <tr>
+          <td><strong>Declaratio Ferdinandea</strong></td>
+          <td>Protestantische Adlige in geistl. Territorien nicht zur Konversion gezwungen</td>
+          <td>Von Katholiken nie offiziell anerkannt; blieb latenter Konfliktherd</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="klausur">
+    <span class="label"><i class="ti ti-alert-triangle"></i> Klausurhinweis</span>
+    <strong>Dissimulation:</strong> Der Frieden überspielte unlösbare theologische Fragen durch <em>absichtlich mehrdeutige Formeln</em>. Er war ein politischer, kein theologischer Frieden. Ohne Einigung in der Sache – nur Einigung darüber, die Sache offenzulassen. Das erklärt die späteren Konflikte!
+  </div>
+
+  <h3>Schlüsselfiguren</h3>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-user"></i> Moritz von Sachsen</div>
+      Zunächst auf Kaisers Seite → dann Anführer des Fürstenaufstands 1552. „Friedensmacher von Passau". Starb 1553 in der Schlacht bei Sievershausen.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-user"></i> Ferdinand I.</div>
+      Bruder Karls V. Handelte den Passauer Vertrag und den Augsburger Frieden aus. Karl V. dankte 1556 ab; Ferdinand wurde Kaiser.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     5. KONFESSIONELLES ZEITALTER
+════════════════════════════════════════════════ -->
+<section id="konfession" class="section">
+  <span class="eyebrow">Thema 5</span>
+  <h2><i class="ti ti-swords"></i> Das Konfessionelle Zeitalter 1555–1618</h2>
+
+  <div class="thesis">
+    <span class="label"><i class="ti ti-quote"></i> Kernthese</span>
+    Das Reich um 1600 leidet unter <strong>„gestörter Kommunikation"</strong>: Der Augsburger Frieden wird nicht mehr als Konsensplattform, sondern als konfessionelle Waffe genutzt. Reichstag und Gerichte versagen → Bildung außerverfassungsrechtlicher Bündnisse.
+  </div>
+
+  <h3>„Sollbruchstellen" des Augsburger Religionsfriedens</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Problemfeld</th><th>Inhalt und Sprengkraft</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Calvinismus nicht eingeschlossen</strong></td><td>Nur „Augsburgische Konfessionsverwandte" geschützt. Ab 1561 wechseln immer mehr Fürsten zum Calvinismus (Pfalz 1561, Hessen-Kassel 1605, Brandenburg 1613) → wachsende Rechtsunsicherheit</td></tr>
+        <tr><td><strong>Geistlicher Vorbehalt</strong></td><td>Protestanten erkannten ihn nie an → direkter Weg zum Truchsessischen Krieg 1583</td></tr>
+        <tr><td><strong>Normaljahr-Problem</strong></td><td>Welche Situation gilt als Ausgangspunkt für territoriale Besitzstände? Strittig bis 1648!</td></tr>
+        <tr><td><strong>Declaratio Ferdinandea</strong></td><td>Von Katholiken nie anerkannt; latenter Konfliktherd in geistlichen Territorien</td></tr>
+        <tr><td><strong>Kirchengutfrage</strong></td><td>Wer hat Anspruch auf nach 1552 säkularisierte Güter? → Restitutionsedikt 1629</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Die Zweite Reformation – Calvinismus als neue Kraft</h3>
+  <div class="thesis">
+    <span class="label"><i class="ti ti-info-circle"></i> Begriff (Heinz Schilling, 1986)</span>
+    Als <strong>Zweite Reformation</strong> bezeichnet man den Prozess, durch den lutherisch geprägte Territorien zum Calvinismus übergingen. Nicht nur Konfessionswechsel, sondern kultureller und politischer Wandel: Bildersturm, schärfere Kirchenzucht, internationale Vernetzung (Genf, Niederlande, England, Hugenotten).
+  </div>
+
+  <h3>Der Truchsessische Krieg 1583–1588 (Kölnischer Krieg)</h3>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-user"></i> Auslöser</div>
+      Kölner Erzbischof <strong>Gebhard Truchsess von Waldburg</strong> konvertiert 1582 zum Calvinismus, heiratet, will Amt behalten → klarer Verstoß gegen Geistlichen Vorbehalt.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-scale"></i> Strategische Bedeutung</div>
+      Köln war Kurerzstift: Konversion hätte Stimmverhältnis im Kurfürstenkolleg von 4:3 kath. auf 3:4 prot. verschoben → Wahl katholischer Kaiser in Gefahr!
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-sword"></i> Ausgang</div>
+      Spanische Truppen entscheiden den Krieg; <strong>Ernst von Bayern</strong> (Wittelsbach) wird Erzbischof. Geistlicher Vorbehalt faktisch bestätigt. Wittelsbacher Hegemonie in NW-Deutschland.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-trending-up"></i> Folgen</div>
+      Protestanten erkennen: Augsburger Frieden schützt sie nicht zuverlässig. Treibt Bündnissuche voran → langfristig: Protestantische Union 1608.
+    </div>
+  </div>
+
+  <h3>Donauwörther Handel 1606/07 – Auslöser für die Union</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">Apr. 1606</div><div class="tl-text"><strong>Prozessionsstreit</strong> – Kath. Prozession in evang. Reichsstadt gewaltsam aufgelöst</div></div>
+    <div class="tl-item"><div class="tl-date">Dez. 1607</div><div class="tl-text"><strong>Reichsexekution</strong> – Maximilian I. von Bayern beauftragt, die Reichsacht zu vollstrecken</div></div>
+    <div class="tl-item"><div class="tl-date">Jan. 1608</div><div class="tl-text"><strong>Bayern besetzt Stadt</strong> – und gibt sie nicht zurück → eklatante Aneignung von Reichsvermögen</div></div>
+    <div class="tl-item"><div class="tl-date">1608</div><div class="tl-text"><strong>Reichstag ohne Abschluss</strong> – Erstmals in der Reichsgeschichte kein Reichsabschied → direkte Folge: Gründung der Protestantischen Union</div></div>
+  </div>
+
+  <h3>Union und Liga – Vergleich</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Merkmal</th><th>Protestantische Union (1608)</th><th>Katholische Liga (1609)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gründer</strong></td><td>Friedrich IV. von der Pfalz</td><td>Maximilian I. von Bayern</td></tr>
+        <tr><td><strong>Ort</strong></td><td>Auhausen, 4. Mai 1608</td><td>München, 10. Juli 1609</td></tr>
+        <tr><td><strong>Konfession</strong></td><td>Reformiert + Lutherisch (gemischt)</td><td>Katholisch (einheitlicher)</td></tr>
+        <tr><td><strong>Fehlende Mitglieder</strong></td><td>Kursachsen, Brandenburg</td><td>Kaiser (anfangs unabhängig von Habsburg)</td></tr>
+        <tr><td><strong>Militär</strong></td><td>Schwach; kein einheitliches Heer</td><td>Stark; Tilly als Feldherr</td></tr>
+        <tr><td><strong>Außenunterstützung</strong></td><td>England, Niederlande</td><td>Spanien, Papst</td></tr>
+        <tr><td><strong>Ende</strong></td><td>1621 aufgelöst nach Weißem Berg</td><td>1635 aufgelöst (Prager Frieden)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Habsburger Bruderzwist – Erosion von innen</h3>
+  <div class="problem">
+    <span class="label"><i class="ti ti-alert-circle"></i> Kernproblem</span>
+    <strong>Rudolf II.</strong> verfiel in politische Lähmung; Bruder <strong>Matthias</strong> erkaufte sich schrittweise die Herrschaft durch Religionskonzessionen an den protestantischen Adel. Der <strong>Majestätsbrief (9. Juli 1609)</strong> – Religionsfreiheit für böhmischen Adel – war das Ergebnis dieser Schwäche. Er wurde 1627 von Ferdinand II. vernichtet. Seine <em>vermeintliche Verletzung</em> löste 1618 den Prager Fenstersturz aus.
+  </div>
+
+  <div class="klausur">
+    <span class="label"><i class="ti ti-alert-triangle"></i> Klausurhinweis</span>
+    Die Gründung von Union und Liga war der <strong>Verfassungsbruch</strong>: Reichsfürsten organisierten sich in Kriegsallianzen, die an die Stelle der Reichsorgane traten. Das Reich spaltete sich in zwei feindliche Lager – der Weg in den Dreißigjährigen Krieg war strukturell vorgezeichnet.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     6. 30-JÄHRIGER KRIEG
+════════════════════════════════════════════════ -->
+<section id="dreissig" class="section">
+  <span class="eyebrow">Thema 6</span>
+  <h2><i class="ti ti-flame"></i> Der Dreißigjährige Krieg (1618–1648)</h2>
+
+  <div class="thesis">
+    <span class="label"><i class="ti ti-quote"></i> Kernthese</span>
+    Der Dreißigjährige Krieg entwickelte sich aus einem deutschen Verfassungs- und Religionskonflikt zum <strong>europäischen Hegemonialkrieg</strong>. Konfessionelle Motive traten zunehmend hinter Machtinteressen Frankreichs und Schwedens zurück.
+  </div>
+
+  <h3>Der Prager Fenstersturz – 23. Mai 1618</h3>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-map-pin"></i> Ort &amp; Hergang</div>
+      Prager Burg (Hradschin): Aufständische böhm. Adlige unter <strong>Graf Thurn</strong> werfen kais. Statthalter Slawata, Martinitz und Sekretär Fabricius aus dem Fenster (~17 m). Alle überleben.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-book"></i> Symbolik</div>
+      Bewusste Nachahmung hussitischer Tradition. Böhmische Stände rechtfertigten es als Notwehr gegen „jesuitische Tyrannei" (<em>Apologie</em>). Kein Zufall – sondern Standesbeschluss.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-alert-triangle"></i> Unmittelbarer Anlass</div>
+      Habsburg ließ in Braunau und Klostergrab protestantische Kirchen auf geistlichem Boden schließen. Protestanten beriefen sich auf Majestätsbrief; Kaiserliche: gilt nicht für geistliche Güter.
+    </div>
+  </div>
+
+  <h3>Kriegsphasen im Überblick (bis 1635)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Phase</th><th>Zeitraum</th><th>Hauptakteure</th><th>Ergebnis</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Böhmisch-Pfälzisch</strong></td><td>1618–1623</td><td>Friedrich V. (Winterkönig) vs. Kaiser + Liga</td><td>Weißer Berg 1620 → Rekatholisierung Böhmens; Friedrich verliert Kurwürde an Bayern</td></tr>
+        <tr><td><strong>Dänisch-Niedersächsisch</strong></td><td>1625–1629</td><td>Christian IV. von Dänemark vs. Tilly + Wallenstein</td><td>Friede von Lübeck; Restitutionsedikt 1629 auf dem Höhepunkt kaiserlicher Macht</td></tr>
+        <tr><td><strong>Schwedisch</strong></td><td>1630–1635</td><td>Gustav II. Adolf vs. Kaiser</td><td>Tod Gustavs bei Lützen 1632; Prager Friede 1635 (innerdeutsch)</td></tr>
+        <tr><td><strong>Schwedisch-Französisch</strong></td><td>1635–1648</td><td>Frankreich + Schweden vs. Habsburg</td><td>Westfälischer Friede 1648</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Wallenstein – Schlüsselfigur</h3>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-sword"></i> Militärsystem</div>
+      <strong>„Der Krieg ernährt den Krieg"</strong>: Besetzte Gebiete (unabhängig von Konfession) finanzieren das Heer durch Kontributionen. Revolutionary in der Kriegsführung, verheerend für Zivilbevölkerung.
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-user-x"></i> Zwei Absetzungen</div>
+      <strong>1630:</strong> Kurfürstentag zu Regensburg – Stände zwingen Ferdinand zur Entlassung (Bedrohung ständischer Libertät). <strong>1634:</strong> Ermordung in Eger auf Befehl des Kaisers (Hochverrat).
+    </div>
+  </div>
+
+  <h3>Das Restitutionsedikt 1629 – Der Brandbeschleuniger</h3>
+  <div class="problem">
+    <span class="label"><i class="ti ti-alert-circle"></i> Wendepunkt</span>
+    Ferdinand II. erließ das Edikt <strong>ohne Zustimmung eines Reichstags</strong>. Inhalt: Rückgabe aller geistlichen Güter, die seit 1552 (Passauer Vertrag) säkularisiert wurden → 2 Erzbistümer, 12 Bistümer, hunderte Klöster. Es trieb selbst gemäßigte Protestanten in die Opposition und bot Gustav II. Adolf die moralische Rechtfertigung für seine Intervention 1630.
+  </div>
+
+  <h3>Zeitleiste: Wichtige Ereignisse</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">23. Mai 1618</div><div class="tl-text"><strong>Prager Fenstersturz</strong> – Beginn des böhm. Aufstandes</div></div>
+    <div class="tl-item"><div class="tl-date">8. Nov. 1620</div><div class="tl-text"><strong>Weißer Berg</strong> – Ende der böhm. Ständemacht; Friedrich V. flieht</div></div>
+    <div class="tl-item"><div class="tl-date">1629</div><div class="tl-text"><strong>Restitutionsedikt</strong> – Höhepunkt kaiserlicher Macht + Brandbeschleuniger</div></div>
+    <div class="tl-item"><div class="tl-date">1630</div><div class="tl-text"><strong>Regensburger Kurfürstentag</strong> – Erste Entlassung Wallensteins</div></div>
+    <div class="tl-item"><div class="tl-date">1632</div><div class="tl-text"><strong>Lützen</strong> – Gustav II. Adolf fällt; schwedische Integrationsfigur weg</div></div>
+    <div class="tl-item"><div class="tl-date">1635</div><div class="tl-text"><strong>Prager Friede</strong> – Innerdeutscher Versuch; scheitert wg. Schweden + Frankreich</div></div>
+    <div class="tl-item"><div class="tl-date">1648</div><div class="tl-text"><strong>Westfälischer Friede</strong> – Endgültige Regelung</div></div>
+  </div>
+
+  <div class="klausur">
+    <span class="label"><i class="ti ti-alert-triangle"></i> Klausurhinweis</span>
+    Der Prager Friede 1635 scheiterte, weil er die <strong>ausländischen Mächte ignorierte</strong> (Schweden nicht entschädigt, Frankreich will habsburgische Vorherrschaft verhindern). Innerdeutsche Lösungen reichten nicht mehr aus – der Krieg war längst europäisch.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     7. GLOSSAR
+════════════════════════════════════════════════ -->
+<section id="glossar" class="section">
+  <span class="eyebrow">Nachschlagewerk</span>
+  <h2><i class="ti ti-book"></i> Glossar der Fachbegriffe</h2>
+
+  <div class="glossar">
+    <div class="glossar-item">
+      <div class="glossar-term">Ewiger Landfriede (1495)</div>
+      <div class="glossar-def">Verbot privater Fehde im Reich. Übergang von mittelalterlicher Fehde zur rechtlichen Konfliktlösung. Dauerhafter Bestandteil der Reichsverfassung.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Reichskammergericht</div>
+      <div class="glossar-def">Gegründet 1495. Oberstes Reichsgericht, unabhängig vom Kaiser. Schützte Untertanen vor Willkür und kleine Stände vor großen. Zentral für das Selbstverständnis des Reiches als Rechtsverband.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Wahlkapitulation</div>
+      <div class="glossar-def">Schriftlicher Vertrag zw. Kurfürsten und gewähltem König vor der Krönung. Erste 1519 für Karl V. Begrenzte Kaisermacht und sicherte ständische Privilegien. Schritt zur Konstitutionalisierung des Reiches.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Ius reformandi</div>
+      <div class="glossar-def">Das „Reformationsrecht" der Landesherren: Sie bestimmen die Konfession in ihrem Territorium. Kern des Augsburger Religionsfriedens 1555. Später als „Cuius regio, eius religio" bekannt.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Reservatum ecclesiasticum</div>
+      <div class="glossar-def">„Geistlicher Vorbehalt" im Augsburger Frieden: Ein zum Protestantismus konvertierter Bischof verliert Amt und Territorium. Von Protestanten nie anerkannt → Truchsessischer Krieg 1583.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Declaratio Ferdinandea</div>
+      <div class="glossar-def">Geheime Zusicherung Ferdinands I.: Protestanten in geistlichen Territorien werden nicht zur Konversion gezwungen. Von Katholiken nie offiziell anerkannt.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Ius emigrandi</div>
+      <div class="glossar-def">Recht der Untertanen, bei Konfessionswechsel des Landesherrn unter Mitnahme ihres Vermögens auszuwandern. Keine moderne Religionsfreiheit – nur Auswanderungsrecht.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Konfessionalisierung</div>
+      <div class="glossar-def">Forschungsbegriff (Schilling/Reinhard): Prozess der Ausbildung stabiler konfessioneller Identitäten im 16./17. Jh., die religiöse, politische und soziale Strukturen prägten. Erfasste alle drei Konfessionen.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Zweite Reformation</div>
+      <div class="glossar-def">Begriff von Heinz Schilling (1986): Übergang lutherischer Territorien zum Calvinismus ab den 1560ern. Nicht nur Konfessionswechsel, sondern kultureller Wandel. Calvinisten waren im Augsburger Frieden NICHT geschützt.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Fürstenreformation</div>
+      <div class="glossar-def">Ab ca. 1525 übernahmen Landesherren die Führung des Reformationsprozesses und organisierten die Kirche in eigener Regie → landesherrliches Kirchenregiment. Schwächte Papst und Kaiser; stärkte territoriale Staatsbildung.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Schmalkaldischer Bund</div>
+      <div class="glossar-def">Verteidigungsbündnis protestant. Stände ab 27. Feb. 1531. Anführer: Philipp v. Hessen + Johann Friedrich v. Sachsen. Verband religiöse Überzeugungen mit militärischer Organisation → neuer Typus des Widerstands.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Augsburger Interim (1548)</div>
+      <div class="glossar-def">Kaiserliches Religionsdiktat nach dem Schmalkaldischen Krieg, mit kath. Tendenz. Scheiterte an breitem Widerstand der Stände → führte zum Fürstenaufstand 1552.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Restitutionsedikt (1629)</div>
+      <div class="glossar-def">Erlass Ferdinands II. ohne Reichstag: Rückgabe aller seit 1552 säkularisierten Kirchengüter (2 Erzbistümer, 12 Bistümer, hunderte Klöster). Politischer Brandbeschleuniger; rechtfertigte Schwedens Eingriff 1630.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Dissimulation</div>
+      <div class="glossar-def">Strategie im Reichsverfassungsrecht: Unlösbare Probleme durch absichtlich mehrdeutige Formeln überspielen. Charakteristisch für den Augsburger Frieden 1555 → programmierter Unfrieden.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Defenestration von Prag</div>
+      <div class="glossar-def">Prager Fenstersturz, 23. Mai 1618: Böhm. Adlige werfen kais. Statthalter aus dem Fenster (~17 m). Alle überleben. Symbolischer Beginn des Dreißigjährigen Krieges. Kein spontaner Akt – Standesbeschluss.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Majestätsbrief (1609)</div>
+      <div class="glossar-def">Rudolf II. gewährt böhm. Adel und kgl. Städten weitgehende Religionsfreiheit. Ergebnis des Bruderzwists. Wurde 1627 von Ferdinand II. vernichtet. Seine Verletzung löste 1618 die böhm. Rebellion aus.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">„Der Krieg ernährt den Krieg"</div>
+      <div class="glossar-def">Wallensteins Prinzip der Heeresfinanzierung: Besetzte Gebiete zahlen Kontributionen für den Unterhalt der Truppen, unabhängig von ihrer Konfession. Revolutionär effizient, verheerend für Zivilbevölkerung.</div>
+    </div>
+    <div class="glossar-item">
+      <div class="glossar-term">Teutsche Libertät</div>
+      <div class="glossar-def">Recht der Reichsstände auf Mitwirkung an der Reichsregierung und autonome Herrschaft in den eigenen Territorien. Radikaler Widerspruch zu Karls V. Universalmonarchie-Plänen.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     8. FLASHCARDS
+════════════════════════════════════════════════ -->
+<section id="flashcards" class="section">
+  <span class="eyebrow">Interaktiv lernen</span>
+  <h2><i class="ti ti-cards"></i> Lernkarten</h2>
+  <p style="font-family:sans-serif;font-size:.88rem;color:var(--muted);margin-bottom:.5rem;">
+    <i class="ti ti-hand-click"></i> Klicke auf eine Karte, um die Antwort zu sehen. Nochmals klicken dreht zurück.
+  </p>
+
+  <div class="flash-grid">
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Was beschloss der Wormser Reichstag 1495 und warum ist er so wichtig?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a"><strong>Ewiger Landfriede</strong> (Fehdeverbot), <strong>Reichskammergericht</strong>, erste Ansätze einer Reichssteuer. Er ist der institutionelle Ausgangspunkt der Reichsreform und markiert den Übergang zu rechtlicher Konfliktlösung.</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Was war eine Wahlkapitulation und warum ist die von 1519 historisch bedeutsam?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">Schriftlicher Vertrag, in dem der Gewählte vor der Krönung Rechte der Stände bestätigen musste. Die erste Wahlkapitulation (1519 für Karl V.) begrenzte die Kaisermacht und begann die <strong>Konstitutionalisierung des Reiches</strong>.</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Was bedeutet „Cuius regio, eius religio" und was ist der Haken dabei?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">„Wessen Land, dessen Religion" – der Landesherr bestimmt die Konfession seines Gebiets (<em>Ius reformandi</em>). <strong>Haken:</strong> Nur Lutheraner sind geschützt. Calvinisten (Reformierte) sind ausdrücklich ausgenommen → wachsende Rechtsunsicherheit ab 1560er Jahren.</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Was ist der „Geistliche Vorbehalt" und warum war er ein „Sprengsatz"?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">Klausel im Augsburger Frieden: Ein zum Protestantismus konvertierter Bischof verliert Amt und Territorium. Protestanten erkannten ihn <strong>nie an</strong>. → Direkter Weg zum Truchsessischen Krieg 1583 (Kölner Erzbischof Gebhard Truchsess konvertiert).</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Warum scheiterte Karl V. trotz seines militärischen Sieges im Schmalkaldischen Krieg?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">Das <strong>Augsburger Interim (1548)</strong> stieß auf breiten Widerstand der Stände. Der <strong>Fürstenaufstand 1552</strong> unter Moritz von Sachsen zwang Karl zur Flucht aus Innsbruck. Militärischer Sieg ≠ politischer Sieg – die „teutsche Libertät" konnte nicht gebrochen werden.</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Was war die „Zweite Reformation" und warum destabilisierte sie das Reich?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">Begriff von Heinz Schilling: lutherische Territorien wechseln zum <strong>Calvinismus</strong> (Pfalz 1561, Hessen-Kassel 1605, Brandenburg 1613). Da Calvinisten im Augsburger Frieden <strong>nicht geschützt</strong> waren, entstand wachsende Rechtsunsicherheit und Konfliktstoff.</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Was war der Donauwörther Handel und warum führte er zur Gründung der Protestantischen Union?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">Streit um kath. Prozession in evang. Reichsstadt (1606/07). Maximilian von Bayern vollstreckte Reichsexekution und behielt die Stadt. Der Reichstag 1608 scheiterte erstmals ohne Abschluss. Protestanten erkannten: <strong>Der Rechtsschutz des Reiches funktioniert nicht mehr</strong> → Selbsthilfe durch Bündnis (Union, 4. Mai 1608).</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Was war der Majestätsbrief (1609) und wie wurde er zum Auslöser des Dreißigjährigen Krieges?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">Rudolf II. gewährte böhm. Adel und kgl. Städten Religionsfreiheit – Ergebnis des Bruderzwists (Schwäche Rudolfs). <strong>1618:</strong> Habsburg ließ protestantische Kirchen auf geistlichem Boden schließen → Böhmen betrachtete das als Verstoß gegen den Brief → <strong>Prager Fenstersturz</strong>.</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Was war das Restitutionsedikt 1629 und warum wirkte es als „Brandbeschleuniger"?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">Ferdinand II. erließ es <strong>ohne Reichstag</strong>: Rückgabe aller seit 1552 säkularisierten Kirchengüter (2 Erzbistümer, 12 Bistümer, hunderte Klöster). Trieb gemäßigte Protestanten in die Opposition und gab Gustav II. Adolf die moralische Rechtfertigung für seinen Einmarsch 1630.</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Wer war Wallenstein und was bedeutete sein Prinzip „Der Krieg ernährt den Krieg"?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">Böhmischer Adliger, kaiserlicher Generalissimus. Stellte dem Kaiser ein riesiges Heer auf eigene Kosten. Finanzierung durch <strong>Kontributionen</strong>: Besetzte Gebiete (unabhängig von Konfession) zahlen für den Heeresbedarf. Revolutionär, aber verheerend für die Zivilbevölkerung. 1634 ermordet.</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Warum scheiterte der Prager Friede 1635 als Friedenslösung?</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">Er war eine rein <strong>innerdeutsche</strong> Lösung (Kaiser + Sachsen). Schweden wurde nicht entschädigt, Frankreich wollte habsburgische Vorherrschaft verhindern. Beide traten offen in den Krieg ein → erst der <strong>Westfälische Frieden 1648</strong> (unter Einschluss der Außenmächte) beendete den Krieg.</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+    <div class="flash-card" onclick="this.classList.toggle('flipped')">
+      <div class="flash-front">
+        <div class="flash-q">Erkläre den Begriff „Dissimulation" im Kontext des Augsburger Religionsfriedens.</div>
+        <span class="flash-hint">Klicken für Antwort ↩</span>
+      </div>
+      <div class="flash-back">
+        <div class="flash-a">Strategie, unlösbare theologische Probleme durch <strong>absichtlich mehrdeutige Formeln</strong> zu überspielen. Der Friede 1555 war ein politischer, kein theologischer Kompromiss – die Wahrheitsfrage blieb bewusst offen. Das machte ihn kurzfristig möglich, aber langfristig instabil → „programmierter Unfrieden".</div>
+        <span class="flash-hint">Klicken zum Zurückdrehen ↩</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>

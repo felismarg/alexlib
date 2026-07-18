@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Krieg und Frieden seit 1945 — MC-Quiz</title>
+<style>
+  :root {
+    --bg: #1a1c23;
+    --card: #24262f;
+    --card-border: #34374a;
+    --accent: #d97757;
+    --accent-soft: #d9775733;
+    --text: #e8e6e1;
+    --text-dim: #9b9a96;
+    --correct: #5fa86b;
+    --correct-bg: #5fa86b22;
+    --wrong: #c25450;
+    --wrong-bg: #c2545022;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px 14px 60px;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  h1 {
+    font-size: 1.3rem;
+    margin: 0 0 4px;
+    font-weight: 650;
+  }
+  .subtitle { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 18px; }
+
+  .topbar {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;
+  }
+  select, button {
+    font-family: inherit;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  select:focus, button:focus { outline: 1px solid var(--accent); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 10px 8px;
+    text-align: center;
+  }
+  .stat .num { font-size: 1.3rem; font-weight: 700; }
+  .stat .label { font-size: 0.7rem; color: var(--text-dim); margin-top: 2px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 14px;
+  }
+  .progress-track {
+    height: 6px;
+    background: var(--card-border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width .3s;
+  }
+  .topic-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 3px 9px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .question {
+    font-size: 1.05rem;
+    line-height: 1.45;
+    margin-bottom: 16px;
+    font-weight: 550;
+  }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #2c2f3a;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 11px 13px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    transition: background .15s, border-color .15s;
+  }
+  .option:hover:not(.locked) { border-color: var(--accent); }
+  .option .letter {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--card-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700;
+  }
+  .option.correct { background: var(--correct-bg); border-color: var(--correct); }
+  .option.correct .letter { background: var(--correct); }
+  .option.wrong { background: var(--wrong-bg); border-color: var(--wrong); }
+  .option.wrong .letter { background: var(--wrong); }
+  .option.locked { cursor: default; }
+
+  .explain {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    background: #2c2f3a;
+    border-left: 3px solid var(--accent);
+    display: none;
+  }
+  .explain.show { display: block; }
+  .explain b { color: var(--accent); }
+
+  .nextbtn {
+    margin-top: 16px;
+    width: 100%;
+    background: var(--accent);
+    color: #1a1c23;
+    border: none;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    display: none;
+  }
+  .nextbtn.show { display: block; }
+
+  .done-card { text-align: center; padding: 30px 18px; }
+  .done-card .big { font-size: 2.2rem; font-weight: 800; margin: 6px 0; }
+  .restart {
+    margin-top: 16px;
+    background: var(--accent);
+    color: #1a1c23;
+    border: none;
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 10px;
+  }
+  .weakbox {
+    text-align: left;
+    background: #2c2f3a;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 16px;
+    font-size: 0.85rem;
+  }
+  .weakbox div { padding: 4px 0; border-bottom: 1px solid var(--card-border); }
+  .weakbox div:last-child { border-bottom: none; }
+
+  footer { text-align: center; color: var(--text-dim); font-size: 0.72rem; margin-top: 30px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Krieg und Frieden seit 1945</h1>
+  <div class="subtitle">Multiple-Choice-Quiz · 10 Sitzungen · Klausurvorbereitung</div>
+
+  <div class="topbar">
+    <select id="topicSelect"></select>
+    <button id="shuffleBtn" title="Reihenfolge mischen">🔀 Mischen</button>
+    <button id="resetProgressBtn" title="Fortschritt zurücksetzen">↺ Reset</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="num" id="statTotal">0</div><div class="label">Fragen</div></div>
+    <div class="stat"><div class="num" id="statCorrect">0</div><div class="label">Richtig</div></div>
+    <div class="stat"><div class="num" id="statPercent">0%</div><div class="label">Quote</div></div>
+  </div>
+
+  <div id="quizArea"></div>
+
+  <footer>Lokaler Fortschritt wird nur in dieser Sitzung gespeichert (kein Browser-Storage verwendet).</footer>
+</div>
+
+<script>
+const QUESTIONS = [
+// ===== SAVAGE CONTINENT =====
+{topic:"Savage Continent", q:"Welche Aussage trifft auf Europa nach Mai 1945 am ehesten zu?",
+ options:["Mit der deutschen Kapitulation endete jegliche Gewalt in Europa schlagartig.","Der Großmächtekrieg endete, aber zahlreiche kleinere Konflikte liefen teils bis in die 1950er Jahre weiter.","Nur in Deutschland kam es noch zu Nachkriegsgewalt.","Die Gewalt verlagerte sich vollständig nach Asien."],
+ correct:1, explain:"Kernthese: 'Stunde Null' ist ein Mythos. Bürgerkriege, Racheakte, ethnische Säuberungen und antikommunistischer Widerstand liefen unter der Oberfläche des Großmächtefriedens weiter."},
+{topic:"Savage Continent", q:"Wer lieferte im Mai 1945 fliehende Ustascha, Heimwehren und Tschetniks an Titos Partisanen aus?",
+ options:["Die Sowjetunion","Die Briten","Die US-Amerikaner","Die Franzosen"],
+ correct:1, explain:"Die Briten lieferten am 15. Mai 1945 die Kollaborateure aus → Massaker von Bleiburg/Kočevje, ~50.000–60.000 Tote."},
+{topic:"Savage Continent", q:"Wie nennt man die baltischen und ukrainischen antikommunistischen Partisanen bis in die 1950er Jahre?",
+ options:["Tschetniks","Waldbrüder","ELAS-Kämpfer","Heimwehren"],
+ correct:1, explain:"Waldbrüder = Baltikum/Ukraine. Tschetniks dagegen sind die serbischen Royalisten unter Mihailović (Balkan-Kontext)."},
+{topic:"Savage Continent", q:"Was vereinbarten Churchill und Stalin im Prozentabkommen (Okt. 1944) zu Griechenland?",
+ options:["90% sowjetische Einflusssphäre","90% britische Einflusssphäre","Gleichmäßige Aufteilung","UN-Verwaltung"],
+ correct:1, explain:"Griechenland = 90% britische Einflusssphäre (Rumänien dagegen 90% sowjetisch). Deshalb hielt sich Stalin im griechischen Bürgerkrieg zurück."},
+{topic:"Savage Continent", q:"Was ist laut Klausurhinweis der prüfungsrelevante Widerspruch bei den deutschen Vertreibungen?",
+ options:["Atlantik-Charta (1941) versprach Selbstbestimmung, Potsdam (1945) legitimierte Massenvertreibung.","Die UN-Charta verbot Vertreibungen, Potsdam ignorierte dies.","Stalin versprach freie Wahlen, hielt sich nicht daran.","Nürnberg verurteilte Vertreibungen nachträglich."],
+ correct:0, explain:"Klassischer Widerspruch: Selbstbestimmungsrecht der Völker (Atlantik-Charta) vs. legitimierte Massenvertreibung von Millionen Deutschen (Potsdam)."},
+{topic:"Savage Continent", q:"Wie viele Sudetendeutsche wurden aufgrund der Beneš-Dekrete vertrieben?",
+ options:["~7 Mio.","~3 Mio.","~1,8 Mio.","~482.000"],
+ correct:1, explain:"~3 Mio. Sudetendeutsche. Zum Vergleich: ~7 Mio. aus den dt. Ostgebieten, ~1,8 Mio. aus Ungarn/Jugoslawien/Rumänien, ~482.000 Ukrainer/Lemken (Operation Weichsel)."},
+{topic:"Savage Continent", q:"Was besagt der Begriff 'Stunde Null' laut Glossar?",
+ options:["Realer Neuanfang für ganz Europa ab Mai 1945.","Mythos eines sauberen Neuanfangs – gilt bestenfalls für Westeuropa, kaum für Osteuropa.","Beginn der UN-Charta-Verhandlungen.","Synonym für die Berlinkrise."],
+ correct:1, explain:"Zentrale Pointe: Während Westeuropa den Mythos pflegen konnte, ging die Gewalt in Osteuropa noch Jahre weiter."},
+{topic:"Savage Continent", q:"Wer war für das KZ Jasenovac (~100.000 Tote) verantwortlich?",
+ options:["Tito-Partisanen","Serbische Tschetniks","Ustascha","Slowenische Heimwehren"],
+ correct:2, explain:"Die Ustascha — kroatische faschistische Bewegung — betrieb das KZ Jasenovac."},
+{topic:"Savage Continent", q:"Was waren die Dekemvriana?",
+ options:["Friedensverhandlungen in Athen 1945","Dezemberkämpfe 1944 in Athen zwischen brit. Truppen/Regierung und ELAS-Partisanen","Das griechische Wahlsystem","Eine jugoslawische Widerstandsgruppe"],
+ correct:1, explain:"Dekemvriana: Die Polizei eröffnete am 3. Dez. 1944 das Feuer auf eine Demonstration in Athen — britische Truppen kämpften gegen ehemalige Widerstandskämpfer."},
+{topic:"Savage Continent", q:"Wann begann der griechische Bürgerkrieg und wer griff ein?",
+ options:["1946–1949, USA via Truman-Doktrin","1944–1945, UdSSR direkt","1950–1953, UNO","1948–1955, Frankreich"],
+ correct:0, explain:"1946–1949, USA greifen mit der Truman-Doktrin (1947) ein. Die Regierung siegt 1949 — erster heißer Konflikt des Kalten Krieges."},
+
+// ===== NEUE WELTORDNUNG =====
+{topic:"Neue Weltordnung", q:"Welche Konferenz beschloss die Teilung Deutschlands in 4 Besatzungszonen und die Oder-Neiße-Linie?",
+ options:["Teheran","Jalta","Potsdam","Atlantik-Charta"],
+ correct:1, explain:"Jalta (Feb. 1945): Teilung Deutschlands, Oder-Neiße-Linie, UNO-Vetorecht. Stalin verspricht (und bricht) demokratische Wahlen in Osteuropa."},
+{topic:"Neue Weltordnung", q:"Was wurde auf der Potsdamer Konferenz beschlossen?",
+ options:["Selbstbestimmungsrecht der Völker","D-Day-Zusage und Westverschiebung Polens","Billigung der deutschen Vertreibung und Beschluss zu Nürnberg","Gründung der NATO"],
+ correct:2, explain:"Potsdam (Jul./Aug. 1945): Truman (konfrontativer als Roosevelt) billigt die Vertreibung, beschließt Nürnberg-Prozesse, demonstriert die Atombombe gegenüber Stalin."},
+{topic:"Neue Weltordnung", q:"Wie viele Gründungsmitglieder hatte die UN-Charta (San Francisco, 26. Juni 1945)?",
+ options:["5","35","51","193"],
+ correct:2, explain:"51 Gründungsmitglieder; Sicherheitsrat mit Vetorecht für 5 ständige Mitglieder."},
+{topic:"Neue Weltordnung", q:"Welche Verbrechenskategorie war bei den Nürnberger Prozessen völlig neu?",
+ options:["Verbrechen gegen den Frieden","Kriegsverbrechen","Verbrechen gegen die Menschlichkeit","Hochverrat"],
+ correct:2, explain:"'Verbrechen gegen die Menschlichkeit' war völlig neu — Vorläufer des modernen Völkerstrafrechts. Kriegsverbrechen kodifizierten dagegen bereits bestehende Normen (Genfer Konventionen)."},
+{topic:"Neue Weltordnung", q:"Was bedeutet der Kritikpunkt 'Tu quoque' an Nürnberg?",
+ options:["Die Angeklagten wurden rückwirkend verurteilt.","Alliierte Kriegsverbrechen (Dresden, Hiroshima) blieben ungestraft.","Das Katyn-Massaker wurde nicht verhandelt.","Die Urteile waren zu milde."],
+ correct:1, explain:"Tu quoque ('auch du') = der Vorwurf, dass die Alliierten selbst Kriegsverbrechen begingen (Dresden, Hiroshima), diese aber nicht angeklagt wurden. Das Katyn-Beispiel ist dagegen der Vorwurf der 'Siegerjustiz'."},
+{topic:"Neue Weltordnung", q:"Welche Gruppe fällt NICHT unter die Genozid-Definition der Völkermordkonvention 1948?",
+ options:["Religiöse Gruppen","Ethnische Gruppen","Politische Gruppen","Nationale Gruppen"],
+ correct:2, explain:"Politische Gruppen wurden bewusst ausgeschlossen — die UdSSR blockierte ihre Aufnahme. Auch wirtschaftliche und rein kulturelle Vernichtung zählen nicht."},
+{topic:"Neue Weltordnung", q:"Was war der unmittelbare Anlass der Truman-Doktrin (12. März 1947)?",
+ options:["Die Berlinkrise","Griechenland und die Türkei","Der Koreakrieg","Die Kuba-Krise"],
+ correct:1, explain:"Anlass: Griechenland (Bürgerkrieg) und Türkei. Die USA beendeten damit ihre Isolationspolitik und versprachen Unterstützung gegen kommunistische Übernahmen."},
+{topic:"Neue Weltordnung", q:"Wie lange dauerte die Berliner Luftbrücke (1948/49)?",
+ options:["100 Tage","200 Tage","322 Tage","1 Jahr"],
+ correct:2, explain:"322 Tage, 200.000 Flüge, 2,3 Mio. Tonnen Fracht — Stalin scheiterte mit der Blockade."},
+{topic:"Neue Weltordnung", q:"Was besagt die Ismay-Formel der NATO?",
+ options:["'Peace through strength'","'Russians out, Americans in, Germans down'","'United we stand'","'Containment first'"],
+ correct:1, explain:"Lord Ismays Formel beschreibt den Doppelzweck der NATO-Gründung 1949: sowjetischen Einfluss raushalten, US-Präsenz sichern, Deutschland kleinhalten."},
+{topic:"Neue Weltordnung", q:"Wann wurde der Warschauer Pakt gegründet und warum?",
+ options:["1947, als Reaktion auf den Marshall-Plan","1949, gleichzeitig mit der NATO","1955, als Reaktion auf den BRD-NATO-Beitritt","1961, nach dem Mauerbau"],
+ correct:2, explain:"14. Mai 1955, als Reaktion auf den NATO-Beitritt der BRD. De facto UdSSR-dominiert, mit ständigem sowjetischem Marschall als Oberbefehlshaber."},
+
+// ===== KALTER KRIEG =====
+{topic:"Kalter Krieg", q:"Wer prägte den Begriff 'Pax atomica'?",
+ options:["Winston Churchill","Raymond Aron","George Kennan","Henry Kissinger"],
+ correct:1, explain:"Raymond Aron: Der durch wechselseitige nukleare Abschreckung (MAD) erzwungene Nicht-Krieg zwischen den Supermächten."},
+{topic:"Kalter Krieg", q:"In welcher Phase des Kalten Krieges fand die Kuba-Krise statt?",
+ options:["Konfrontation (1948–1962)","Détente (1962–1975)","Neuer Kalter Krieg (1976–1989)","Vor 1948"],
+ correct:0, explain:"Kuba-Krise 1962 markiert den Höhepunkt und gleichzeitig das Ende der Konfrontationsphase — danach beginnt die Détente."},
+{topic:"Kalter Krieg", q:"Was war der Deal, der die Kuba-Krise 1962 löste?",
+ options:["Sowjetischer Raketenabzug gegen geheimen Abzug der NATO-Jupiter-Raketen aus der Türkei.","Vollständiger Rückzug der USA aus Westeuropa.","UNO-Vermittlung mit neutraler Zone.","Sowjetischer Verzicht auf Kuba gegen US-Anerkennung Castros."],
+ correct:0, explain:"Kennedy bot am 27. Okt. 1962 einen Deal: sowjetischer Raketenabzug von Kuba gegen geheimen Abzug der NATO-Jupiter-Raketen aus der Türkei. Chruschtschow stimmte am 28. Okt. zu."},
+{topic:"Kalter Krieg", q:"Welches Schlüsselereignis kennzeichnet die Détente-Phase (1962–1975)?",
+ options:["NATO-Doppelbeschluss","Kuba-Krise","SALT I und KSZE-Schlussakte","Berlinkrise"],
+ correct:2, explain:"Détente: Entspannung, Rüstungskontrolle, friedliche Koexistenz — SALT I (1972) und KSZE-Schlussakte (1975) sind die Schlüsselereignisse."},
+{topic:"Kalter Krieg", q:"Was war die Strategie 'Massive Retaliation' und wer vertrat sie?",
+ options:["Kennedy: Abgestufte Reaktion je nach Angriffstyp","Eisenhower: Massiver Nuklearschlag auf jeden sowjetischen Angriff","Nixon: Vietnamisierung des Konflikts","Truman: Containment durch Wirtschaftshilfe"],
+ correct:1, explain:"Eisenhower-Strategie: massiver Nuklearschlag als Antwort auf jeden Angriff. Kennedys 'Flexible Response' ersetzte dies später durch abgestufte Reaktionen."},
+{topic:"Kalter Krieg", q:"Was wurde in der KSZE-Schlussakte von Helsinki (1975) vereinbart?",
+ options:["Abrüstung aller Atomwaffen","Anerkennung der Nachkriegsgrenzen + Menschenrechtsklauseln","Auflösung der NATO","Wiedervereinigung Deutschlands"],
+ correct:1, explain:"35 Staaten (inkl. USA, UdSSR, BRD, DDR) erkannten die Nachkriegsgrenzen an und vereinbarten Menschenrechtsklauseln."},
+{topic:"Kalter Krieg", q:"Was löste den NATO-Doppelbeschluss (Dez. 1979) aus?",
+ options:["Die Kuba-Krise","Sowjetische SS-20-Aufrüstung","Der Koreakrieg","Der Mauerbau"],
+ correct:1, explain:"Reaktion auf SS-20-Aufrüstung der UdSSR: neue NATO-Mittelstreckenraketen UND gleichzeitig ein Verhandlungsangebot — Beginn des 'Neuen Kalten Krieges'."},
+{topic:"Kalter Krieg", q:"Mit welchen Panzern war die Bundeswehr im Kalten Krieg ausgerüstet, mit welchen die NVA?",
+ options:["Beide mit Leopard-II","Bundeswehr: Leopard-II, NVA: sowjetische T-72","Bundeswehr: T-72, NVA: Leopard-II","Beide mit T-72"],
+ correct:1, explain:"Bundeswehr (NATO): Leopard-II, eingebettet in NORTHAG/CENTAG. NVA + GSSD (Warschauer Pakt): sowjetische T-72-Panzer."},
+
+// ===== DEKOLONISATION =====
+{topic:"Dekolonisation", q:"Was war laut Kernthese der zentrale Effekt des Kalten Krieges auf Dekolonisationskriege?",
+ options:["Er beendete sie schneller.","Er instrumentalisierte, internationalisierte und verlängerte primär lokal motivierte Konflikte.","Er hatte keinen Einfluss.","Er verhinderte sie komplett."],
+ correct:1, explain:"Dekolonisationskriege waren primär lokal motiviert (sozial, ethnisch, wirtschaftlich), wurden aber durch Glaubwürdigkeitsparadigma und Containment-Politik massiv verlängert."},
+{topic:"Dekolonisation", q:"Welches Land erlangte am 4. Juli 1946 friedlich seine Unabhängigkeit?",
+ options:["Indien","Indonesien","Philippinen","Kenia"],
+ correct:2, explain:"Philippinen: friedlich, bereits 1934 versprochen, von den USA. Indien folgte am 15. Aug. 1947 (mit ~1 Mio. Toten durch die Teilung), Indonesien gewaltsam am 27. Dez. 1949 (4 Jahre Krieg gegen die Niederlande)."},
+{topic:"Dekolonisation", q:"Was war die Kernursache des Mau-Mau-Konflikts in Kenia?",
+ options:["Religiöse Spaltung","Landknappheit Kikuyu vs. weiße Siedler","Sprachenstreit","Grenzkonflikt mit Tansania"],
+ correct:1, explain:"Landknappheit der Kikuyu gegenüber weißen Siedlern. Großbritannien siedelte über 1 Mio. Menschen zwangsweise in 'neue Dörfer' um — militärischer Sieg, aber politische Niederlage: Kenyatta wurde Präsident."},
+{topic:"Dekolonisation", q:"Was war der Briggs-Plan und wo wurde er angewendet?",
+ options:["Französische COIN-Strategie in Algerien","Britische COIN-Strategie in Malaya: Umsiedlung + Unabhängigkeitsversprechen","US-Strategie in Vietnam","Niederländische Strategie in Indonesien"],
+ correct:1, explain:"Briggs-Plan (Malayan Emergency, 1948–1960): Umsiedlung der chinesischen Minderheit + Unabhängigkeitsversprechen — galt als britischer Erfolg und Musterbeispiel für Counterinsurgency."},
+{topic:"Dekolonisation", q:"Was ist die 'Glaubwürdigkeitsfalle' im Kontext der Dekolonisation?",
+ options:["Die Furcht der Kolonien vor Unabhängigkeit","Der Zwang von GB/FR, gegenüber den USA als verlässliche Verbündete zu gelten — auch wenn militärisch sinnlos (z.B. Algerien).","Ein wirtschaftliches Abhängigkeitsverhältnis","Eine UN-Resolution zur Dekolonisation"],
+ correct:1, explain:"GB und Frankreich mussten beweisen, dass sie ein 'Abgleiten' ihrer Kolonien in den Kommunismus verhindern konnten — selbst wenn die Lage militärisch hoffnungslos war (Algerien!)."},
+{topic:"Dekolonisation", q:"Wie viele Tote forderte der Algerienkrieg (1954–1962) ungefähr?",
+ options:["~50.000","~100.000","500.000+","~10.000"],
+ correct:2, explain:"500.000+ Tote, Folter und Internierung waren öffentlich umstritten. Endete mit den Évian-Verträgen 1962 und der Unabhängigkeit."},
+{topic:"Dekolonisation", q:"Wer waren die Harkis?",
+ options:["Französische Kolonialtruppen","Algerische Soldaten auf französischer Seite, nach der Unabhängigkeit oft verfolgt/getötet","Eine kommunistische Partei in Malaya","Britische Siedler in Kenia"],
+ correct:1, explain:"Harkis: Algerische Soldaten, die auf französischer Seite kämpften. Nach der Unabhängigkeit Algeriens (1962) wurden viele von ihnen verfolgt oder getötet."},
+
+// ===== KOREA & VIETNAM =====
+{topic:"Korea & Vietnam", q:"Warum war eine UN-Intervention im Koreakrieg überhaupt möglich?",
+ options:["Weil China zustimmte","Weil die UdSSR den Sicherheitsrat gerade boykottierte","Weil Nordkorea selbst die UNO anrief","Weil die USA ein Vetorecht hatten"],
+ correct:1, explain:"Die UdSSR boykottierte zu diesem Zeitpunkt den Sicherheitsrat (wegen der Taiwan-Frage) und konnte daher ihr Veto nicht einlegen."},
+{topic:"Korea & Vietnam", q:"Was war das 'München-Syndrom' und wie wirkte es im Koreakrieg?",
+ options:["Die Angst der USA, durch Nachgiebigkeit wie 1938 in München erneut Aggression zu belohnen.","Eine Strategie zur Truppenrotation","Eine sowjetische Propagandakampagne","Eine UN-Resolution zu Deutschland"],
+ correct:0, explain:"US-Motivation im Koreakrieg: Vermeidung des 'München-Syndroms' — Glaubwürdigkeit musste bewiesen werden, um nicht wie 1938 Aggression durch Nachgeben zu belohnen."},
+{topic:"Korea & Vietnam", q:"An welchem Breitengrad wurde Vietnam 1954 (Genfer Indochinakonferenz) geteilt?",
+ options:["38. Breitengrad","17. Breitengrad","49. Breitengrad","30. Breitengrad"],
+ correct:1, explain:"17. Breitengrad — Ho Chi Minh im Norden, der US-gestützte Ngo Dinh Diem im Süden. (38. Breitengrad war die Waffenstillstandslinie in Korea!)"},
+{topic:"Korea & Vietnam", q:"Was war der Tonkin-Zwischenfall und welche Funktion hatte er?",
+ options:["Ein Seegefecht 1964, das als Vorwand für massiven US-Kriegseintritt diente.","Die letzte Schlacht des Vietnamkriegs","Ein Friedensabkommen","Ein Massaker an Zivilisten"],
+ correct:0, explain:"Tonkin-Zwischenfall (Aug. 1964): Seegefecht im Golf von Tonkin, das als Vorwand für die massive Ausweitung des US-Engagements diente — Beginn von 'Search and Destroy' unter General Westmoreland."},
+{topic:"Korea & Vietnam", q:"Warum gilt die Tet-Offensive (Jan. 1968) als psychologischer Wendepunkt, obwohl sie militärisch eine Niederlage für die NLF war?",
+ options:["Sie zeigte den USA, dass der Krieg militärisch nicht gewinnbar erschien — die US-Öffentlichkeit wandte sich ab.","Sie führte zur sofortigen Kapitulation Nordvietnams.","Sie beendete die Bombardierungen.","Sie war der erste Einsatz von Chemiewaffen."],
+ correct:0, explain:"Militärisch war die Tet-Offensive eine Niederlage für die NLF, aber psychologisch ein Wendepunkt: Die US-Öffentlichkeit erkannte, dass der Krieg nicht zu gewinnen war."},
+{topic:"Korea & Vietnam", q:"Was bedeutet 'Vietnamisierung' (Nixon-Doktrin)?",
+ options:["Vollständiger sofortiger US-Abzug ohne Bedingungen.","Abzug der US-Bodentruppen bei gleichzeitiger Stärkung südvietnamesischer Streitkräfte.","Direkte Eingliederung Vietnams in die USA.","Ein Bündnis zwischen Nord- und Südvietnam."],
+ correct:1, explain:"Nixon-Strategie: US-Bodentruppen abziehen, aber südvietnamesische Streitkräfte stärken, damit sie den Krieg selbst weiterführen können."},
+{topic:"Korea & Vietnam", q:"Warum war die Domino-Theorie laut Lernzettel eine Fehlwahrnehmung?",
+ options:["Weil sie zu spät entwickelt wurde.","Weil lokale Unabhängigkeitskämpfe primär nationale, keine globale kommunistische Agenda hatten.","Weil sie nie politisch einflussreich war.","Weil sie nur auf Europa angewendet wurde."],
+ correct:1, explain:"Die Annahme, dass der Fall eines Staates automatisch Nachbarstaaten 'umkippen' lässt, ignorierte, dass lokale Unabhängigkeitsbewegungen primär national motiviert waren — sie führte direkt ins Vietnam-Desaster."},
+{topic:"Korea & Vietnam", q:"Was beschreibt der Begriff 'Body Count' im Vietnamkrieg?",
+ options:["Die Anzahl evakuierter Zivilisten","Statistisches Maß für militärischen Erfolg durch Anzahl getöteter Gegner — erwies sich als kontraproduktiv.","Die Truppenstärke der USA","Eine medizinische Versorgungsstatistik"],
+ correct:1, explain:"Body Count als Erfolgsmaß führte zu Fehlanreizen und unterschätzte den asymmetrischen, politischen Charakter des Konflikts."},
+
+// ===== NAHOST =====
+{topic:"Nahost", q:"Was war die zentrale strukturelle Ursache des Nahost-Konflikts laut Lernzettel?",
+ options:["Religiöse Differenzen allein","'Zwei Völker – ein Land': Zionismus und arabischer Nationalismus beanspruchen dasselbe Territorium.","Eine direkte Großmächtekonfrontation","Wirtschaftliche Ressourcenkonkurrenz um Öl"],
+ correct:1, explain:"Strukturproblem: Zwei nationale Bewegungen beanspruchen dasselbe Territorium — jeder Gewinn der einen Seite wird als existenzbedrohender Verlust der anderen wahrgenommen."},
+{topic:"Nahost", q:"Was war die Folge des Unabhängigkeitskriegs 1948/49 für die Palästinenser?",
+ options:["Sie erhielten einen eigenen Staat.","Nakba: ~726.000 Palästinenser fliehen.","Sie wurden ins israelische Parlament integriert.","Es gab keine direkten Folgen für Palästinenser."],
+ correct:1, explain:"Nakba ('Katastrophe'): Flucht und Vertreibung von ~726.000 Palästinensern nach dem militärischen Sieg Israels."},
+{topic:"Nahost", q:"Was machte die Suez-Krise 1956 historisch so bedeutsam?",
+ options:["Sie war der erste arabisch-israelische Krieg.","USA und UdSSR zwangen gemeinsam Israel/GB/FR zum Rückzug — GB/FR verloren ihren Weltmacht-Status.","Sie führte zur Gründung der NATO.","Sie endete mit der Teilung Jerusalems."],
+ correct:1, explain:"Sehr hohe Prüfungsrelevanz! Erstmals agierten Ost und West gemeinsam gegen die europäischen Kolonialmächte. UNEF I war die erste bewaffnete UN-Friedenstruppe der Geschichte."},
+{topic:"Nahost", q:"Was löste den Sechstagekrieg 1967 aus, und was war das Ergebnis?",
+ options:["Suezkanal-Verstaatlichung; Israel verliert den Sinai.","Ägyptischer Truppenaufmarsch und Sperrung der Straße von Tiran; Israel erobert Gaza, Sinai, Westjordanland, Golan.","Ölembargo; Waffenstillstand ohne Gebietsänderung.","UN-Teilungsplan; Nakba."],
+ correct:1, explain:"Auslöser: ägyptischer Truppenaufmarsch + Sperrung der Straße von Tiran. Israel erobert Gaza, Sinai, Westjordanland und Golan — für die Araber die 'Naksa' (Rückschlag)."},
+{topic:"Nahost", q:"Was war das Ergebnis des Jom-Kippur-Kriegs 1973?",
+ options:["Vollständige israelische Niederlage","Waffenstillstand und Ölkrise; Sadat erkennt, dass der Sinai nur diplomatisch zurückzugewinnen ist.","Sofortige Gründung eines palästinensischen Staates","Auflösung der Arabischen Liga"],
+ correct:1, explain:"Waffenstillstand + globale Ölkrise. Wichtige Folgeerkenntnis Sadats: militärisch ist der Sinai nicht zurückzuholen — nur über Diplomatie (führt zum Friedensvertrag 1979)."},
+{topic:"Nahost", q:"Wer vermittelte den Friedensvertrag Israel–Ägypten 1979 und was war eine Folge?",
+ options:["Jimmy Carter (Camp David); Attentat auf Sadat 1981","UNO; sofortiger Friede in der gesamten Region","Sowjetunion; Abbruch aller US-Beziehungen zu Ägypten","Frankreich; Rückzug aus dem Sinai durch Israel ohne Gegenleistung"],
+ correct:0, explain:"Jimmy Carter vermittelte in Camp David 1978; der Vertrag 1979 beinhaltete die Sinai-Rückgabe. Ägypten war der erste arabische Staat, der Israel anerkannte — Folge: Attentat auf Sadat 1981."},
+{topic:"Nahost", q:"Was besagt UN-Resolution 242?",
+ options:["Teilungsplan für Palästina","'Land für Frieden': Israel gibt Land zurück, Araber geben Sicherheit und Anerkennung.","Gründung der PLO","Verbot von UN-Friedenstruppen im Nahen Osten"],
+ correct:1, explain:"'Land für Frieden' — bis heute die diplomatische Grundlage für Verhandlungen im Nahost-Konflikt."},
+
+// ===== STELLVERTRETERKRIEGE =====
+{topic:"Stellvertreterkriege", q:"Was bedeutet das 'Nullsummenspiel' in der Logik des Kalten Krieges?",
+ options:["Beide Supermächte verloren immer gleich viel.","Was eine Seite gewinnt, verliert die andere — kein Raum für neutrale Ergebnisse.","Die Stellvertreterkriege hatten keine Auswirkungen.","Es bezeichnet ein Wirtschaftsabkommen."],
+ correct:1, explain:"Nullsummenspiel: lokale Gewinne der einen Seite wurden automatisch als existenzielle Bedrohung der anderen Supermacht interpretiert — daher die massive globale Einmischung."},
+{topic:"Stellvertreterkriege", q:"Wer verhinderte 1975 in Angola die Machtübernahme der UNITA?",
+ options:["Südafrika","USA","Kuba (~35.000 Soldaten)","Die UN-Friedenstruppe"],
+ correct:2, explain:"Kuba unterstützte mit ~35.000 Soldaten die MPLA und verhinderte die UNITA-Machtübernahme. Agostinho Neto wurde am 11. Nov. 1975 erster Präsident Angolas."},
+{topic:"Stellvertreterkriege", q:"Wer unterstützte die UNITA in Angola?",
+ options:["UdSSR und DDR","USA und Südafrika","Kuba und China","Großbritannien und Frankreich"],
+ correct:1, explain:"UNITA (Jonas Savimbi, ethno-regional verankert) wurde von den USA und Südafrika unterstützt — Südafrika wollte kommunistischen Einfluss in Namibia eindämmen."},
+{topic:"Stellvertreterkriege", q:"Was war die kuriose Konstellation im äthiopisch-somalischen Krieg 1977/78?",
+ options:["Beide Staaten wurden gleichzeitig von den USA unterstützt.","Der frühere sowjetische Klient Somalia griff das neu von der UdSSR unterstützte Äthiopien an.","Kuba kämpfte gegen die UdSSR.","Es gab keine externe Einmischung."],
+ correct:1, explain:"Die UdSSR wechselte ihren Partner von Somalia zu Äthiopien (nach dem Sturz Haile Selassies). Somalia — zuvor von Moskau aufgerüstet — griff dennoch das äthiopische Ogaden-Gebiet an."},
+{topic:"Stellvertreterkriege", q:"Wie lange dauerte der sowjetische Krieg in Afghanistan (1979–1989) und wie wird er manchmal bezeichnet?",
+ options:["5 Jahre; 'sowjetisches Vietnam'","10 Jahre; 'sowjetisches Vietnam'","15 Jahre; 'Roter Krieg'","3 Jahre; 'Stalins Falle'"],
+ correct:1, explain:"Dez. 1979 – Feb. 1989, ca. 10 Jahre. ~1 Mio. getötete Afghanen, ~15.000 gefallene Sowjetsoldaten. Wird oft als 'sowjetisches Vietnam' bezeichnet."},
+{topic:"Stellvertreterkriege", q:"Welche Perspektive auf den Afghanistan-Einmarsch betont der Lernzettel als prüfungsrelevant?",
+ options:["Reiner Expansionismus ohne jede defensive Komponente.","Aus sowjetischer Sicht eher eine defensive Tat zur Verhinderung des Kontrollverlustes über ein instabiles Grenzregime.","Eine rein wirtschaftliche Motivation (Rohstoffe).","Eine direkte Reaktion auf den Vietnamkrieg."],
+ correct:1, explain:"Während der Westen den Einmarsch als sowjetischen Expansionismus deutete, war es aus sowjetischer Sicht eher eine defensive Maßnahme — diese Perspektivendifferenz ist klausurrelevant."},
+{topic:"Stellvertreterkriege", q:"Wer waren die Mudschaheddin?",
+ options:["Sowjetische Spezialeinheiten","Islamistische Widerstandskämpfer gegen die sowjetische Besatzung, massiv von USA/Saudi-Arabien finanziert.","Eine kubanische Eliteeinheit in Angola","Äthiopische Regierungstruppen"],
+ correct:1, explain:"Mudschaheddin: afghanische islamistische Widerstandskämpfer, massiv unterstützt von USA und Saudi-Arabien gegen die sowjetische Besatzung."},
+
+// ===== END OF HISTORY =====
+{topic:"End of History", q:"Was ist Fukuyamas 'End of History'-These und wodurch wurde sie widerlegt?",
+ options:["Sieg der liberalen Demokratie = Ende ideologischer Entwicklung; widerlegt durch die Jugoslawienkriege.","Ende aller Kriege; widerlegt durch den Golfkrieg.","Triumph des Kommunismus; widerlegt durch den Mauerfall.","Ewiger Frieden durch die UNO; widerlegt durch den Koreakrieg."],
+ correct:0, explain:"Fukuyama (1992): Mit dem Sieg der liberalen Demokratie sei die ideologische Entwicklung der Menschheit abgeschlossen. Schon kurz danach widerlegten die Jugoslawienkriege diese These."},
+{topic:"End of History", q:"Was geschah am 9. November 1989?",
+ options:["Auflösung des Warschauer Paktes","Fall der Berliner Mauer","Charta von Paris","Unterzeichnung der UN-Charta"],
+ correct:1, explain:"Fall der Berliner Mauer — Symbol des Endes des Kalten Krieges; kommunistische Regime brechen in ganz Osteuropa zusammen."},
+{topic:"End of History", q:"Was war Operation Desert Storm (1990/91)?",
+ options:["Sowjetischer Einmarsch in Afghanistan","Erste große militärische Aktion nach dem Kalten Krieg: breite UN-mandatierte Koalition gegen Iraks Invasion Kuwaits.","Der erste NATO-Kampfeinsatz ohne UN-Mandat","Eine Operation im Bosnienkrieg"],
+ correct:1, explain:"Reaktion auf die irakische Invasion Kuwaits (2. Aug. 1990). 956.000 Koalitionssoldaten, nur ~400 Koalitionsverluste, 100-stündige Bodenoffensive — zeigte kollektive Sicherheit unter UN-Mandat."},
+{topic:"End of History", q:"Was war das Massaker von Srebrenica (Juli 1995)?",
+ options:["Ein Massaker der NATO an serbischen Zivilisten.","Ermordung von über 8.000 muslimischen Männern/Jungen durch bosnische Serben unter Mladić in der UN-Schutzzone — erster Völkermord in Europa seit 1945.","Ein Anschlag der UÇK auf Belgrad.","Eine Vergeltungsaktion Kroatiens."],
+ correct:1, explain:"Über 8.000 muslimische Bosniaken ermordet, in einer eigentlich von der UNO geschützten Zone. Vom IGH als Völkermord eingestuft — erster in Europa seit 1945."},
+{topic:"End of History", q:"Was regelte das Dayton-Abkommen (1995) — und was löste es bewusst NICHT?",
+ options:["Teilte Bosnien in Föd. Bosnien-Herzegowina und Republika Srpska; löste die Kosovo-Frage bewusst nicht.","Beendete den gesamten Jugoslawienkonflikt vollständig.","Regelte die deutsche Wiedervereinigung.","Beendete den Irakkrieg."],
+ correct:0, explain:"Beendete den Bosnienkrieg durch Teilung Bosniens — die Kosovo-Frage blieb bewusst ausgeklammert und eskalierte 1998/99."},
+{topic:"End of History", q:"Was war an Operation Allied Force (NATO, 1999) historisch neu?",
+ options:["Erster NATO-Kampfeinsatz gegen einen souveränen Staat, ohne UN-Mandat — auch erste deutsche Kampfbeteiligung seit 1945.","Erster Einsatz von Bodentruppen im Kalten Krieg.","Erste gemeinsame Operation von NATO und Warschauer Pakt.","Erster UN-mandatierter Militäreinsatz überhaupt."],
+ correct:0, explain:"78-tägiger Luftkrieg gegen Serbien ohne UN-Mandat — begründet als humanitäre Intervention. Für Deutschland die erste Beteiligung an einem Kampfeinsatz seit 1945 (Fischer: 'Nie wieder Auschwitz')."},
+{topic:"End of History", q:"Was kennzeichnet laut Lernzettel die 'neue Weltordnung' nach 1991 im Vergleich zum Kalten Krieg?",
+ options:["Weiterhin Bipolarität, aber stabiler.","Keine Bipolarität mehr; statt Großmachtkonflikten ethnische Bürgerkriege ('New Wars'); NATO wandelt sich zum Interventionsinstrument.","Vollständiges Verschwinden bewaffneter Konflikte.","Rückkehr zur Kolonialordnung."],
+ correct:1, explain:"Unipolares US-Moment mit einem Machtvakuum, das alte Nationalismuskonflikte freisetzte. Neue Konflikttypen: ethnische Bürgerkriege statt Großmachtkonfrontation."}
+];
+
+let topics = ["Alle Themen", ...new Set(QUESTIONS.map(q=>q.topic))];
+let currentSet = [];
+let currentIndex = 0;
+let correctCount = 0;
+let answeredCount = 0;
+let wrongTopics = {};
+let locked = false;
+
+const topicSelect = document.getElementById('topicSelect');
+topics.forEach(t=>{
+  const opt = document.createElement('option');
+  opt.value = t; opt.textContent = t;
+  topicSelect.appendChild(opt);
+});
+
+function shuffle(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function buildSet(){
+  const t = topicSelect.value;
+  let pool = t === "Alle Themen" ? QUESTIONS.slice() : QUESTIONS.filter(q=>q.topic===t);
+  currentSet = shuffle(pool.slice());
+  currentIndex = 0; correctCount = 0; answeredCount = 0; wrongTopics = {};
+  renderStats();
+  renderQuestion();
+}
+
+function renderStats(){
+  document.getElementById('statTotal').textContent = answeredCount + "/" + currentSet.length;
+  document.getElementById('statCorrect').textContent = correctCount;
+  const pct = answeredCount ? Math.round(correctCount/answeredCount*100) : 0;
+  document.getElementById('statPercent').textContent = pct + "%";
+}
+
+function renderQuestion(){
+  locked = false;
+  const area = document.getElementById('quizArea');
+  if(currentIndex >= currentSet.length){
+    renderDone();
+    return;
+  }
+  const item = currentSet[currentIndex];
+  const letters = ['A','B','C','D'];
+  area.innerHTML = `
+    <div class="card">
+      <div class="progress-track"><div class="progress-fill" style="width:${(currentIndex/currentSet.length*100)}%"></div></div>
+      <div class="topic-tag">${item.topic}</div>
+      <div class="question">${item.q}</div>
+      <div class="options" id="optionsBox">
+        ${item.options.map((o,i)=>`
+          <div class="option" data-idx="${i}">
+            <div class="letter">${letters[i]}</div>
+            <div>${o}</div>
+          </div>`).join('')}
+      </div>
+      <div class="explain" id="explainBox"></div>
+      <button class="nextbtn" id="nextBtn">Weiter →</button>
+    </div>
+  `;
+  document.querySelectorAll('.option').forEach(el=>{
+    el.addEventListener('click', ()=>handleAnswer(el, item));
+  });
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    currentIndex++;
+    renderQuestion();
+  });
+}
+
+function handleAnswer(el, item){
+  if(locked) return;
+  locked = true;
+  answeredCount++;
+  const idx = parseInt(el.dataset.idx);
+  const opts = document.querySelectorAll('.option');
+  opts.forEach(o=>o.classList.add('locked'));
+  if(idx === item.correct){
+    el.classList.add('correct');
+    correctCount++;
+  } else {
+    el.classList.add('wrong');
+    opts[item.correct].classList.add('correct');
+    wrongTopics[item.topic] = (wrongTopics[item.topic]||0)+1;
+  }
+  const exp = document.getElementById('explainBox');
+  exp.innerHTML = `<b>Erklärung:</b> ${item.explain}`;
+  exp.classList.add('show');
+  document.getElementById('nextBtn').classList.add('show');
+  renderStats();
+}
+
+function renderDone(){
+  const pct = answeredCount ? Math.round(correctCount/answeredCount*100) : 0;
+  let weakHtml = '';
+  const entries = Object.entries(wrongTopics).sort((a,b)=>b[1]-a[1]);
+  if(entries.length){
+    weakHtml = `<div class="weakbox"><b>Schwachstellen (mehr Fehler):</b>` +
+      entries.map(([t,c])=>`<div>${t}: ${c} Fehler</div>`).join('') +
+      `</div>`;
+  }
+  document.getElementById('quizArea').innerHTML = `
+    <div class="card done-card">
+      <div>Quiz abgeschlossen</div>
+      <div class="big">${correctCount}/${currentSet.length}</div>
+      <div style="color:var(--text-dim)">${pct}% richtig</div>
+      ${weakHtml}
+      <button class="restart" id="restartBtn">Nochmal (neu gemischt)</button>
+    </div>
+  `;
+  document.getElementById('restartBtn').addEventListener('click', buildSet);
+}
+
+topicSelect.addEventListener('change', buildSet);
+document.getElementById('shuffleBtn').addEventListener('click', buildSet);
+document.getElementById('resetProgressBtn').addEventListener('click', buildSet);
+
+buildSet();
+</script>
+</body>
+</html>

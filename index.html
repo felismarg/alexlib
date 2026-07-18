@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexlib</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================
+  NEUE ZUSAMMENFASSUNG HINZUFÜGEN — so geht's:
+  ============================================================
+  1. HTML-Datei in den passenden Fach-Ordner legen, z.B.
+     /Geschichte/mein_neues_thema.html
+     (Bilder, die zu DIESER Seite gehören, liegen im selben Ordner.)
+
+  2. Unten im entsprechenden <div class="cards"> Block eine neue
+     Karte einfügen, nach diesem Muster:
+
+     <a class="card" href="Geschichte/mein_neues_thema.html">
+       <span class="card-tape"></span>
+       <h3>Titel der Zusammenfassung</h3>
+       <p class="card-note">Kurze Notiz, worum's geht (optional)</p>
+     </a>
+
+  3. Neues Fach? Einen neuen <section class="subject"> Block
+     kopieren (siehe unten) und im Nav oben einen Anker-Link
+     ergänzen.
+  ============================================================
+-->
+
+<style>
+  :root {
+    --paper: #f6ead8;
+    --paper-dark: #ecdcc2;
+    --ink: #2a1620;
+    --pink-deep: #7c2c4b;
+    --pink-mid: #c4527a;
+    --pink-light: #d97d9e;
+    --tape: #efcf93;
+    --tape-dark: #dcb877;
+    --shadow: rgba(42, 22, 32, 0.18);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(ellipse at top left, #fbf3e5 0%, var(--paper) 55%, var(--paper-dark) 100%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: "Karla", sans-serif;
+    line-height: 1.5;
+  }
+
+  /* subtle paper grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: repeating-linear-gradient(0deg, #000 0px, transparent 1px, transparent 2px);
+    z-index: 0;
+  }
+
+  a { color: inherit; }
+
+  /* ---------- Header ---------- */
+
+  header {
+    position: relative;
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 6px;
+    background: repeating-linear-gradient(90deg, var(--pink-deep) 0 14px, transparent 14px 28px);
+    opacity: 0.6;
+  }
+
+  .logo-stamp {
+    width: 76px;
+    height: 76px;
+    display: block;
+    margin: 0 auto 1rem;
+    transform: rotate(-6deg);
+    filter: drop-shadow(2px 3px 0 var(--shadow));
+  }
+
+  .logo-stamp img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  h1.brand {
+    font-family: "Special Elite", monospace;
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
+    color: var(--pink-deep);
+    margin: 0;
+    letter-spacing: 0.03em;
+    text-shadow: 2px 2px 0 rgba(124,44,75,0.12);
+  }
+
+  .tagline {
+    font-family: "Karla", sans-serif;
+    color: var(--ink);
+    opacity: 0.85;
+    margin: 1rem auto 0;
+    max-width: 480px;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* quick nav */
+  nav.toc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.8rem;
+  }
+
+  nav.toc a {
+    font-family: "Special Elite", monospace;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--pink-deep);
+    border: 1.5px dashed var(--pink-mid);
+    padding: 0.35rem 0.9rem;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.35);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  nav.toc a:hover, nav.toc a:focus-visible {
+    background: var(--pink-light);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* ---------- Subjects ---------- */
+
+  main {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  section.subject {
+    margin-top: 3.5rem;
+    scroll-margin-top: 1.5rem;
+  }
+
+  .subject-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--pink-deep);
+    color: #fdf3e7;
+    font-family: "Special Elite", monospace;
+    font-size: 1.15rem;
+    padding: 0.5rem 1.2rem 0.5rem 0.9rem;
+    border-radius: 3px 12px 3px 3px;
+    box-shadow: 3px 4px 0 var(--shadow);
+    position: relative;
+  }
+
+  .subject-tab .paw {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+
+  .subject-count {
+    font-family: "Karla", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0.75;
+    margin-left: 0.3rem;
+  }
+
+  .cards {
+    margin-top: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    background: #fffaf0;
+    border: 1px solid #e6d4b5;
+    border-radius: 2px;
+    padding: 1.4rem 1.2rem 1.2rem;
+    box-shadow: 4px 5px 0 var(--shadow);
+    clip-path: polygon(
+      0% 6px, 3% 0%, 8% 5px, 14% 0%, 20% 5px, 26% 0%, 32% 5px, 38% 0%,
+      44% 5px, 50% 0%, 56% 5px, 62% 0%, 68% 5px, 74% 0%, 80% 5px, 86% 0%,
+      92% 5px, 97% 0%, 100% 6px,
+      100% 100%, 0% 100%
+    );
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    color: var(--ink);
+  }
+
+  .card:hover, .card:focus-visible {
+    transform: translate(-2px, -4px) rotate(-0.6deg);
+    box-shadow: 6px 8px 0 var(--shadow);
+  }
+
+  .card-tape {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 64px;
+    height: 22px;
+    background: var(--tape);
+    border: 1px solid var(--tape-dark);
+    opacity: 0.85;
+    transform: translateX(-50%) rotate(-3deg);
+    box-shadow: 1px 2px 2px rgba(0,0,0,0.1);
+  }
+
+  .card h3 {
+    font-family: "Special Elite", monospace;
+    font-size: 1.02rem;
+    color: var(--pink-deep);
+    margin: 0.4rem 0 0.5rem;
+    line-height: 1.35;
+  }
+
+  .card-note {
+    font-size: 0.85rem;
+    color: #5a4350;
+    margin: 0;
+  }
+
+  .card-go {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-size: 0.75rem;
+    font-family: "Special Elite", monospace;
+    color: var(--pink-mid);
+  }
+
+  .card-go::after { content: " →"; }
+
+  /* ghost / "add new" card as a visual reminder */
+  .card.ghost {
+    background: transparent;
+    border: 2px dashed #d8bfa0;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #a98a72;
+    font-family: "Special Elite", monospace;
+    font-size: 0.85rem;
+    min-height: 100px;
+  }
+
+  .card.ghost:hover { transform: none; }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    text-align: center;
+    padding: 2.5rem 1rem 3rem;
+    font-family: "Special Elite", monospace;
+    font-size: 0.8rem;
+    color: var(--pink-deep);
+    opacity: 0.7;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, nav.toc a { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-stamp"><img src="assets/logo.png" alt="Alexlib Logo"></div>
+  <h1 class="brand">Alexlib</h1>
+  <p class="tagline">Heyho! Cool, dass du hierher gefunden hast. Hier findest du Lernzettel zu den verschiedensten Themen, die ich in der Uni hatte, denn ich glaube: Bildung sollte zugänglich sein. GaLiGrü und viel Glück! :) &lt;3</p>
+
+  <nav class="toc" aria-label="Fächer-Übersicht">
+    <a href="#englisch">Englisch</a>
+    <a href="#bildungswissenschaften">Bildungswissenschaften</a>
+    <a href="#geschichte">Geschichte</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===================== ENGLISCH ===================== -->
+  <section class="subject" id="englisch">
+    <div class="subject-tab">
+      <img class="paw" src="assets/logo.png" alt="">
+      Englisch <span class="subject-count">1 Karte</span>
+    </div>
+    <div class="cards">
+
+      <a class="card" href="Englisch/History_of_English.html">
+        <span class="card-tape"></span>
+        <h3>History of English</h3>
+        <p class="card-note">Sprachgeschichte im Überblick</p>
+        <span class="card-go">Öffnen</span>
+      </a>
+
+      <div class="card ghost">+ nächste Zusammenfassung</div>
+
+    </div>
+  </section>
+
+  <!-- ===================== BILDUNGSWISSENSCHAFTEN ===================== -->
+  <section class="subject" id="bildungswissenschaften">
+    <div class="subject-tab">
+      <img class="paw" src="assets/logo.png" alt="">
+      Bildungswissenschaften <span class="subject-count">1 Karte</span>
+    </div>
+    <div class="cards">
+
+      <a class="card" href="Bildungswissenschaften/psygrund_quiz.html">
+        <span class="card-tape"></span>
+        <h3>Psychologische Grundlagen — Quiz</h3>
+        <p class="card-note">Zum Selbsttest & Wiederholen</p>
+        <span class="card-go">Öffnen</span>
+      </a>
+
+      <div class="card ghost">+ nächste Zusammenfassung</div>
+
+    </div>
+  </section>
+
+  <!-- ===================== GESCHICHTE ===================== -->
+  <section class="subject" id="geschichte">
+    <div class="subject-tab">
+      <img class="paw" src="assets/logo.png" alt="">
+      Geschichte <span class="subject-count">5 Karten</span>
+    </div>
+    <div class="cards">
+
+      <a class="card" href="Geschichte/deutsche_außenpolitik.html">
+        <span class="card-tape"></span>
+        <h3>Deutsche Außenpolitik</h3>
+        <p class="card-note">Akteure &amp; politische Absichten</p>
+        <span class="card-go">Öffnen</span>
+      </a>
+
+      <a class="card" href="Geschichte/reformation_hrr.html">
+        <span class="card-tape"></span>
+        <h3>Reformation im HRR</h3>
+        <span class="card-go">Öffnen</span>
+      </a>
+
+      <a class="card" href="Geschichte/krieg-frieden-quiz.html">
+        <span class="card-tape"></span>
+        <h3>Krieg &amp; Frieden — Quiz</h3>
+        <p class="card-note">Zum Selbsttest & Wiederholen</p>
+        <span class="card-go">Öffnen</span>
+      </a>
+
+      <a class="card" href="Geschichte/Interregnum_undsoweiter.html">
+        <span class="card-tape"></span>
+        <h3>Interregnum und so weiter</h3>
+        <span class="card-go">Öffnen</span>
+      </a>
+
+      <a class="card" href="Geschichte/Krieg_und_Frieden_seit_1945.html">
+        <span class="card-tape"></span>
+        <h3>Krieg und Frieden seit 1945</h3>
+        <span class="card-go">Öffnen</span>
+      </a>
+
+      <div class="card ghost">+ nächste Zusammenfassung</div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+Gemacht und gepflegt von Felismarg. Wer das liest ist mausig :D
+</footer>
+
+</body>
+</html>
