@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -36,7 +35,7 @@
   .header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
   .header .subtitle { font-family: sans-serif; font-size: 0.85rem; opacity: 0.8; letter-spacing: 0.5px; }
   .header .meta { font-family: sans-serif; font-size: 0.78rem; opacity: 0.65; margin-top: 0.3rem; }
-
+ 
   nav {
     background: var(--cyan-800);
     display: flex; flex-wrap: wrap; gap: 2px;
@@ -53,11 +52,11 @@
   nav button:hover { background: rgba(255,255,255,0.12); color: white; }
   nav button.active { background: white; color: var(--cyan-800); }
   nav button i { font-size: 13px; }
-
+ 
   .content { max-width: 960px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
   .section { display: none; }
   .section.active { display: block; }
-
+ 
   h2 {
     font-size: 1.4rem; color: var(--cyan-800); border-bottom: 2px solid var(--cyan-200);
     padding-bottom: 0.4rem; margin: 1.8rem 0 1rem;
@@ -66,7 +65,7 @@
   h4 { font-size: 0.95rem; color: var(--slate-600); margin: 1rem 0 0.4rem; font-family: sans-serif; font-weight: 700; letter-spacing: 0.3px; }
   p { margin-bottom: 0.8rem; }
   strong { color: var(--cyan-800); }
-
+ 
   /* Thesis Box */
   .thesis-box {
     border-left: 4px solid var(--cyan-500);
@@ -81,7 +80,7 @@
     display: flex; align-items: center; gap: 5px;
   }
   .thesis-box p { margin: 0; font-style: italic; }
-
+ 
   /* Warning / Klausurhinweis */
   .warn-box {
     border-left: 4px solid var(--amber-700);
@@ -95,7 +94,7 @@
     color: var(--amber-700); margin-bottom: 0.4rem;
     display: flex; align-items: center; gap: 5px;
   }
-
+ 
   /* Danger */
   .danger-box {
     border-left: 4px solid var(--red-700);
@@ -109,7 +108,7 @@
     color: var(--red-700); margin-bottom: 0.4rem;
     display: flex; align-items: center; gap: 5px;
   }
-
+ 
   /* Success */
   .success-box {
     border-left: 4px solid var(--green-700);
@@ -117,7 +116,7 @@
     border-radius: 0 6px 6px 0;
     padding: 1rem 1.2rem; margin: 1rem 0;
   }
-
+ 
   /* Tables */
   .table-wrap { overflow-x: auto; margin: 0.8rem 0 1rem; }
   table {
@@ -133,7 +132,7 @@
   td { padding: 7px 12px; border-bottom: 1px solid var(--slate-200); vertical-align: top; }
   tr:nth-child(even) td { background: var(--slate-50); }
   tr:hover td { background: var(--cyan-50); }
-
+ 
   /* Timeline */
   .timeline { position: relative; margin: 1rem 0; }
   .timeline::before {
@@ -155,7 +154,7 @@
   }
   .tl-text { flex: 1; font-size: 0.9rem; }
   .tl-text strong { color: var(--slate-800); }
-
+ 
   /* Glossary */
   .glossary-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -170,7 +169,7 @@
     color: var(--cyan-800); margin-bottom: 0.3rem;
   }
   .gloss-def { font-size: 0.84rem; color: var(--slate-600); }
-
+ 
   /* Stats row */
   .stats-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 1rem 0; }
   .stat-card {
@@ -183,12 +182,12 @@
     font-family: sans-serif; display: block; margin-bottom: 4px;
   }
   .stat-label { font-family: sans-serif; font-size: 0.73rem; color: var(--slate-500); letter-spacing: 0.3px; }
-
+ 
   /* Section divider */
   .sec-divider {
     height: 1px; background: var(--slate-200); margin: 2rem 0;
   }
-
+ 
   /* Flashcards */
   .cards-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -221,7 +220,7 @@
   .flashcard { display: flex; flex-direction: column; }
   .card-front { display: flex; flex-direction: column; flex: 1; }
   .card-front .hint { margin-top: auto; }
-
+ 
   /* Two-col compare */
   .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 1rem 0; }
   .compare-col { background: white; border: 1px solid var(--slate-200); border-radius: 8px; padding: 1rem; }
@@ -229,7 +228,7 @@
   .compare-col ul { list-style: none; }
   .compare-col ul li { font-size: 0.86rem; padding: 4px 0; border-bottom: 1px solid var(--slate-100); display: flex; gap: 6px; }
   .compare-col ul li::before { content: '→'; color: var(--cyan-500); flex-shrink: 0; }
-
+ 
   @media (max-width: 600px) {
     .compare-grid { grid-template-columns: 1fr; }
     .timeline::before { left: 70px; }
@@ -239,13 +238,13 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="header">
   <h1><i class="ti ti-book" style="margin-right:8px"></i>Krieg und Frieden seit 1945</h1>
   <div class="subtitle">Interaktiver Lernzettel · Vorlesung</div>
   <div class="meta">Sitzungen 01–10 · Klausurrelevantes Kernwissen</div>
 </div>
-
+ 
 <nav id="nav">
   <button onclick="showSection('s1')" class="active"><i class="ti ti-flame"></i>Savage Continent</button>
   <button onclick="showSection('s2')"><i class="ti ti-globe"></i>Neue Weltordnung</button>
@@ -255,11 +254,13 @@
   <button onclick="showSection('s6')"><i class="ti ti-map-pin"></i>Nahost</button>
   <button onclick="showSection('s7')"><i class="ti ti-chess-knight"></i>Stellvertreter</button>
   <button onclick="showSection('s8')"><i class="ti ti-history"></i>End of History</button>
+  <button onclick="showSection('s10')"><i class="ti ti-shield-half"></i>New Wars</button>
+  <button onclick="showSection('s11')"><i class="ti ti-map-2"></i>Ukraine</button>
   <button onclick="showSection('s9')"><i class="ti ti-cards"></i>Flashcards</button>
 </nav>
-
+ 
 <div class="content">
-
+ 
 <!-- ===== SECTION 1: SAVAGE CONTINENT ===== -->
 <div id="s1" class="section active">
   <h2><i class="ti ti-flame" style="margin-right:6px"></i>Savage Continent – Das Ende des Zweiten Weltkrieges</h2>
@@ -267,14 +268,14 @@
     <div class="label"><i class="ti ti-bulb"></i>Kernthese</div>
     <p>Der Zweite Weltkrieg endete 1945 <strong>nicht</strong> mit einem klaren Friedensschluss. Die Kapitulation Deutschlands beendete den <em>Großmächtekrieg</em> – darunter liefen Dutzende kleinere Konflikte weiter: Bürgerkriege, Racheakte, ethnische Säuberungen, antikommunistischer Widerstand. In manchen Regionen dauerte die Gewalt bis in die 1950er Jahre an.</p>
   </div>
-
+ 
   <div class="stats-row">
     <div class="stat-card"><span class="stat-num">8. Mai 1945</span><span class="stat-label">Deutsche Kapitulation</span></div>
     <div class="stat-card"><span class="stat-num">2. Sept. 1945</span><span class="stat-label">Japanische Kapitulation</span></div>
     <div class="stat-card"><span class="stat-num">11,7 Mio.</span><span class="stat-label">Vertriebene Deutsche</span></div>
     <div class="stat-card"><span class="stat-num">600.000</span><span class="stat-label">Tote der Vertreibung</span></div>
   </div>
-
+ 
   <h3>Jugoslawien: Massaker von Bleiburg (Mai 1945)</h3>
   <div class="table-wrap">
     <table>
@@ -289,7 +290,7 @@
     <div class="label"><i class="ti ti-alert-circle"></i>Massaker Bleiburg / Maribor</div>
     <p>Briten lieferten fliehende Ustascha, Heimwehren und Tschetniks am 15. Mai 1945 den Partisanen aus. <strong>~50.000–60.000 Tote</strong>. Kocevje: ~12.000 Slowenen fast vollständig ermordet. Mischung aus Rache, Ideologie und politischem Kalkül Titos.</p>
   </div>
-
+ 
   <h3>Antikommunistischer Widerstand (1944–1950)</h3>
   <div class="stats-row">
     <div class="stat-card"><span class="stat-num">~400.000</span><span class="stat-label">Kämpfer Ukraine</span></div>
@@ -297,7 +298,7 @@
     <div class="stat-card"><span class="stat-num">~40.000</span><span class="stat-label">Kämpfer Lettland/Estland</span></div>
     <div class="stat-card"><span class="stat-num">10 Jahre</span><span class="stat-label">Dauer des Widerstands</span></div>
   </div>
-
+ 
   <h3>Griechischer Bürgerkrieg &amp; Dekemvriana</h3>
   <div class="timeline">
     <div class="tl-item"><div class="tl-date">Okt. 1944</div><div class="tl-dot"></div><div class="tl-text"><strong>Prozentabkommen (Churchill–Stalin):</strong> Griechenland = 90% britische Einflusssphäre. Stalin weist die griechische KP an, nicht die Macht zu ergreifen.</div></div>
@@ -305,7 +306,7 @@
     <div class="tl-item"><div class="tl-date">Feb. 1945</div><div class="tl-dot"></div><div class="tl-text"><strong>Varkiza-Abkommen:</strong> ELAS entwaffnet sich. Versprechen von Amnestie und Entnazifizierung werden nicht eingehalten.</div></div>
     <div class="tl-item"><div class="tl-date">1946–1949</div><div class="tl-dot"></div><div class="tl-text"><strong>Bürgerkrieg:</strong> USA greifen ein (Truman-Doktrin 1947). Regierung siegt 1949. <em>Erster heißer Konflikt des Kalten Krieges.</em></div></div>
   </div>
-
+ 
   <h3>Bevölkerungsvertreibungen nach 1945</h3>
   <div class="warn-box">
     <div class="label"><i class="ti ti-alert-triangle"></i>Klausurhinweis</div>
@@ -322,7 +323,7 @@
       <tr><td>Ukrainer &amp; Lemken</td><td>~482.000</td><td>Polen (Operation Weichsel 1947)</td></tr>
     </table>
   </div>
-
+ 
   <h3>Glossar: Savage Continent</h3>
   <div class="glossary-grid">
     <div class="gloss-item"><div class="gloss-term">Stunde Null</div><div class="gloss-def">Mythos des sauberen Neuanfangs ab Mai 1945 – gilt bestenfalls für Westeuropa, kaum für Osteuropa</div></div>
@@ -335,7 +336,7 @@
     <div class="gloss-item"><div class="gloss-term">Truman-Doktrin</div><div class="gloss-def">März 1947: USA unterstützen alle Völker, die sich gegen kommunistische Übernahme wehren</div></div>
   </div>
 </div>
-
+ 
 <!-- ===== SECTION 2: NEUE WELTORDNUNG ===== -->
 <div id="s2" class="section">
   <h2><i class="ti ti-globe" style="margin-right:6px"></i>Eine neue Weltordnung – UNO, Nürnberg &amp; Kalter Krieg</h2>
@@ -343,7 +344,7 @@
     <div class="label"><i class="ti ti-bulb"></i>Kernthese</div>
     <p>Nach 1945 entstand eine neue internationale Rechtsordnung (UNO, Nürnberg, Genf, Völkermordkonvention) – gleichzeitig verhinderte der entstehende Ost-West-Konflikt, dass diese Ordnung in der Praxis funktionierte.</p>
   </div>
-
+ 
   <h3>Die Großmächtekonferenzen 1941–1945</h3>
   <div class="timeline">
     <div class="tl-item"><div class="tl-date">Aug. 1941</div><div class="tl-dot"></div><div class="tl-text"><strong>Atlantik-Charta:</strong> Roosevelt &amp; Churchill. Selbstbestimmungsrecht der Völker, Verzicht auf Gebietsgewinne. Erste Skizze der Nachkriegsordnung.</div></div>
@@ -352,7 +353,7 @@
     <div class="tl-item"><div class="tl-date">Jul./Aug. 1945</div><div class="tl-dot"></div><div class="tl-text"><strong>Potsdam:</strong> Truman (konfrontativer als Roosevelt). Billigung der Deutschen Vertreibung. Beschluss zu Nürnberg. Atombombe als Machtdemonstration gegenüber Stalin.</div></div>
     <div class="tl-item"><div class="tl-date">26. Juni 1945</div><div class="tl-dot"></div><div class="tl-text"><strong>UN-Charta unterzeichnet</strong> in San Francisco. 51 Gründungsmitglieder. Sicherheitsrat mit Vetorecht für 5 ständige Mitglieder.</div></div>
   </div>
-
+ 
   <h3>Nürnberger Prozesse: Neue Verbrechenskategorien</h3>
   <div class="table-wrap">
     <table>
@@ -366,7 +367,7 @@
     <div class="label"><i class="ti ti-alert-triangle"></i>Klausurhinweis: Kritik an Nürnberg</div>
     <p><strong>Siegerjustiz:</strong> Katyn-Massaker (sowjetisch) wird nicht verhandelt. <strong>Tu quoque:</strong> Alliierte Kriegsverbrechen (Dresden, Hiroshima) bleiben ungestraft. <strong>Rückwirkung:</strong> Angeklagte nach Normen verurteilt, die zur Tatzeit noch nicht existierten. → Dennoch: Nürnberg wurde Vorbild für Jugoslawien-Tribunal (1993), Ruanda (1994) und den ICC (2002).</p>
   </div>
-
+ 
   <h3>Völkermordkonvention 1948 – Was zählt (nicht)?</h3>
   <div class="compare-grid">
     <div class="compare-col">
@@ -389,7 +390,7 @@
       </ul>
     </div>
   </div>
-
+ 
   <h3>Entstehung des Kalten Krieges</h3>
   <div class="thesis-box">
     <div class="label"><i class="ti ti-quote"></i>Stalin-Zitat</div>
@@ -403,7 +404,7 @@
     <div class="tl-item"><div class="tl-date">14. Mai 1955</div><div class="tl-dot"></div><div class="tl-text"><strong>Warschauer Pakt</strong> als Reaktion auf BRD-NATO-Beitritt. De facto UdSSR-dominiert; ständig sowjetischer Marschall als Oberbefehlshaber.</div></div>
   </div>
 </div>
-
+ 
 <!-- ===== SECTION 3: KALTER KRIEG ===== -->
 <div id="s3" class="section">
   <h2><i class="ti ti-snowflake" style="margin-right:6px"></i>Der Kalte Krieg in Europa 1949–1990</h2>
@@ -411,14 +412,14 @@
     <div class="label"><i class="ti ti-bulb"></i>Leitbegriff</div>
     <p><strong>Pax atomica</strong> (Raymond Aron): Der durch wechselseitige nukleare Abschreckung erzwungene Nicht-Krieg zwischen den Supermächten. MAD (Mutually Assured Destruction) verhinderte einen direkten Großmächtekrieg.</p>
   </div>
-
+ 
   <div class="stats-row">
     <div class="stat-card"><span class="stat-num">369</span><span class="stat-label">US-Atomsprengköpfe 1950</span></div>
     <div class="stat-card"><span class="stat-num">27.000</span><span class="stat-label">US-Atomsprengköpfe 1962</span></div>
     <div class="stat-card"><span class="stat-num">~30</span><span class="stat-label">Sowj. Sprengköpfe 1950</span></div>
     <div class="stat-card"><span class="stat-num">3.300</span><span class="stat-label">Sowj. Sprengköpfe 1962</span></div>
   </div>
-
+ 
   <h3>Drei Phasen des Kalten Krieges</h3>
   <div class="table-wrap">
     <table>
@@ -428,7 +429,7 @@
       <tr><td><strong>Neuer Kalter Krieg</strong></td><td>1976–1989</td><td>Nachrüstungsdebatte, Afghanistan, Friedensbewegung</td><td>NATO-Doppelbeschluss (1979)</td></tr>
     </table>
   </div>
-
+ 
   <h3>Kuba-Krise 1962 – Höhepunkt der Gefahr</h3>
   <div class="timeline">
     <div class="tl-item"><div class="tl-date">Mai 1962</div><div class="tl-dot"></div><div class="tl-text">Chruschtschow beschließt Stationierung von 50.000 Sowjetsoldaten + Mittelstreckenraketen auf Kuba – direkt vor der US-Haustür.</div></div>
@@ -436,7 +437,7 @@
     <div class="tl-item"><div class="tl-date">27. Okt. 1962</div><div class="tl-dot"></div><div class="tl-text">Kennedy schlägt Deal vor: Abzug der sowjetischen Raketen von Kuba gegen geheimen Abzug der NATO-Jupiter-Raketen aus der Türkei.</div></div>
     <div class="tl-item"><div class="tl-date">28. Okt. 1962</div><div class="tl-dot"></div><div class="tl-text"><strong>Einigung.</strong> Chruschtschow stimmt zu. Die Welt kam dem Atomkrieg am nächsten.</div></div>
   </div>
-
+ 
   <h3>Deutschland als Herzstück des Kalten Krieges</h3>
   <div class="compare-grid">
     <div class="compare-col">
@@ -458,7 +459,7 @@
       </ul>
     </div>
   </div>
-
+ 
   <h3>Glossar: Kalter Krieg</h3>
   <div class="glossary-grid">
     <div class="gloss-item"><div class="gloss-term">Bipolarität</div><div class="gloss-def">Zweiteilung der Weltmacht zwischen USA und UdSSR; alle anderen Staaten ordnen sich einem der Blöcke zu</div></div>
@@ -471,7 +472,7 @@
     <div class="gloss-item"><div class="gloss-term">NATO-Doppelbeschluss</div><div class="gloss-def">Dez. 1979: Neue NATO-Mittelstreckenraketen UND Verhandlungsangebot an UdSSR – Reaktion auf SS-20-Aufrüstung</div></div>
   </div>
 </div>
-
+ 
 <!-- ===== SECTION 4: DEKOLONISATION ===== -->
 <div id="s4" class="section">
   <h2><i class="ti ti-flag" style="margin-right:6px"></i>Dekolonisation in Asien und Afrika</h2>
@@ -479,7 +480,7 @@
     <div class="label"><i class="ti ti-bulb"></i>Kernthese</div>
     <p>Dekolonisationskriege waren primär durch lokale soziale, ethnische und wirtschaftliche Spannungen motiviert, wurden jedoch durch die globale Logik des Kalten Krieges – insbesondere das <strong>Glaubwürdigkeitsparadigma</strong> und die <strong>Containment-Politik</strong> – instrumentalisiert, internationalisiert und massiv verlängert.</p>
   </div>
-
+ 
   <h3>Warum beschleunigte der Zweite Weltkrieg die Dekolonisierung?</h3>
   <div class="table-wrap">
     <table>
@@ -491,7 +492,7 @@
       <tr><td><strong>Sowjetische Propaganda</strong></td><td>UdSSR unterstützte Befreiungsbewegungen strategisch</td></tr>
     </table>
   </div>
-
+ 
   <h3>Asien: Drei Fallbeispiele im Vergleich</h3>
   <div class="table-wrap">
     <table>
@@ -503,7 +504,7 @@
       <tr><td><strong>Besonderheit</strong></td><td>US-Militärbasis bleibt</td><td>Teilung in Indien/Pakistan</td><td>Niederländ. „Polizeiaktionen"</td></tr>
     </table>
   </div>
-
+ 
   <h3>Afrika: Kenia, Algerien, Malaya</h3>
   <div class="table-wrap">
     <table>
@@ -513,12 +514,12 @@
       <tr><td><strong>Malayan Emergency</strong></td><td>1948–1960</td><td>Komm. MCP auf Basis der chin. Minderheit</td><td>Briggs-Plan: Umsiedlung + Unabhängigkeitsversprechen</td><td>Brit. Erfolg; Musterbeispiel für COIN-Strategie</td></tr>
     </table>
   </div>
-
+ 
   <div class="warn-box">
     <div class="label"><i class="ti ti-alert-triangle"></i>Klausurhinweis: Glaubwürdigkeitsfalle</div>
     <p>Beide Kolonialmächte (GB, FR) gerieten in die <strong>Glaubwürdigkeitsfalle</strong>: Um gegenüber den USA als verlässliche Verbündete zu gelten, mussten sie beweisen, dass sie ein „Abgleiten" ihrer Kolonien in den Kommunismus verhindern konnten – selbst wenn dies militärisch sinnlos war (Algerien!).</p>
   </div>
-
+ 
   <h3>Glossar: Dekolonisation</h3>
   <div class="glossary-grid">
     <div class="gloss-item"><div class="gloss-term">Counterinsurgency (COIN)</div><div class="gloss-def">Integrierte militärisch-politische Aufstandsbekämpfung: Militär + Reformen + Schutz der Zivilbevölkerung</div></div>
@@ -529,7 +530,7 @@
     <div class="gloss-item"><div class="gloss-term">Harkis</div><div class="gloss-def">Algerische Soldaten auf französischer Seite; nach der Unabhängigkeit Algeriens häufig verfolgt oder getötet</div></div>
   </div>
 </div>
-
+ 
 <!-- ===== SECTION 5: KOREA & VIETNAM ===== -->
 <div id="s5" class="section">
   <h2><i class="ti ti-sword" style="margin-right:6px"></i>Korea &amp; Vietnam – Patt und Niederlage</h2>
@@ -537,7 +538,7 @@
     <div class="label"><i class="ti ti-bulb"></i>Kernthese</div>
     <p>Das Scheitern der USA in Vietnam resultierte primär aus der Unfähigkeit, eine drastische technologische Überlegenheit in dauerhaften politischen Erfolg zu transformieren. Gefangen in der Logik des Kalten Krieges und dem Streben nach <strong>Glaubwürdigkeit</strong> setzte Washington auf militärische Abnutzung – und unterschätzte den asymmetrischen Charakter des Konflikts.</p>
   </div>
-
+ 
   <h3>Koreakrieg (1950–1953)</h3>
   <div class="stats-row">
     <div class="stat-card"><span class="stat-num">25. Juni 1950</span><span class="stat-label">Kriegsbeginn</span></div>
@@ -554,7 +555,7 @@
       <tr><td><strong>Folgen</strong></td><td>Vervierfachung des US-Militärhaushalts; NATO wandelt sich vom Papiervertrag zur echten Militärstruktur</td></tr>
     </table>
   </div>
-
+ 
   <h3>Vietnamkrieg (1965–1975) – Chronologie</h3>
   <div class="timeline">
     <div class="tl-item"><div class="tl-date">1954</div><div class="tl-dot"></div><div class="tl-text"><strong>Genfer Indochinakonferenz:</strong> Teilung Vietnams am 17. Breitengrad. Ho Chi Minh im Norden, Ngo Dinh Diem (US-gestützt) im Süden.</div></div>
@@ -564,19 +565,19 @@
     <div class="tl-item"><div class="tl-date">Jan. 1973</div><div class="tl-dot"></div><div class="tl-text"><strong>Pariser Waffenstillstandsabkommen:</strong> US-Truppenabzug. Nixon-Doktrin: „Vietnamisierung" des Krieges. Nordvietnamesische Truppen bleiben im Süden.</div></div>
     <div class="tl-item"><div class="tl-date">April 1975</div><div class="tl-dot"></div><div class="tl-text"><strong>Einnahme Saigons.</strong> Totale Niederlage. 58.000 gefallene US-Soldaten; bis 2 Mio. tote Vietnamesen; 66% zivile Opfer.</div></div>
   </div>
-
+ 
   <div class="stats-row">
     <div class="stat-card"><span class="stat-num">7,6 Mio. t</span><span class="stat-label">US-Bomben im Vietnamkrieg</span></div>
     <div class="stat-card"><span class="stat-num">58.000</span><span class="stat-label">Gefallene US-Soldaten</span></div>
     <div class="stat-card"><span class="stat-num">bis 2 Mio.</span><span class="stat-label">Tote Vietnamesen</span></div>
     <div class="stat-card"><span class="stat-num">66%</span><span class="stat-label">Anteil ziviler Opfer</span></div>
   </div>
-
+ 
   <div class="warn-box">
     <div class="label"><i class="ti ti-alert-triangle"></i>Klausurhinweis: Domino-Theorie</div>
     <p>Die <strong>Domino-Theorie</strong> – der Fall eines Staates löst eine kommunistische Kettenreaktion in ganz Südostasien aus – war eine Fehlwahrnehmung der US-Außenpolitik. Korea und Indochina belegen das Paradoxon des „langen Friedens": Europa blieb stabil, während die Dritte Welt zum Schauplatz blutiger Stellvertreterkriege wurde.</p>
   </div>
-
+ 
   <h3>Glossar: Korea &amp; Vietnam</h3>
   <div class="glossary-grid">
     <div class="gloss-item"><div class="gloss-term">Tonkin-Zwischenfall</div><div class="gloss-def">Seegefecht 1964 im Golf von Tonkin als Vorwand für massive Ausweitung des US-Kriegsengagements</div></div>
@@ -587,7 +588,7 @@
     <div class="gloss-item"><div class="gloss-term">Search and Destroy</div><div class="gloss-def">US-Strategie: Nicht Territorium erobern, sondern Gegner physisch vernichten – scheiterte an Guerilla-Taktik</div></div>
   </div>
 </div>
-
+ 
 <!-- ===== SECTION 6: NAHOST ===== -->
 <div id="s6" class="section">
   <h2><i class="ti ti-map-pin" style="margin-right:6px"></i>Israel und der Nahe Osten 1948–1973</h2>
@@ -595,7 +596,7 @@
     <div class="label"><i class="ti ti-bulb"></i>Strukturproblem</div>
     <p>„Zwei Völker – ein Land": Zwei nationale Bewegungen (Zionismus und arabischer Nationalismus) beanspruchen dasselbe Territorium. Jeder Gewinn der einen Seite wird als existenzbedrohender Verlust der anderen wahrgenommen. Die Supermächte nutzten lokale Akteure zur Einflusserweiterung, griffen aber ein, sobald atomare Konfrontation drohte.</p>
   </div>
-
+ 
   <h3>Die vier Kriege im Überblick</h3>
   <div class="table-wrap">
     <table>
@@ -606,13 +607,13 @@
       <tr><td><strong>Jom-Kippur-Krieg</strong></td><td>1973</td><td>Ägypten + Syrien wollen Besatzung brechen</td><td>Waffenstillstand; Ölkrise. Sadat: Sinai nur über Diplomatie rückgewinnbar</td><td>2.656 Israel, ~13.000 Araber</td></tr>
     </table>
   </div>
-
+ 
   <h3>Suez 1956 – Wendepunkt der Weltpolitik</h3>
   <div class="success-box">
     <div style="font-family:sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green-700);margin-bottom:0.4rem;display:flex;align-items:center;gap:5px;"><i class="ti ti-star"></i>Prüfungsrelevanz: SEHR HOCH</div>
     <p>Die Suez-Krise markiert den endgültigen Verlust des Weltmacht-Status von Großbritannien und Frankreich. Sowohl USA (Eisenhower) als auch UdSSR (Chruschtschow) zwangen die Invasoren zum Rückzug. <strong>UNEF I</strong> = erste bewaffnete UN-Friedenstruppe der Geschichte.</p>
   </div>
-
+ 
   <h3>Rolle der Supermächte im Überblick</h3>
   <div class="table-wrap">
     <table>
@@ -623,7 +624,7 @@
       <tr><td>1973</td><td>Massive Luftbrücke nach Israel; verhindert vollständige Niederlage Ägyptens</td><td>Droht mit Intervention zum Schutz Ägyptens; eigene Luftbrücke</td></tr>
     </table>
   </div>
-
+ 
   <h3>Friedensverträge</h3>
   <div class="table-wrap">
     <table>
@@ -632,7 +633,7 @@
       <tr><td><strong>Israel–Jordanien</strong></td><td>1994</td><td>Oslo-Prozess (1993)</td><td>Ende des 46-jährigen Kriegszustands; Wasserverteilung; Jordan. Vorrangrolle an Islam. Heiligtümern</td></tr>
     </table>
   </div>
-
+ 
   <h3>Glossar: Nahost</h3>
   <div class="glossary-grid">
     <div class="gloss-item"><div class="gloss-term">Zionismus</div><div class="gloss-def">Jüdische Nationalbewegung mit dem Ziel eines eigenen Nationalstaats; Reaktion auf europäischen Antisemitismus</div></div>
@@ -645,7 +646,7 @@
     <div class="gloss-item"><div class="gloss-term">UNEF I / II</div><div class="gloss-def">UN-Friedenstruppen zur Sicherung des Sinai (1956 nach Suez / 1973 nach Jom Kippur)</div></div>
   </div>
 </div>
-
+ 
 <!-- ===== SECTION 7: STELLVERTRETERKRIEGE ===== -->
 <div id="s7" class="section">
   <h2><i class="ti ti-chess-knight" style="margin-right:6px"></i>Stellvertreterkriege 1975–1989</h2>
@@ -653,7 +654,7 @@
     <div class="label"><i class="ti ti-bulb"></i>Kernthese</div>
     <p>Stellvertreterkriege transformierten regionale Konflikte in ein globales <strong>Nullsummenspiel</strong>, bei dem jeder lokale Gewinn einer Seite als existenzielle Bedrohung der anderen wahrgenommen wurde. Die Supermächte involvierten sich, um ihre <strong>Glaubwürdigkeit</strong> zu wahren und zu verhindern, dass Verbündete das Vertrauen verlieren.</p>
   </div>
-
+ 
   <h3>Angola (1975–1991)</h3>
   <div class="compare-grid">
     <div class="compare-col">
@@ -676,14 +677,14 @@
     </div>
   </div>
   <p style="font-size:0.88rem;color:var(--slate-600);"><strong>Bilanz:</strong> ~500.000 Todesopfer insgesamt.</p>
-
+ 
   <h3>Äthiopien (1977–1978): Seitenwechsel der UdSSR</h3>
   <div class="timeline">
     <div class="tl-item"><div class="tl-date">1974</div><div class="tl-dot"></div><div class="tl-text">Sturz des pro-westlichen Kaisers Haile Selassie. Neue Militärjunta nähert sich dem Osten an. UdSSR wechselt ihren strategischen Partner von Somalia zu Äthiopien.</div></div>
     <div class="tl-item"><div class="tl-date">23. Juli 1977</div><div class="tl-dot"></div><div class="tl-text">Somalia (zuvor von Moskau aufgerüstet!) überfällt das äthiopische Ogaden-Gebiet. Kuriose Konstellation: Der frühere sowjetische Klient greift den neuen an.</div></div>
     <div class="tl-item"><div class="tl-date">1978</div><div class="tl-dot"></div><div class="tl-text">Krieg endet mit Wiederherstellung des Status quo ante. Somalia sucht nun Unterstützung bei USA und Saudi-Arabien.</div></div>
   </div>
-
+ 
   <h3>Afghanistan (1979–1989): Das „sowjetische Vietnam"</h3>
   <div class="stats-row">
     <div class="stat-card"><span class="stat-num">24.–27. Dez. 1979</span><span class="stat-label">Sowjetischer Einmarsch</span></div>
@@ -695,7 +696,7 @@
     <div class="label"><i class="ti ti-alert-triangle"></i>Klausurhinweis: Perspektive</div>
     <p>Während der Westen Afghanistand als sowjetischen Expansionismus Richtung Indischer Ozean deutete, war es aus sowjetischer Sicht eher eine <strong>defensive Tat</strong> – Verhinderung des Kontrollverlustes über ein instabiles Grenzregime. Diese Unterscheidung ist prüfungsrelevant.</p>
   </div>
-
+ 
   <h3>Glossar: Stellvertreterkriege</h3>
   <div class="glossary-grid">
     <div class="gloss-item"><div class="gloss-term">MPLA</div><div class="gloss-def">Marxistische Volksbefreiungsbewegung Angolas; siegte mit kubanischer und sowjetischer Hilfe</div></div>
@@ -706,7 +707,7 @@
     <div class="gloss-item"><div class="gloss-term">Glaubwürdigkeit (Credibility)</div><div class="gloss-def">Zentrales psychologisches Motiv beider Supermächte: Verlässlichkeit als Schutzmacht gegenüber eigenen Verbündeten</div></div>
   </div>
 </div>
-
+ 
 <!-- ===== SECTION 8: END OF HISTORY ===== -->
 <div id="s8" class="section">
   <h2><i class="ti ti-history" style="margin-right:6px"></i>End of History, Jugoslawien &amp; der Irakkrieg</h2>
@@ -714,14 +715,14 @@
     <div class="label"><i class="ti ti-bulb"></i>Kernthese</div>
     <p>Das Ende des Ost-West-Konflikts 1989–1991 weckte Hoffnungen auf eine dauerhafte Friedensordnung (Fukuyama: „End of History"). Doch schon der Golfkrieg 1991 und vor allem der Zerfall Jugoslawiens zeigten: Krieg verschwand nicht – er veränderte nur seine Gestalt.</p>
   </div>
-
+ 
   <h3>Ende des Kalten Krieges 1989–1991</h3>
   <div class="timeline">
     <div class="tl-item"><div class="tl-date">9. Nov. 1989</div><div class="tl-dot"></div><div class="tl-text"><strong>Fall der Berliner Mauer.</strong> Symbol des Endes des Kalten Krieges; in ganz Osteuropa brechen kommunistische Regime zusammen.</div></div>
     <div class="tl-item"><div class="tl-date">21. Nov. 1990</div><div class="tl-dot"></div><div class="tl-text"><strong>Charta von Paris:</strong> 35 KSZE-Staaten erklären feierlich das Ende des Kalten Krieges. Bekenntnis zu Demokratie, Menschenrechten, territorialer Integrität.</div></div>
     <div class="tl-item"><div class="tl-date">1. Juli 1991</div><div class="tl-dot"></div><div class="tl-text"><strong>Auflösung des Warschauer Paktes</strong> (militärisch 31. März, politisch 1. Juli). Dezember 1991: UdSSR löst sich offiziell auf.</div></div>
   </div>
-
+ 
   <h3>Irakkrieg 1990/91 – Operation Desert Storm</h3>
   <div class="stats-row">
     <div class="stat-card"><span class="stat-num">2. Aug. 1990</span><span class="stat-label">Invasion Kuwaits durch Irak</span></div>
@@ -730,7 +731,7 @@
     <div class="stat-card"><span class="stat-num">100 Std.</span><span class="stat-label">Dauer Bodenoffensive</span></div>
   </div>
   <p style="font-size:0.88rem;color:var(--slate-600);">Der Golfkrieg 1991 war das erste große militärische Ereignis nach dem Ende des Kalten Krieges – und zeigte, wie eine breite internationale Koalition unter UN-Mandat kollektive Sicherheit durchsetzen konnte. Zugleich markierte er den Beginn einer neuen US-Dominanz im Nahen Osten.</p>
-
+ 
   <h3>Zerfall Jugoslawiens 1991–1999</h3>
   <div class="timeline">
     <div class="tl-item"><div class="tl-date">Juni 1991</div><div class="tl-dot"></div><div class="tl-text">Kroatien und Slowenien erklären Unabhängigkeit. JNA interveniert in Slowenien – scheitert. 23. Dez. 1991: Deutschland erkennt als erster westlicher Staat an.</div></div>
@@ -739,7 +740,7 @@
     <div class="tl-item"><div class="tl-date">21. Nov. 1995</div><div class="tl-dot"></div><div class="tl-text"><strong>Dayton-Abkommen:</strong> Teilt Bosnien in Föd. Bosnien-Herzegowina und Republika Srpska. Beendet Bosnienkrieg, aber nicht die Kosovo-Frage.</div></div>
     <div class="tl-item"><div class="tl-date">24. März–10. Juni 1999</div><div class="tl-dot"></div><div class="tl-text"><strong>Operation Allied Force:</strong> 78-tägiger NATO-Luftkrieg gegen Serbien – <em>ohne UN-Mandat</em>. Erster NATO-Kampfeinsatz gegen souveränen Staat. Für Deutschland: erste Beteiligung an Kampfeinsatz seit 1945 (Fischer: „Nie wieder Auschwitz").</div></div>
   </div>
-
+ 
   <h3>Einordnung: Die neue Weltordnung nach 1991</h3>
   <div class="table-wrap">
     <table>
@@ -750,7 +751,7 @@
       <tr><td><strong>Humanitäre Intervention</strong></td><td>Militärischer Eingriff ohne UN-Mandat zum Schutz von Zivilisten – Kosovo als umstrittener Präzedenzfall</td></tr>
     </table>
   </div>
-
+ 
   <h3>Glossar: End of History &amp; Jugoslawien</h3>
   <div class="glossary-grid">
     <div class="gloss-item"><div class="gloss-term">End of History</div><div class="gloss-def">Fukuyamas These (1992): Sieg der liberalen Demokratie = Ende der ideologischen Entwicklung der Menschheit. Durch Jugoslawienkriege schnell widerlegt.</div></div>
@@ -763,13 +764,134 @@
     <div class="gloss-item"><div class="gloss-term">Srebrenica-Massaker</div><div class="gloss-def">Juli 1995: Ermordung von über 8.000 Bosniaken durch bosnisch-serbische Truppen unter Mladić; vom IGH als Völkermord eingestuft</div></div>
   </div>
 </div>
-
+ 
+<!-- ===== SECTION 10: NEW WARS ===== -->
+<div id="s10" class="section">
+  <h2><i class="ti ti-shield-half" style="margin-right:6px"></i>New Wars? Von Somalia nach Syrien</h2>
+  <div class="thesis-box">
+    <div class="label"><i class="ti ti-bulb"></i>Kernthese</div>
+    <p>Die Forschung (insbesondere Mary Kaldor) kontrastiert „Neue Kriege" mit den „alten" Kriegen des Industriezeitalters. Während „alte" Kriege der Staatsbildung dienten, führen „neue" Kriege zur <strong>Staatszerstörung</strong>. Kaldor betont den Fokus auf Identitätspolitik statt Ideologien; Münkler beschreibt Terror als Kommunikationsmittel in asymmetrischen Räumen.</p>
+  </div>
+ 
+  <h3>Kernmerkmale „Neuer Kriege"</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Merkmal</th><th>Beschreibung</th></tr>
+      <tr><td><strong>Privatisierung des Krieges</strong></td><td>Staatliches Gewaltmonopol erodiert; Warlords, private Milizen und Söldnergruppen mit ökonomischen Eigeninteressen treten an die Stelle regulärer Armeen</td></tr>
+      <tr><td><strong>Asymmetrie</strong></td><td>Hochgerüstete Armeen (USA/NATO) vs. irreguläre Kämpfer (Guerilla, Terror); der „Schwache" nutzt Zeit als Ressource und entzieht sich der Entscheidungsschlacht</td></tr>
+      <tr><td><strong>Demilitarisierung</strong></td><td>Grenze zwischen Kombattanten und Zivilbevölkerung verschwimmt; Gewalt richtet sich systematisch gegen Zivilisten (z.B. ethnische Säuberungen)</td></tr>
+    </table>
+  </div>
+ 
+  <h3>Somalia (1992–1995) – Das Dilemma der „Mogadischu-Linie"</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">1991</div><div class="tl-dot"></div><div class="tl-text">Sturz des Diktators Siad Barre. Bürgerkrieg zwischen rivalisierenden Clans, insbesondere Aidid vs. Ali Mahdi.</div></div>
+    <div class="tl-item"><div class="tl-date">UNOSOM I</div><div class="tl-dot"></div><div class="tl-text">Kleine Beobachtermission scheitert: wird in Kampfhandlungen verwickelt, kann Nahrungsmittelverteilung nicht sichern.</div></div>
+    <div class="tl-item"><div class="tl-date">UNITAF</div><div class="tl-dot"></div><div class="tl-text">US-geführte Operation „Restore Hope" nutzt massive militärische Gewalt zur Öffnung humanitärer Korridore, verweigert aber die von der UN geforderte Entwaffnung der Milizen.</div></div>
+    <div class="tl-item"><div class="tl-date">UNOSOM II</div><div class="tl-dot"></div><div class="tl-text">Überschreitet die „Mogadischu-Linie": Wandel von neutralem Peacekeeping zu aktivem Peace Enforcement gegen Aidid.</div></div>
+    <div class="tl-item"><div class="tl-date">Okt. 1993</div><div class="tl-dot"></div><div class="tl-text"><strong>„Black Hawk Down":</strong> Tod US-amerikanischer Soldaten führt zum Abzug der USA. Beweis, dass Peacekeeping ohne politischen Konsens der Kriegsparteien kaum möglich ist.</div></div>
+  </div>
+ 
+  <h3>Afghanistan (2001–2014) – NATO als Krisenmanager</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Aspekt</th><th>Details</th></tr>
+      <tr><td><strong>Missionswandel</strong></td><td>Beginn als Reaktion auf 9/11 zur Zerschlagung der Taliban (Operation Enduring Freedom) → langfristige Stabilisierungsmission durch ISAF</td></tr>
+      <tr><td><strong>Asymmetrie</strong></td><td>Aufständische nutzten IEDs (Sprengfallen) und Rückzugsräume in Pakistan – zermürbten die technologisch überlegene NATO-Truppe</td></tr>
+      <tr><td><strong>Transition (Inteqal)</strong></td><td>Ab 2010: schrittweise Übergabe der Sicherheitsverantwortung an afghanische Kräfte bis Ende 2014, litt an Instabilität lokaler Institutionen</td></tr>
+      <tr><td><strong>Bilanz</strong></td><td>„Democratic Building" scheitert weitgehend an mangelndem kulturellem Verständnis und der Unfähigkeit, eine stabile Regierung unter Karzai landesweit zu legitimieren</td></tr>
+    </table>
+  </div>
+ 
+  <h3>Irak (ab 2003) – Die Legitimationskrise</h3>
+  <div class="warn-box">
+    <div class="label"><i class="ti ti-alert-triangle"></i>Klausurhinweis: Legitimität</div>
+    <p>Die US-Invasion 2003 erfolgte <strong>ohne UN-Mandat</strong> und basierte auf später widerlegten Berichten über Massenvernichtungswaffen. Der Sturz Saddam Husseins hinterließ ein Machtvakuum, das zu endemischem Bürgerkrieg und schließlich zum Aufstieg des IS (Islamischer Staat) führte. Die NATO konzentrierte sich ab 2004 auf die Training Mission Iraq (NTM-I) zur Ausbildung lokaler Kräfte, statt sich am Kampfeinsatz zu beteiligen.</p>
+  </div>
+ 
+  <h3>Libyen (2011) – RtoP und „Regime Change"</h3>
+  <div class="compare-grid">
+    <div class="compare-col">
+      <h4>RtoP (Responsibility to Protect)</h4>
+      <ul>
+        <li>UN-Sicherheitsrat autorisiert erstmals militärische Intervention gegen eine amtierende Regierung (Res. 1973)</li>
+        <li>Ziel: Schutz der Zivilbevölkerung in Bengasi</li>
+      </ul>
+    </div>
+    <div class="compare-col">
+      <h4>Kritik &amp; Nachwirkung</h4>
+      <ul>
+        <li>NATO-Luftschläge führten faktisch zum Sturz Gaddafis</li>
+        <li>Russland/China: missbräuchliche Umdeutung in erzwungenen „Regime Change"</li>
+        <li>Lähmung des Sicherheitsrats im nachfolgenden Syrien-Konflikt</li>
+      </ul>
+    </div>
+  </div>
+ 
+  <h3>Angola (1975–2002) – Prototyp des Stellvertreterkrieges</h3>
+  <div class="thesis-box">
+    <div class="label"><i class="ti ti-bulb"></i>Dualismus</div>
+    <p>Ein klassischer Kalter-Krieg-Konflikt (interstate) zwischen MPLA (UdSSR/Kuba) und UNITA (USA/Südafrika) überlagerte einen tiefen ethnisch-sozialen Inlandsgegensatz (intrastate). UN-Missionen (UNAVEM II/III) scheiterten, weil sie auf Wahlen setzten („Winner takes all"), bevor eine echte Demobilisierung der Kämpfer stattgefunden hatte.</p>
+  </div>
+ 
+  <h3>Klausurrelevante Kernfragen</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>Warum ist materielle Überlegenheit in „Neuen Kriegen" oft ein Nachteil?</td><td>Zeit ist der Verbündete des Schwachen. Hochgerüstete Armeen sind auf schnelle Siege ausgelegt; zieht sich der Krieg hin, sinkt die politische Legitimation im Heimatland (Mogadischu-Effekt), während der irreguläre Gegner mit minimalem Aufwand maximalen psychologischen Schaden anrichtet</td></tr>
+      <tr><td>Was unterscheidet Gewalt gegen Zivilisten in „New Wars" von Kollateralschäden in „Old Wars"?</td><td>In „New Wars" ist Gewalt gegen Zivilisten oft das primäre Ziel (ethnische Homogenisierung, Zwang zur Unterstützung); in „Old Wars" meist Folge von Kampfhandlungen zwischen Armeen</td></tr>
+      <tr><td>Welche Rolle spielt der „Body Count" als Erfolgsmaßstab?</td><td>Problematisches Erbe des Vietnamkriegs: Ohne klare Fronten wird Erfolg rein statistisch über getötete Gegner definiert – eskaliert Gewalt, ohne politische Lösung herbeizuführen</td></tr>
+      <tr><td>Inwiefern war Somalia ein Wendepunkt für die UNO?</td><td>Zeigte, dass Peacekeeping ohne einen „Frieden, den man bewahren kann" (kein Waffenstillstand, kein Staat) unmöglich ist – Ende des Post-Cold-War-Optimismus („Agenda for Peace")</td></tr>
+      <tr><td>Warum scheitert „Nation Building" meistens?</td><td>Militärische Siege sind leichter zu erringen als politische Stabilität; es fehlt an „Cultural Understanding", westliche demokratische Strukturen lassen sich nicht einfach übertragen</td></tr>
+    </table>
+  </div>
+ 
+  <h3>Glossar: New Wars</h3>
+  <div class="glossary-grid">
+    <div class="gloss-item"><div class="gloss-term">Mogadischu-Linie</div><div class="gloss-def">Konzeptionelle Grenze zwischen neutralem Peacekeeping und aktivem Peace Enforcement – ihre Überschreitung in Somalia führte zur Eskalation</div></div>
+    <div class="gloss-item"><div class="gloss-term">RtoP</div><div class="gloss-def">Responsibility to Protect: Prinzip, das militärische Intervention zum Schutz von Zivilisten legitimiert, auch gegen den Willen der betroffenen Regierung</div></div>
+    <div class="gloss-item"><div class="gloss-term">Inteqal</div><div class="gloss-def">Transitionsprozess ab 2010: schrittweise Übergabe der Sicherheitsverantwortung von ISAF an afghanische Kräfte</div></div>
+    <div class="gloss-item"><div class="gloss-term">NTM-I</div><div class="gloss-def">NATO Training Mission Iraq (ab 2004): Ausbildung irakischer Sicherheitskräfte statt direkter Kampfbeteiligung</div></div>
+    <div class="gloss-item"><div class="gloss-term">Winner takes all</div><div class="gloss-def">Problematisches Wahlprinzip in Post-Konflikt-Gesellschaften (z.B. Angola), das ohne vorherige Demobilisierung neue Gewalt provoziert</div></div>
+    <div class="gloss-item"><div class="gloss-term">Agenda for Peace</div><div class="gloss-def">UN-Konzept (1992) für präventive Diplomatie und Peacekeeping in der Post-Cold-War-Ära; durch Somalia-Scheitern relativiert</div></div>
+  </div>
+</div>
+ 
+<!-- ===== SECTION 11: UKRAINE ===== -->
+<div id="s11" class="section">
+  <h2><i class="ti ti-map-2" style="margin-right:6px"></i>Ukraine 2014–2022: Bruch der europäischen Friedensordnung</h2>
+  <div class="thesis-box">
+    <div class="label"><i class="ti ti-bulb"></i>Kernthese</div>
+    <p>Die Annexion der Krim und der Krieg in der Ostukraine markieren einen fundamentalen Bruch mit der post-1945-Ordnung, die internationale Grenzen als unveränderlich behandelte. Der Konflikt verbindet klassische staatliche Machtpolitik (Okkupation) mit Elementen „Neuer Kriege" – in der Forschung oft als <strong>hybride Kriegführung</strong> eingeordnet.</p>
+  </div>
+ 
+  <h3>Chronologische Analyse</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">Feb./März 2014</div><div class="tl-dot"></div><div class="tl-text"><strong>Die Zäsur (Krim):</strong> Aus innenpolitischen Unruhen in der Ukraine entwickelt sich zunächst eine militärische Okkupation, dann die formelle Annexion der Krim durch Russland. Beendet die Ära der stabilen europäischen Sicherheitsarchitektur, die auf dem Konsens beruhte, Territorien nicht durch Krieg zu erwerben.</div></div>
+    <div class="tl-item"><div class="tl-date">2014–2022</div><div class="tl-dot"></div><div class="tl-text"><strong>Eskalation im Donbas:</strong> Parallel zur Krim-Krise weitet sich der Konflikt in der Ostukraine (Donezk/Luhansk) aus. Die Grenzen zwischen internem Bürgerkrieg und externer Intervention verschwimmen.</div></div>
+    <div class="tl-item"><div class="tl-date">2014–2022</div><div class="tl-dot"></div><div class="tl-text"><strong>Hybride Herausforderungen:</strong> Zustand des „weder Friedens noch Krieges". Reguläre staatliche Akteure nutzen Methoden der „New Wars" (irreguläre Milizen, Desinformation), um politische Ziele zu erreichen.</div></div>
+    <div class="tl-item"><div class="tl-date">24. Feb. 2022</div><div class="tl-dot"></div><div class="tl-text"><strong>Beginn der großangelegten russischen Invasion</strong> – Endpunkt des hier betrachteten Zeitraums.</div></div>
+  </div>
+ 
+  <div class="warn-box">
+    <div class="label"><i class="ti ti-alert-triangle"></i>Klausurhinweis: Einordnung</div>
+    <p>Die Ukraine-Krise ab 2014 zeigt eine Zäsur durch die Rückkehr staatlicher Machtpolitik, die zugleich Merkmale der „New Wars" integriert: formelle staatliche Okkupation (Russland) kombiniert mit Methoden des Bürgerkriegs (irreguläre Milizen in Donezk/Luhansk) = <strong>hybride Kriegführung</strong>.</p>
+  </div>
+ 
+  <h3>Glossar: Ukraine</h3>
+  <div class="glossary-grid">
+    <div class="gloss-item"><div class="gloss-term">Annexion</div><div class="gloss-def">Die gewaltsame, völkerrechtswidrige Eingliederung eines fremden Territoriums in den eigenen Staatsverband</div></div>
+    <div class="gloss-item"><div class="gloss-term">Post-1945-Ordnung</div><div class="gloss-def">Das internationale System (UNO, OSZE), das die Unverletzlichkeit von Grenzen als Kernprinzip des Friedens festschrieb</div></div>
+    <div class="gloss-item"><div class="gloss-term">Hybridität / Hybride Kriegführung</div><div class="gloss-def">Vermischung von verdeckten Operationen, irregulären Truppen und regulärem militärischem Druck</div></div>
+  </div>
+</div>
+ 
 <!-- ===== SECTION 9: FLASHCARDS ===== -->
 <div id="s9" class="section">
   <h2><i class="ti ti-cards" style="margin-right:6px"></i>Interaktive Lernkarten</h2>
   <p style="font-family:sans-serif;font-size:0.85rem;color:var(--slate-500);margin-bottom:1.5rem;"><i class="ti ti-hand-click" style="margin-right:4px"></i>Klick auf eine Karte, um die Antwort aufzudecken. Erneuter Klick dreht die Karte zurück.</p>
   <div class="cards-grid">
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-flame icon" aria-hidden="true"></i>
@@ -781,7 +903,7 @@
         <div class="answer">Die Kapitulation Deutschlands beendete nur den <em>Großmächtekrieg</em>. Darunter liefen überlagerte Konflikte weiter: Bürgerkriege, Racheakte, antikommunistischer Widerstand, ethnische Säuberungen – teils bis in die 1950er Jahre. Stunde Null ist ein Mythos.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-quote icon" aria-hidden="true"></i>
@@ -793,7 +915,7 @@
         <div class="answer">Geheimabkommen Churchill–Stalin: Griechenland = 90% britische Einflusssphäre, Rumänien = 90% sowjetisch. Stalin wies griechische KP an, nicht die Macht zu ergreifen → Erste Anwendung der Sphärenlogik.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-atom icon" aria-hidden="true"></i>
@@ -805,7 +927,7 @@
         <div class="answer">Mutually Assured Destruction: Ein nuklearer Erstschlag garantiert die eigene Vernichtung durch den Gegenschlag. Kein rationaler Akteur würde einen Krieg beginnen. Raymond Aron: „Pax atomica" – Frieden durch gegenseitigen Schrecken.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-gavel icon" aria-hidden="true"></i>
@@ -817,7 +939,7 @@
         <div class="answer">Erstmals: (1) Individuelle Strafbarkeit für Staatspolitik, (2) „Befehl ist Befehl" gilt nicht mehr, (3) Neue Verbrechenskategorie: Verbrechen gegen die Menschlichkeit. Kritik: Siegerjustiz, tu quoque, Rückwirkung.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-bomb icon" aria-hidden="true"></i>
@@ -829,7 +951,7 @@
         <div class="answer">Teknologische Überlegenheit ≠ politischer Erfolg. „Search and Destroy"-Strategie und Body Count-Logik unterschätzten asymmetrischen Charakter. Tet-Offensive 1968: psychologischer Wendepunkt. Für Nordvietnam zählten Zeit und nationale Unabhängigkeit mehr als Verluste.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-map icon" aria-hidden="true"></i>
@@ -841,7 +963,7 @@
         <div class="answer">Annahme: Fällt ein Staat an den Kommunismus, folgen die Nachbarn automatisch. Führte direkt in das Vietnam-Desaster. War falsch: Lokale Unabhängigkeitskämpfe hatten primär nationale, keine globale kommunistische Agenda.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-flag icon" aria-hidden="true"></i>
@@ -853,7 +975,7 @@
         <div class="answer">Beide Supermächte (USA und UdSSR) zwangen Israel, GB und Frankreich zum Rückzug – erstmals agieren Ost und West gemeinsam gegen europäische Kolonialmächte. GB und FR verlieren endgültig Weltmacht-Status. UNEF I = erste UN-Friedenstruppe.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-chess-knight icon" aria-hidden="true"></i>
@@ -865,7 +987,7 @@
         <div class="answer">Supermächte und Kolonialmächte waren gezwungen zu intervenieren, um weltweit als verlässliche Partner ernst genommen zu werden – selbst wenn die militärische Lage hoffnungslos war (Frankreich in Algerien, USA in Vietnam). Gesichtsverlust = Machtabbau.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-users icon" aria-hidden="true"></i>
@@ -877,7 +999,7 @@
         <div class="answer">Drei Faktoren: (1) Kolonialherren wollten Macht behalten (Niederlande in Indonesien, Frankreich in Algerien). (2) Neue Staaten forderten sofortige vollständige Unabhängigkeit. (3) Kalter Krieg verschärfte Konflikte durch externe Unterstützung beider Seiten.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-history icon" aria-hidden="true"></i>
@@ -889,7 +1011,7 @@
         <div class="answer">Fukuyama (1992): Mit dem Sieg der liberalen Demokratie sei die ideologische Entwicklung der Menschheit abgeschlossen; Demokratien kämpfen selten gegeneinander. Widerlegung: Bereits wenige Jahre später zeigten die Jugoslawienkriege, dass ethnische und nationalistische Gewalt weiterging.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-sword icon" aria-hidden="true"></i>
@@ -901,7 +1023,7 @@
         <div class="answer">Paraphiert 21.11.1995 in Dayton (Ohio); unterzeichnet 14.12.1995 in Paris. Beendete den Bosnienkrieg; teilte Bosnien in Föd. Bosnien-Herzegowina und Republika Srpska. Löste aber die <em>Kosovo-Frage</em> bewusst aus – die 1998/99 eskalierte und zum ersten NATO-Kampfeinsatz führte.</div>
       </div>
     </div>
-
+ 
     <div class="flashcard" onclick="this.classList.toggle('flipped')">
       <div class="card-front">
         <i class="ti ti-building icon" aria-hidden="true"></i>
@@ -913,19 +1035,19 @@
         <div class="answer">Drei Schwächen: (1) Keine Durchsetzungsmechanismen. (2) Vetorecht im Sicherheitsrat verhinderte Maßnahmen. (3) Politische Gruppen wurden bewusst ausgeschlossen (Sowjet. Block). → Der normative Anspruch nach 1945 und die politische Realität des Kalten Krieges standen im direkten Widerspruch.</div>
       </div>
     </div>
-
+ 
   </div>
 </div>
-
+ 
 </div><!-- /content -->
-
+ 
 <script>
 function showSection(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('#nav button').forEach(b => b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   const btns = document.querySelectorAll('#nav button');
-  const ids = ['s1','s2','s3','s4','s5','s6','s7','s8','s9'];
+  const ids = ['s1','s2','s3','s4','s5','s6','s7','s8','s10','s11','s9'];
   const idx = ids.indexOf(id);
   if (idx >= 0) btns[idx].classList.add('active');
   window.scrollTo({top: 0, behavior: 'smooth'});
