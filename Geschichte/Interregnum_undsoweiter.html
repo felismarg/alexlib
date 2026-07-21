@@ -1137,6 +1137,1166 @@
 </div>
 
 </div>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaiser, König und Reich – Klausurübersicht</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #f5f0e8;
+    color: #2c2416;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: linear-gradient(135deg, #e8dfc8 0%, #d4c9a8 100%);
+    border-bottom: 2px solid #a08050;
+    padding: 2rem;
+    text-align: center;
+  }
+  .site-header h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #5c3d10;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.3rem;
+  }
+  .site-header p {
+    color: #7a5c30;
+    font-size: 0.95rem;
+    font-style: italic;
+  }
+
+  /* NAV */
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+    background: #e0d6be;
+    border-bottom: 1px solid #b09060;
+    overflow-x: auto;
+    padding: 0 1rem;
+  }
+  .nav-tab {
+    padding: 0.75rem 1.1rem;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #7a6040;
+    border: none;
+    background: none;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .nav-tab:hover { color: #4a2c08; }
+  .nav-tab.active { color: #5c3d10; border-bottom-color: #8B6020; }
+
+  /* MAIN */
+  .main { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* SECTION */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: #fdf8f0;
+    border: 1px solid #c8b080;
+    border-radius: 8px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #5c3d10;
+    margin-bottom: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: Georgia, serif;
+    border-bottom: 1px solid #ddd0b0;
+    padding-bottom: 0.6rem;
+  }
+  .card-title i { font-size: 1.1rem; color: #8B6020; }
+
+  /* KEY THESIS BOX */
+  .thesis {
+    background: #f0e8d0;
+    border-left: 4px solid #8B6020;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #4a3010;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* TIMELINE */
+  .timeline { list-style: none; padding: 0; }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    align-items: start;
+  }
+  .tl-date {
+    font-family: sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #5c3d10;
+    padding-top: 2px;
+    text-align: right;
+    border-right: 2px solid #b09060;
+    padding-right: 0.8rem;
+  }
+  .tl-text {
+    font-size: 0.9rem;
+    color: #3a2c18;
+    line-height: 1.55;
+    padding-left: 0.2rem;
+  }
+  .tl-text strong { color: #2c2416; font-style: normal; }
+
+  /* GLOSSARY */
+  .glossary { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  @media(max-width:600px){ .glossary { grid-template-columns: 1fr; } }
+  .gloss-item {
+    background: #f0e8d4;
+    border: 1px solid #c8b080;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+  }
+  .gloss-term {
+    font-family: sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #5c3d10;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .gloss-def {
+    font-size: 0.88rem;
+    color: #4a3820;
+    line-height: 1.5;
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-top: 0.5rem;
+  }
+  th {
+    background: #e8dcc0;
+    color: #4a2c08;
+    padding: 0.55rem 0.8rem;
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  td {
+    padding: 0.55rem 0.8rem;
+    border-bottom: 1px solid #ddd0b0;
+    color: #3a2c18;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tr:last-child td { border-bottom: none; }
+  td strong { color: #2c2416; }
+
+  /* FLASHCARD SYSTEM */
+  .flashcard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media(max-width:600px){ .flashcard-grid { grid-template-columns: 1fr; } }
+  .flashcard {
+    background: #f0e8d4;
+    border: 1px solid #c8b080;
+    border-radius: 8px;
+    cursor: pointer;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+  .flashcard:hover { border-color: #8B6020; }
+  .flashcard .fc-front, .flashcard .fc-back { width: 100%; }
+  .flashcard .fc-back { display: none; }
+  .flashcard.flipped .fc-front { display: none; }
+  .flashcard.flipped .fc-back { display: block; }
+  .flashcard.flipped { border-color: #a07840; background: #e8dcc4; }
+  .fc-front { font-size: 0.9rem; font-weight: 700; color: #5c3d10; }
+  .fc-back { font-size: 0.85rem; color: #3a2c18; line-height: 1.5; }
+  .fc-hint { font-size: 0.72rem; color: #a09060; margin-top: 0.5rem; font-family: sans-serif; }
+
+  /* PROBLEM BOXES */
+  .problems { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  @media(max-width:600px){ .problems { grid-template-columns: 1fr; } }
+  .problem-item {
+    background: #f0e8d4;
+    border-left: 3px solid #8B6020;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+  }
+  .problem-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #5c3d10;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+  .problem-desc { font-size: 0.87rem; color: #4a3820; line-height: 1.5; }
+
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+  .badge-gold { background: #e8d8a0; color: #5c3d10; }
+  .badge-red { background: #f0d0c0; color: #8b2010; }
+  .badge-green { background: #d0e8d0; color: #2a6030; }
+
+  /* SECTION INTRO */
+  .section-intro {
+    font-size: 0.9rem;
+    color: #7a6040;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #c8b080;
+    font-family: sans-serif;
+  }
+
+  /* KINGS TABLE */
+  .kings-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  .king-card {
+    background: #f0e8d4;
+    border: 1px solid #c8b080;
+    border-radius: 8px;
+    padding: 1.1rem 1.3rem;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  @media(max-width:600px){ .king-card { grid-template-columns: 1fr; } }
+  .king-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #5c3d10;
+    font-family: Georgia, serif;
+  }
+  .king-dates {
+    font-size: 0.78rem;
+    color: #7a6040;
+    font-family: sans-serif;
+    margin-bottom: 0.5rem;
+  }
+  .king-dynasty {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #8B6020;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .king-points { list-style: none; }
+  .king-points li {
+    font-size: 0.87rem;
+    color: #3a2c18;
+    line-height: 1.55;
+    padding: 0.2rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .king-points li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: #8B6020;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    color: #5c3d10;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-family: Georgia, serif;
+  }
+  h3 {
+    font-size: 1rem;
+    color: #7a5030;
+    margin: 1rem 0 0.5rem;
+    font-weight: 700;
+    font-family: Georgia, serif;
+  }
+  p { font-size: 0.9rem; color: #3a2c18; line-height: 1.6; margin-bottom: 0.7rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 0.7rem; }
+  li { font-size: 0.88rem; color: #4a3820; line-height: 1.55; margin-bottom: 0.3rem; }
+
+  .exam-box {
+    background: #fde8d8;
+    border: 1px solid #d09060;
+    border-radius: 8px;
+    padding: 1.1rem 1.4rem;
+    margin-top: 1rem;
+  }
+  .exam-box-title {
+    font-family: sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #9b3010;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <h1>Kaiser, König und Reich</h1>
+  <p>Interregnum bis Schisma · Klausurübersicht · Viel Glück Diva!</p>
+</div>
+
+<nav class="nav-tabs">
+  <button class="nav-tab active" onclick="showSection('interregnum')">1 · Interregnum</button>
+  <button class="nav-tab" onclick="showSection('lehnswesen')">2 · Lehnswesen</button>
+  <button class="nav-tab" onclick="showSection('koenige')">3–6 · Könige</button>
+  <button class="nav-tab" onclick="showSection('kurfuersten')">Kurfürsten</button>
+  <button class="nav-tab" onclick="showSection('rhensen')">König &amp; Kurfürsten (14. Jh.)</button>
+  <button class="nav-tab" onclick="showSection('schisma')">Schisma</button>
+  <button class="nav-tab" onclick="showSection('krise1400')">1400–1450 · Krise &amp; Reform</button>
+  <button class="nav-tab" onclick="showSection('strukturen')">Strukturen</button>
+  <button class="nav-tab" onclick="showSection('glossar')">Glossar</button>
+  <button class="nav-tab" onclick="showSection('flashcards')">Lernkarten</button>
+</nav>
+
+<div class="main" style="padding-bottom:0;">
+  <div class="card" style="border-color:#8B6020; background:#fbf3e0;">
+    <div class="card-title"><i class="ti ti-target-arrow"></i> Klausurfokus (nach Hinweisen des Dozenten)</div>
+    <div class="thesis" style="margin-bottom:0.9rem;">Schwerpunkt: <strong>Entwicklung von Königtum und Reich zwischen Interregnum und Reichskrise</strong> (ca. 1250–1450).</div>
+    <ul style="margin:0 0 0.3rem 1.2rem; font-size:0.9rem; line-height:1.7; color:#3a2c18;">
+      <li><strong>Dynastien im Reich und Herrschaftsräume</strong> – Habsburger, Nassauer, Wittelsbacher, Luxemburger: Wahl, Hausmacht, Territorien (siehe eigene Übersicht unten in „Strukturen").</li>
+      <li><strong>Kirchen- und Reichsreform</strong> – Rhenser Erklärung/<em>Licet iuris</em>, Goldene Bulle, Schisma/Konziliarismus, Job Vener &amp; Sigismunds Reformvorschläge.</li>
+      <li><strong>Begriffe aus Reichs- und Kirchengeschichte</strong> – siehe Glossar A–Z und Lernkarten.</li>
+    </ul>
+    <p style="margin-top:0.7rem; font-size:0.85rem; color:#6a5030;"><strong>Bewusst außen vor:</strong> Stadtgeschichte, Themen der Onlinelektionen, Exkurse in die Frühe Neuzeit und Quelleninterpretation als eigene Aufgabenform – diese Übersicht ist entsprechend zugeschnitten.</p>
+  </div>
+
+<!-- ===================== 1 INTERREGNUM ===================== -->
+<div class="section active" id="section-interregnum">
+  <p class="section-intro">Sitzung 1 · Begriff, Ereignisgeschichte und strukturelle Folgen der Zeit 1250–1273</p>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-alert-triangle"></i> Der Begriff „Interregnum" als Problem</div>
+    <div class="thesis">Das Interregnum ist vor allem ein <em>Narrativ</em>: Streng genommen war das Reich nie ohne König – es fehlte nur eine allgemein anerkannte, präsente und durchsetzungsfähige Königsherrschaft.</div>
+    <table>
+      <tr><th>Traditionelle Deutung (19. Jh.)</th><th>Neuere Forschung</th></tr>
+      <tr>
+        <td>„Kaiserlose, schreckliche Zeit" (Schiller)<br>Epoche von Anarchie und nationalem Niedergang; Negativfolie für die Reichsgründung 1871</td>
+        <td>Phase verminderter königlicher Präsenz; andere Kräfte (Fürsten, Städte, Einungen) übernehmen Ordnungsfunktionen; langfristige Strukturen (Wahlmonarchie, Kurfürstenkolleg) verfestigen sich</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-timeline"></i> Ereignisgeschichte 1250–1273</div>
+    <ul class="timeline">
+      <li><span class="tl-date">Dez. 1250</span><span class="tl-text"><strong>Tod Friedrichs II.</strong> in Apulien. Sein Sohn Konrad IV. ist gewählter König, steht aber im Konflikt mit dem Papsttum (Friedrich wurde 1245 auf dem Konzil von Lyon abgesetzt).</span></li>
+      <li><span class="tl-date">1254</span><span class="tl-text"><strong>Tod Konrads IV.</strong> Der staufische Herrschaftsanspruch im Reich bricht faktisch zusammen.</span></li>
+      <li><span class="tl-date">1254–1256</span><span class="tl-text"><strong>Wilhelm von Holland</strong> (Gegenkönig) findet nun breitere Anerkennung – fällt aber 1256 im Kampf gegen die Friesen.</span></li>
+      <li><span class="tl-date">1257</span><span class="tl-text"><strong>Doppelwahl:</strong> Januar: <strong>Richard von Cornwall</strong> (Köln, Mainz, Pfalz); April: <strong>Alfons X. von Kastilien</strong> (Trier, Sachsen, Brandenburg). Die böhmische Stimme wird für beide reklamiert. → Katalysator für Institutionalisierung des Kurfürstenkollegs.</span></li>
+      <li><span class="tl-date">1257–1272</span><span class="tl-text">Richard wird in Aachen gekrönt, hält sich aber nur viermal und kurz im Reich auf. Alfons betritt das Reich nie. <strong>Königsherrschaft weitgehend wirkungslos.</strong></span></li>
+      <li><span class="tl-date">1272</span><span class="tl-text">Tod Richards. Papst Gregor X. drängt auf Neuwahl (Kreuzzugspläne).</span></li>
+      <li><span class="tl-date">1. Okt. 1273</span><span class="tl-text"><strong>Wahl Rudolfs von Habsburg</strong> in Frankfurt. Ende des sogenannten Interregnums. Krönung 24. Oktober in Aachen.</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-building-arch"></i> Strukturelle Folgen</div>
+    <div class="problems">
+      <div class="problem-item">
+        <div class="problem-name">Territorialisierung</div>
+        <div class="problem-desc">Fürsten, Bischöfe, Grafen bauen Herrschaftsrechte zu geschlossenen Landesherrschaften aus. Das Reich wird zum Verband von Territorien unter nomineller Königsherrschaft.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Entfremdung des Reichsguts</div>
+        <div class="problem-desc">Königliche Güter, Burgen, Rechte und Einkünfte werden verpfändet, verschenkt oder usurpiert – die materielle Basis des Königtums schrumpft erheblich.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Festigung der Wahlmonarchie</div>
+        <div class="problem-desc">Kein Erbkönigtum wie in England/Frankreich. Die Kurfürsten sichern das Wahlprinzip und ihre Schlüsselstellung.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Städte als Ordnungskraft</div>
+        <div class="problem-desc">Städtebünde (Rheinischer Bund 1254) und regionale Landfriedenseinungen übernehmen Friedenswahrung und Konfliktregelung.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Kalkül „schwacher König"</div>
+        <div class="problem-desc">Kurfürsten bevorzugen künftig Kandidaten mit begrenzter Hausmacht – Muster bei den Wahlen von 1273 und 1292.</div>
+      </div>
+    </div>
+    <div class="exam-box" style="margin-top:1rem;">
+      <div class="exam-box-title">⚠ Klausurhinweis</div>
+      <p style="margin:0; font-size:0.88rem;">Das Interregnum muss <strong>erläutert werden können</strong> – Begriff kritisch einordnen, Ereignisgeschichte kennen, strukturelle Folgen benennen.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 2 LEHNSWESEN ===================== -->
+<div class="section" id="section-lehnswesen">
+  <p class="section-intro">Sitzung 2 · Grundlagen, Rituale, Arten und Kritik des Lehnswesens</p>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-shield-half"></i> Wesen des Lehnsverhältnisses</div>
+    <div class="thesis">Das Lehnswesen war die Gesamtheit der rechtlichen und sozialen Normen, die das Verhältnis zwischen Lehnsherrn und Vasall regelten. Kern: ein wechselseitiges Treueverhältnis – <em>Schutz gegen Treue, Rat und Hilfe</em> (consilium et auxilium).</div>
+    <h3>Der dreistufige Begründungsritus</h3>
+    <table>
+      <tr><th>Schritt</th><th>Name</th><th>Bedeutung</th></tr>
+      <tr><td><strong>1.</strong></td><td>Mannschaft (homagium / immixitio manuum)</td><td>Vasall legt gefaltete Hände in die des Herrn → persönliche Bindung</td></tr>
+      <tr><td><strong>2.</strong></td><td>Treueeid (fidelitas / sacramentum)</td><td>Schwur auf Reliquien oder Bibel → religiöse Bekräftigung</td></tr>
+      <tr><td><strong>3.</strong></td><td>Investitur</td><td>Symbolische Übergabe des Lehens (Stab, Fahne, Zepter) → dingliches Element</td></tr>
+    </table>
+    <p style="margin-top:0.8rem; font-size:0.87rem; color:#6a5030;"><em>Fulbert von Chartres (um 1020)</em> formulierte die sechs negativen Pflichten (keinen Schaden zufügen) und betonte die positive Pflicht zu <em>consilium et auxilium</em> – sowie die <strong>Reziprozität</strong>: Auch der Herr schuldet dem Vasallen Schutz und Fürsorge.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-list"></i> Arten der Lehensvergabe</div>
+    <table>
+      <tr><th>Art</th><th>Empfänger</th><th>Symbol</th><th>Besonderheit</th></tr>
+      <tr><td><strong>Fahnlehen</strong></td><td>Weltliche Reichsfürsten (Herzöge, Markgrafen)</td><td>Fahne</td><td>Sichtbarer Ausdruck der Reichsfürstenstellung</td></tr>
+      <tr><td><strong>Zepterlehen</strong></td><td>Geistliche Reichsfürsten (Erzbischöfe, Bischöfe, Äbte)</td><td>Zepter</td><td>Seit Wormser Konkordat 1122; trennt geistl. Amt von weltl. Rechten</td></tr>
+      <tr><td><strong>Erblichkeit</strong></td><td>Erben des Vasallen</td><td>–</td><td>Faktisch erblich; Erbe muss Lehen neu „muten" (erbitten)</td></tr>
+      <tr><td><strong>Heimfall</strong></td><td>→ zurück zum Herrn</td><td>–</td><td>Bei Tod ohne Erben oder Treubruch (Felonie)</td></tr>
+    </table>
+    <p style="margin-top:0.7rem; font-size:0.85rem; color:#6a5030;"><strong>These vom Leihezwang:</strong> Umstrittene Forschungsthese: Ob der König heimgefallene Reichsfürstenlehen binnen Jahr und Tag wieder vergeben <em>musste</em>, ist nicht eindeutig belegt.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-triangle-inverted"></i> Die Lehnspyramide – Modell und Kritik</div>
+    <p>Das klassische Modell (König → Kronvasallen → Untervasallen → Ritter) hat erhebliche Schwächen als Beschreibung der historischen Wirklichkeit:</p>
+    <div class="glossary" style="margin-top:0.5rem;">
+      <div class="gloss-item">
+        <div class="gloss-term">Problem: Mehrfachvasallität</div>
+        <div class="gloss-def">Ein Vasall konnte mehrere Herren gleichzeitig haben – die Pyramide suggeriert falsche Eindeutigkeit.</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">Problem: Allod</div>
+        <div class="gloss-def">Freies Eigengut (allod) stand neben Lehnsgut und war nicht in die Lehnsordnung einbezogen.</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">Problem: Ausschluss</div>
+        <div class="gloss-def">Bauern und Stadtbewohner waren größtenteils gar nicht in die Lehnsordnung einbezogen.</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">Forschungskritik</div>
+        <div class="gloss-def">Boockmann, Lundt, Dartmann: Die Pyramide ist „visuell einprägsam, aber unzutreffend" (Dartmann). Sie ist ein nachträgliches Konstrukt der Rechtsgeschichte des 19. Jh.</div>
+      </div>
+    </div>
+    <p style="margin-top:0.8rem; font-size:0.87rem; color:#6a5030;"><strong>Für das Seminar gilt:</strong> Das Lehnswesen ist die Funktionsgrundlage der Königsherrschaft. Belehnungen waren das zentrale Instrument politischen Handelns (z. B. Rudolf 1282: Belehnung seiner Söhne mit Österreich).</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-users"></i> Weitere soziale Bindungen (nach Gerd Althoff)</div>
+    <p>Das Lehnswesen war nur <em>eine</em> von mehreren sozialen Bindungsformen. Daneben bestanden:</p>
+    <ul>
+      <li><strong>Verwandtschaft (Kinship)</strong> – familiäre und dynastische Netzwerke</li>
+      <li><strong>Freundschaft (amicitia)</strong> – politische Bündnisse zwischen Gleichrangigen</li>
+      <li><strong>Gefolgschaft</strong> – persönliche Treue ohne formellen Lehnsvertrag</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== 3–6 KÖNIGE ===================== -->
+<div class="section" id="section-koenige">
+  <p class="section-intro">Sitzungen 3–6 · Die Könige nach dem Interregnum: Rudolf, Adolf, Albrecht</p>
+
+  <div class="kings-grid">
+
+    <div class="king-card">
+      <div>
+        <div class="king-name">Rudolf I. von Habsburg</div>
+        <div class="king-dates">König 1273–1291</div>
+        <div class="king-dynasty">Habsburg</div>
+      </div>
+      <ul class="king-points">
+        <li><strong>Wahl 1. Okt. 1273</strong> in Frankfurt. Rudolf war „nur" Graf, aber mächtigster Herr im Südwesten (Elsass, Aargau, Oberrhein) – erfahren genug, aber nicht bedrohlich für die Kurfürsten. Krönung 24. Okt. in Aachen.</li>
+        <li><strong>Heiratspolitik</strong> sichert kurfürstliche Zustimmung: Töchter an Pfalzgrafen Ludwig II. und Herzog von Sachsen; Tochter Guta → Wenzel II. von Böhmen.</li>
+        <li><strong>Hauptrivale Ottokar II. von Böhmen</strong> (hatte Österreich, Steiermark, Kärnten, Krain usurpiert). Rudolfs Kurstimme 1273 übergangen; Reichsacht; <strong>Entscheidungsschlacht auf dem Marchfeld (Dürnkrut) 1278</strong> – Ottokar fällt.</li>
+        <li><strong>Revindikationspolitik:</strong> Nürnberger Hoftag 1274 – alle seit 1245 entfremdeten Reichsgüter zurückfordern. Instrument: Reichslandvogteien.</li>
+        <li><strong>Landfriedenpolitik:</strong> Mehrfache Ausrufung, Zerstörung von Raubburgen, König als Friedenswahrer.</li>
+        <li><strong>Habsburger Hausmacht:</strong> Augsburger Hoftag 1282 – Belehnung der Söhne Albrecht und Rudolf mit Österreich, Steiermark, Krain. Geburtsstunde der habsburgischen Hausmacht.</li>
+        <li><strong>Nachfolgefrage scheitert:</strong> Versuch, Sohn Albrecht zum Nachfolger zu sichern, scheitert am Kurfürstenwiderstand. Tod 1291 in Speyer (Grablege: Dom).</li>
+      </ul>
+    </div>
+
+    <div class="king-card">
+      <div>
+        <div class="king-name">Adolf von Nassau</div>
+        <div class="king-dates">König 1292–1298</div>
+        <div class="king-dynasty">Nassau</div>
+      </div>
+      <ul class="king-points">
+        <li><strong>Wahl 5. Mai 1292</strong> in Frankfurt – Kurfürsten übergehen Albrecht von Habsburg (zu mächtig). Adolf ist hausmachtarm, tüchtig, leicht zu lenken. Krönung 24. Juni 1292 Aachen. „Königsmacher": Mainzer Erzbischof Gerhard II. von Eppstein.</li>
+        <li><strong>Wahlversprechen (Vorstufe der Wahlkapitulationen):</strong> Adolf muss Burgen, Städte, Pfandschaften und Geldzahlungen zusagen.</li>
+        <li><strong>Hausmachtpolitik:</strong> Erwerb der Landgrafschaft Thüringen und Mark Meißen (Kauf von Landgraf Albrecht „dem Entarteten"). Finanzierung durch <strong>Bündnis mit Eduard I. von England</strong> (1294, Subsidien für geplanten Frankreichfeldzug – dieser kam nie zustande).</li>
+        <li><strong>Bruch mit den Kurfürsten:</strong> Expansion in Thüringen bedroht Interessen der Fürsten (bes. Wenzel II. von Böhmen). Wahlversprechen nicht erfüllt.</li>
+        <li><strong>Absetzung 23. Juni 1298</strong> in Mainz – einstimmiger kurfürstlicher Spruch, ohne päpstliche Mitwirkung. <strong>Erste erfolgreiche Absetzung eines deutschen Königs durch die Kurfürsten.</strong> Begründung: „unwürdig", „von Gott vertrieben".</li>
+        <li><strong>Schlacht bei Göllheim 2. Juli 1298:</strong> Adolf fällt im Kampf gegen Albrecht von Habsburg.</li>
+      </ul>
+    </div>
+
+    <div class="king-card">
+      <div>
+        <div class="king-name">Albrecht I. von Habsburg</div>
+        <div class="king-dates">König 1298–1308</div>
+        <div class="king-dynasty">Habsburg</div>
+      </div>
+      <ul class="king-points">
+        <li><strong>Doppellegitimation:</strong> Erste Erhebung durch oppositionelle Kurfürsten (23. Juni 1298) trug Makel des Umsturzes → zweite formale Wahl aller Kurfürsten 27. Juli 1298 in Frankfurt, Krönung 24. August Aachen.</li>
+        <li><strong>Päpstliche Anerkennung erst 1303</strong> durch Bonifaz VIII. (Vorwurf der Mitschuld an Adolfs Sturz); weitreichende Zugeständnisse nötig.</li>
+        <li><strong>Konflikt mit rheinischen Kurfürsten (1300–1302)</strong> um Rheinzölle. Albrecht setzt sich militärisch durch (gestützt auf Reichsstädte und niederen Adel).</li>
+        <li><strong>Böhmen-Politik:</strong> Nach Erlöschen der Přemysliden (Wenzel II. 1305, Wenzel III. 1306) → Sohn Rudolf als König Böhmens 1306, stirbt aber 1307. Projekt scheitert.</li>
+        <li><strong>Thüringen:</strong> Niederlage gegen Wettiner bei Lucka 1307.</li>
+        <li><strong>Ermordung 1. Mai 1308</strong> bei Windisch an der Reuss durch Neffen Johann „Parricida" (vorenthaltenes Erbe). Ende der frühen habsburgischen Königsphase.</li>
+        <li><strong>Siegel als Quelle:</strong> Majestätssiegel zeigt thronenden König mit Insignien (Krone, Zepter, Reichsapfel) → Legitimationsmedium für umstrittenen Herrschaftsantritt. Reitersiegel = Fürst als Kriegsherr.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;">
+    <div class="card-title"><i class="ti ti-crown"></i> Kernmerkmale königlicher Herrschaft um 1300</div>
+    <table>
+      <tr><th>Merkmal</th><th>Bedeutung</th></tr>
+      <tr><td><strong>Wahlkönigtum und Konsens</strong></td><td>Königsherrschaft beruht auf Wahl durch Kurfürsten und fortlaufendem Einvernehmen; keine Befehlsherrschaft.</td></tr>
+      <tr><td><strong>Hausmacht als Existenzbedingung</strong></td><td>Reichsgut reicht nicht – jeder König muss dynastische Eigenmacht aufbauen oder erweitern.</td></tr>
+      <tr><td><strong>Wahlversprechen / Pfandpolitik</strong></td><td>Königswahlen werden durch Zugeständnisse erkauft; Verpfändungen schmälern langfristig die Krone.</td></tr>
+      <tr><td><strong>Landfrieden und Gericht</strong></td><td>Friedenswahrung und oberste Gerichtsbarkeit bleiben die zentralen anerkannten Aufgaben des Königs.</td></tr>
+      <tr><td><strong>Itinerante Herrschaft</strong></td><td>Keine Hauptstadt; Herrschaft durch Reisen, Hoftage, persönliche Präsenz (Itinerar).</td></tr>
+      <tr><td><strong>Kurfürstliche Reichsverantwortung</strong></td><td>Kurfürsten als Hüter des Reiches – bis hin zur Absetzung 1298.</td></tr>
+      <tr><td><strong>Repräsentation</strong></td><td>Krönung in Aachen, Insignien, Siegel und Urkunden kommunizieren und legitimieren Herrschaft symbolisch.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===================== KURFÜRSTEN ===================== -->
+<div class="section" id="section-kurfuersten">
+  <p class="section-intro">Die sieben Kurfürsten – Zusammensetzung, Stellung und Entwicklung</p>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-star"></i> Die sieben Kurfürsten und ihre Erzämter</div>
+    <div class="thesis">Nach der „Kurfürstenfabel" des Martin von Troppau (um 1268–1271): Der Kaiser soll durch die Amtsträger des Reiches gewählt werden – sieben an der Zahl, drei Kanzler und vier Hofamtsträger.</div>
+    <table>
+      <tr><th>Kurfürst</th><th>Ehrenamt (Erzamt)</th><th>Geistlich / Weltlich</th></tr>
+      <tr><td><strong>Erzbischof von Mainz</strong></td><td>Kanzler Deutschlands</td><td>Geistlich</td></tr>
+      <tr><td><strong>Erzbischof von Trier</strong></td><td>Kanzler Galliens</td><td>Geistlich</td></tr>
+      <tr><td><strong>Erzbischof von Köln</strong></td><td>Kanzler Italiens (Reichsitalien)</td><td>Geistlich</td></tr>
+      <tr><td><strong>Markgraf von Brandenburg</strong></td><td>Kämmerer</td><td>Weltlich</td></tr>
+      <tr><td><strong>Pfalzgraf bei Rhein</strong></td><td>Truchsess (oberster Haushofmeister)</td><td>Weltlich</td></tr>
+      <tr><td><strong>Herzog von Sachsen</strong></td><td>Schwertträger (Marschall)</td><td>Weltlich</td></tr>
+      <tr><td><strong>König von Böhmen</strong></td><td>Mundschenk</td><td>Weltlich</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-building"></i> Entwicklung des Kurfürstenkollegs</div>
+    <p>Nach Ernst Schubert und der in den Quellen angelegten Kollegialtheorie:</p>
+    <div class="glossary">
+      <div class="gloss-item">
+        <div class="gloss-term">Grundlagen</div>
+        <div class="gloss-def">Kurfürsten galten als Säulen des Reichs, symbolisiert durch Erzämter am Königshof und ihr Wahlrecht. Ob sie als Einzelpersonen oder als Gesamtheit (Kollegium/Korporation) handelten, war lange umstritten.</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">Rhenser Weistum (1338)</div>
+        <div class="gloss-def">Schubert: kein echtes Reichsweistum, sondern Meinungserklärung des kurfürstlichen Einungsbündnisses – Ausdruck des Einungsprinzips, nicht echter Körperschaftsstruktur.</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">Korporationscharakter</div>
+        <div class="gloss-def">Erst unter Sigismund (frühes 15. Jh.) entwickelt sich echter Korporationscharakter: Kurfürsten übernehmen Reichsverweserschaft, fungieren als Gerichtsinstanz, beanspruchen Konsensrecht.</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">Goldene Bulle 1356</div>
+        <div class="gloss-def">Rechtlicher Abschluss der Institutionalisierung des Kollegs unter Karl IV. Fixiert Wahlprozedur, Sonderrechte und Zusammensetzung.</div>
+      </div>
+    </div>
+    <div class="thesis" style="margin-top:1rem;">Kernthese: Die kurfürstliche Reichsrepräsentanz stärkte ihre Sonderstellung, hemmte aber zugleich die Entwicklung eines allgemeinen ständischen Konsensrechts – und förderte damit die zentrifugalen Tendenzen im Reich.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-gavel"></i> Merkmale der Kurfürsten in der Interregnumszeit</div>
+    <ul>
+      <li><strong>Exklusives Wahlrecht:</strong> Nicht mehr alle Fürsten wählen, sondern nur dieser feste Kreis von sieben.</li>
+      <li><strong>Abkehr vom Erbrecht:</strong> Die Thronfolge der Ottonen (Erbfolge) durch Wahl durch Amtsträger ersetzt.</li>
+      <li><strong>Königsmacher:</strong> Kurfürsten wurden zur mächtigsten Gruppe – sie entscheiden, wer die Krone erhält.</li>
+      <li><strong>Verbindung von Amt und Territorium:</strong> Bestimmte weltliche und geistliche Titel fest mit einer Stimme bei der Königswahl verknüpft.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== RHENSEN & LICET IURIS ===================== -->
+<div class="section" id="section-rhensen">
+  <p class="section-intro">Die Verfasstheit des Reiches II: König und Kurfürsten im 14. Jahrhundert</p>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-file-certificate"></i> Kernthese und Überblick</div>
+    <div class="thesis">Die Stellung der Kurfürsten war keine feststehende Größe, sondern wandelte sich erheblich im Laufe des Spätmittelalters — vor allem durch die Entwicklung korporativer Elemente innerhalb des Kurfürstengremiums.</div>
+    <p>Im Zentrum stehen zwei verfassungsrechtliche Dokumente aus dem Jahr 1338, die aus dem Konflikt zwischen Kaiser <strong>Ludwig IV. (dem Bayern)</strong> aus dem Haus Wittelsbach und dem Papsttum hervorgingen. Sie markieren einen entscheidenden Schritt in der Emanzipation des Reiches von päpstlicher Einflussnahme.</p>
+    <div class="glossary" style="margin-top:0.8rem;">
+      <div class="gloss-item">
+        <div class="gloss-term">1. Stellung der Kurfürsten (Schubert)</div>
+        <div class="gloss-def">Säulen des Reichs, Erzämter, Wahlrecht – und die schrittweise, aber langsame Durchsetzung der „Kollegialtheorie". Kein echtes Reichsweistum, sondern Einungsprinzip.</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">2. Ludwig IV. und das Papsttum</div>
+        <div class="gloss-def">Bann, Approbationsstreit und Romzug – Auslöser für die Rhenser Erklärung und <em>Licet iuris</em> (1338).</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">3. Hausmacht der Wittelsbacher</div>
+        <div class="gloss-def">Brandenburg, Tirol, Holland-Hennegau-Seeland – territoriale Expansion, die zuletzt die Kurfürsten gegen Ludwig aufbrachte.</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">4. Karl IV. und die Kurfürsten</div>
+        <div class="gloss-def">Kooperativer Herrschaftsstil statt Konfrontation; Sicherung der Nachfolge über die Kurfürsten statt gegen sie.</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">5. Hausmachtpolitik der Luxemburger</div>
+        <div class="gloss-def">Böhmen als Kernland, Erwerb Brandenburgs, Schlesiens und der Oberpfalz; Prag als neues Reichszentrum.</div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-term">6. Goldene Bulle 1356</div>
+        <div class="gloss-def">Rechtlicher Abschluss der Institutionalisierung des Kurfürstenkollegs: Wahlverfahren, Unteilbarkeit, Vorrechte.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-swords"></i> Der Konflikt zwischen Ludwig IV. und dem Papsttum</div>
+    <div class="thesis">Der Streit um das päpstliche Approbationsrecht war der eigentliche Auslöser der Rhenser Erklärung und von <em>Licet iuris</em> – er stellte grundsätzlich die Frage, ob ein römischer König der päpstlichen Bestätigung bedarf, um sein Amt rechtmäßig auszuüben.</div>
+    <ul class="timeline">
+      <li><span class="tl-date">1314</span><span class="tl-text"><strong>Doppelwahl:</strong> Ludwig IV. „der Bayer" (Wittelsbach) und Friedrich „der Schöne" von Österreich (Habsburg) werden beide zum König gewählt. Der Thronstreit dauert acht Jahre.</span></li>
+      <li><span class="tl-date">1322</span><span class="tl-text"><strong>Schlacht bei Mühldorf:</strong> Ludwig besiegt und gefangen nimmt Friedrich. Faktische Entscheidung des Thronstreits zu Ludwigs Gunsten.</span></li>
+      <li><span class="tl-date">1323/24</span><span class="tl-text">Papst <strong>Johannes XXII.</strong> (Avignon) erhebt den <strong>Approbationsanspruch</strong>: Ohne päpstliche Bestätigung sei die Königsherrschaft nicht rechtmäßig. Er fordert Ludwig zur Abdankung auf; da dieser sich weigert, erfolgt 1324 die <strong>Exkommunikation</strong>.</span></li>
+      <li><span class="tl-date">1327–1330</span><span class="tl-text"><strong>Italien- und Romzug:</strong> Ludwig zieht nach Italien, lässt sich 1328 vom römischen Volk krönen und setzt einen <strong>Gegenpapst (Nikolaus V.)</strong> ein – ein offener Bruch mit dem avignonesischen Papsttum.</span></li>
+      <li><span class="tl-date">1330er Jahre</span><span class="tl-text">Trotz gescheiterter Italienpolitik hält Ludwig am Amt fest. Die Reichsfürsten und Kurfürsten stellen sich zunehmend hinter ihn – nicht aus persönlicher Loyalität, sondern weil der päpstliche Approbationsanspruch <strong>die Wahlrechte des Kurfürstenkollegs selbst infrage stellt.</strong></span></li>
+      <li><span class="tl-date">1338</span><span class="tl-text">Reaktion der Kurfürsten und Ludwigs: <strong>Rhenser Erklärung</strong> (Juli) und <strong>Licet iuris</strong> (August) – siehe unten.</span></li>
+    </ul>
+    <p style="margin-top:0.8rem; font-size:0.87rem; color:#6a5030;"><strong>Folgen für das Reich:</strong> Der Streit blieb bis zu Ludwigs Tod (1347) ungelöst, stärkte aber die Kurfürsten als Verfassungsorgan und lieferte die Blaupause für die spätere, dauerhafte Emanzipation der Königswahl von päpstlicher Mitwirkung.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-scroll"></i> I. Die Rhenser Erklärung der Kurfürsten (16. Juli 1338)</div>
+    <h3>Inhalt</h3>
+    <p>Die Kurfürsten erklären gemeinsam, dass ein von ihnen — einstimmig oder durch die Mehrheit — gewählter Römischer König <strong>keinerlei Anerkennung, Bestätigung oder Erlaubnis durch den Papst</strong> (den apostolischen Stuhl) benötigt. Allein durch die Wahl ist er berechtigt, den Königstitel zu führen und die Rechte und Güter des Reiches zu verwalten. Sie berufen sich dabei auf ein <em>von alters her unvordenkliches Recht und Gewohnheitsrecht.</em></p>
+    <h3>Forschungsmeinung (Schubert)</h3>
+    <div class="thesis" style="margin-top:0.3rem;">Das Weistum von Rhens ist laut Ernst Schubert <em>kein formelles Reichsweistum</em> im Sinne einer festen Körperschaftsstruktur, sondern vielmehr eine <strong>politische Meinungserklärung eines kurfürstlichen Einungsbündnisses</strong> — Ausdruck des Einungsprinzips, nicht echter Körperschaftsstruktur.</div>
+    <table style="margin-top:0.8rem;">
+      <tr><th>Aspekt</th><th>Inhalt</th></tr>
+      <tr><td><strong>Datum</strong></td><td>16. Juli 1338, Rhens am Rhein</td></tr>
+      <tr><td><strong>Aussteller</strong></td><td>Die Kurfürsten als Gremium (Einungsbündnis)</td></tr>
+      <tr><td><strong>Kernaussage</strong></td><td>Wahl allein genügt zur Königslegitimation — ohne päpstliche Mitwirkung</td></tr>
+      <tr><td><strong>Begründung</strong></td><td>Altes Gewohnheitsrecht, unvordenkliches Herkommen</td></tr>
+      <tr><td><strong>Rechtsnatur (Schubert)</strong></td><td>Keine formelle Körperschaftshandlung, sondern Einungserklärung</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-crown"></i> II. Das Gesetz <em>Licet iuris</em> durch Kaiser Ludwig IV. (6. August 1338)</div>
+    <h3>Inhalt</h3>
+    <p>Dieses kaiserliche Gesetz — erlassen mit Rat und Zustimmung der Kurfürsten und Fürsten — radikalisiert den Anspruch gegenüber der Rhenser Erklärung erheblich:</p>
+    <div class="problems" style="margin-bottom:0.8rem;">
+      <div class="problem-item">
+        <div class="problem-name">Gottunmittelbarkeit</div>
+        <div class="problem-desc">Die kaiserliche Würde und Gewalt stammt <strong>unmittelbar von Gott allein</strong> — nicht vom Papst, nicht vom Konzil.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Sofortige Amtsgewalt</div>
+        <div class="problem-desc">Sobald die Kurfürsten jemanden mehrheitlich oder einmütig wählen, ist dieser <em>sofort</em> rechtmäßiger König und Römischer Kaiser mit voller Amtsgewalt.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Gehorsamspflicht aller Untertanen</div>
+        <div class="problem-desc">Dem Gewählten gebührt der Gehorsam aller Untertanen ab dem Moment der Wahl, ohne weiteren Akt.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Zurückweisung päpstlicher Vorbehalte</div>
+        <div class="problem-desc">Jegliche päpstliche Approbation oder Konfirmation wird <strong>explizit zurückgewiesen</strong> und für rechtlich irrelevant erklärt.</div>
+      </div>
+    </div>
+    <table>
+      <tr><th>Aspekt</th><th>Inhalt</th></tr>
+      <tr><td><strong>Datum</strong></td><td>6. August 1338, Frankfurt</td></tr>
+      <tr><td><strong>Aussteller</strong></td><td>Kaiser Ludwig IV. (mit Rat und Zustimmung der Kurfürsten)</td></tr>
+      <tr><td><strong>Rechtsnatur</strong></td><td>Kaiserliches Reichsgesetz (radikaler als die Rhenser Erklärung)</td></tr>
+      <tr><td><strong>Verhältnis zu Rhense</strong></td><td>Baut auf der Rhenser Erklärung auf, übersteigert aber den Anspruch: Nicht nur kein päpstliches Zustimmungserfordernis, sondern aktive Zurückweisung jeder Einmischung</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-scale"></i> Vergleich der beiden Dokumente</div>
+    <table>
+      <tr><th>Kriterium</th><th>Rhenser Erklärung (Juli 1338)</th><th><em>Licet iuris</em> (Aug. 1338)</th></tr>
+      <tr><td><strong>Aussteller</strong></td><td>Kurfürsten (als Einungsbündnis)</td><td>Kaiser Ludwig IV.</td></tr>
+      <tr><td><strong>Rechtsnatur</strong></td><td>Meinungserklärung / Einungsakt</td><td>Kaiserliches Reichsgesetz</td></tr>
+      <tr><td><strong>Papst</strong></td><td>Kein Zustimmungserfordernis</td><td>Jede Einmischung explizit verboten</td></tr>
+      <tr><td><strong>Legitimationsquelle</strong></td><td>Gewohnheitsrecht, Herkommen</td><td>Unmittelbar von Gott</td></tr>
+      <tr><td><strong>Schärfe</strong></td><td>Defensiv: Wahl genügt</td><td>Offensiv: Vollmacht sofort und ohne jeden Vorbehalt</td></tr>
+    </table>
+    <div class="exam-box">
+      <div class="exam-box-title">⚠ Klausurhinweis</div>
+      <p style="margin:0; font-size:0.88rem;">Keine Quelleninterpretation in der Klausur – <strong>Inhalt, Datum, Aussteller und Bedeutung</strong> beider Dokumente sicher kennen und in die Entwicklung von Königtum und Kurfürstenkolleg einordnen können genügt.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-map-2"></i> Die Hausmacht der Wittelsbacher</div>
+    <div class="thesis">Ludwigs Erfolg als König beruhte zunehmend auf territorialem Machtausbau – ausgerechnet dieser Ausbau wurde ihm am Ende von den Kurfürsten zum Verhängnis.</div>
+    <ul>
+      <li><strong>Brandenburg (1323):</strong> Nach dem Aussterben der Askanier belehnt Ludwig seinen Sohn Ludwig V. mit der Mark Brandenburg – erster großer Ausgriff wittelsbachischer Hausmachtpolitik, zugleich Erwerb einer Kurstimme für die eigene Dynastie.</li>
+      <li><strong>Tirol (1342):</strong> Durch die Heirat seines Sohnes Ludwig von Brandenburg mit Margarete „Maultasch" gewinnen die Wittelsbacher Tirol – gegen den erbitterten Widerstand des Papstes, der die vorherige Ehe Margaretes nicht annulliert hatte (Skandal).</li>
+      <li><strong>Holland, Seeland, Hennegau, Friesland (1345):</strong> Erbschaft durch Ludwigs zweite Frau Margarete von Holland nach dem Tod ihres Bruders.</li>
+      <li><strong>Kurfürstlicher Widerstand:</strong> Diese rasche Machtkonzentration in einer Hand ließ selbst frühere Verbündete Ludwigs die Machtbalance des Reiches gefährdet sehen. 1346 wählt eine Gruppe päpstlich gesinnter Kurfürsten <strong>Karl IV. von Luxemburg</strong> zum Gegenkönig – noch zu Ludwigs Lebzeiten (Karl gilt zunächst spöttisch als „Pfaffenkönig").</li>
+      <li>Erst <strong>Ludwigs plötzlicher Tod 1347</strong> (auf der Jagd) macht Karl IV. zum unangefochtenen König.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-crown"></i> Die Herrschaft Karls IV. und die Rolle der Kurfürsten</div>
+    <div class="thesis">Karl IV. zieht aus dem Scheitern Ludwigs die Konsequenz: Königsherrschaft im Reich lässt sich dauerhaft nur <em>mit</em> den Kurfürsten, nicht gegen sie, absichern.</div>
+    <ul>
+      <li><strong>Realpolitischer Kurswechsel:</strong> Verzicht auf eine aktive, konfrontative Italien- und Papstpolitik; Schwerpunkt auf Konsolidierung der eigenen Hausmacht und auf Verfassungspolitik im Reich.</li>
+      <li><strong>Kooperation statt Konfrontation:</strong> Karl sucht den Konsens mit dem Kurfürstenkolleg, gewährt Privilegien und Zugeständnisse, statt – wie Ludwig – auf offenen Machtausbau gegen Widerstand zu setzen.</li>
+      <li><strong>Nachfolgesicherung zu Lebzeiten:</strong> Karl lässt seinen Sohn Wenzel bereits 1376 zum römischen König wählen und krönen – die Kurfürsten werden aktiv als Legitimationsinstanz für die dynastische Kontinuität eingebunden, nicht umgangen.</li>
+      <li><strong>Prag als neues Zentrum:</strong> Ausbau Prags zur Residenz- und Reichsstadt (Prager Neustadt, Veitsdom, Karlsbrücke); Gründung der <strong>Karlsuniversität 1348</strong> – erste Universität im Reich nördlich der Alpen.</li>
+      <li><strong>Bilanz:</strong> Wo Ludwig IV. an der Reibung mit Papsttum und Kurfürsten scheiterte, macht Karl IV. das Kurfürstenkolleg selbst zum tragenden Pfeiler seiner Herrschaft – Höhepunkt: die Goldene Bulle 1356.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-map"></i> Hausmachtpolitik und Gebiete der Luxemburger</div>
+    <ul>
+      <li><strong>Böhmen als Kernland:</strong> Bereits durch Karls Vater Johann von Luxemburg (König von Böhmen seit 1310) erworben; Karl selbst regiert Böhmen faktisch schon ab den 1330er Jahren als Markgraf/Mitregent, dann als König.</li>
+      <li><strong>Oberpfalz („Neuböhmen"):</strong> Sukzessiver Erwerb von Gebieten in Ostbayern/Oberpfalz, die eine Landverbindung zwischen Böhmen und dem westlichen Reich schaffen sollen.</li>
+      <li><strong>Schlesien:</strong> Überwiegender Erwerb der schlesischen Herzogtümer als böhmische Lehen – dauerhafte Bindung an die Krone Böhmen bis in die Neuzeit.</li>
+      <li><strong>Brandenburg (1373):</strong> Kauf der Mark Brandenburg von den zerstrittenen Wittelsbacher-Erben durch Karls Sohn Wenzel/Karl selbst – dieselbe Kurstimme, die einst Ludwig IV. seiner Dynastie gesichert hatte, geht nun an die Luxemburger.</li>
+      <li><strong>Strategische Logik:</strong> Anders als Ludwig IV. konzentriert Karl seine Hausmachtpolitik auf einen geographisch zusammenhängenden Länderkomplex im Osten des Reiches – weniger konfliktträchtig gegenüber den übrigen Kurfürsten als Ludwigs Ausgriffe nach Tirol und in die Niederlande.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-certificate"></i> Bestimmungen und Regelungen der Goldenen Bulle (1356)</div>
+    <div class="thesis">Die auf den Reichstagen von Nürnberg und Metz 1356 erlassene Goldene Bulle ist der <strong>rechtliche Abschluss der Institutionalisierung des Kurfürstenkollegs</strong> – sie bleibt bis 1806 tragendes Verfassungsgesetz des Reiches.</div>
+    <table>
+      <tr><th>Regelungsbereich</th><th>Inhalt</th></tr>
+      <tr><td><strong>Zusammensetzung</strong></td><td>Endgültige Fixierung auf sieben Kurfürsten: Mainz, Trier, Köln (geistlich); Böhmen, Pfalz, Sachsen, Brandenburg (weltlich).</td></tr>
+      <tr><td><strong>Wahlverfahren</strong></td><td>Wahlort Frankfurt am Main, Vorsitz durch den Mainzer Erzbischof; Mehrheitsprinzip (Mehrheit der Stimmen entscheidet, keine Einstimmigkeit mehr nötig).</td></tr>
+      <tr><td><strong>Krönungsort</strong></td><td>Aachen bleibt verbindlicher Krönungsort des gewählten Königs.</td></tr>
+      <tr><td><strong>Unteilbarkeit &amp; Primogenitur</strong></td><td>Die weltlichen Kurfürstentümer werden für unteilbar erklärt und der Erstgeburt (Primogenitur) unterstellt – Schutz vor Zersplitterung der Kurstimmen durch Erbteilung.</td></tr>
+      <tr><td><strong>Kurfürstliche Vorrechte</strong></td><td>Münzrecht, Bergregal, Judenregal, Zollrecht sowie weitgehende Gerichtshoheit werden den Kurfürsten exklusiv zugesichert – faktische Souveränität in ihren Territorien.</td></tr>
+      <tr><td><strong>Erster Hoftag</strong></td><td>Der neugewählte König soll seinen ersten Hoftag nach der Krönung in Nürnberg abhalten.</td></tr>
+      <tr><td><strong>Verbot von Einungen</strong></td><td>Städtebünde und Einungen, die sich gegen die Reichsfürsten richten, werden untersagt – Stärkung der fürstlich-kurfürstlichen Ordnung gegenüber städtischer Selbstorganisation.</td></tr>
+      <tr><td><strong>Papst/Approbation</strong></td><td>Kein Approbationsvorbehalt des Papstes mehr vorgesehen – faktische Bestätigung des in <em>Licet iuris</em> (1338) formulierten Grundsatzes.</td></tr>
+    </table>
+    <div class="exam-box" style="margin-top:1rem;">
+      <div class="exam-box-title">⚠ Klausurhinweis</div>
+      <p style="margin:0; font-size:0.88rem;">Goldene Bulle als <strong>Zielpunkt der gesamten Sitzung</strong> begreifen: Sie verrechtlicht, was sich seit dem Interregnum, über Rhenser Erklärung/<em>Licet iuris</em> und die Hausmachtkonflikte Ludwigs IV. und Karls IV. an Verfassungspraxis entwickelt hatte – Kurfürstenkolleg als institutionell abgesichertes Zentralorgan der Wahlmonarchie.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCHISMA ===================== -->
+<div class="section" id="section-schisma">
+  <p class="section-intro">Sitzung 7 · Das Große Abendländische Schisma 1378–1417 und seine Vorgeschichte</p>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-church"></i> Begriff und Überblick</div>
+    <div class="thesis">Ein <strong>Schisma</strong> ist eine Kirchenspaltung, bei der mehrere Päpste gleichzeitig Rechtmäßigkeit beanspruchen. Das Große Abendländische Schisma (1378–1417) war eine der tiefgreifendsten Krisen des mittelalterlichen Europa.</div>
+    <p>Lässt sich als Folge einer <em>„Überspannung zentralistischer Machtansprüche"</em> (Kaufhold/Kluge) verstehen: Das Papsttum hatte einen universellen Führungsanspruch entwickelt, ohne dass institutionelle Mechanismen zur Begrenzung existierten.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-timeline"></i> Chronologie</div>
+    <ul class="timeline">
+      <li><span class="tl-date">1309–1377</span><span class="tl-text"><strong>Exil von Avignon</strong> („babylonische Gefangenschaft"): Alle Avignoneser Päpste waren Franzosen. Ausbau kurialer Verwaltung (Fiskalisierung: Annaten, Provisionen, Reservationen). Wachsender Autoritätsverlust des Papsttums als überparteilicher Instanz.</span></li>
+      <li><span class="tl-date">1377</span><span class="tl-text"><strong>Gregor XI.</strong> kehrt nach Rom zurück. Das Papsttum institutionell gestärkt, moralisch geschwächt.</span></li>
+      <li><span class="tl-date">Apr. 1378</span><span class="tl-text"><strong>Wahl Urbans VI.</strong> (Bischof von Bari) unter Druck der römischen Bevölkerung. Reformpapst, kritisiert Kardinalsluxus scharf – entfremdet sich vom Kollegium.</span></li>
+      <li><span class="tl-date">Sep. 1378</span><span class="tl-text">Französische Kardinäle erklären Wahl Urbans für ungültig → Wahl <strong>Clemens VII.</strong> (Robert von Gent) in Fondi. Clemens lässt sich in Avignon nieder. <strong>Ausbruch des Schismas.</strong></span></li>
+      <li><span class="tl-date">1378–1409</span><span class="tl-text"><strong>Zwei Obödienzen:</strong> Römisch (Urban VI.): Reich, England, Italien. Avignonesisch (Clemens VII.): Frankreich, Schottland. Obödienzentscheidungen folgen Bündnissystemen, nicht theologischen Argumenten.</span></li>
+      <li><span class="tl-date">1409</span><span class="tl-text"><strong>Konzil von Pisa:</strong> Beide Päpste abgesetzt, neuer Papst Alexander V. gewählt. Da die Abgesetzten nicht weichen → <strong>drei gleichzeitige Päpste.</strong> Krise verschärft sich.</span></li>
+      <li><span class="tl-date">1414–1418</span><span class="tl-text"><strong>Konzil von Konstanz</strong> (einberufen von König Sigismund): Dekret „Haec sancta" (1415) – Konzil in Glaubensfragen über dem Papst (<strong>Konziliarismus</strong>). Alle drei Päpste abgesetzt/zum Rücktritt bewegt.</span></li>
+      <li><span class="tl-date">11. Nov. 1417</span><span class="tl-text"><strong>Wahl Martins V.</strong> – Schisma beendet. Dekret „Frequens" (1417) schreibt regelmäßige Konzilien vor.</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-key"></i> Wichtige Begriffe</div>
+    <div class="glossary">
+      <div class="gloss-item"><div class="gloss-term">Schisma</div><div class="gloss-def">Kirchenspaltung; mehrere Päpste erheben gleichzeitig Anspruch auf die Rechtmäßigkeit ihrer Position.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Obödienz</div><div class="gloss-def">Anhängerschaft/Gefolgschaft gegenüber einem Papst (lat. oboedientia = Gehorsam).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Patrimonium Petri</div><div class="gloss-def">Der Kirchenstaat; weltliches Territorium des Papstes in Mittelitalien.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Pfründe</div><div class="gloss-def">Kirchliche Amtseinnahmen; Frankreichs Reichtum stärkte Clemens VII. erheblich.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Via cessionis</div><div class="gloss-def">Lösungsweg: freiwilliger Rücktritt beider Päpste.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Via compromissi</div><div class="gloss-def">Lösungsweg: Einigung durch Schiedsverfahren.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Via concilii</div><div class="gloss-def">Lösungsweg: allgemeines Konzil – letztlich erfolgreich.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Konziliarismus</div><div class="gloss-def">Lehre, dass ein Konzil mehr Autorität hat als der Papst; verankert in „Haec sancta" 1415.</div></div>
+    </div>
+    <div class="card" style="margin-top:1rem; padding:0.8rem 1rem;">
+      <p style="font-size:0.87rem; margin:0;"><strong>Wirkung im Reich:</strong> Doppelbesetzungen in Bistümern und Klöstern; Rechtsunsicherheit; Absetzung König Wenzels 1400 (u. a. Vorwurf der Untätigkeit in der Schismafrage). Umgekehrt: König Sigismund profiliert sich als Einberufer und Schirmherr des Konstanzer Konzils → späte Aktualisierung des universalen Anspruchs des römisch-deutschen Königtums.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 1400-1450 KRISE & REFORM ===================== -->
+<div class="section" id="section-krise1400">
+  <p class="section-intro">Sitzung 8–10 · Wenzel, Ruprecht, Sigismund und die frühe Reichsreform (ca. 1378–1449)</p>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-alert-triangle"></i> Ausgangslage: Kaisertum und Papsttum um 1400 in der Krise</div>
+    <div class="thesis">Nach Adolf Kerrl war das Kaisertum um 1400 auf einem Tiefstand angelangt – bedingt durch die schwache Herrschaft Wenzels und Ruprechts – und stand damit parallel zur Krise des Papsttums im Schisma. Beide Krisen erzeugten seit dem frühen 15. Jahrhundert einen wachsenden „Veränderungsdruck" und die Forderung nach Reform an Haupt und Gliedern.</div>
+  </div>
+
+  <div class="kings-grid">
+
+    <div class="king-card">
+      <div>
+        <div class="king-name">Wenzel IV. von Luxemburg</div>
+        <div class="king-dates">Röm. König 1376/78–1400 (böhm. König bis 1419)</div>
+        <div class="king-dynasty">Luxemburg</div>
+      </div>
+      <ul class="king-points">
+        <li><strong>Sohn Karls IV.</strong>, bereits 1376 zu dessen Lebzeiten gegen Zugeständnisse an die Kurfürsten zum König gewählt; ihm fehlten Format und Durchsetzungskraft seines Vaters.</li>
+        <li><strong>Strukturelle Probleme:</strong> Rivalitäten der luxemburgischen Nebenlinien um die böhmischen Nebenländer, aufbegehrender böhmischer Hochadel, beginnende hussitische Bewegung, Konflikt zwischen Fürsten und rheinischem/schwäbischem Städtebund (Schlachten von Döffingen und Worms 1388 – Sieg der Fürsten).</li>
+        <li><strong>Kuttenberger Dekret (1409):</strong> Verschiebt an der Prager Universität das Stimmgewicht zugunsten der böhmischen Nation gegenüber den drei „deutschen" Nationen – Auslöser für den Auszug deutscher Magister und Studenten aus Prag; verschärft den nationalen Konflikt um Jan Hus.</li>
+        <li><strong>Absetzung 1400:</strong> Die vier rheinischen Kurfürsten setzen Wenzel als „unnützen" und „unwürdigen" König ab – ohne päpstliche Mitwirkung, gestützt auf das Konzept der <em>rex-inutilis</em>-Lehre (ein „unfähiger" König kann eigentlich nur zum Rücktritt, nicht zur Absetzung gezwungen werden).</li>
+        <li><strong>Böhmen bleibt ihm erhalten</strong> bis zu seinem Tod 1419 (im Jahr des 1. Prager Fenstersturzes).</li>
+      </ul>
+    </div>
+
+    <div class="king-card">
+      <div>
+        <div class="king-name">Ruprecht von der Pfalz</div>
+        <div class="king-dates">König 1400–1410</div>
+        <div class="king-dynasty">Wittelsbach (Pfalz)</div>
+      </div>
+      <ul class="king-points">
+        <li><strong>Wahl durch die vier rheinischen Kurfürsten</strong> unmittelbar nach Wenzels Absetzung 1400 – als pfälzischer Kurfürst selbst einer der Wähler, was seiner Legitimität von Beginn an einen Makel gab (Wenzel erkannte die Absetzung nie an).</li>
+        <li><strong>Schmale Machtgrundlage</strong> (Hilsch): Die pfälzische Hausmacht reichte bei weitem nicht an die luxemburgischen oder habsburgischen Territorialkomplexe heran – strukturelles Grundproblem seiner gesamten Regierungszeit.</li>
+        <li><strong>Gescheiterter Italienzug (1401/02):</strong> Niederlage bei Brescia gegen die Mailänder Visconti – anders als Karl IV. gelang ihm keine erfolgreiche Kaiserkrönung in Rom.</li>
+        <li><strong>Ausbau der schriftlichen Verwaltung:</strong> Da Ruprecht anders als die Luxemburger keine große Hausmacht als Herrschaftsmittel besaß, war er stärker auf die schriftliche Fixierung von Rechtstiteln, Urkunden und Registerführung angewiesen, um Ansprüche und Bündnisse abzusichern – ein Vorbote der zunehmenden „Verschriftlichung" von Herrschaft im Reich, wie sie in den Reformschriften des frühen 15. Jahrhunderts als Programm gefordert wurde (feste Kanzlei, Gerichtsordnungen, s.u. Job Vener).</li>
+        <li><strong>Tod 1410</strong> ohne gefestigte Nachfolgeregelung – öffnet den Weg zurück zu den Luxemburgern.</li>
+      </ul>
+    </div>
+
+    <div class="king-card">
+      <div>
+        <div class="king-name">Sigismund von Luxemburg</div>
+        <div class="king-dates">Röm. König 1410/11–1437, Kaiser ab 1433</div>
+        <div class="king-dynasty">Luxemburg</div>
+      </div>
+      <ul class="king-points">
+        <li><strong>Jüngster Sohn Karls IV.</strong>; erhielt bei der Nachfolgeregelung die Mark Brandenburg (1373), wurde 1387 durch Heirat mit der Erbtochter Maria König von Ungarn – seither <strong>Personalunion Reich–Ungarn</strong>, verbunden mit den ungarischen Problemen (Ansprüche der Anjou, Konflikt mit Venedig, vor allem der osmanische Vormarsch).</li>
+        <li><strong>Niederlage von Nikopolis (1396)</strong> gegen die Osmanen – zeigt die reale außenpolitische Bedrohungslage, in die das Reich über Ungarn hineingezogen wurde.</li>
+        <li><strong>Durchsetzung als röm. König 1410/11</strong> gegen Thronrivalen; erst nach Wenzels Tod 1419 auch unangefochtener böhmischer Thronanspruch – dieser wird ihm jedoch bis 1436 durch die <strong>Hussiten</strong> verwehrt.</li>
+        <li><strong>Einberufer des Konzils von Konstanz (1414–1418)</strong> – energisches persönliches Engagement, u. a. Verhandlungsführung, die 1417 zur Zulassung Spaniens als „fünfter Nation" und damit zur Absetzung auch Benedikts XIII. führte.</li>
+        <li><strong>Reformvorschlag von 1417 (Q9):</strong> Acht Artikel zur Vierteilung des Reichs in Kreise (Rhein/Elsass/Wetterau, Schwaben, Franken, Thüringen/Meißen/Hessen) mit je einem Hauptmann, dazu ein übergeordneter Reichshauptmann, gegenseitige Anerkennung von Acht-Urteilen, Nothilfe zwischen den Kreisen, Schutz der Handelswege und einheitliches Münzwesen – ein früher, im 15. Jahrhundert nicht umgesetzter Vorläufer späterer Reichskreis-Konzepte.</li>
+        <li><strong>Kampf gegen die Hussiten</strong> bis 1436 erfolglos in eigener Person; erst der Sieg des böhmischen Hochadels über die Taboriten bei Lipany (1434) und die Vermittlung des Basler Konzils (Basler Kompaktaten 1433) ebnen 1436 seine Anerkennung als böhmischer König.</li>
+        <li><strong>Tod 1437</strong> ohne männlichen Erben – luxemburgischer Besitz fällt an die Habsburger (Ehe der Erbtochter mit Albrecht V. von Österreich), ein bereits von Karl IV. angebahnter Erbvertrag. Die „zweite große Dynastie" (nach den Habsburgern) führt Sigismund selbst nach Ostmitteleuropa (Verzicht auf Brandenburg zugunsten der Hohenzollern 1415).</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-book-2"></i> Die Propaganda-Perspektive: Wenzels „Schwarze Legende" (nach S. Hübner)</div>
+    <div class="thesis">Das bis heute negative Bild Wenzels IV. als trunksüchtiger, tyrannischer „Versager" ist wesentlich das Produkt gezielter politischer Propaganda seiner Gegner – nicht nur eine objektive Bilanz seiner Regierungszeit.</div>
+    <ul class="king-points">
+      <li><strong>Mittelalterliche Propaganda:</strong> Auch ohne Massenmedien gab es effektive Kommunikationskanäle (Prediger, Boten, Pamphlete, Kirchen, Marktplätze, Universitäten), über die gezielt Stimmung gegen einen Herrscher gemacht wurde (vgl. K. Hruza).</li>
+      <li><strong>Schlüsselereignis – der Fall Johannes von Nepomuk:</strong> Ermordung des Prager Generalvikars Johann von Pomuk (1393) im Machtkonflikt zwischen Wenzel und Erzbischof Johann von Jenzenstein. Der geflohene Erzbischof verfasst in Rom eine Anklageschrift, die Wenzel eigenhändige Folterung und Ermordung vorwirft.</li>
+      <li><strong>Textwanderung:</strong> Der Vorwurf, Wenzel habe Geistliche „mit Fackeln verbrannt", wandert über Jahrzehnte durch verschiedene Texte (österreichische Chronik 1394, Klageschriften des Böhmischen Herrenbundes, Chronisten wie Ludolf von Sagan) und geht schließlich fast wortwörtlich in das offizielle Absetzungsdekret von 1400 ein.</li>
+      <li><strong>Rechtliche Konstruktion:</strong> Da ein als „unfähig" (<em>rex inutilis</em>) geltender König eigentlich nur zum freiwilligen Rücktritt, nicht zur Absetzung gezwungen werden konnte, diente der Mordvorwurf als härteres, moralisch diskreditierendes Argument – gestützt auf das Konzept der <strong>Notorietät</strong> (allgemein bekannte Tatsachen brauchen keinen gesonderten Beweis).</li>
+      <li><strong>Nachwirkung:</strong> Das Propagandabild lässt sich bis zu Enea Silvio Piccolominis <em>Historia Bohemica</em> (1458) verfolgen, die das Bild vom „faulen Wenzel" endgültig festschreibt – ein Muster, das später auch gegen seinen Halbbruder Sigismund angewandt wurde.</li>
+      <li><strong>Methodische Lehre für die Klausur:</strong> Gutes Fallbeispiel dafür, wie Herrscherlegitimität im Spätmittelalter diskursiv verhandelt wurde und wie „Öffentlichkeit" als politischer Faktor im Reich funktionierte – Vorsicht bei der unreflektierten Übernahme zeitgenössischer Werturteile aus Quellen.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-bulb"></i> Ideen der frühen Reichsreform: Job Vener und die Reformschriften</div>
+    <div class="thesis">Job Vener (um 1370–1447) stellt eine intellektuell-geistige Verbindung zwischen Kirchenreform und Reform des Reiches her: „Für die Reform des heiligen Kaisertums gilt in vielem das gleiche Prinzip wie bei der Reform des Papsttums."</div>
+    <h3>Q10 – Job Veners Avisamentum (Juni 1417)</h3>
+    <p style="font-size:0.9rem; line-height:1.6; margin-bottom:0.6rem;">Vorschlag: Aus den Provinzen sollen Räte des Kaisers gewählt werden, und zwar durch die weltlichen Fürsten und Adligen sowie durch die Ratmannen der Städte. Diese Räte besitzen nur die Gewalt, dem Kaiser unabhängig Rat zu erteilen; nur auf Befehl des Kaisers dürfen sie Gesetze erlassen, nach denen jede Stadt Rechtsgelehrte besolden soll. Die Räte sollen knappe Gerichtsordnungen erlassen und einen festen, aber bei Bedarf wechselbaren Sitz erhalten (Vorbild: die verlegbare Römische Kurie). Warnung: Ohne eine solche Reform werde das Kaisertum „in Kürze untergehen" – Fürsten unterstützten das Reich selten, aus Furcht vor Steuern bei starkem Kaisertum.</p>
+    <ul class="king-points">
+      <li><strong>Grundthemen der Reformschriften des frühen 15. Jahrhunderts:</strong> Einteilung in Reichskreise, eine Reichssteuer, ein stehendes Heer als Exekutivorgan, geregelte Rechtsprechung.</li>
+      <li><strong>Charakter:</strong> Es handelt sich um <em>Einzelmeinungen</em> von unterschiedlicher Qualität und Quantität, keine offiziellen Reichsgesetze – theoretische Auseinandersetzungen mit Verfassungsfragen, die aber das Reformverständnis der Zeit spiegeln.</li>
+      <li><strong>Verbindung zu Sigismunds Acht Artikeln (Q9, 1417):</strong> Die Idee der Vierteilung des Reichs in Kreise mit Hauptleuten findet sich in ganz ähnlicher Form auch im offiziellen Reformvorschlag König Sigismunds auf dem Konstanzer Konzil – ein Hinweis darauf, dass Reformideen zwischen gelehrten Ratgebern und königlicher Politik zirkulierten.</li>
+      <li><strong>Bedeutung:</strong> Die frühe Reichsreform des 15. Jahrhunderts blieb <strong>Programm, nicht Umsetzung</strong> – erst deutlich später griffen Reichstag und Königtum einzelne dieser Ideen wieder auf.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-building-church"></i> Von Konstanz nach Basel: Die Konzilsperiode (1414–1449)</div>
+    <ul class="timeline">
+      <li><span class="tl-date">1414–1418</span><span class="tl-text"><strong>Konzil von Konstanz</strong>, unter maßgeblichem Einsatz König Sigismunds zustande gekommen. Drei Aufgaben (<em>causae</em>): <strong>causa unionis</strong> (Beseitigung des Schismas), <strong>causa fidei</strong> (Bekämpfung von Häresien, insb. der Hussiten/Wyclif-Lehre), <strong>causa reformationis</strong> (Kirchenreform, Kampf gegen Simonie). Nur die erste Aufgabe wurde vollständig gelöst.</span></li>
+      <li><span class="tl-date">6.4.1415</span><span class="tl-text">Dekret <strong>Haec sancta</strong>: Überordnung des Konzils über den Papst – Grundlagendokument des Konziliarismus.</span></li>
+      <li><span class="tl-date">1415</span><span class="tl-text">Verurteilung und Verbrennung des <strong>Jan Hus</strong> als Ketzer (6.7.) – macht ihn zum Märtyrer der hussitischen Bewegung.</span></li>
+      <li><span class="tl-date">11.11.1417</span><span class="tl-text">Wahl <strong>Martins V.</strong> – Ende des Schismas, aber Kirchenreform (causa reformationis) bleibt weitgehend unausgeführt.</span></li>
+      <li><span class="tl-date">1431–1449</span><span class="tl-text"><strong>Konzil von Basel:</strong> Mit bis zu 3500 (nie gleichzeitig anwesenden) Teilnehmern eine kirchliche Gegenregierung zum Papsttum. Erlässt zahlreiche Reformdekrete und regelt mit den <strong>Basler Kompaktaten</strong> (1433) die Beziehung der Kirche zu den gemäßigten Hussiten (Utraquisten) – deren Anerkennung des Laienkelchs im Gegenzug für Anerkennung als böhmische Kirche.</span></li>
+      <li><span class="tl-date">1449</span><span class="tl-text">Das Basler Konzil unterliegt letztlich dem wiedererstarkten monarchischen Anspruch des Papsttums – die konziliaren Ideen bleiben aber im 15. Jahrhundert weiter in der Diskussion.</span></li>
+    </ul>
+    <div class="card" style="margin-top:1rem; padding:0.8rem 1rem;">
+      <p style="font-size:0.87rem; margin:0;"><strong>Klausurrelevanter Zusammenhang:</strong> Kirchenreform (Konzilsbewegung) und Reichsreform (Job Vener, Sigismunds Acht Artikel) laufen im frühen 15. Jahrhundert parallel und werden von Zeitgenossen wie Job Vener explizit aufeinander bezogen – beide reagieren auf eine als tiefgreifend empfundene Krise von Kaisertum und Papsttum um 1400.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-scale"></i> Zwischen Krise und Verdichtung: Das Reich unter Sigismund</div>
+    <table>
+      <tr><th>Krisenmoment</th><th>Verdichtungsmoment</th></tr>
+      <tr><td>Kaisertum auf Tiefstand seit Wenzel/Ruprecht (Kerrl)</td><td>Sigismund profiliert das Königtum neu als Schirmherr und Einberufer eines Weltkonzils (Konstanz)</td></tr>
+      <tr><td>Hussitenkriege binden jahrzehntelang Kräfte, eigener Herrschaftsantritt in Böhmen bis 1436 blockiert</td><td>Reformvorschläge (Acht Artikel 1417, Reichskreise) entwerfen erstmals systematisch neue Verwaltungsstrukturen für das Reich</td></tr>
+      <tr><td>Fürsten unterstützen laut Job Vener das Reich „selten" aus Steuerfurcht</td><td>Zirkulation von Reformideen zwischen Gelehrten (Vener) und Königtum (Sigismund) zeigt wachsendes gemeinsames Problembewusstsein für eine Reichsreform</td></tr>
+      <tr><td>Verlust der luxemburgischen Hausmacht mit Sigismunds Tod 1437 (ohne männlichen Erben)</td><td>Übergang an die Habsburger sichert langfristig Kontinuität der Königsherrschaft (ab 1438 fast durchgehend habsburgische Könige/Kaiser)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===================== STRUKTUREN ===================== -->
+<div class="section" id="section-strukturen">
+  <p class="section-intro">Strukturmerkmale des Reiches 1250–1450 · Peter Moraw und das Spätmittelalter</p>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-chart-network"></i> Die fünf Grundprobleme nach Peter Moraw (1350–1450)</div>
+    <p>Moraw beschreibt das spätmittelalterliche Reich als Gemeinwesen, das primär auf persönlichen Beziehungen beruhte:</p>
+    <div class="problems">
+      <div class="problem-item">
+        <div class="problem-name">Kontinuitätsproblem</div>
+        <div class="problem-desc">Häufige Dynastiewechsel verhinderten stetige Entwicklung; mit fast jedem neuen König wechselten die territorialen Kernlandschaften und Residenzen.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Kohärenzproblem</div>
+        <div class="problem-desc">Das Reich war keine soziale oder wirtschaftliche Einheit, sondern ein Geflecht aus etwa einem Dutzend regionaler Hegemonialsysteme.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Dualismusproblem</div>
+        <div class="problem-desc">Ständiges Spannungsverhältnis zwischen König und Reichsständen (Fürsten), die zunehmend als korporative Einheit dem Herrscher gegenübertraten.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Amtsherrliches Org.-Problem</div>
+        <div class="problem-desc">Kein fester administrativer Unterbau; regiert wurde durch Personenverbände am Hof, nicht durch eine ortsfeste Bürokratie.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-name">Allodialismusproblem</div>
+        <div class="problem-desc">Tendenz der Fürsten, Macht auf Eigenbesitz (Allod) statt auf königliche Lehen zu stützen → Bildung autonomer Territorialstaaten zulasten der Zentralgewalt.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-list-check"></i> Querschnitt: Strukturmerkmale von König und Reich um 1300</div>
+    <table>
+      <tr><th>Merkmal</th><th>Erläuterung</th></tr>
+      <tr><td><strong>Wahlmonarchie</strong></td><td>Königswürde durch sieben Kurfürsten vergeben; dynastische Kontinuität ist die Ausnahme (Rudolf → Adolf → Albrecht → Heinrich VII. = vier verschiedene Häuser).</td></tr>
+      <tr><td><strong>Kurfürstliche Reichsverantwortung</strong></td><td>Kurkolleg entwickelt sich vom Wahlgremium zum Verfassungsorgan, das Könige erhebt, kontrolliert und 1298 erstmals absetzt.</td></tr>
+      <tr><td><strong>Hausmachtkönigtum</strong></td><td>Jede Königsherrschaft beruht auf dynastischer Eigenmacht; Reichs- und Hauspolitik untrennbar verflochten.</td></tr>
+      <tr><td><strong>Reichsgut / Revindikation / Pfandpolitik</strong></td><td>Kampf um materielle Basis des Königtums durchzieht alle behandelten Herrschaften.</td></tr>
+      <tr><td><strong>Landfrieden</strong></td><td>Friedenswahrung ist zentrale Legitimationsaufgabe und wichtigstes Feld der Zusammenarbeit mit Fürsten und Städten.</td></tr>
+      <tr><td><strong>Konsens- und Präsenzherrschaft</strong></td><td>Itinerant, über Hoftage, Lehnsbindungen, Heiratspolitik und persönliche Präsenz ausgeübt – nicht über zentrale Institutionen.</td></tr>
+      <tr><td><strong>Repräsentation und Medien</strong></td><td>Krönung in Aachen, Insignien, Siegel und Urkunden kommunizieren und legitimieren Herrschaft symbolisch.</td></tr>
+      <tr><td><strong>Verfassungsstabilität trotz Krisen</strong></td><td>Doppelwahl (1257), Königssturz (1298), Königsmord (1308) erschüttern einzelne Herrschaften, nicht aber die Ordnung selbst – Wahl, Krönung und Kurkolleg fangen die Krisen auf.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-book"></i> Handlungsfelder des Königs (nach dem Vertrag von 1325)</div>
+    <div class="glossary">
+      <div class="gloss-item"><div class="gloss-term">Reichsgut</div><div class="gloss-def">Gemeinsame Verwaltung und Nutzung der zum Reich gehörigen Länder, Leute und materiellen Güter.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Lehnsherrschaft</div><div class="gloss-def">Funktion als oberster Lehnsherr, der Fürsten mit Regalien und weltlichen Gütern belehnt.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Königliche Kirchenherrschaft</div><div class="gloss-def">Rolle als Schirmherr der römischen Kirche und der Christenheit.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Rechtsetzung (mandare)</div><div class="gloss-def">Oberster Rechtshüter: Privilegien erteilen, Gewohnheitsrecht bewahren.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Friedenswahrung</div><div class="gloss-def">Zentrale Verpflichtung zur Sicherung des Friedens und zum Schutz der Hilfsbedürftigen (Landfrieden).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Wehrhoheit</div><div class="gloss-def">Gemeinsame militärische Verteidigung des Reiches gegen äußere und innere Feinde.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== GLOSSAR ===================== -->
+<div class="section" id="section-glossar">
+  <p class="section-intro">Alle prüfungsrelevanten Schlüsselbegriffe auf einen Blick</p>
+
+  <div class="card">
+    <div class="card-title"><i class="ti ti-vocabulary"></i> Schlüsselbegriffe A–Z</div>
+    <div class="glossary">
+      <div class="gloss-item"><div class="gloss-term">Absetzung 1298</div><div class="gloss-def">Erstmalige Absetzung eines röm.-dt. Königs (Adolf von Nassau) durch die Kurfürsten ohne päpstliche Mitwirkung.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Allod</div><div class="gloss-def">Freies Eigengut ohne Lehnspflichten (im Gegensatz zum Lehen/beneficium).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Approbationsanspruch</div><div class="gloss-def">Anspruch Papst Johannes' XXII., die Rechtmäßigkeit eines gewählten römischen Königs von päpstlicher Bestätigung abhängig zu machen. Auslöser des Konflikts mit Ludwig IV.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Auxilium</div><div class="gloss-def">Militärische und materielle Hilfe des Vasallen; Teil von „consilium et auxilium".</div></div>
+      <div class="gloss-item"><div class="gloss-term">Consilium</div><div class="gloss-def">Rat des Vasallen an den Herrn; Teil der positiven Lehnspflicht.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Doppelwahl 1257</div><div class="gloss-def">Gespaltene Wahl Richards von Cornwall und Alfons' X. von Kastilien; Katalysator für Fixierung des Kurfürstenkollegs.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Dürnkrut / Marchfeld</div><div class="gloss-def">Entscheidungssieg Rudolfs über Ottokar II. von Böhmen 1278; Voraussetzung der habsburgischen Belehnung mit Österreich (1282).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Fahnlehen</div><div class="gloss-def">Lehen weltlicher Reichsfürsten; Investitur durch Fahne.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Felonie</div><div class="gloss-def">Treubruch des Vasallen → Heimfall des Lehens.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Goldene Bulle (1356)</div><div class="gloss-def">Rechtlicher Abschluss der Institutionalisierung des Kurfürstenkollegs unter Karl IV. Regelwerk der Kaiserwahl.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Hausmacht</div><div class="gloss-def">Dynastische Eigenmacht des Königs als materielle Grundlage spätmittelalterlicher Königsherrschaft (im Gegensatz zum Reichsgut).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Heimfall</div><div class="gloss-def">Rückfall des Lehens an den Herrn bei Tod ohne lehnsfähige Erben oder Treubruch.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Immixitio manuum</div><div class="gloss-def">Handgang: Vasall legt Hände in die des Herrn → Mannschaft (homagium); Kern des Lehnsrituals.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Interregnum</div><div class="gloss-def">Phase 1250–1273; korrekt: Zeit fehlender allgemein anerkannter, präsenter Königsherrschaft (nicht: ohne König).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Itinerar</div><div class="gloss-def">Reiseroute des mittelalterlichen Königs; da keine Hauptstadt, regierte der König durch ständiges Reisen (Reiseherrschaft).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Kammerknechtschaft</div><div class="gloss-def">Rechtsstellung der jüdischen Gemeinden unter unmittelbarem Königsschutz.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Konsensuale Herrschaft</div><div class="gloss-def">Verfassungsprinzip: König kann wichtige Entscheidungen nur in Übereinstimmung mit den Großen treffen.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Konziliarismus</div><div class="gloss-def">Lehre vom Vorrang des Konzils über den Papst; Dekrete „Haec sancta" (1415) und „Frequens" (1417).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Konzil von Konstanz</div><div class="gloss-def">1414–1418; beendet das Schisma durch Absetzung/Rücktritt der drei Päpste und Wahl Martins V. (1417).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Avisamentum</div><div class="gloss-def">„Gutachten"; hier: Job Veners Reformvorschlag von 1417, der Kirchen- und Reichsreform parallelisiert (Q10).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Basler Kompaktaten</div><div class="gloss-def">1433 zwischen dem Konzil von Basel und den gemäßigten Hussiten (Utraquisten) geschlossene Vereinbarung; regelt u. a. den Laienkelch.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Causae (Konstanz)</div><div class="gloss-def">Die drei Aufgaben des Konzils von Konstanz: causa unionis (Schisma), causa fidei (Häresie/Hussiten), causa reformationis (Kirchenreform).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Haec sancta (1415)</div><div class="gloss-def">Konzilsdekret von Konstanz: Überordnung des Konzils über den Papst; Grundlagentext des Konziliarismus.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Kuttenberger Dekret (1409)</div><div class="gloss-def">Verschiebt an der Prager Universität das Stimmgewicht zugunsten der böhmischen Nation; Auslöser für den Auszug deutscher Magister/Studenten aus Prag.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Notorietät</div><div class="gloss-def">Rechtskonzept: allgemein bekannte Tatsachen bedürfen keines gesonderten Beweises; diente 1400 zur Absetzung Wenzels.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Reichskreis</div><div class="gloss-def">Regionale Verwaltungs-/Friedenseinheit mit eigenem Hauptmann; erstmals konzeptionell 1417 (Sigismunds Acht Artikel, Job Vener) – im 15. Jahrhundert reine Reformidee, nicht umgesetzt.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Rex inutilis</div><div class="gloss-def">„Unfähiger König"; nach kanonischem Recht eigentlich nur zum freiwilligen Rücktritt, nicht zur zwangsweisen Absetzung berechtigend – daher 1400 zusätzliche Mordvorwürfe gegen Wenzel.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Kurfürst</div><div class="gloss-def">Die sieben Königswähler: Mainz, Köln, Trier; Pfalz, Sachsen, Brandenburg, Böhmen; rechtlich fixiert in der Goldenen Bulle (1356).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Lehen</div><div class="gloss-def">Verliehenes Gut (Land, Amt, Rechte); lat. feudum/beneficium. Kern: Treue (fidelitas) gegen Schutz.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Obödienz</div><div class="gloss-def">Gehorsamsbereich eines Papstes während des Schismas (römische vs. avignonesische Obödienz).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Pfaffenkönig</div><div class="gloss-def">Spöttischer Beiname Karls IV. nach seiner Wahl 1346, da er zunächst nur von papstfreundlichen Kurfürsten gegen den noch lebenden Ludwig IV. erhoben wurde.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Primogenitur</div><div class="gloss-def">Erstgeburtsrecht; in der Goldenen Bulle 1356 für die weltlichen Kurfürstentümer festgelegt, um deren Zersplitterung durch Erbteilung zu verhindern.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Partikularismus</div><div class="gloss-def">Streben der Einzelfürsten nach eigenem Machtzuwachs auf Kosten der Gesamtheit; Gegenteil von Zentralismus. Kernproblem der mittelalterlichen Reichsverfassung.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Patrimonium Petri</div><div class="gloss-def">Kirchenstaat; weltliches Territorium des Papstes in Mittelitalien.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Revindikation</div><div class="gloss-def">Rückforderung entfremdeten Reichsguts; programmatisch seit dem Nürnberger Hoftag 1274 (Rudolf von Habsburg).</div></div>
+      <div class="gloss-item"><div class="gloss-term">Schisma</div><div class="gloss-def">Kirchenspaltung; gleichzeitige Erhebung mehrerer Ansprüche auf den Papstthron.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Sphragistik</div><div class="gloss-def">Siegelkunde; Siegel als Quellen herrscherlicher Selbstdarstellung und Legitimation.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Wahlkapitulation</div><div class="gloss-def">Schriftlicher Vertrag, in dem der gewählte König den Kurfürsten vor der Krönung bestimmte Rechte zusichern musste. Einschränkung königlicher Macht als Bedingung für die Krone.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Zepterlehen</div><div class="gloss-def">Lehen geistlicher Reichsfürsten; Investitur durch Zepter (seit Wormser Konkordat 1122).</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FLASHCARDS ===================== -->
+<div class="section" id="section-flashcards">
+  <p class="section-intro">Klicke auf eine Karte, um die Antwort aufzudecken. Klicke erneut zum Zurücksetzen.</p>
+
+  <div class="flashcard-grid">
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Was bedeutet „Interregnum" wörtlich und warum ist der Begriff problematisch?</div>
+      <div class="fc-back">„Zwischenherrschaft" – aber das Reich hatte 1250–1273 durchgehend Könige (Konrad IV., Richard v. Cornwall, Alfons X.). Problem war nicht das <em>Fehlen</em>, sondern die fehlende <em>Anerkennung, Präsenz und Durchsetzungsfähigkeit</em> der Königsherrschaft.</div>
+      <div class="fc-hint">Tippen zum Anzeigen</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Welche drei Elemente bilden den Lehnsritus?</div>
+      <div class="fc-back">1. <strong>Mannschaft/Homagium</strong> (immixitio manuum – Handgang) → persönliche Bindung<br>2. <strong>Treueeid</strong> (fidelitas/sacramentum) → religiöse Bekräftigung<br>3. <strong>Investitur</strong> → symbolische Übergabe des Lehens</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Warum wählten die Kurfürsten 1292 Adolf von Nassau statt Albrecht von Habsburg?</div>
+      <div class="fc-back">Albrecht als Herzog von Österreich/Steiermark hatte eine zu große Hausmacht – zu gefährlich für die Kurfürsten. Adolf war hausmachtarm und leicht zu lenken. Kurfürsten bevorzugen „schwache" Kandidaten als politisches Kalkül.</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Was war die historische Bedeutung der Absetzung Adolfs 1298?</div>
+      <div class="fc-back"><strong>Erste erfolgreiche Absetzung eines deutschen Königs durch die Kurfürsten</strong> – ohne päpstliche Mitwirkung. Zeigt: Königtum ist nicht sakral unantastbar, sondern an Bedingungen geknüpft. Kurfürsten beanspruchen ausdrücklich die oberste Verantwortung für das Reich.</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Warum ist die Lehnspyramide laut Forschung problematisch?</div>
+      <div class="fc-back">Sie suggeriert eine <em>klare, starre Hierarchie</em> – Realität war ein unübersichtliches Geflecht. Ignoriert Mehrfachvasallität, Allod neben Lehnsgut, Ausschluss von Bauern/Bürgern. Ist ein nachträgliches Konstrukt der Rechtsgeschichte des 19. Jh. (Boockmann, Lundt, Dartmann).</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Was besagt „consilium et auxilium"?</div>
+      <div class="fc-back">Rat (consilium) und Hilfe (auxilium) – die positive Lehnspflicht des Vasallen: aktive Beratung des Herrn und militärische/materielle Unterstützung. Nach Fulbert von Chartres: Pflicht gilt für <em>beide Seiten</em> (Reziprozität).</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Was ist die Doppelwahl von 1257 und welche Folge hatte sie?</div>
+      <div class="fc-back">Gespaltene Wahl: Richard von Cornwall (Jan.) und Alfons X. von Kastilien (Apr.). Böhmische Stimme für beide reklamiert. Folge: Streit um die Stimmgültigkeit zwang zur Klärung, wer wahlberechtigt ist → beschleunigte <strong>Institutionalisierung des Kurfürstenkollegs</strong>.</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Was ist „Revindikation" und wann wurde sie programmatisch eingeführt?</div>
+      <div class="fc-back">Rückforderung entfremdeten Reichsguts (Güter, Burgen, Rechte, Einkünfte die nach 1245 verpfändet/verschenkt/usurpiert wurden). Programmatisch: <strong>Nürnberger Hoftag 1274</strong> unter Rudolf von Habsburg. Instrument: Reichslandvogteien.</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Was ist der Unterschied zwischen Fahnlehen und Zepterlehen?</div>
+      <div class="fc-back"><strong>Fahnlehen</strong>: Lehen weltlicher Reichsfürsten (Herzöge, Markgrafen), Investitur durch Fahne.<br><strong>Zepterlehen</strong>: Lehen geistlicher Reichsfürsten (Erzbischöfe, Bischöfe, Äbte), Investitur durch Zepter – seit dem Wormser Konkordat 1122 getrennt von geistlicher Investitur.</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Was ist das Große Abendländische Schisma und wie wurde es gelöst?</div>
+      <div class="fc-back">1378–1417: Gleichzeitig zwei (ab 1409: drei) Päpste mit Rechtsanspruch. Ausgelöst durch: Wahl Urbans VI. 1378 → Kardinäle wählen Gegenpapst Clemens VII. Lösung: <strong>Konzil von Konstanz</strong> (1414–1418), Wahl Martins V. 1417. Instrument: <strong>Konziliarismus</strong> (Konzil über Papst).</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Was war Rudolfs wichtigster außenpolitischer Erfolg?</div>
+      <div class="fc-back"><strong>Sieg über Ottokar II. von Böhmen auf dem Marchfeld/Dürnkrut (26. August 1278)</strong>. Ottokar hatte Österreich, Steiermark, Kärnten, Krain usurpiert. Nach dem Sieg belehnte Rudolf 1282 seine Söhne Albrecht und Rudolf mit Österreich, Steiermark und Krain → Geburtsstunde der habsburgischen Hausmacht im Südosten.</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Welche fünf Grundprobleme benennt Peter Moraw für das Spätmittelalter?</div>
+      <div class="fc-back">1. <strong>Kontinuität</strong>sproblem (Dynastiewechsel)<br>2. <strong>Kohärenz</strong>problem (kein sozialer Zusammenhalt)<br>3. <strong>Dualis</strong>musproblem (König vs. Fürsten)<br>4. <strong>Amtsherrliches Org.-</strong>problem (keine feste Bürokratie)<br>5. <strong>Allodia</strong>lismusproblem (Eigenbesitz statt Lehen)</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Warum wurde König Wenzel 1400 abgesetzt und warum ist diese Absetzung ein methodisch heikles Beispiel?</div>
+      <div class="fc-back">Offiziell: „unnütz" und „unwürdig". Da ein <em>rex inutilis</em> eigentlich nur zurücktreten, nicht abgesetzt werden konnte, stützten die Kurfürsten sich zusätzlich auf einen Mordvorwurf (Fall Johannes von Nepomuk), der über Jahrzehnte durch propagandistische Texte gewandert war. Zeigt: zeitgenössische Quellenurteile über Wenzel sind nicht neutral, sondern Teil gezielter politischer Kommunikation.</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Was verbindet Job Veners Avisamentum (1417) mit Sigismunds Acht Artikeln (Q9, 1417)?</div>
+      <div class="fc-back">Beide entstehen im selben Jahr am Rande des Konstanzer Konzils und schlagen eine <strong>Vierteilung des Reichs in Kreise</strong> mit je einem Hauptmann vor. Vener denkt zusätzlich an gewählte königliche Räte und feste Gerichtsordnungen. Beide sind frühe, im 15. Jahrhundert nicht verwirklichte Vorläufer späterer Reichskreis-Konzepte.</div>
+    </div>
+
+    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-front">Welche drei „causae" sollte das Konzil von Konstanz lösen – und welche wurde tatsächlich gelöst?</div>
+      <div class="fc-back"><strong>Causa unionis</strong> (Schisma) – gelöst (Wahl Martins V. 1417).<br><strong>Causa fidei</strong> (Häresie/Hussiten) – nur teilweise (Verurteilung Hus' 1415, aber keine Beilegung des Hussitenkonflikts).<br><strong>Causa reformationis</strong> (Kirchenreform) – weitgehend ungelöst, wird zum Programm des Basler Konzils (1431–1449).</div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('section-' + id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
 
 <script>
 function showSection(id) {
