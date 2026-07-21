@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>History of English — Klausurtrainer</title>
+<style>
+  :root{
+    --parchment:#efe7d6;
+    --ink:#2b2418;
+    --ink-soft:#5a4f3c;
+    --rune:#7a5c3e;
+    --rune-dark:#4e3a26;
+    --ok:#3f6b47;
+    --bad:#9c3b3b;
+    --gold:#a9822f;
+    --card:#f7f2e5;
+    --line:#d8cba9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, #f4ecd8 0%, transparent 60%),
+      var(--parchment);
+    color:var(--ink);
+    font-family: "Iowan Old Style","Palatino Linotype", Georgia, serif;
+    min-height:100vh;
+    padding:32px 16px 80px;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+
+  header{
+    text-align:center;
+    margin-bottom:28px;
+    position:relative;
+  }
+  .runes{
+    font-family: Georgia, serif;
+    letter-spacing:6px;
+    color:var(--rune);
+    font-size:13px;
+    text-transform:uppercase;
+    opacity:0.75;
+  }
+  h1{
+    font-size:2.1rem;
+    margin:6px 0 4px;
+    letter-spacing:0.5px;
+    color:var(--rune-dark);
+  }
+  .subtitle{
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    font-style:italic;
+  }
+
+  .progress-bar{
+    height:6px;
+    background:var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    margin:20px 0 6px;
+  }
+  .progress-fill{
+    height:100%;
+    background:linear-gradient(90deg,var(--gold),var(--rune));
+    width:0%;
+    transition:width .35s ease;
+  }
+  .progress-label{
+    display:flex;
+    justify-content:space-between;
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px 26px 22px;
+    box-shadow:0 2px 0 var(--line), 0 12px 24px -18px rgba(43,36,24,0.4);
+    position:relative;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:10px;left:10px;right:10px;bottom:10px;
+    border:1px solid rgba(122,92,62,0.18);
+    border-radius:3px;
+    pointer-events:none;
+  }
+  .qnum{
+    font-size:0.78rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6px;
+  }
+  .qtext{
+    font-size:1.18rem;
+    line-height:1.45;
+    margin-bottom:18px;
+    color:var(--ink);
+  }
+  .hint{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin:-10px 0 16px;
+  }
+
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .opt{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:#fbf7ec;
+    cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, transform .1s ease;
+  }
+  .opt:hover{background:#f3ead0; border-color:var(--gold);}
+  .opt.selected{border-color:var(--rune); background:#efe2c1;}
+  .opt.correct{border-color:var(--ok); background:#e3ecdf;}
+  .opt.incorrect{border-color:var(--bad); background:#f1dede;}
+  .opt.reveal-correct-unselected{border-color:var(--ok); background:#eef4ec; opacity:0.85;}
+  .opt .marker{
+    flex:0 0 26px;
+    height:26px;
+    border-radius:50%;
+    border:1.5px solid var(--rune);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.8rem;
+    font-weight:600;
+    color:var(--rune-dark);
+    background:#fff8ea;
+  }
+  .opt.correct .marker{border-color:var(--ok); color:var(--ok); background:#e3ecdf;}
+  .opt.incorrect .marker{border-color:var(--bad); color:var(--bad); background:#f1dede;}
+  .opt-text{padding-top:2px; line-height:1.4;}
+
+  .controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:24px;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:inherit;
+    font-size:0.95rem;
+    padding:10px 20px;
+    border-radius:4px;
+    border:1px solid var(--rune-dark);
+    background:var(--rune-dark);
+    color:#f7f2e5;
+    cursor:pointer;
+    transition:background .15s ease, transform .1s ease;
+  }
+  button:hover{background:#3a2c1b; transform:translateY(-1px);}
+  button:disabled{opacity:0.4; cursor:not-allowed; transform:none;}
+  button.secondary{
+    background:transparent;
+    color:var(--rune-dark);
+  }
+  button.secondary:hover{background:rgba(122,92,62,0.1);}
+
+  .feedback{
+    margin-top:16px;
+    padding:12px 14px;
+    border-radius:4px;
+    font-size:0.92rem;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.ok{background:#e3ecdf; color:var(--ok); border:1px solid #b9d0b8;}
+  .feedback.bad{background:#f1dede; color:var(--bad); border:1px solid #dcb4b4;}
+
+  .topbar{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:10px;
+    flex-wrap:wrap;
+  }
+  .pill{
+    font-size:0.78rem;
+    padding:6px 14px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:#fbf7ec;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .pill.active{
+    background:var(--rune-dark);
+    color:#f7f2e5;
+    border-color:var(--rune-dark);
+  }
+
+  .results{
+    text-align:center;
+    padding:20px 10px;
+  }
+  .score-ring{
+    width:160px;height:160px;margin:10px auto 20px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:2.1rem;
+    font-weight:600;
+    color:var(--rune-dark);
+    background:conic-gradient(var(--gold) calc(var(--pct)*1%), var(--line) 0);
+    position:relative;
+  }
+  .score-ring::before{
+    content:"";
+    position:absolute;
+    width:126px;height:126px;
+    border-radius:50%;
+    background:var(--card);
+  }
+  .score-ring span{position:relative;}
+  .missed-list{
+    text-align:left;
+    margin-top:20px;
+  }
+  .missed-item{
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    font-size:0.92rem;
+  }
+  .missed-item b{color:var(--rune-dark);}
+  .missed-item .ans{color:var(--ok);}
+
+  footer{
+    text-align:center;
+    margin-top:30px;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    opacity:0.7;
+  }
+
+  @media (max-width:480px){
+    .card{padding:20px 16px;}
+    h1{font-size:1.6rem;}
+    .score-ring{width:130px;height:130px;font-size:1.6rem;}
+    .score-ring::before{width:100px;height:100px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="runes">ᚻᛁᛋᛏᚩᚱᛁᚫ ᛖᚾᚷᛚᛁᛋᚳᚱᛖ</div>
+    <h1>History of English — Klausurtrainer</h1>
+    <div class="subtitle">Altklausur (Prof. Wischer) &amp; Final Review Session (Dr. Peters) kombiniert</div>
+  </header>
+
+  <div class="topbar" id="topbar"></div>
+
+  <div id="quizArea">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label">
+      <span id="progressText">Frage 1 / 1</span>
+      <span id="scoreText">Punkte: 0</span>
+    </div>
+
+    <div class="card" id="card">
+      <div class="qnum" id="qnum"></div>
+      <div class="qtext" id="qtext"></div>
+      <div class="hint" id="hint"></div>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="controls">
+        <button class="secondary" id="prevBtn">← Zurück</button>
+        <button id="checkBtn">Prüfen</button>
+        <button id="nextBtn" style="display:none;">Weiter →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card results" id="results" style="display:none;">
+    <div class="qnum">Auswertung</div>
+    <div class="score-ring" id="scoreRing" style="--pct:0;"><span id="scorePct">0%</span></div>
+    <div id="scoreSummary"></div>
+    <div class="missed-list" id="missedList"></div>
+    <div class="controls" style="justify-content:center; margin-top:20px;">
+      <button id="restartBtn">Nochmal versuchen</button>
+    </div>
+  </div>
+
+  <footer>Alle Fragen stammen aus den beiden hochgeladenen Klausur-/Übungsdokumenten. Mehrfachauswahl möglich (1–3 richtige Antworten pro Frage).</footer>
+</div>
+
+<script>
+const letters = ['A','B','C','D'];
+
+// ---- Question bank: Exam 1 (Wischer, Altklausur) ----
+const exam1 = [
+["English Historical Linguistics",["is concerned with changes from Old to Modern English (Spelling, Pronunciation, Grammar etc.).","tries to answer the question why the changes from Old to Modern English occurred.","tries to answer the question how language should be defined and understood.","is concerned with what happened in the history of the English language."],[0,1,3]],
+["Grimm's Law",["belongs to the similarities of Germanic languages.","explains exceptions to Verner's Law.","describes the change from a flexible to a fixed word stress in Germanic.","describes the loss of IE distinctions of tense and aspect in Germanic."],[0,2,3]],
+["Old English",["is the period from 500 to 1100","was a language with basically West Germanic vocabulary and only few loan words","is characterized by a growing prestige of English due to the Reformation","had a vowel system in which the length was phonologically relevant"],[0,1,3]],
+["Cognates",["are words that developed from a common source like English father and Latin pater.","are always stressed on the first syllable.","are unique words in a language that have no related forms in any other language.","can be used to derive information about the Indo-European culture and homeland."],[0,3]],
+["Which of the following statements is/are right?",["English is an Indo-Iranian language","English is an East Germanic language","English is a West Germanic language","English is a Latin language"],[2]],
+["Which of the following statements is/are right?",["The Saxons settled in the South-West and spoke West Saxon.","The Angles settled in the North and Midlands and spoke Northumbrian and Mercian.","The Frisians settled in the South-East and spoke Kentish.","The Jutes settled in the West-Midlands and spoke West Saxon."],[0,1]],
+["When the Germanic tribes invaded Britain, they found the island already inhabited by",["Romans","Scandinavians","Picts","Celts"],[0,2,3]],
+["The Purist Movement in Early Modern English",["was a manifestation of English nationalism.","attacked the coining of new technical terms from native elements.","advocated the use of loan-words.","supported the borrowing of words such as affirmation or conclusion."],[0]],
+["How can the functional load of linguistic elements affect language change?",["Elements of high functional load will rather resist change (ex. /æ/-/e/).","A low functional load of linguistic elements always leads to language change.","Functional load is a major factor in the decision whether a change takes place or not.","If many minimal pairs exist, it is rather unlikely that the distinctive sounds merge."],[0,2,3]],
+["In Early Modern English",["the periphrastic use of the verb to do rose rapidly in all kinds of sentence.","adverbs were always formed with the ending -ly.","it was ungrammatical to negate more than one element of a sentence.","the apostrophe was used in the genitive plural."],[0]],
+["The conversion to Christianity",["introduced the Anglo-Saxons to writing with the Latin alphabet","began in about the year 600","has left its mark on English place names","has left its mark on the pronunciation of English words"],[0,1,2]],
+["Other names for Old English are",["Celtic","Anglo-Saxon","Anglisc","Old Saxon"],[1,2]],
+["The inflection of the Old English noun indicates distinctions of",["person","number","mood","case"],[1,3]],
+["In Old English past tense was expressed",["by ablaut","by word order variations","by adding a dental suffix","by prepositions"],[0,2]],
+["Which of the following are Germanic languages?",["French","Scots Gaelic","Icelandic","English"],[2,3]],
+["Ablaut",["developed in Middle English","is the alternation of stem vowels in strong verbs to indicate past tense","accounts for the difference in vowel between the related words write and wrote","includes a movement to a closer and/or a more frontal vowel"],[1,2]],
+["The flexibility of the Old English vocabulary comes from",["the generous use made of prefixes and suffixes","its facility in borrowing and assimilating elements from other languages","the ease with which compounds are formed","the possibility of forming new words from various stems of the same root"],[0,2,3]],
+["Which of the following statements is/are RIGHT?",["Person and number marking was weakened in Middle English.","The category of tense was strengthened in Middle English.","The category of mood was strengthened in Middle English.","Past marking became more regular in Middle English."],[0,3]],
+["The Great Vowel Shift",["was a change in the quality of all long and short vowels","was a change in the quality of all long vowels","changed open vowels into diphthongs and lowered front vowels","was a change in the quantity of all long vowels"],[1,2]],
+["Old English and Modern English devices for indicating plurality differ",["in that Modern English uses more regular endings for nouns than Old English did","in that Old English used basically –er, and Modern English -s","in that Modern English uses function words and Old English used inflections","in that Old English also inflected adjectives and articles"],[0,3]],
+["Hard Word Dictionaries",["were written in Early Modern English to explain difficult words to less educated people.","were edited by the English Language Academy in the 17th century.","were the earliest monolingual English dictionaries.","aimed at a complete listing of all English words to fix them in their spelling."],[0,2]],
+["In Old English",["vowel length was phonologically relevant.","Germanic stops /k/ and /g/ fell together.","the Second Germanic Sound shift occurred.","the fricatives /s/, /f/ and /θ/ had voiced and voiceless allophones."],[0,3]],
+["In Old English the weak adjective declension",["was used if there was a definite article in the noun phrase","was marked with a dental suffix, and the strong adjective declension was marked by ablaut","was always used with native adjectives","is also called the indefinite declension"],[0]],
+["Doublets/Synonyms",["are very economical and therefore preserved in languages","are not very economical and therefore often one of the words is given up","often lead to a semantic differentiation between the pairs of words","have similar forms but different meanings"],[1,2]],
+["The decay of the inflectional system of English",["resulted in a weakening of case in Middle English","is the reason for the decrease in the number of strong verbs","led to an increase in the use of function words","made a fixed word order more necessary"],[0,2,3]],
+["Germanic languages differ from other Indo-European languages",["in having inflections","in having strong and weak verbs","in having a flexible word stress","in having changed their consonants, such as /p, t, k/ in a common, systematic way"],[1,3]],
+["The Modern English modal auxiliaries shall, should, may, might, can, could, must and ought derived from Old English",["strong verbs.","weak verbs.","preterite-present verbs.","impersonal verbs."],[2]],
+["Inkhorn Terms",["are pompous Latinate words that were used although perfectly good English expressions already existed.","are Scandinavian loan words that closely resemble their Anglo-Saxon doublets.","are native words that became archaic in the course of Middle English.","were seldom spoken, but mainly written."],[0,3]],
+["Grimm's Law",["only affected High German.","describes regular changes of Indo-European vowels.","explains exceptions to Verner's Law.","is also known as the First Germanic Sound Shift."],[3]],
+["In Middle English short vowels were lengthened",["in closed syllables","in open syllables","before homorganic consonant clusters like –nd or -mb","in the first syllable of three-syllabic words"],[1,2]],
+["The grammatical structure of Old English is called synthetic because",["it has many function words and a relatively fixed word order.","it has many inflections and a relatively free word order.","it has many free morphemes.","it has many bound morphemes."],[1,3]],
+["Which dialect(s) became a literary standard in the late Anglo-Saxon period?",["Northumbrian","West Saxon","Kentish","Mercian"],[1]],
+["Old English /y/",["was preserved in some early Middle English dialects where it was usually spelt with <u>.","was shortened in open syllables in Middle English.","has not survived into Modern English.","split into voiced and voiceless phonemes in Middle English."],[0,2]],
+["An English Language Academy",["was established in the Early Modern English period according to the example of France and Italy","was founded by Daniel Defoe and John Dryden","was suggested to be established in the 17th century","was supposed to turn its attention to the improvement of the English language"],[2,3]],
+["A dissociated vocabulary",["is a vocabulary with many large word families, as in Modern English","is a vocabulary that has many words that are isolated in the lexicon, not belonging to any word family","is a vocabulary that has many words that show no formal resemblance with other semantically related words","is a vocabulary with many large word families, as in Old English"],[1,2]],
+["The Modern English regular past tense marker –ed",["was the productive past tense marker in Middle English","was a new invention in Early Modern English","is the result of analogical levelling","is based on the former past tense marker of strong verbs in Old English"],[0,2]],
+["English is genetically related to",["Chinese","Finnish","Welsh","Lithuanian"],[2,3]],
+["The scholar who first discovered the existence of a common source of Latin, Greek and Sanskrit was",["Jacob Grimm","Robert Cawdrey","Sir William Jones","Sir Thomas Ellyot"],[2]],
+["Old English adjectives",["had a strong and a weak declension","had only an analytical comparison","expressed case, number and gender by inflections","were formally invariable"],[0,2]],
+["Which of the following statements is/are RIGHT?",["The personal pronouns of the 3rd person singular lost their gender distinction in Middle English","English borrowed the pronouns of the 3rd person plural from Old Norse","Middle English had distinct forms of pronouns for the 2nd person singular and plural","The dative and accusative of the personal pronouns merged in the object case in Middle English"],[1,2,3]],
+["The introduction of Latin loans in Early Modern English was encouraged by",["the purists","the fact that English speakers were predisposed to borrow words from abroad","the large number of translations made from Latin","the Catholic church"],[1,2]],
+["Old English verbs used inflections to express",["mood","case","aspect","number"],[0,3]],
+["Which of the following statements is/are right?",["Old English is the period from about 500 to 1150","Middle English is the period from 1066 to 1500","Early Modern English is the period from 1750 to 1900","Late Modern English is the period of the 18th and 19th century"],[0,3]],
+["Which of the following statements is/are right?",["449 is the traditional date of the coming of Angles, Saxons and Jutes","William Caxton introduced the book printing in England in 1204","1500-1650 was the time of the Renaissance in England","In 1066, after the Battle of Hastings, Harold became king of England"],[0,2]],
+["The split of /k/ and /g/ in Old English",["was caused by palatalization","was part of the Second Germanic Sound Shift","led to differences between English book, make and German Buch, machen","led to differences between English chin, yellow and German Kinn, gelb"],[0,3]],
+["Which of the following statements is/are right?",["Most of the Old English vocabulary is of Celtic origin.","In Modern English there are larger word families than in Old English due to foreign influence.","Old English had a more homogeneous vocabulary than Modern English.","The vocabulary of Modern English is more dissociated than that of Old English."],[1,2,3]],
+["Which of the following pairs of words are doublets:",["weorpan / kasta","egg / æg","catch / chase","baron / baroness"],[2]],
+["Which of the following statements is/are wrong?",["They, their, them were borrowed from Old Norse.","English borrowed many Celtic words of everyday use.","Words like administration, justice, liberty were borrowed from French.","English borrowed many hard words from Latin."],[1]],
+["The process of inventing a new element in conformity with some part of the language system that you already know is called",["assimilation","creativity","haplology","analogy"],[3]],
+["Redundancy",["means that the difference /æ/ - /e/ will rather resist change.","is the tendency towards symmetry.","is a psychological/physiological factor of language change.","is a systemic factor of language change."],[0,3]],
+["The Canterbury Tales were written by",["Sir William Jones","Jacob Grimm","William Caxton","Geoffrey Chaucer"],[3]],
+["Which of the following statements is/are true?",["According to Grimm's Law: *p > *f, *b > *p, *bh > *b.","Verner's Law explains exceptions to Grimm's Law.","According to Verner's Law, one of the conditions for voiceless fricatives to become voiced was that the preceding syllable was unstressed.","Grimm's Law explains sound changes that only affected High German words."],[0,1,2]],
+["In the 18th century there was suddenly felt a need for grammar books because",["scholars felt that English needed correction, it was considered inferior to Latin.","there were too many inkhorn terms used.","a standard was to be developed, without any variation in use.","the language should be fixed so that no further changes would occur."],[2,3]],
+["Which of the following belong/s to the three main aspects of language that are relevant with regard to the explanation of linguistic change?",["Language is an abstract system: Systematic (internal) factors like redundancy, asymmetries, functional load, gaps in the language system are relevant.","Language is an instinct: Behaviouristic factors like impulse and inclination are relevant.","Language is a manmade structure: Human intentions and conscious modifications are relevant.","Language is a natural phenomenon: It is born, grows and dies in the end, just like any other natural being."],[0]],
+["The Scandinavian invasions begin",["with the Battle of Hastings.","in 787.","because the Vikings wanted to convert the Anglo-Saxons to Christianity.","during the time of the Renaissance."],[1]],
+["Which of the following phonemes existed in OE, but do/does not so in Standard Modern English?",["/aɪ/","/y/","/tʃ/","/ʒ/"],[1]],
+["Strong verbs",["form the past tense or the past participle (or both) by changing the vowel of the present tense form.","were an innovation in Proto-Germanic.","form their past by adding a dental suffix.","were inherited from Proto-Indo-European."],[0,3]],
+["The poem that is carved on the Ruthwell Cross is written in",["the Pictish alphabet.","the Scottish Gaelic alphabet.","the Greek alphabet.","the Runic alphabet."],[3]],
+["I-mutation",["took place in Middle English","is the alternation of stem vowels in strong verbs to indicate past tense","accounts for the difference in vowel between the related words sing and sang","includes a movement to a closer and/or a more frontal vowel"],[3]],
+["The irregular plural of mouse (mice) in ModE",["is the result of analogical levelling.","is due to I-mutation.","is an introduction from Old Norse.","is an ablaut formation."],[1]]
+];
+
+// ---- Question bank: Exam 2 (Peters/Kreft, Final Review Session Mock Exam) ----
+const exam2raw = [
+["Latin",["is the parent language of the Romance languages","is a semitic language","developed from Sanskrit","is a parent language of English"]],
+["The main influence(s) on Middle English was/were",["Central French","Anglo-Norman","Welsh","Old Norse"]],
+["Which of the following statements is/are false?",["the Viking raids began in 793","the borders of the Danelaw were decided upon by King Alfred and Guthrum","the Vikings and the English coexisted harmoniously","some English function words are Old Norse borrowings"]],
+["Which of the following languages do/does not belong to the IE language family?",["Hungarian","Finnish","Scots Gaelic","Afrikaans"]],
+["Which of the following statements is/are correct?",["German is a West-Germanic language","the Germanic languages inherited their fixed stress from PIE","weak verbs were an innovation of the Germanic languages","all East-Germanic languages have gone extinct"]],
+["The following is an example of which kind of phonological change: 'football' pronounced 'foopball' in rapid connected speech?",["distant assimilation","metathesis","apocope","partial assimilation"]],
+["The vocabulary of Early Modern English",["is predominantly of West Germanic origin","includes borrowings from many different languages","is predominantly of Romance origin","reflects the expansion of the British Empire and colonial enterprises"]],
+["Which of the following statements is/are false?",["archaeological findings have shown that the Indo-European people lived in the Caucasus.","cognates can be used to make assumptions about the Indo-European culture, for example that they had a complex understanding of familial relationships.","the Indo-European people were, according to archaeological and ethnographic studies, not religious.","the Indo-Europeans were a semi-nomadic, agricultural people"]],
+["The Great Vowel Shift",["ended in the 16th century","only affected back vowels","is a large part of the reason why English pronunciation and orthography are so inconsistent","was enforced by the elites"]],
+["Similarities between Germanic languages include",["similarities in basic vocabulary","a fixed word order","the development of weak verbs","Grimm's Law"]],
+["Middle English",["was more analytical than OE","used more function words than OE","was highly standardised","was seen as a sophisticated language"]],
+["Verner's Law",["explains exceptions to Grimm's Law","applies to voiced fricatives","explains the difference in initial sounds between French 'pére' and Dutch 'vader'","applies when the preceding syllable is unstressed"]],
+["Analytical languages",["make use of inflections to express grammatical relationships","have very few bound grammatical morphemes","rely on fixed word orders to convey grammatical relationships within a sentence","have a lot of function words"]],
+["Ablaut",["is a morphological change","describes the change to vowels when followed by an i or j sound in the next syllable","can be found in IE verbs and nouns","is responsible for the vowel change in ModE sing-sang-sung"]],
+["Which of the following statements is/are correct?",["the Germanic tribes began to occupy Britain in 449","the Saxons settled north of the Thames and spoke the West-Saxon dialect","upon arrival in Britain, the Germanic tribes fought against the Romans","the Celtic influence on OE is mostly limited to toponyms"]],
+["The Old English vocabulary",["can be described as homogenous and dissociated","consisted of large word families","included many loan words","was homogenous in that most of the words were of West Germanic origin"]],
+["Which of the following sound changes occurred in the OE period?",["the Great Vowel Shift","the unrounding of /y/","the palatisation of /k/, /g/ and /sk/","the First Germanic Sound Shift"]],
+["Which of the following statements is/are correct?",["the translation of the Bible played a big role in shaping the English language","William Caxton introduced book printing in 1476","the Purist movement introduced Latin words into the English language because of the intellectual value of the languages of the Antique","'Inkhorn Terms' were frowned upon because they were seen as low-class"]],
+["OE and Modern English word orders differ in that",["ModE uses VSO for questions which was not possible in OE","in ModE, nouns are not inflected for case, thus a fixed word order is necessary","the ModE word order is SVO whereas, in OE, the elements could be shifted around more freely","in OE there were strict word order rules"]],
+["In OE",["/z/ existed as a phoneme","<Þ> and <ð> were interchangeable","there were only three different diphthongs","the length of a vowel was phonologically relevant"]],
+["In Middle English",["vowels were lengthened before homorganic consonant groups and in open syllables","new diphthongs emerged due to the French influence","grammatical gender was lost","the inflectional system was expanded upon"]],
+["Which of the following statements is/are correct?",["English as a Second Language (ESL) is/are also referred to as 'New Englishes'","Canadian English is more similar to British English than it is to American English","English as a lingua franca is used to communicate with non-native speakers","the terms acrolect, mesolect and basilect refer to ways of classifying a language's international relevance"]],
+["In OE",["nouns were inflected for case, number and gender","there was no grammatical gender","pronouns had a strong and a weak declension","the only tenses that existed were present and past"]],
+["Which of the following statements is/are false?",["The Middle English period started with the Norman Conquest in 1250","English wasn't spoken in parliament until 1362","William Duke of Normandy lost Normandy in 1204","the Hundred Years War was significant for the development of a British national identity"]],
+["Early Modern English",["had a flexible word order","didn't have such strict distinctions regarding relative pronouns","was a predominantly synthetic language","was highly standardized"]]
+];
+const exam2answers = [[0],[0,1],[0],[0,1],[0,2,3],[3],[1,2,3],[2],[2],[0,2,3],[0,1],[0,2,3],[1,2,3],[2,3],[0,3],[1,3],[2],[0,1],[1,2],[1,2,3],[0,1,2],[0,2],[0,3],[0,2],[1]];
+
+const exam2 = exam2raw.map((q,i)=>[q[0], q[1], exam2answers[i]]);
+
+const banks = {
+  exam1: {label:"Altklausur (Wischer)", data: exam1},
+  exam2: {label:"Review Session (Peters)", data: exam2},
+  all: {label:"Beide kombiniert", data: exam1.concat(exam2)}
+};
+
+let currentBankKey = "all";
+let questions = [];
+let current = 0;
+let selected = [];
+let checked = [];
+let score = 0;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function initBank(key){
+  currentBankKey = key;
+  questions = banks[key].data;
+  current = 0;
+  selected = questions.map(()=>[]);
+  checked = questions.map(()=>false);
+  score = 0;
+  document.getElementById('results').style.display='none';
+  document.getElementById('quizArea').style.display='block';
+  renderTopbar();
+  renderQuestion();
+}
+
+function renderTopbar(){
+  const tb = document.getElementById('topbar');
+  tb.innerHTML = '';
+  Object.keys(banks).forEach(key=>{
+    const p = document.createElement('div');
+    p.className = 'pill' + (key===currentBankKey ? ' active' : '');
+    p.textContent = banks[key].label + ' (' + banks[key].data.length + ')';
+    p.onclick = ()=>initBank(key);
+    tb.appendChild(p);
+  });
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  document.getElementById('qnum').textContent = 'Frage ' + (current+1) + ' von ' + questions.length + (q[2].length>1 ? ' · Mehrfachauswahl' : ' · Eine Antwort');
+  document.getElementById('qtext').textContent = q[0];
+  document.getElementById('hint').textContent = q[2].length + ' richtige Antwort' + (q[2].length>1?'en':'');
+  const optsDiv = document.getElementById('options');
+  optsDiv.innerHTML = '';
+  q[1].forEach((optText, idx)=>{
+    const opt = document.createElement('div');
+    opt.className = 'opt';
+    opt.innerHTML = '<div class="marker">'+letters[idx]+'</div><div class="opt-text">'+optText+'</div>';
+    opt.onclick = ()=>toggleOption(idx);
+    optsDiv.appendChild(opt);
+  });
+  document.getElementById('feedback').className = 'feedback';
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('nextBtn').style.display = 'none';
+  document.getElementById('checkBtn').style.display = 'inline-block';
+  document.getElementById('checkBtn').disabled = false;
+  document.getElementById('prevBtn').disabled = current===0;
+
+  if(checked[current]){
+    showResult();
+  } else {
+    updateSelectionVisual();
+  }
+
+  updateProgress();
+}
+
+function toggleOption(idx){
+  if(checked[current]) return;
+  const arr = selected[current];
+  const pos = arr.indexOf(idx);
+  if(pos>=0) arr.splice(pos,1); else arr.push(idx);
+  updateSelectionVisual();
+}
+
+function updateSelectionVisual(){
+  const opts = document.querySelectorAll('.opt');
+  opts.forEach((el,idx)=>{
+    el.classList.toggle('selected', selected[current].includes(idx));
+  });
+}
+
+function showResult(){
+  const q = questions[current];
+  const opts = document.querySelectorAll('.opt');
+  const correctSet = new Set(q[2]);
+  const selSet = new Set(selected[current]);
+  opts.forEach((el,idx)=>{
+    el.classList.remove('selected');
+    if(correctSet.has(idx) && selSet.has(idx)){
+      el.classList.add('correct');
+    } else if(!correctSet.has(idx) && selSet.has(idx)){
+      el.classList.add('incorrect');
+    } else if(correctSet.has(idx) && !selSet.has(idx)){
+      el.classList.add('reveal-correct-unselected');
+    }
+  });
+  const isRight = correctSet.size===selSet.size && [...correctSet].every(x=>selSet.has(x));
+  const fb = document.getElementById('feedback');
+  fb.classList.add('show');
+  if(isRight){
+    fb.classList.add('ok'); fb.classList.remove('bad');
+    fb.textContent = '✓ Richtig! ' + (q[2].length>1 ? 'Alle korrekten Antworten gefunden.' : '');
+  } else {
+    fb.classList.add('bad'); fb.classList.remove('ok');
+    const correctLetters = q[2].map(i=>letters[i]).join(', ');
+    fb.textContent = '✗ Nicht ganz — richtig wäre: ' + correctLetters;
+  }
+  document.getElementById('checkBtn').style.display = 'none';
+  document.getElementById('nextBtn').style.display = 'inline-block';
+}
+
+document.getElementById('checkBtn').onclick = ()=>{
+  if(selected[current].length===0) return;
+  checked[current] = true;
+  const q = questions[current];
+  const correctSet = new Set(q[2]);
+  const selSet = new Set(selected[current]);
+  const isRight = correctSet.size===selSet.size && [...correctSet].every(x=>selSet.has(x));
+  if(isRight) score++;
+  updateProgress();
+  showResult();
+};
+
+document.getElementById('nextBtn').onclick = ()=>{
+  if(current < questions.length-1){
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+};
+
+document.getElementById('prevBtn').onclick = ()=>{
+  if(current>0){
+    current--;
+    renderQuestion();
+  }
+};
+
+function updateProgress(){
+  const answered = checked.filter(Boolean).length;
+  const pct = Math.round((current)/(questions.length-1||1)*100);
+  document.getElementById('progressFill').style.width = ((current)/(questions.length-1||1)*100) + '%';
+  document.getElementById('progressText').textContent = 'Frage ' + (current+1) + ' / ' + questions.length;
+  document.getElementById('scoreText').textContent = 'Punkte: ' + score + ' / ' + answered;
+}
+
+function showResults(){
+  document.getElementById('quizArea').style.display='none';
+  const res = document.getElementById('results');
+  res.style.display='block';
+  const total = questions.length;
+  const pct = Math.round(score/total*100);
+  document.getElementById('scoreRing').style.setProperty('--pct', pct);
+  document.getElementById('scorePct').textContent = pct + '%';
+  document.getElementById('scoreSummary').innerHTML = '<p style="font-size:1.05rem;">Du hast <b>' + score + ' von ' + total + '</b> Fragen richtig beantwortet.</p>';
+
+  const missedDiv = document.getElementById('missedList');
+  missedDiv.innerHTML = '';
+  questions.forEach((q,idx)=>{
+    const correctSet = new Set(q[2]);
+    const selSet = new Set(selected[idx]);
+    const isRight = correctSet.size===selSet.size && [...correctSet].every(x=>selSet.has(x));
+    if(!isRight){
+      const div = document.createElement('div');
+      div.className = 'missed-item';
+      div.innerHTML = '<b>Frage '+(idx+1)+':</b> ' + q[0] + '<br><span class="ans">Richtig: ' + q[2].map(i=>letters[i]+') '+q[1][i]).join(' · ') + '</span>';
+      missedDiv.appendChild(div);
+    }
+  });
+  if(missedDiv.innerHTML===''){
+    missedDiv.innerHTML = '<p style="text-align:center; color:var(--ok); font-weight:600;">Alle Fragen richtig — sehr gut gerüstet für die Klausur!</p>';
+  }
+}
+
+document.getElementById('restartBtn').onclick = ()=>initBank(currentBankKey);
+
+// init
+initBank('all');
+</script>
+</body>
+</html>
