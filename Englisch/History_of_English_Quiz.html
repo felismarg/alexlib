@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>History of English — Klausurtrainer</title>
+<title>History of English — Exam Trainer</title>
 <style>
   :root{
     --parchment:#efe7d6;
@@ -263,7 +263,7 @@
 <div class="wrap">
   <header>
     <div class="runes">ᚻᛁᛋᛏᚩᚱᛁᚫ ᛖᚾᚷᛚᛁᛋᚳᚱᛖ</div>
-    <h1>History of English — Klausurtrainer</h1>
+    <h1>History of English — Exam Trainer</h1>
   </header>
 
   <div class="topbar" id="topbar"></div>
@@ -271,8 +271,8 @@
   <div id="quizArea">
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
     <div class="progress-label">
-      <span id="progressText">Frage 1 / 1</span>
-      <span id="scoreText">Punkte: 0</span>
+      <span id="progressText">Question 1 / 1</span>
+      <span id="scoreText">Score: 0</span>
     </div>
 
     <div class="card" id="card">
@@ -280,33 +280,33 @@
       <div class="qtext" id="qtext"></div>
       <div class="options" id="options"></div>
       <div id="openAnswerWrap" style="display:none; margin-bottom:6px;">
-        <textarea id="openAnswer" rows="6" placeholder="Deine Antwort hier eingeben…" style="width:100%; font-family:inherit; font-size:0.95rem; padding:12px 14px; border:1px solid var(--line); border-radius:4px; background:#fbf7ec; color:var(--ink); resize:vertical;"></textarea>
+        <textarea id="openAnswer" rows="6" placeholder="Type your answer here…" style="width:100%; font-family:inherit; font-size:0.95rem; padding:12px 14px; border:1px solid var(--line); border-radius:4px; background:#fbf7ec; color:var(--ink); resize:vertical;"></textarea>
       </div>
       <div class="feedback" id="feedback"></div>
       <div class="controls">
-        <button class="secondary" id="prevBtn">← Zurück</button>
-        <button id="checkBtn">Prüfen</button>
-        <button id="nextBtn" style="display:none;">Weiter →</button>
+        <button class="secondary" id="prevBtn">← Back</button>
+        <button id="checkBtn">Check</button>
+        <button id="nextBtn" style="display:none;">Next →</button>
       </div>
     </div>
   </div>
 
   <div class="card results" id="sectionResults" style="display:none;">
-    <div class="qnum">Sektion abgeschlossen</div>
+    <div class="qnum">Section complete</div>
     <div class="score-ring" id="sectionScoreRing" style="--pct:0;"><span id="sectionScorePct">0%</span></div>
     <div id="sectionScoreSummary"></div>
     <div class="controls" style="justify-content:center; margin-top:20px;">
-      <button id="sectionContinueBtn">Weiter →</button>
+      <button id="sectionContinueBtn">Next →</button>
     </div>
   </div>
 
   <div class="card results" id="results" style="display:none;">
-    <div class="qnum">Auswertung</div>
+    <div class="qnum">Results</div>
     <div class="score-ring" id="scoreRing" style="--pct:0;"><span id="scorePct">0%</span></div>
     <div id="scoreSummary"></div>
     <div class="missed-list" id="missedList"></div>
     <div class="controls" style="justify-content:center; margin-top:20px;">
-      <button id="restartBtn">Nochmal versuchen</button>
+      <button id="restartBtn">Try Again</button>
     </div>
   </div>
 
@@ -492,7 +492,7 @@ const moodle3 = [
 function tagMC(arr){ return arr.map(q => [q[0], q[1], q[2], 'mc']); }
 const mcAll = tagMC(exam1).concat(tagMC(exam2), tagMC(moodle1), tagMC(moodle2), tagMC(moodle3));
 
-// ---- Open Questions (Freitext, mit Musterantwort) ----
+// ---- Open Questions (free text, with sample answer) ----
 // format: [questionText, null, null, 'open', sampleAnswerHTML, points]
 const openQuestions = [
 ["i-Mutation (5 P.): Describe the process of i-mutation (i-umlaut). When did it take place and what exactly happened? Which effects did it have on Old English grammar and Modern English?", null, null, 'open',
@@ -553,8 +553,8 @@ const openQuestions = [
 
 const banks = {
   mc: {label:"Multiple Choice", data: mcAll},
-  open: {label:"Offene Fragen", data: openQuestions},
-  all: {label:"Alle Fragentypen", data: mcAll.concat(openQuestions)}
+  open: {label:"Open Questions", data: openQuestions},
+  all: {label:"All Question Types", data: mcAll.concat(openQuestions)}
 };
 
 // ---- Sectioning (only used for the "mc" bank) ----
@@ -580,6 +580,7 @@ let current = 0;
 let selected = [];
 let checked = [];
 let openAnswers = [];
+let optOrders = [];
 let score = 0;
 let isSectioned = false;
 let sections = [];
@@ -601,6 +602,7 @@ function initBank(key){
   selected = questions.map(()=>[]);
   checked = questions.map(()=>false);
   openAnswers = questions.map(()=>'');
+  optOrders = questions.map(q => q[3]==='open' ? null : shuffle([...Array(q[1].length).keys()]));
   score = 0;
   isSectioned = (key === 'mc');
   sections = isSectioned ? computeSections(questions.length, SECTION_SIZE) : [{start:0, end:questions.length}];
@@ -627,8 +629,8 @@ function renderTopbar(){
 function renderQuestion(){
   const q = questions[current];
   const isOpen = q[3] === 'open';
-  const sectionLabel = isSectioned ? ('Sektion ' + (currentSection+1) + '/' + sections.length + ' · ') : '';
-  document.getElementById('qnum').textContent = sectionLabel + 'Frage ' + (current+1) + ' von ' + questions.length + (isOpen ? ' · Offene Frage' : (q[2].length>1 ? ' · Mehrfachauswahl' : ' · Eine Antwort'));
+  const sectionLabel = isSectioned ? ('Section ' + (currentSection+1) + '/' + sections.length + ' · ') : '';
+  document.getElementById('qnum').textContent = sectionLabel + 'Question ' + (current+1) + ' of ' + questions.length + (isOpen ? ' · Open Question' : (q[2].length>1 ? ' · Multiple Answers' : ' · Single Answer'));
   document.getElementById('qtext').innerHTML = q[0];
 
   const optsDiv = document.getElementById('options');
@@ -645,11 +647,13 @@ function renderQuestion(){
   } else {
     optsDiv.style.display = 'flex';
     openWrap.style.display = 'none';
-    q[1].forEach((optText, idx)=>{
+    const order = optOrders[current];
+    order.forEach((origIdx, dispIdx)=>{
       const opt = document.createElement('div');
       opt.className = 'opt';
-      opt.innerHTML = '<div class="marker">'+letters[idx]+'</div><div class="opt-text">'+optText+'</div>';
-      opt.onclick = ()=>toggleOption(idx);
+      opt.dataset.origIdx = origIdx;
+      opt.innerHTML = '<div class="marker">'+letters[dispIdx]+'</div><div class="opt-text">'+q[1][origIdx]+'</div>';
+      opt.onclick = ()=>toggleOption(origIdx);
       optsDiv.appendChild(opt);
     });
   }
@@ -659,7 +663,7 @@ function renderQuestion(){
   document.getElementById('nextBtn').style.display = 'none';
   document.getElementById('checkBtn').style.display = 'inline-block';
   document.getElementById('checkBtn').disabled = false;
-  document.getElementById('checkBtn').textContent = isOpen ? 'Antwort anzeigen' : 'Prüfen';
+  document.getElementById('checkBtn').textContent = isOpen ? 'Show Answer' : 'Check';
   document.getElementById('prevBtn').disabled = isSectioned ? (current === sections[currentSection].start) : (current===0);
 
   if(checked[current]){
@@ -681,8 +685,9 @@ function toggleOption(idx){
 
 function updateSelectionVisual(){
   const opts = document.querySelectorAll('.opt');
-  opts.forEach((el,idx)=>{
-    el.classList.toggle('selected', selected[current].includes(idx));
+  opts.forEach((el)=>{
+    const origIdx = parseInt(el.dataset.origIdx, 10);
+    el.classList.toggle('selected', selected[current].includes(origIdx));
   });
 }
 
@@ -693,8 +698,8 @@ function showResult(){
     const fb = document.getElementById('feedback');
     fb.classList.add('show','ok');
     fb.classList.remove('bad');
-    const pointsLabel = q[5] ? (' (' + q[5] + ' Punkte)') : '';
-    fb.innerHTML = '<b>Musterantwort'+pointsLabel+':</b><br>' + q[4];
+    const pointsLabel = q[5] ? (' (' + q[5] + ' pts)') : '';
+    fb.innerHTML = '<b>Sample Answer'+pointsLabel+':</b><br>' + q[4];
     document.getElementById('checkBtn').style.display = 'none';
     document.getElementById('nextBtn').style.display = 'inline-block';
     return;
@@ -702,13 +707,14 @@ function showResult(){
   const opts = document.querySelectorAll('.opt');
   const correctSet = new Set(q[2]);
   const selSet = new Set(selected[current]);
-  opts.forEach((el,idx)=>{
+  opts.forEach((el)=>{
+    const origIdx = parseInt(el.dataset.origIdx, 10);
     el.classList.remove('selected');
-    if(correctSet.has(idx) && selSet.has(idx)){
+    if(correctSet.has(origIdx) && selSet.has(origIdx)){
       el.classList.add('correct');
-    } else if(!correctSet.has(idx) && selSet.has(idx)){
+    } else if(!correctSet.has(origIdx) && selSet.has(origIdx)){
       el.classList.add('incorrect');
-    } else if(correctSet.has(idx) && !selSet.has(idx)){
+    } else if(correctSet.has(origIdx) && !selSet.has(origIdx)){
       el.classList.add('reveal-correct-unselected');
     }
   });
@@ -717,11 +723,12 @@ function showResult(){
   fb.classList.add('show');
   if(isRight){
     fb.classList.add('ok'); fb.classList.remove('bad');
-    fb.textContent = '✓ Richtig! ' + (q[2].length>1 ? 'Alle korrekten Antworten gefunden.' : '');
+    fb.textContent = '✓ Correct! ' + (q[2].length>1 ? 'You found all the correct answers.' : '');
   } else {
     fb.classList.add('bad'); fb.classList.remove('ok');
-    const correctLetters = q[2].map(i=>letters[i]).join(', ');
-    fb.textContent = '✗ Nicht ganz — richtig wäre: ' + correctLetters;
+    const order = optOrders[current];
+    const correctLetters = q[2].map(origIdx=>letters[order.indexOf(origIdx)]).join(', ');
+    fb.textContent = '✗ Not quite — the correct answer is: ' + correctLetters;
   }
   document.getElementById('checkBtn').style.display = 'none';
   document.getElementById('nextBtn').style.display = 'inline-block';
@@ -783,12 +790,12 @@ function updateProgress(){
     const secLen = sec.end - sec.start;
     const posInSec = current - sec.start + 1;
     document.getElementById('progressFill').style.width = ((posInSec-1)/(secLen-1||1)*100) + '%';
-    document.getElementById('progressText').textContent = 'Frage ' + posInSec + ' / ' + secLen + '  ·  Sektion ' + (currentSection+1) + '/' + sections.length;
+    document.getElementById('progressText').textContent = 'Question ' + posInSec + ' / ' + secLen + '  ·  Section ' + (currentSection+1) + '/' + sections.length;
   } else {
     document.getElementById('progressFill').style.width = ((current)/(questions.length-1||1)*100) + '%';
-    document.getElementById('progressText').textContent = 'Frage ' + (current+1) + ' / ' + questions.length;
+    document.getElementById('progressText').textContent = 'Question ' + (current+1) + ' / ' + questions.length;
   }
-  document.getElementById('scoreText').textContent = 'Punkte: ' + score + ' / ' + answered;
+  document.getElementById('scoreText').textContent = 'Score: ' + score + ' / ' + answered;
 }
 
 function showSectionResults(){
@@ -814,10 +821,10 @@ function showSectionResults(){
 
   const isLast = currentSection === sections.length-1;
   document.getElementById('sectionScoreSummary').innerHTML =
-    '<p style="font-size:1.05rem;">Sektion ' + (currentSection+1) + ' von ' + sections.length + ' abgeschlossen.<br>Du hast <b>' + secScore + ' von ' + secLen + '</b> Fragen in dieser Sektion richtig beantwortet.</p>' +
-    '<p style="font-size:0.9rem; color:var(--ink-soft);">Gesamt bisher: ' + score + ' von ' + sec.end + ' Fragen richtig.</p>';
+    '<p style="font-size:1.05rem;">Section ' + (currentSection+1) + ' of ' + sections.length + ' complete.<br>You answered <b>' + secScore + ' of ' + secLen + '</b> questions correctly in this section.</p>' +
+    '<p style="font-size:0.9rem; color:var(--ink-soft);">Overall so far: ' + score + ' of ' + sec.end + ' questions correct.</p>';
 
-  document.getElementById('sectionContinueBtn').textContent = isLast ? 'Endergebnis anzeigen →' : 'Weiter zur nächsten Sektion →';
+  document.getElementById('sectionContinueBtn').textContent = isLast ? 'Show Final Results →' : 'Continue to Next Section →';
 }
 
 document.getElementById('sectionContinueBtn').onclick = ()=>{
@@ -842,7 +849,7 @@ function showResults(){
   const pct = Math.round(score/total*100);
   document.getElementById('scoreRing').style.setProperty('--pct', pct);
   document.getElementById('scorePct').textContent = pct + '%';
-  document.getElementById('scoreSummary').innerHTML = '<p style="font-size:1.05rem;">Du hast <b>' + score + ' von ' + total + '</b> Fragen richtig beantwortet.</p>';
+  document.getElementById('scoreSummary').innerHTML = '<p style="font-size:1.05rem;">You answered <b>' + score + ' of ' + total + '</b> questions correctly.</p>';
 
   const missedDiv = document.getElementById('missedList');
   missedDiv.innerHTML = '';
@@ -854,12 +861,12 @@ function showResults(){
     if(!isRight){
       const div = document.createElement('div');
       div.className = 'missed-item';
-      div.innerHTML = '<b>Frage '+(idx+1)+':</b> ' + q[0] + '<br><span class="ans">Richtig: ' + q[2].map(i=>letters[i]+') '+q[1][i]).join(' · ') + '</span>';
+      div.innerHTML = '<b>Question '+(idx+1)+':</b> ' + q[0] + '<br><span class="ans">Correct: ' + q[2].map(i=>letters[i]+') '+q[1][i]).join(' · ') + '</span>';
       missedDiv.appendChild(div);
     }
   });
   if(missedDiv.innerHTML===''){
-    missedDiv.innerHTML = '<p style="text-align:center; color:var(--ok); font-weight:600;">Alle Fragen richtig — sehr gut gerüstet für die Klausur!</p>';
+    missedDiv.innerHTML = '<p style="text-align:center; color:var(--ok); font-weight:600;">All questions correct — you\'re well prepared for the exam!</p>';
   }
 }
 
