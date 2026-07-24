@@ -279,12 +279,24 @@
       <div class="qnum" id="qnum"></div>
       <div class="qtext" id="qtext"></div>
       <div class="options" id="options"></div>
+      <div id="openAnswerWrap" style="display:none; margin-bottom:6px;">
+        <textarea id="openAnswer" rows="6" placeholder="Deine Antwort hier eingeben…" style="width:100%; font-family:inherit; font-size:0.95rem; padding:12px 14px; border:1px solid var(--line); border-radius:4px; background:#fbf7ec; color:var(--ink); resize:vertical;"></textarea>
+      </div>
       <div class="feedback" id="feedback"></div>
       <div class="controls">
         <button class="secondary" id="prevBtn">← Zurück</button>
         <button id="checkBtn">Prüfen</button>
         <button id="nextBtn" style="display:none;">Weiter →</button>
       </div>
+    </div>
+  </div>
+
+  <div class="card results" id="sectionResults" style="display:none;">
+    <div class="qnum">Sektion abgeschlossen</div>
+    <div class="score-ring" id="sectionScoreRing" style="--pct:0;"><span id="sectionScorePct">0%</span></div>
+    <div id="sectionScoreSummary"></div>
+    <div class="controls" style="justify-content:center; margin-top:20px;">
+      <button id="sectionContinueBtn">Weiter →</button>
     </div>
   </div>
 
@@ -545,12 +557,33 @@ const banks = {
   all: {label:"Alle Fragentypen", data: mcAll.concat(openQuestions)}
 };
 
+// ---- Sectioning (only used for the "mc" bank) ----
+const SECTION_SIZE = 15;
+
+function computeSections(n, size){
+  const count = Math.max(1, Math.round(n/size));
+  const base = Math.floor(n/count);
+  const extra = n - base*count;
+  const secs = [];
+  let idx = 0;
+  for(let i=0;i<count;i++){
+    const len = base + (i<extra ? 1 : 0);
+    secs.push({start: idx, end: idx+len});
+    idx += len;
+  }
+  return secs;
+}
+
 let currentBankKey = "all";
 let questions = [];
 let current = 0;
 let selected = [];
 let checked = [];
+let openAnswers = [];
 let score = 0;
+let isSectioned = false;
+let sections = [];
+let currentSection = 0;
 
 function shuffle(arr){
   const a = arr.slice();
@@ -567,8 +600,13 @@ function initBank(key){
   current = 0;
   selected = questions.map(()=>[]);
   checked = questions.map(()=>false);
+  openAnswers = questions.map(()=>'');
   score = 0;
+  isSectioned = (key === 'mc');
+  sections = isSectioned ? computeSections(questions.length, SECTION_SIZE) : [{start:0, end:questions.length}];
+  currentSection = 0;
   document.getElementById('results').style.display='none';
+  document.getElementById('sectionResults').style.display='none';
   document.getElementById('quizArea').style.display='block';
   renderTopbar();
   renderQuestion();
@@ -588,27 +626,45 @@ function renderTopbar(){
 
 function renderQuestion(){
   const q = questions[current];
-  document.getElementById('qnum').textContent = 'Frage ' + (current+1) + ' von ' + questions.length + (q[2].length>1 ? ' · Mehrfachauswahl' : ' · Eine Antwort');
-  document.getElementById('qtext').textContent = q[0];
+  const isOpen = q[3] === 'open';
+  const sectionLabel = isSectioned ? ('Sektion ' + (currentSection+1) + '/' + sections.length + ' · ') : '';
+  document.getElementById('qnum').textContent = sectionLabel + 'Frage ' + (current+1) + ' von ' + questions.length + (isOpen ? ' · Offene Frage' : (q[2].length>1 ? ' · Mehrfachauswahl' : ' · Eine Antwort'));
+  document.getElementById('qtext').innerHTML = q[0];
+
   const optsDiv = document.getElementById('options');
+  const openWrap = document.getElementById('openAnswerWrap');
+  const openTextarea = document.getElementById('openAnswer');
   optsDiv.innerHTML = '';
-  q[1].forEach((optText, idx)=>{
-    const opt = document.createElement('div');
-    opt.className = 'opt';
-    opt.innerHTML = '<div class="marker">'+letters[idx]+'</div><div class="opt-text">'+optText+'</div>';
-    opt.onclick = ()=>toggleOption(idx);
-    optsDiv.appendChild(opt);
-  });
+
+  if(isOpen){
+    optsDiv.style.display = 'none';
+    openWrap.style.display = 'block';
+    openTextarea.value = openAnswers[current] || '';
+    openTextarea.disabled = false;
+    openTextarea.oninput = ()=>{ openAnswers[current] = openTextarea.value; };
+  } else {
+    optsDiv.style.display = 'flex';
+    openWrap.style.display = 'none';
+    q[1].forEach((optText, idx)=>{
+      const opt = document.createElement('div');
+      opt.className = 'opt';
+      opt.innerHTML = '<div class="marker">'+letters[idx]+'</div><div class="opt-text">'+optText+'</div>';
+      opt.onclick = ()=>toggleOption(idx);
+      optsDiv.appendChild(opt);
+    });
+  }
+
   document.getElementById('feedback').className = 'feedback';
-  document.getElementById('feedback').textContent = '';
+  document.getElementById('feedback').innerHTML = '';
   document.getElementById('nextBtn').style.display = 'none';
   document.getElementById('checkBtn').style.display = 'inline-block';
   document.getElementById('checkBtn').disabled = false;
-  document.getElementById('prevBtn').disabled = current===0;
+  document.getElementById('checkBtn').textContent = isOpen ? 'Antwort anzeigen' : 'Prüfen';
+  document.getElementById('prevBtn').disabled = isSectioned ? (current === sections[currentSection].start) : (current===0);
 
   if(checked[current]){
     showResult();
-  } else {
+  } else if(!isOpen){
     updateSelectionVisual();
   }
 
@@ -632,6 +688,17 @@ function updateSelectionVisual(){
 
 function showResult(){
   const q = questions[current];
+  if(q[3] === 'open'){
+    document.getElementById('openAnswer').disabled = true;
+    const fb = document.getElementById('feedback');
+    fb.classList.add('show','ok');
+    fb.classList.remove('bad');
+    const pointsLabel = q[5] ? (' (' + q[5] + ' Punkte)') : '';
+    fb.innerHTML = '<b>Musterantwort'+pointsLabel+':</b><br>' + q[4];
+    document.getElementById('checkBtn').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'inline-block';
+    return;
+  }
   const opts = document.querySelectorAll('.opt');
   const correctSet = new Set(q[2]);
   const selSet = new Set(selected[current]);
@@ -661,9 +728,19 @@ function showResult(){
 }
 
 document.getElementById('checkBtn').onclick = ()=>{
+  const q = questions[current];
+  const isOpen = q[3] === 'open';
+  if(isOpen){
+    const openTextarea = document.getElementById('openAnswer');
+    openAnswers[current] = openTextarea.value;
+    if(openAnswers[current].trim()==='') return;
+    checked[current] = true;
+    updateProgress();
+    showResult();
+    return;
+  }
   if(selected[current].length===0) return;
   checked[current] = true;
-  const q = questions[current];
   const correctSet = new Set(q[2]);
   const selSet = new Set(selected[current]);
   const isRight = correctSet.size===selSet.size && [...correctSet].every(x=>selSet.has(x));
@@ -673,16 +750,27 @@ document.getElementById('checkBtn').onclick = ()=>{
 };
 
 document.getElementById('nextBtn').onclick = ()=>{
-  if(current < questions.length-1){
-    current++;
-    renderQuestion();
+  if(isSectioned){
+    const sec = sections[currentSection];
+    if(current < sec.end - 1){
+      current++;
+      renderQuestion();
+    } else {
+      showSectionResults();
+    }
   } else {
-    showResults();
+    if(current < questions.length-1){
+      current++;
+      renderQuestion();
+    } else {
+      showResults();
+    }
   }
 };
 
 document.getElementById('prevBtn').onclick = ()=>{
-  if(current>0){
+  const floor = isSectioned ? sections[currentSection].start : 0;
+  if(current>floor){
     current--;
     renderQuestion();
   }
@@ -690,17 +778,67 @@ document.getElementById('prevBtn').onclick = ()=>{
 
 function updateProgress(){
   const answered = checked.filter(Boolean).length;
-  const pct = Math.round((current)/(questions.length-1||1)*100);
-  document.getElementById('progressFill').style.width = ((current)/(questions.length-1||1)*100) + '%';
-  document.getElementById('progressText').textContent = 'Frage ' + (current+1) + ' / ' + questions.length;
+  if(isSectioned){
+    const sec = sections[currentSection];
+    const secLen = sec.end - sec.start;
+    const posInSec = current - sec.start + 1;
+    document.getElementById('progressFill').style.width = ((posInSec-1)/(secLen-1||1)*100) + '%';
+    document.getElementById('progressText').textContent = 'Frage ' + posInSec + ' / ' + secLen + '  ·  Sektion ' + (currentSection+1) + '/' + sections.length;
+  } else {
+    document.getElementById('progressFill').style.width = ((current)/(questions.length-1||1)*100) + '%';
+    document.getElementById('progressText').textContent = 'Frage ' + (current+1) + ' / ' + questions.length;
+  }
   document.getElementById('scoreText').textContent = 'Punkte: ' + score + ' / ' + answered;
 }
 
+function showSectionResults(){
+  const sec = sections[currentSection];
+  let secScore = 0;
+  let secGraded = 0;
+  for(let i=sec.start;i<sec.end;i++){
+    if(questions[i][3] === 'open') continue;
+    secGraded++;
+    const correctSet = new Set(questions[i][2]);
+    const selSet = new Set(selected[i]);
+    const isRight = correctSet.size===selSet.size && [...correctSet].every(x=>selSet.has(x));
+    if(isRight) secScore++;
+  }
+  const secLen = secGraded || (sec.end - sec.start);
+  const pct = Math.round(secScore/secLen*100);
+
+  document.getElementById('quizArea').style.display='none';
+  const sres = document.getElementById('sectionResults');
+  sres.style.display='block';
+  document.getElementById('sectionScoreRing').style.setProperty('--pct', pct);
+  document.getElementById('sectionScorePct').textContent = pct + '%';
+
+  const isLast = currentSection === sections.length-1;
+  document.getElementById('sectionScoreSummary').innerHTML =
+    '<p style="font-size:1.05rem;">Sektion ' + (currentSection+1) + ' von ' + sections.length + ' abgeschlossen.<br>Du hast <b>' + secScore + ' von ' + secLen + '</b> Fragen in dieser Sektion richtig beantwortet.</p>' +
+    '<p style="font-size:0.9rem; color:var(--ink-soft);">Gesamt bisher: ' + score + ' von ' + sec.end + ' Fragen richtig.</p>';
+
+  document.getElementById('sectionContinueBtn').textContent = isLast ? 'Endergebnis anzeigen →' : 'Weiter zur nächsten Sektion →';
+}
+
+document.getElementById('sectionContinueBtn').onclick = ()=>{
+  const isLast = currentSection === sections.length-1;
+  document.getElementById('sectionResults').style.display='none';
+  if(isLast){
+    showResults();
+  } else {
+    currentSection++;
+    current = sections[currentSection].start;
+    document.getElementById('quizArea').style.display='block';
+    renderQuestion();
+  }
+};
+
 function showResults(){
   document.getElementById('quizArea').style.display='none';
+  document.getElementById('sectionResults').style.display='none';
   const res = document.getElementById('results');
   res.style.display='block';
-  const total = questions.length;
+  const total = questions.filter(q=>q[3] !== 'open').length || questions.length;
   const pct = Math.round(score/total*100);
   document.getElementById('scoreRing').style.setProperty('--pct', pct);
   document.getElementById('scorePct').textContent = pct + '%';
@@ -709,6 +847,7 @@ function showResults(){
   const missedDiv = document.getElementById('missedList');
   missedDiv.innerHTML = '';
   questions.forEach((q,idx)=>{
+    if(q[3] === 'open') return;
     const correctSet = new Set(q[2]);
     const selSet = new Set(selected[idx]);
     const isRight = correctSet.size===selSet.size && [...correctSet].every(x=>selSet.has(x));
