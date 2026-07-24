@@ -264,7 +264,6 @@
   <header>
     <div class="runes">ᚻᛁᛋᛏᚩᚱᛁᚫ ᛖᚾᚷᛚᛁᛋᚳᚱᛖ</div>
     <h1>History of English — Klausurtrainer</h1>
-    <div class="subtitle">Altklausur (Prof. Wischer) &amp; Final Review Session (Dr. Peters) kombiniert</div>
   </header>
 
   <div class="topbar" id="topbar"></div>
@@ -279,7 +278,6 @@
     <div class="card" id="card">
       <div class="qnum" id="qnum"></div>
       <div class="qtext" id="qtext"></div>
-      <div class="hint" id="hint"></div>
       <div class="options" id="options"></div>
       <div class="feedback" id="feedback"></div>
       <div class="controls">
@@ -300,7 +298,6 @@
     </div>
   </div>
 
-  <footer>Alle Fragen stammen aus den beiden hochgeladenen Klausur-/Übungsdokumenten. Mehrfachauswahl möglich (1–3 richtige Antworten pro Frage).</footer>
 </div>
 
 <script>
@@ -402,10 +399,150 @@ const exam2answers = [[0],[0,1],[0],[0,1],[0,2,3],[3],[1,2,3],[2],[2],[0,2,3],[0
 
 const exam2 = exam2raw.map((q,i)=>[q[0], q[1], exam2answers[i]]);
 
+// ---- Question banks: Moodle Multiple Choice I, II, III ----
+const moodle1 = [
+["Sanskrit, Bengali, Persian belong to the following group of languages:", ["Greek", "Celtic", "Italic", "Indo-Iranian"], [3]],
+["Proto-Indo-European first split into", ["Scandinavian and Celtic languages.", "Kentum and Satem languages.", "Iranian and Germanic languages.", "Indian and European languages."], [1]],
+["Grimm’s Law", ["describes a series of changes to vowels which took place when there was an i or j in the following syllable.", "describes the close relationship between spelling and pronunciation in Old English.", "describes major changes in the Proto-Indo-European vowel system.", "describes a series of consonantal changes in Proto-Germanic."], [3]],
+["Germanic languages differ from other IE languages", ["in that they have a flexible word stress", "in that their consonants, such as /p, t, k/ have changed in a common, systematic way", "in that they have inflections", "in that they have strong and weak verbs"], [1, 3]],
+["We can derive information about the Indo-European proto-language and culture", ["on the basis of the analysis of Australian aboriginal languages.", "from old manuscripts written in the proto-language.", "on the basis of the analysis of cognate words.", "by analysing the results of the Great Vowel Shift."], [2]],
+["The Romans", ["had withdrawn from Britain when the Anglo-Saxons arrived.", "invaded Anglo-Saxon Britain in the 8th century and mixed with the Germanic inhabitants.", "had contributed words like ‘wine’, ‘wall’ and ‘street’ to the English vocabulary.", "were in contact with the Germanic tribes already before the Anglo-Saxons settled in Britain."], [0, 2, 3]],
+["English is", ["a West Germanic Language.", "a North Germanic language.", "an Indo-European language.", "an East Germanic language."], [0]],
+["Which of the following languages belong(s) to the Indo-European language family?", ["Finnish", "Hindi", "Russian", "Arabic"], [1, 2]],
+["Latin", ["is a South Germanic language.", "is a Semitic language.", "is the parent language of the Romance languages.", "has historically developed from Sanskrit."], [2]],
+["Old English is the period from", ["the first Celtic settlements in England to the 12th century.", "the first Viking invasions in England to the Norman Conquest.", "the first Roman invasions in England to the introduction of book printing.", "the first Anglo-Saxon settlements in England to about 1100."], [3]],
+["Which of the following statements is/are right?", ["Most of the Old English vocabulary is of Celtic origin.", "Old English had a more homogeneous vocabulary than Modern English.", "The vocabulary of Modern English is more dissociated than that of Old English.", "In Modern English there are larger word families than in Old English due to foreign influence."], [1, 2]],
+["Which of the following statements is/are right?", ["Northumbrian and Mercian were dialects spoken by the Angles.", "The Saxons settled in the East Midlands and spoke Mercian.", "The Saxons settled in the South West and spoke West Saxon.", "The Jutes settled in the South East and spoke Kentish."], [0, 2, 3]],
+["In Old English case was expressed", ["mainly by inflections.", "mainly by analytic means.", "by word order variations.", "predominantly by prepositions."], [0]],
+["In Old English the weak adjective declension", ["was used if there was a definite article in the noun phrase.", "is also called the indefinite declension.", "was used with native adjectives.", "was marked with a dental suffix, and the strong adjective declension was marked by ablaut."], [0]],
+["In Old English, grammatical gender", ["had a necessary connection with sex and animacy.", "was determined by the nouns.", "was expressed in the personal pronouns.", "was marked by word order variations."], [1, 2]],
+["Which of the following phonemes existed in Old English, but does/do NOT so in Modern Standard English?", ["/ai/", "/y/", "/æə/", "/v/"], [1]],
+["Analogy", ["is the changing of a sound under the influence of a neighbouring one.", "is a language structure that makes use of very few inflections.", "is seen at work when children are learning their language.", "is a process that contributed to the development of the Modern English regular past tense marker –ed."], [2, 3]],
+["The first Germanic tribes arrived in Britain", ["because they were called to assist the Celts in their fights against their aggressors from the north.", "in 449 A.D.", "as missionaries to convert the British to Christianity.", "after king Aethelred’s death."], [0, 1]],
+["Sir William Jones", ["proposed that the affinity of Sanskrit to Greek and Latin could be explained by positing a common, earlier source.", "described the first Germanic sound shift.", "wrote the first hard word dictionary in England.", "introduced book printing in England."], [0]],
+["Which is the best definition of a proto-language?", ["a difficult language", "an old language", "a dead language", "a reconstructed language"], [3]],
+["The Celtic influence on Old English", ["was a superstratum influence.", "was enormous, especially with regard to word borrowings.", "becomes obvious especially in some names of English towns.", "was not so big because the Britons were a defeated people whose language had no prestige compared with that of the conquerors"], [2, 3]],
+["In Old English, mood was expressed", ["together with person and number marking.", "by marking the subjunctive or the imperative.", "by verb inflections.", "only with transitive verbs."], [0, 1, 2]]
+];
+
+const moodle2 = [
+["Which of the following pairs of words are doublets?", ["egg / æg", "warden / guardian", "baron / baroness", "weorpan / kasta"], [1]],
+["Doublets/Synonyms", ["are very economical and therefore preserved in languages.", "have similar forms but different meanings.", "often lead to a semantic differentiation between the pairs of words.", "are not very economical and therefore often one of the words is given up."], [2, 3]],
+["Common features of Germanic languages are", ["a fixed SVO word order", "a fixed word stress", "the development of a weak adjective declension", "Grimm’s Law"], [1, 2, 3]],
+["English is genetically related to", ["Africaans", "Hungarian", "Greek", "Turkish"], [0, 2]],
+["In Old English", ["the passive was expressed synthetically.", "there were two aspects: perfective and imperfective.", "there were only two tenses: present and past.", "there were three moods: indicative, subjunctive, imperative."], [2, 3]],
+["Which of the following statements is/are right?", ["In Middle English /y/ merged with /u/.", "Middle English had no diphthongs.", "In Middle English long vowels were shortened in open syllables.", "In Middle English fricatives split into voiced and voiceless phonemes."], [3]],
+["In the 14th century English became again the dominant language in England because", ["the English Language Academy determined that English had to be used as language of administration.", "English had become much more eloquent than French by that time.", "AngloNorman was not considered good French.", "the French aristocracy had died out."], [2]],
+["The Middle English vocabulary", ["was dialectally very diverse.", "became more and more heterogeneous.", "was basically French.", "did not contain any derivations and compounds."], [0, 1]],
+["Borrowings from French", ["were mostly everyday words like sister , take and egg", "were most numerous in the 13th and 14th century.", "often reflect the cultural and political dominance of the Normans.", "are hard words in English because they were not given English inflections."], [1, 2]],
+["The Norman Conquest", ["took place in 1066.", "led to the fact that in the 11th and 12th century French became the Standard literary language of England.", "led to the split of English into many small regional dialects.", "led to the fact that everybody had to learn French in England."], [0, 2]],
+["Which of the following statements is/are right?", ["The Angles settled in the North and Midlands and spoke Northumbrian and Mercian.", "The Saxons settled in the South-West and spoke West Saxon.", "The Frisians settled in the South-East and spoke Kentish.", "The Jutes settled in the West-Midlands and spoke West Saxon."], [0, 1]],
+["Old English adjectives", ["had a strong and a weak declension.", "were invariable.", "expressed case, number and gender by inflections.", "had only an analytic comparison."], [0, 2]],
+["Old English and Modern English devices for indicating plurality differ", ["in that Old English used basically ‘-er’, and Modern English ‘s’.", "in that Modern English uses more regular endings for nouns than Old English.", "in that Old English also inflected adjectives and articles", "in that Modern English uses function words and Old English used inflections."], [1, 2]],
+["Old English and Modern English word orders differ in the following way:", ["Old English had a fixed OVS-order while Modern English has a fixed SVO order.", "Modern English lacks case endings and therefore uses a fixed word order.", "Modern English has SVO, whereas in Old English constituents could be shifted around more freely.", "Modern English uses subject-verb inversion for questions, which was not possible in Old English."], [1, 2]],
+["Old English nouns, adjectives and pronouns were inflected to express", ["tense.", "gender.", "number.", "case."], [1, 2, 3]],
+["Which was the mother tongue of Canute, King of England (1016-1035)?", ["West Saxon", "the parent language of the Scandinavian languages.", "AngloNorman", "Old Norse"], [1, 3]],
+["The contact situation between Old Norse and Old English", ["led to the borrowing of many place names and ordinary words.", "was a very short one between two genetically related languages.", "led to a pidginization.", "led to a substratum influence."], [0]],
+["Scandinavian words can be recognized in English", ["by their colloquial character.", "by their non-palatalised /k/ and /g/ in the surrounding of front vowels.", "by their recording not in Old English but in Old Norse.", "by their preservation of Old Germanic /y/."], [1]],
+["Split of /k/ and /g/ in Old English", ["was caused by palatalization.", "was part of the Second Germanic Sound Shift.", "led to differences between English ‘book’, ‘make’ and German ‘Buch’, ‘machen’.", "led to differences between English ‘chin’, ‘yellow’ and German ‘Kinn’, ‘gelb’."], [0, 3]],
+["Synonyms are", ["different words with a similar meaning.", "‘niman’ and ‘taka’.", "‘no’ and ‘nay’.", "‘strange’ and ‘odd’."], [0, 1, 3]],
+["The flexibility of the Old English vocabulary is due to", ["the possibility of forming new words from various stems of the same root.", "the generous use made of prefixes and suffixes.", "its facility in borrowing and assimilating elements from other languages.", "the ease with which compounds are formed."], [0, 1, 3]],
+["The process of inventing a new element in conformity with some part of the language system that you already know is called", ["assimilation.", "haplology", "analogy.", "creativity."], [2]]
+];
+
+const moodle3 = [
+["In Early Modern English", ["word order was still dominantly SOV.", "negative sentences were always formed without 'do'support.", "the Progressive Form was more frequent than today.", "the perfect was sometimes formed with 'be'."], [3]],
+["The Modern English personal pronoun you for the 2nd person singular and plural", ["has phonetically derived from the former pronoun 'thou'.", "was borrowed from Old Norse.", "is the former plural pronoun of the object case.", "was used in ME to address more than one person or to address a person of a higher rank."], [2, 3]],
+["Hard words are", ["unchangeable words, such as words that can be used as verbs, nouns, adjectives without changing their form", "difficult words, basically from Latin or Greek", "words borrowed from Old Norse with a /k/ or /g/ in the surrounding of front vowels", "words with silent letters, such as knight or sword"], [1]],
+["Words like anatomy, dexterity, excavate, fictitious", ["are borrowings from Latin in the time of the Renaissance.", "belong to the substratum influence from Celtic languages.", "were criticized by purists in Early Modern English.", "are loantranslations in English."], [0, 2]],
+["Inkhorn Terms", ["are pompous Latinate words that were used although perfectly good English expressions already existed.", "are Scandinavian loan words that closely resemble their Anglo-Saxon doublets.", "were seldom spoken, but mainly written.", "are native words that became archaic in the course of Middle English."], [0, 2]],
+["The purist movement in Early Modern English", ["took the use of Latin words to be a sign of education or of social superiority.", "attacked the use of loan-words.", "advocated the coining of new technical terms from native elements.", "introduced many hard words into English."], [1, 2]],
+["The parent language of Russian, Ukrainian, Polish is", ["Proto-Italic.", "IndoIranian.", "Proto-Germanic.", "Common Slavonic."], [3]],
+["Which of the following statements is/are right?", ["Person and number marking was weakened in Middle English.", "The category of mood was strengthened in Middle English.", "Past marking became more regular in Middle English.", "The category of tense was strengthened in Middle English."], [0, 2, 3]],
+["The reduction in the inflectional system of English", ["was caused by a direct contact with Latin.", "was caused by the loss and weakening of unstressed syllables at the ends of words.", "stimulated an increased use of function words.", "was heavily supported by the mixing of Old English with Old Norse."], [1, 2, 3]],
+["Which of the following statements is/are right?", ["Middle English had no diphthongs.", "In Middle English /y/ merged with /u/.", "In Middle English fricatives split into voiced and voiceless phonemes.", "In Middle English long vowels were shortened in open syllables."], [2]],
+["In Middle English fricatives", ["developed voiced and voiceless allophones.", "merged into one phoneme.", "split into voiced and voiceless phonemes.", "were reduced and lost in final unstressed syllables."], [2]],
+["Which of the following statements is/are right?", ["In 1066, after the Battle of Hastings, Harold became king of England.", "William Caxton introduced the book printing in England in 1204.", "449 is the traditional date of the coming of the first Angles, Saxons and Jutes to Britain.", "1500-1650 was the time of the Renaissance."], [2, 3]],
+["Words adopted from Latin in the Continental Phase", ["were often connected with trade.", "were for instance ‘camp’ (=‘battle’), ‘weall’ (=‘wall’), ‘stræt’ (=‘street’).", "were listed in hard word dictionaries.", "reflect the higher civilization of the Romans."], [0, 1, 3]],
+["Old English nouns used inflections to express", ["number.", "tense.", "person.", "case."], [0, 3]],
+["I-mutation", ["includes a movement to a closer and/or a more frontal vowel", "is the reason for the alternation of stem vowels in strong verbs to indicate past tense", "took place in Middle English", "accounts for the different vowels in related words like sing and sang"], [0]],
+["Old English verbs used inflections to express", ["case.", "aspect.", "mood.", "number."], [2, 3]],
+["The Old English vocabulary", ["was very heterogeneous.", "only contained monomorphemic words.", "was highly consociated.", "contained many Celtic loans."], [2]],
+["Which dialect became the literary standard in the late Anglo-Saxon period", ["West Saxon", "Mercian", "Kentish", "Northumbrian"], [0]],
+["Which of the following statements is/are right?", ["Old English had greater freedom of word order than Modern English.", "Old English lacked rules and preferences about word order.", "The order S-V-O is normal in Old English questions.", "Old English did not allow any stylistic variants of word order."], [0]],
+["Analogical change", ["reduces redundancy in a language system", "is the changing of a sound under the influence of a neighbouring one", "is irregular, but leads to more regularity", "is the process of inventing a new element in conformity with some part of the language system that you already know"], [2, 3]],
+["The Scandinavian invasions began", ["in the late 8th century.", "during the time of the Renaissance.", "because the Vikings wanted to convert the AngloSaxons to Christianity.", "with the Battle of Hastings."], [0]],
+["William Caxton", ["wrote a hard word dictionary.", "introduced book printing in England in 1476.", "wrote a FrenchEnglish vocabulary for travellers.", "was a radical spelling reformer."], [1]]
+];
+
+
+// tag every MC question with its type so it can live alongside open questions
+function tagMC(arr){ return arr.map(q => [q[0], q[1], q[2], 'mc']); }
+const mcAll = tagMC(exam1).concat(tagMC(exam2), tagMC(moodle1), tagMC(moodle2), tagMC(moodle3));
+
+// ---- Open Questions (Freitext, mit Musterantwort) ----
+// format: [questionText, null, null, 'open', sampleAnswerHTML, points]
+const openQuestions = [
+["i-Mutation (5 P.): Describe the process of i-mutation (i-umlaut). When did it take place and what exactly happened? Which effects did it have on Old English grammar and Modern English?", null, null, 'open',
+`• <b>Timing &amp; Process:</b> Pre-Old English (~400–700 AD). Distant assimilation where an *i, *ī, or *j in a suffix caused the vowel in the preceding stressed syllable to shift (back → front, front → higher).<br><br>
+• <b>OE Effect:</b> Created internal phonetic variations within word paradigms (e.g., singular fōt + plural suffix -iz → fēt).<br><br>
+• <b>ModE Survivors:</b> Irregular plurals involving internal vowel changes (man/men, foot/feet, goose/geese).`, 5],
+
+["Synthetic Structure &amp; Noun Morphology (5 P.): Characterize the synthetic structure of OE and contrast its noun morphology with Modern English. Which categories were expressed by inflections across word classes?", null, null, 'open',
+`• <b>Synthetic Character:</b> OE used inflections (endings) to signal grammatical roles, allowing flexible word order (SV, SVO, SOV, VSO).<br><br>
+• <b>OE vs. ModE Nouns:</b> OE nouns inflected for case (Nom, Gen, Dat, Acc, Instrumental), number, and grammatical gender. ModE is analytic (lost gender and most cases, relying on fixed SVO order and prepositions).<br><br>
+• <b>Inflected Categories:</b><br>
+&nbsp;&nbsp;– Nouns: Case, number, gender.<br>
+&nbsp;&nbsp;– Adjectives: Case, number, gender + Strong (indefinite) vs. Weak (definite) declensions.<br>
+&nbsp;&nbsp;– Articles &amp; Pronouns: Case, number, gender.`, 5],
+
+["English &amp; High German (2 P.): Briefly tell us what the familial bonds are between English and High German.", null, null, 'open',
+`• <b>Shared Roots:</b> Both belong to the West Germanic branch of the Germanic language family.<br><br>
+• <b>Vocabulary:</b> OE vocabulary was ~98% Germanic (originated from Angles, Saxons, Jutes).<br><br>
+• <b>Structural Features:</b> Shared inherited traits like the distinction between strong and weak verbs.`, 2],
+
+["Adjective Declensions: Describe OE strong and weak adjective declensions, their syntactic conditions, and their later evolution into Middle and Early Modern English.", null, null, 'open',
+`• <b>Strong Declension:</b> Indefinite; used when an adjective was not preceded by a definite article (e.g., gōd mann). Inherited from PIE.<br><br>
+• <b>Weak Declension:</b> Definite; used specifically after a definite article (e.g., sē gōda mann). A Germanic innovation.<br><br>
+• <b>Evolution:</b> Simplified to a basic singular/plural distinction in Middle English, then became completely indeclinable in Early Modern English.`, null],
+
+["Norman Conquest (1066): Discuss the linguistic consequences of the Norman Conquest on English vocabulary (doublets) and as an external factor in the shift from synthetic to analytic syntax.", null, null, 'open',
+`• <b>Vocabulary Intake:</b> Brought Norman French as a superstratal influence, adding administrative (parliament), legal (judge), and social terms.<br><br>
+• <b>Doublets &amp; Synonyms:</b> Germanic + French pairs (folk/nation, hearty/cordial) created semantic differentiation (distinct connotations/specializations).<br><br>
+• <b>Structural Shift:</b> The absence of a standard conservative influence combined with language contact accelerated the drop of inflections toward an analytic structure.`, null],
+
+["Strong vs. Weak Verbs: Distinguish between strong and weak verbs in the Germanic tradition, how they formed past tense, productivity in OE, and their evolution into Modern English.", null, null, 'open',
+`• <b>Strong Verbs:</b> Formed past tense via stem vowel change (helpan → healp). Unproductive in OE but regular across 7 classes → became Modern irregular verbs.<br><br>
+• <b>Weak Verbs:</b> Formed past tense via a dental suffix (-ed, -d, -t). Productive Germanic innovation → became Modern regular verbs.`, null],
+
+["Old Norse &amp; The Danelaw: Characterize the linguistic contact between Old Norse and OE (787–1042). What word types were borrowed, and why did it drive inflection reduction?", null, null, 'open',
+`• <b>Contact Type:</b> Adstratal contact between two closely related Germanic languages.<br><br>
+• <b>Borrowings:</b> Place names (-by, -toft), everyday nouns (sky, bag, cake), and core function words (they, them, till, are).<br><br>
+• <b>Inflection Driver:</b> Speakers of mutually intelligible languages with differing inflectional systems dropped ambiguous endings to communicate easily.`, null],
+
+["Great Vowel Shift (GVS): Explain the Great Vowel Shift (timing, raising, diphthongization, push/pull chains) and how it caused the gap between Modern English spelling and pronunciation.", null, null, 'open',
+`• <b>Timing &amp; Mechanism:</b> Began in the 15th century. Long vowels raised tongue position; the highest vowels became diphthongs via Push/Pull chains.<br><br>
+• <b>Spelling Gap:</b> Printing and spelling conventions were standardized before the GVS was finished, locking old pronunciations into modern spelling.`, null],
+
+["Grimm's Law: Explain Grimm's Law (~500 BC) across stop/fricative categories and describe the systematic changes separating Germanic from Indo-European.", null, null, 'open',
+`• <b>Significance:</b> The First Sound Shift separating Germanic from other Indo-European languages.<br><br>
+• <b>Shift Pattern:</b><br>
+&nbsp;&nbsp;1. Aspirated voiced stops → Voiced stops (bh → b)<br>
+&nbsp;&nbsp;2. Voiced stops → Voiceless stops (b → p)<br>
+&nbsp;&nbsp;3. Voiceless stops → Voiceless fricatives (p → f, t → θ)`, null],
+
+["Synthetic to Analytic Shift: Define synthetic vs. analytic syntax, list four factors driving this structural change, and mention two grammatical \"inventions\" that resulted.", null, null, 'open',
+`• <b>Definitions:</b> Synthetic uses inflections to mark roles (flexible word order); Analytic uses fixed word order (SVO) and function words.<br><br>
+• <b>4 Factors:</b><br>
+&nbsp;&nbsp;– Internal: Fixed Germanic stress pattern (weakened unstressed endings), systemic redundancy.<br>
+&nbsp;&nbsp;– External: Language contact with Old Norse, superstratal contact with French.<br><br>
+• <b>Grammatical Inventions:</b> Expanded use of auxiliary/modal verbs, analytic tenses (future, perfect, progressive), and passive voice markers.`, null]
+];
+
 const banks = {
-  exam1: {label:"Altklausur (Wischer)", data: exam1},
-  exam2: {label:"Review Session (Peters)", data: exam2},
-  all: {label:"Beide kombiniert", data: exam1.concat(exam2)}
+  mc: {label:"Multiple Choice", data: mcAll},
+  open: {label:"Offene Fragen", data: openQuestions},
+  all: {label:"Alle Fragentypen", data: mcAll.concat(openQuestions)}
 };
 
 let currentBankKey = "all";
@@ -453,7 +590,6 @@ function renderQuestion(){
   const q = questions[current];
   document.getElementById('qnum').textContent = 'Frage ' + (current+1) + ' von ' + questions.length + (q[2].length>1 ? ' · Mehrfachauswahl' : ' · Eine Antwort');
   document.getElementById('qtext').textContent = q[0];
-  document.getElementById('hint').textContent = q[2].length + ' richtige Antwort' + (q[2].length>1?'en':'');
   const optsDiv = document.getElementById('options');
   optsDiv.innerHTML = '';
   q[1].forEach((optText, idx)=>{
