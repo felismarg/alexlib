@@ -286,6 +286,7 @@
       <div class="controls">
         <button class="secondary" id="prevBtn">← Back</button>
         <button id="checkBtn">Check</button>
+        <button class="secondary" id="repeatBtn" style="display:none;">↻ Repeat question</button>
         <button id="nextBtn" style="display:none;">Next →</button>
       </div>
     </div>
@@ -295,7 +296,8 @@
     <div class="qnum">Section complete</div>
     <div class="score-ring" id="sectionScoreRing" style="--pct:0;"><span id="sectionScorePct">0%</span></div>
     <div id="sectionScoreSummary"></div>
-    <div class="controls" style="justify-content:center; margin-top:20px;">
+    <div class="controls" style="justify-content:center; margin-top:20px; gap:12px;">
+      <button class="secondary" id="sectionRepeatBtn">↻ Repeat this section</button>
       <button id="sectionContinueBtn">Next →</button>
     </div>
   </div>
@@ -661,6 +663,7 @@ function renderQuestion(){
   document.getElementById('feedback').className = 'feedback';
   document.getElementById('feedback').innerHTML = '';
   document.getElementById('nextBtn').style.display = 'none';
+  document.getElementById('repeatBtn').style.display = 'none';
   document.getElementById('checkBtn').style.display = 'inline-block';
   document.getElementById('checkBtn').disabled = false;
   document.getElementById('checkBtn').textContent = isOpen ? 'Show Answer' : 'Check';
@@ -702,6 +705,7 @@ function showResult(){
     fb.innerHTML = '<b>Sample Answer'+pointsLabel+':</b><br>' + q[4];
     document.getElementById('checkBtn').style.display = 'none';
     document.getElementById('nextBtn').style.display = 'inline-block';
+    document.getElementById('repeatBtn').style.display = 'inline-block';
     return;
   }
   const opts = document.querySelectorAll('.opt');
@@ -732,6 +736,7 @@ function showResult(){
   }
   document.getElementById('checkBtn').style.display = 'none';
   document.getElementById('nextBtn').style.display = 'inline-block';
+  document.getElementById('repeatBtn').style.display = 'inline-block';
 }
 
 document.getElementById('checkBtn').onclick = ()=>{
@@ -783,6 +788,23 @@ document.getElementById('prevBtn').onclick = ()=>{
   }
 };
 
+document.getElementById('repeatBtn').onclick = ()=>{
+  const q = questions[current];
+  if(q[3] !== 'open' && checked[current]){
+    const correctSet = new Set(q[2]);
+    const selSet = new Set(selected[current]);
+    const wasRight = correctSet.size===selSet.size && [...correctSet].every(x=>selSet.has(x));
+    if(wasRight) score--;
+  }
+  selected[current] = [];
+  checked[current] = false;
+  openAnswers[current] = '';
+  if(q[3] !== 'open'){
+    optOrders[current] = shuffle([...Array(q[1].length).keys()]);
+  }
+  renderQuestion();
+};
+
 function updateProgress(){
   const answered = checked.filter(Boolean).length;
   if(isSectioned){
@@ -826,6 +848,29 @@ function showSectionResults(){
 
   document.getElementById('sectionContinueBtn').textContent = isLast ? 'Show Final Results →' : 'Continue to Next Section →';
 }
+
+document.getElementById('sectionRepeatBtn').onclick = ()=>{
+  const sec = sections[currentSection];
+  for(let i=sec.start;i<sec.end;i++){
+    const q = questions[i];
+    if(q[3] !== 'open' && checked[i]){
+      const correctSet = new Set(q[2]);
+      const selSet = new Set(selected[i]);
+      const wasRight = correctSet.size===selSet.size && [...correctSet].every(x=>selSet.has(x));
+      if(wasRight) score--;
+    }
+    selected[i] = [];
+    checked[i] = false;
+    openAnswers[i] = '';
+    if(q[3] !== 'open'){
+      optOrders[i] = shuffle([...Array(q[1].length).keys()]);
+    }
+  }
+  current = sec.start;
+  document.getElementById('sectionResults').style.display='none';
+  document.getElementById('quizArea').style.display='block';
+  renderQuestion();
+};
 
 document.getElementById('sectionContinueBtn').onclick = ()=>{
   const isLast = currentSection === sections.length-1;
