@@ -243,6 +243,39 @@
   .missed-item b{color:var(--rune-dark);}
   .missed-item .ans{color:var(--ok);}
 
+  .topic-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:12px;
+    margin-top:18px;
+    text-align:left;
+  }
+  .topic-card{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    background:#fbf7ec;
+    cursor:pointer;
+    transition:border-color .15s, background .15s;
+  }
+  .topic-card:hover{
+    border-color:var(--rune-dark);
+    background:#f3ecda;
+  }
+  .topic-card-title{
+    font-weight:600;
+    color:var(--rune-dark);
+    margin-bottom:4px;
+    font-size:0.95rem;
+  }
+  .topic-card-count{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+  .topic-card-all{
+    border-style:dashed;
+  }
+
   footer{
     text-align:center;
     margin-top:30px;
@@ -274,6 +307,9 @@
       <span id="progressText">Question 1 / 1</span>
       <span id="scoreText">Score: 0</span>
     </div>
+    <div style="text-align:right; margin:-6px 0 10px;">
+      <span id="topicSwitchBtn" style="display:none; font-size:0.8rem; color:var(--ink-soft); cursor:pointer; text-decoration:underline;">↺ Choose a different topic</span>
+    </div>
 
     <div class="card" id="card">
       <div class="qnum" id="qnum"></div>
@@ -292,12 +328,16 @@
     </div>
   </div>
 
+  <div class="card results" id="topicSelect" style="display:none; text-align:left;">
+  </div>
+
   <div class="card results" id="sectionResults" style="display:none;">
     <div class="qnum">Section complete</div>
     <div class="score-ring" id="sectionScoreRing" style="--pct:0;"><span id="sectionScorePct">0%</span></div>
     <div id="sectionScoreSummary"></div>
     <div class="controls" style="justify-content:center; margin-top:20px; gap:12px;">
       <button class="secondary" id="sectionRepeatBtn">↻ Repeat this section</button>
+      <button class="secondary" id="sectionTopicBtn">Choose Another Topic</button>
       <button id="sectionContinueBtn">Next →</button>
     </div>
   </div>
@@ -494,6 +534,78 @@ const moodle3 = [
 function tagMC(arr){ return arr.map(q => [q[0], q[1], q[2], 'mc']); }
 const mcAll = tagMC(exam1).concat(tagMC(exam2), tagMC(moodle1), tagMC(moodle2), tagMC(moodle3));
 
+// ---- Topic classification for MC questions ----
+// Heuristic keyword-based classifier so questions can be grouped and practiced by topic.
+const TOPIC_ORDER = [
+  'Indo-European & Language Families',
+  "Germanic Languages & Grimm's/Verner's Law",
+  'Sound & Vowel Changes (Ablaut, Mutation, GVS)',
+  'Old English',
+  'Middle English',
+  'Early Modern English & Purism',
+  'External History & Key Events',
+  'Language Change: Theory & Mechanisms',
+  'General / Other'
+];
+
+function classifyTopic(q){
+  const raw = q[0] + ' ' + q[1].join(' ');
+  const text = raw.toLowerCase();
+  const has = (...kws) => kws.some(k=>text.includes(k));
+  const word = (re) => re.test(raw);
+
+  if(has('grimm', 'verner', 'first germanic sound shift', 'second germanic sound shift')) {
+    return "Germanic Languages & Grimm's/Verner's Law";
+  }
+  if(has('ablaut', 'i-mutation', 'mutation', 'great vowel shift', 'vowel shift', 'diphthong', 'palatal', 'palatis', 'palataliz', 'fricative', 'phoneme', 'split of /k/', 'consonant clusters')) {
+    return 'Sound & Vowel Changes (Ablaut, Mutation, GVS)';
+  }
+  if(has('battle of hastings', 'caxton', 'viking', 'scandinavian invasion', 'danelaw', 'canute', 'book printing', 'canterbury tales', 'ruthwell')) {
+    return 'External History & Key Events';
+  }
+  if(has('indo-european', 'sanskrit', 'proto-indo', 'kentum', 'satem', 'cognate', 'william jones', 'language family', 'genetically related', 'proto-language', 'semitic', 'parent language')) {
+    return 'Indo-European & Language Families';
+  }
+  if(has('early modern english', 'purist', 'inkhorn', 'hard word', 'language academy', 'renaissance')) {
+    return 'Early Modern English & Purism';
+  }
+  if(has('middle english', 'norman conquest', 'anglo-norman', 'chaucer', 'french influence', 'french aristocracy') || word(/\bME\b/)) {
+    return 'Middle English';
+  }
+  if(has('old english', 'anglo-saxon', 'angles', 'saxons', 'jutes', 'runic') || word(/\bOE\b/)) {
+    return 'Old English';
+  }
+  if(has('functional load', 'redundan', 'analog', 'doublet', 'synonym', 'dissociated', 'language change')) {
+    return 'Language Change: Theory & Mechanisms';
+  }
+  return 'General / Other';
+}
+
+// Sort MC questions topic-wise (stable within each topic, following TOPIC_ORDER)
+const mcTopicOf = mcAll.map(classifyTopic);
+const mcSortedIndices = mcAll.map((_,i)=>i).sort((a,b)=>{
+  const ta = TOPIC_ORDER.indexOf(mcTopicOf[a]);
+  const tb = TOPIC_ORDER.indexOf(mcTopicOf[b]);
+  if(ta!==tb) return ta-tb;
+  return a-b;
+});
+const mcSorted = mcSortedIndices.map(i=>mcAll[i]);
+const mcSortedTopics = mcSortedIndices.map(i=>mcTopicOf[i]);
+
+// Build contiguous topic sections over the topic-sorted MC array
+function computeTopicSections(topics){
+  const secs = [];
+  let start = 0;
+  for(let i=1;i<=topics.length;i++){
+    if(i===topics.length || topics[i]!==topics[start]){
+      secs.push({start, end:i, label: topics[start]});
+      start = i;
+    }
+  }
+  return secs;
+}
+const mcTopicSections = computeTopicSections(mcSortedTopics);
+
 // ---- Open Questions (free text, with sample answer) ----
 // format: [questionText, null, null, 'open', sampleAnswerHTML, points]
 const openQuestions = [
@@ -554,9 +666,9 @@ const openQuestions = [
 ];
 
 const banks = {
-  mc: {label:"Multiple Choice", data: mcAll},
+  mc: {label:"Multiple Choice", data: mcSorted},
   open: {label:"Open Questions", data: openQuestions},
-  all: {label:"All Question Types", data: mcAll.concat(openQuestions)}
+  all: {label:"All Question Types", data: mcSorted.concat(openQuestions)}
 };
 
 // ---- Sectioning (only used for the "mc" bank) ----
@@ -597,23 +709,55 @@ function shuffle(arr){
   return a;
 }
 
-function initBank(key){
+function initBank(key, startSection){
   currentBankKey = key;
   questions = banks[key].data;
-  current = 0;
   selected = questions.map(()=>[]);
   checked = questions.map(()=>false);
   openAnswers = questions.map(()=>'');
   optOrders = questions.map(q => q[3]==='open' ? null : shuffle([...Array(q[1].length).keys()]));
   score = 0;
   isSectioned = (key === 'mc');
-  sections = isSectioned ? computeSections(questions.length, SECTION_SIZE) : [{start:0, end:questions.length}];
-  currentSection = 0;
+  sections = isSectioned ? mcTopicSections : [{start:0, end:questions.length}];
+  renderTopbar();
+
+  if(isSectioned && startSection === undefined){
+    showTopicPicker();
+    return;
+  }
+
+  currentSection = startSection || 0;
+  current = sections[currentSection].start;
+  document.getElementById('topicSelect').style.display='none';
   document.getElementById('results').style.display='none';
   document.getElementById('sectionResults').style.display='none';
   document.getElementById('quizArea').style.display='block';
-  renderTopbar();
   renderQuestion();
+}
+
+function showTopicPicker(){
+  document.getElementById('quizArea').style.display='none';
+  document.getElementById('results').style.display='none';
+  document.getElementById('sectionResults').style.display='none';
+  const wrap = document.getElementById('topicSelect');
+  wrap.style.display='block';
+  wrap.innerHTML = '<div class="qnum">Choose a topic to practice</div>' +
+    '<p style="color:var(--ink-soft); font-size:0.9rem; margin-top:6px;">Multiple choice questions are grouped by topic. Pick one to focus on, or run through everything.</p>' +
+    '<div class="topic-list" id="topicList"></div>';
+  const list = document.getElementById('topicList');
+  sections.forEach((sec, idx)=>{
+    const btn = document.createElement('div');
+    btn.className = 'topic-card';
+    const count = sec.end - sec.start;
+    btn.innerHTML = '<div class="topic-card-title">' + sec.label + '</div><div class="topic-card-count">' + count + ' question' + (count===1?'':'s') + '</div>';
+    btn.onclick = ()=> initBank('mc', idx);
+    list.appendChild(btn);
+  });
+  const allBtn = document.createElement('div');
+  allBtn.className = 'topic-card topic-card-all';
+  allBtn.innerHTML = '<div class="topic-card-title">All Topics (full run)</div><div class="topic-card-count">' + questions.length + ' questions</div>';
+  allBtn.onclick = ()=> initBank('mc', 0);
+  list.appendChild(allBtn);
 }
 
 function renderTopbar(){
@@ -807,6 +951,7 @@ document.getElementById('repeatBtn').onclick = ()=>{
 
 function updateProgress(){
   const answered = checked.filter(Boolean).length;
+  document.getElementById('topicSwitchBtn').style.display = isSectioned ? 'inline' : 'none';
   if(isSectioned){
     const sec = sections[currentSection];
     const secLen = sec.end - sec.start;
@@ -848,6 +993,9 @@ function showSectionResults(){
 
   document.getElementById('sectionContinueBtn').textContent = isLast ? 'Show Final Results →' : 'Continue to Next Section →';
 }
+
+document.getElementById('topicSwitchBtn').onclick = ()=> showTopicPicker();
+document.getElementById('sectionTopicBtn').onclick = ()=> showTopicPicker();
 
 document.getElementById('sectionRepeatBtn').onclick = ()=>{
   const sec = sections[currentSection];
