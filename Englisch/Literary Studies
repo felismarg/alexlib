@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Study Sheet – Introduction to Literary Studies</title>
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#fbf8f3;--surf:#ffffff;--ink:#2e2118;--mut:#7a6556;--c:#6f4e37;--c2:#b08968;--cl:#f3eadf;--line:#e3d5c4;--warn:#f8ecd6;--warnb:#b7791f;--warnt:#5a3a10;--th:#6f4e37;--thx:#fffdf9}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Georgia,"Times New Roman",serif}
+header{padding:22px 18px 8px;max-width:960px;margin:0 auto}
+h1{font-size:1.7rem;margin:0 0 4px;color:var(--c)}
+header p{margin:0;color:var(--mut);font-size:.95rem}
+nav{display:flex;gap:6px;flex-wrap:wrap;max-width:960px;margin:12px auto 0;padding:0 18px}
+nav button{font:600 .88rem system-ui,-apple-system,"Segoe UI",sans-serif;border:1px solid var(--line);background:var(--surf);color:var(--ink);padding:8px 13px;border-radius:8px;cursor:pointer}
+nav button:hover{border-color:var(--c)}
+nav button.active{background:var(--c);color:var(--bg);border-color:var(--c)}
+nav button:focus-visible,.card:focus-visible{outline:3px solid var(--c2);outline-offset:2px}
+main{max-width:960px;margin:0 auto;padding:14px 18px 40px}
+section{display:none}
+h2{font-size:1.4rem;margin:8px 0 12px;color:var(--c)}
+h3{font-size:1.1rem;margin:0 0 8px}
+.box{background:var(--surf);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:0 0 14px}
+.box h3{color:var(--c)}
+.box h3 span{margin-right:7px}
+.these{border-left:5px solid var(--c2);background:var(--cl)}
+.warn{border-left:5px solid var(--warnb);background:var(--warn);color:var(--warnt)}
+.warn h3{color:var(--warnt)}
+ul{margin:6px 0;padding-left:20px}li{margin:3px 0}
+.tw{overflow-x:auto;margin:0 0 14px;border-radius:8px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:480px;background:var(--surf);font-size:.95rem}
+th{background:var(--th);color:var(--thx);text-align:left;font:600 .85rem system-ui,sans-serif;padding:9px 11px}
+td{padding:8px 11px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:bold}
+.tl{margin:0 0 14px}
+.tl div{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.tl b{font:600 .88rem system-ui,sans-serif;color:var(--c)}
+.gl{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.gl div{background:var(--surf);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.gl b{display:block;font:700 .95rem system-ui,sans-serif;color:var(--c);margin-bottom:2px}
+.gl span{font-size:.92rem}
+.fc{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.card{min-height:150px;background:var(--surf);border:2px solid var(--c2);border-radius:8px;padding:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center}
+.card .back{display:none}
+.card.flipped{background:var(--cl)}
+.card.flipped .front{display:none}
+.card.flipped .back{display:block}
+.card .front{font-weight:bold;color:var(--c)}
+.hint{color:var(--mut);font:.9rem system-ui,sans-serif;margin:0 0 12px}
+@media(max-width:600px){.gl{grid-template-columns:1fr}.tl div{grid-template-columns:1fr;gap:0}}
+</style>
+</head>
+<body>
+<header>
+<h1>Introduction to Literary Studies</h1>
+<p>Study sheet on poetry, drama, narrative and theory · University of Potsdam</p>
+</header>
+<nav id="nav">
+<button data-t="start" class="active" onclick="showSection('start')">Basics</button>
+<button data-t="poetry" onclick="showSection('poetry')">Poetry</button>
+<button data-t="drama" onclick="showSection('drama')">Drama</button>
+<button data-t="narr" onclick="showSection('narr')">Narrative</button>
+<button data-t="theory" onclick="showSection('theory')">Theory</button>
+<button data-t="gloss" onclick="showSection('gloss')">Glossary</button>
+<button data-t="cards" onclick="showSection('cards')">Flashcards</button>
+</nav>
+<main>
+
+<section id="start" style="display:block">
+<h2>Basics &amp; Literary History</h2>
+<div class="box these"><h3><span>❝</span>Key thesis</h3>Literature can <b>imitate</b> reality (mimesis) or create an <b>independent version</b> of it (poiesis). It mirrors and produces reality at the same time.</div>
+<div class="box"><h3><span>✎</span>What does literature do?</h3>
+<ul><li><b>Empathy</b> and secondary experience: we feel with people who are not us.</li>
+<li>Historical information <b>outside official history</b>.</li>
+<li><b>Introspection</b> and “psychological voyeurism” (looking into someone else’s psyche).</li>
+<li><b>Political critique</b>; also purely aesthetic pleasure (Poe, Wilde).</li></ul></div>
+<div class="box these"><h3><span>❝</span>Case study: Wheatley, “On Being Brought from Africa to America”</h3>
+18th-century North American poetry was <b>didactic and political</b>, not individual. Wheatley, an enslaved woman, wrote in a <b>very traditional, clean form</b> because many doubted she could be the author. Her poems were examined by white men (Jefferson judged them harshly).</div>
+<h3>Periods (constructed, not “given”)</h3>
+<div class="tl">
+<div><b>450–1066</b><span>British: Old English (Anglo-Saxon)</span></div>
+<div><b>1066–1500</b><span>Middle English</span></div>
+<div><b>1500–1660</b><span>Renaissance / Early Modern</span></div>
+<div><b>1660–1785</b><span>Neoclassical</span></div>
+<div><b>1785–1832</b><span>Romantic</span></div>
+<div><b>1832–1901</b><span>Victorian</span></div>
+<div><b>1607–1776</b><span>American: Colonial Period</span></div>
+<div><b>1776–1830</b><span>Neoclassicism &amp; Early Republic</span></div>
+<div><b>1830–1865</b><span>Romanticism</span></div>
+<div><b>1865–late 1800s</b><span>Realism, Naturalism, Early Modernism</span></div>
+<div><b>1901–(1945)</b><span>Modern Period (British and American)</span></div>
+</div>
+<div class="box warn"><h3><span>⚠</span>Exam tip</h3>The <b>canon</b> reflects <b>institutional power</b>, not necessarily literary quality. Main revisions: <b>Feminism/Gender Studies</b> and <b>Ethnic and Postcolonial Studies</b>.</div>
+</section>
+
+<section id="poetry">
+<h2>Poetry</h2>
+<div class="box"><h3><span>✎</span>Analysing a poem in brief</h3>
+<ul><li>Identify the <b>verse form</b> (sonnet, ballad, limerick, free verse) and check whether its conventions are followed or flouted.</li>
+<li>Who is the <b>speaker</b>? Is there an addressee? Lyrical, narrative, or both?</li>
+<li>Check <b>metre</b>, rhyme and title; then structure the thematic argument.</li>
+<li>Relations between words: <b>semantic, phonetic, syntactic, pragmatic</b>.</li>
+<li>Do <b>form and content</b> match? Then add context, theory and your own evaluation.</li></ul></div>
+<h3>Types of rhyme</h3>
+<div class="tw"><table><tr><th>Type</th><th>Feature</th><th>Example</th></tr>
+<tr><td>Masculine rhyme</td><td>final stressed syllable only</td><td>man / fan</td></tr>
+<tr><td>Feminine rhyme</td><td>stressed + unstressed syllable</td><td>gender / bender</td></tr>
+<tr><td>Eye-rhyme</td><td>looks similar, sounds different</td><td>move / dove</td></tr>
+<tr><td>Assonance</td><td>identical vowels only</td><td>foam / moan</td></tr>
+<tr><td>Consonance</td><td>identical consonants only</td><td>loads / lids</td></tr>
+<tr><td>Internal rhyme</td><td>rhyme within a line</td><td>East, West, home’s best</td></tr></table></div>
+<div class="tw"><table><tr><th>Scheme</th><th>Name</th></tr>
+<tr><td>aabb</td><td>Couplet</td></tr><tr><td>abab</td><td>Alternate rhyme</td></tr>
+<tr><td>abba</td><td>Envelope pattern</td></tr><tr><td>abcabc</td><td>Tail rhyme</td></tr></table></div>
+<h3>Sonnets compared</h3>
+<div class="tw"><table><tr><th></th><th>English (Shakespearean)</th><th>Italian</th></tr>
+<tr><td>Structure</td><td>14 lines: 3 quatrains + final couplet</td><td>Octave + sestet (abba abba cdcdcd)</td></tr>
+<tr><td>Metre</td><td>iambic pentameter</td><td>–</td></tr>
+<tr><td>Turn</td><td>surprising turn after line 12 (before the couplet)</td><td>turn after the octave, dividing the poem in two</td></tr></table></div>
+<div class="box"><h3><span>♪</span>Metre</h3>
+<b>Iamb</b> (x/) “above” · <b>Trochee</b> (/x) “falling” · <b>Anapest</b> (xx/) “marguerite” · <b>Dactyl</b> (/xx) “damnable”</div>
+<div class="box these"><h3><span>❝</span>Shakespeare, Sonnet 130</h3>
+Rhyme scheme <b>ababcdcdefefgg</b>. Four negative comparisons (similes) of the mistress with nature in the first quatrain, extended comparisons in quatrains 2 and 3; <b>turn: “And yet …”</b>. Metrical irregularities emphasise the comparisons. Context: <b>mocks idealising love poetry</b>; the “dark lady poems” (sonnets 127–154) as a revolution in love poetry. 154 sonnets in total (1592–1598); 1–126 address a young nobleman.</div>
+<h3>Rhetorical figures (selection, after Jahn)</h3>
+<div class="tw"><table><tr><th>Level</th><th>Figure</th><th>Definition and example</th></tr>
+<tr><td>Phonological</td><td>Alliteration / assonance / consonance / onomatopoeia</td><td>initial sounds / vowels / consonants / imitation of sound</td></tr>
+<tr><td>Morphological</td><td>Anaphora · epiphora</td><td>repetition at the start · at the end of successive units</td></tr>
+<tr><td></td><td>Figura etymologica</td><td>same root, different word classes: “Speak the speech”</td></tr>
+<tr><td></td><td>Polyptoton · geminatio</td><td>same word, different inflection · doubling (“Tiger, tiger”)</td></tr>
+<tr><td>Syntactical</td><td>Parallelism · chiasmus</td><td>repeated syntactic units · mirror-image order (“Fair is foul, and foul is fair”)</td></tr>
+<tr><td></td><td>Asyndeton · polysyndeton · inversion</td><td>omitted · excessive conjunctions · unusual word order</td></tr>
+<tr><td>Semantic</td><td>Oxymoron · paradox</td><td>incongruous words (“O heavy lightness”) · seemingly illogical but resolvable statement</td></tr>
+<tr><td></td><td>Simile · metaphor · metonymy · synecdoche</td><td>comparison with “like/as” · without · related term · part for whole</td></tr>
+<tr><td></td><td>Personification · climax · anticlimax</td><td>human traits for things · rising order · drop into the trivial</td></tr>
+<tr><td>Pragmatic</td><td>Apostrophe · rhetorical question · irony</td><td>addressing the absent · question with obvious answer · opposite of what is said</td></tr></table></div>
+<div class="box"><h3><span>✝</span>Puritan poetry (Anne Bradstreet)</h3>
+<b>Plain style</b>, rational sermon structure, truth found in the Bible; too much artistry risks <b>idolatry</b>. Beliefs: predestination, covenant of works vs. grace, conversion experience, providence, <b>typology</b>. Bradstreet (b. 1612) emigrated in 1630; her brother-in-law had her poems published in England in 1650 without her knowledge.</div>
+<div class="box warn"><h3><span>⚠</span>Exam tip</h3>Do not confuse <b>alliteration</b> (initial sounds), <b>assonance</b> (vowels) and <b>consonance</b> (consonants). An eye-rhyme does <b>not</b> sound the same.</div>
+</section>
+
+<section id="drama">
+<h2>Drama</h2>
+<div class="box"><h3><span>🎭</span>Terms</h3>
+<ul><li><b>Props</b>: moveable objects · <b>Set</b>: stage backdrop · <b>Scene</b>: change of time, location or characters · <b>Act</b>: major unit (classical plays 5, modern often 2).</li>
+<li><b>Primary text</b>: everything heard in performance (dialogue, monologue, soliloquy, aside, stichomythia). <b>Secondary text</b>: title, dramatis personae, stage directions.</li>
+<li><b>Closet drama</b>: designed to be read (Shelley, <i>Prometheus Unbound</i>).</li>
+<li><b>Story</b>: chronological sequence (“The king died and then the queen died”). <b>Plot</b>: causal structure (“…of grief”).</li></ul></div>
+<div class="box these"><h3><span>❝</span>Aristotle (tragedy)</h3>
+<b>Three unities</b>: action (no subplots), time (24 h max), place (one setting).<br>
+<b>Hamartia</b>: tragic error of misjudgement · <b>Hubris</b>: overconfidence triggering the downfall · <b>Catharsis</b>: pity and fear, a cleansing effect on spectators.</div>
+<h3>Freytag’s pyramid</h3>
+<div class="tl">
+<div><b>1 Exposition</b><span>introduces characters and situation</span></div>
+<div><b>2 Complication</b><span>rising action</span></div>
+<div><b>3 Climax</b><span>turning point at the peak</span></div>
+<div><b>4 Reversal</b><span>falling action, peripety</span></div>
+<div><b>5 Catastrophe</b><span>catastrophe / dénouement</span></div>
+</div>
+<div class="box"><h3><span>⏱</span>Time &amp; space</h3>Entry <b>ab ovo</b> (beginning), <b>in medias res</b> (middle) or <b>in ultimas res</b> (end); foreshadowing, flashbacks. Modern drama breaks the unities and moves <b>from hero to society</b> (social critique instead of tragic downfall).</div>
+<h3>Characterisation</h3>
+<div class="tw"><table><tr><th></th><th>Authorial</th><th>Figural</th></tr>
+<tr><td>Explicit</td><td>stage directions, author commentary, telling names</td><td>self-commentary (<b>autocharacterisation</b>) or comments on others (<b>alterocharacterisation</b>)</td></tr>
+<tr><td>Implicit</td><td>correspondences, contrasts, suggestive names</td><td>appearance, gesture, facial expression, costume, dialect, behaviour, topics discussed</td></tr></table></div>
+<div class="box"><h3><span>👁</span>Distribution of knowledge</h3>
+<b>Congruent awareness</b>: characters and audience know the same. <b>Discrepant awareness</b>: some know more. Effect: <b>dramatic irony</b> (words or acts carry a meaning the character does not perceive but the audience does).</div>
+<div class="box"><h3><span>🚋</span>A Streetcar Named Desire</h3>
+<ul><li><b>Social drama</b>: Blanche = Old South (plantations), Stanley = New South (immigrants, urban).</li>
+<li><b>Psychological drama</b>: Blanche’s inner life; the other characters as metaphors.</li>
+<li>Setting: “Elysian Fields” (paradise, new beginning), “raffish charm”, “early May” (spring vs. Blanche’s age). In the end Blanche moves to an even smaller cell (mental ward).</li>
+<li>Structure: <b>scenes of violation</b> as a red thread (trunk, lightbulb, rape) and of non-acceptance.</li>
+<li>Past: Varsouviana music evokes the trauma of Blanche’s husband’s suicide.</li></ul></div>
+<div class="box warn"><h3><span>⚠</span>Exam tip</h3>Name <b>two axes</b> for characterisation: authorial/figural <b>and</b> explicit/implicit (for figural also auto-/altero-).</div>
+</section>
+
+<section id="narr">
+<h2>Narrative</h2>
+<div class="box these"><h3><span>❝</span>Story vs. discourse</h3>
+<b>Story</b> = <i>what</i> is told (characters, events). <b>Discourse</b> = <i>how</i> it is told (voice, focalisation, representation of consciousness, time, style). Narrative theory focuses on discourse. <b>The narrator is not the author.</b></div>
+<h3>Narrative voice: who speaks?</h3>
+<div class="tw"><table><tr><th>Type</th><th>Feature</th></tr>
+<tr><td>Homodiegetic</td><td>narrator within the world of characters, usually first person (degrees: protagonist = <b>autodiegetic</b>, co-protagonist, major/minor character, witness)</td></tr>
+<tr><td>Heterodiegetic</td><td>narrator outside the world of characters, usually third person</td></tr>
+<tr><td>Overt</td><td>refers to themselves as “I”, may address the narratee, comments philosophically or metanarratively, offers reader-friendly exposition</td></tr>
+<tr><td>Covert</td><td>neutral style, indistinctive in gender, class, race; simply lets the story unfold</td></tr></table></div>
+<div class="box"><h3><span>☰</span>Levels of narration</h3>
+Genette: <b>extradiegetic</b> (frame narrative) vs. <b>intradiegetic</b> (story within a story). Rimmon-Kenan: <b>first-degree</b> = extra, <b>second-degree</b> = intra, third-degree = story within a story within a story.</div>
+<h3>Focalisation: who sees?</h3>
+<div class="tw"><table><tr><th>Form</th><th>Meaning</th></tr>
+<tr><td>External</td><td>narrator perspectivises, no insight into characters</td></tr>
+<tr><td>Internal: fixed</td><td>a single focaliser</td></tr>
+<tr><td>Internal: variable</td><td>different episodes through several focalisers</td></tr>
+<tr><td>Internal: multiple</td><td>one episode repeatedly seen through different focalisers</td></tr>
+<tr><td>Internal: collective</td><td>“we” narrators or a group of characters</td></tr>
+<tr><td>Zero</td><td>no single perspective, insight into several (or all) characters</td></tr></table></div>
+<div class="box"><h3><span>⇄</span>Stanzel vs. Genette</h3>First-person situation = homodiegetic · <b>Authorial</b> = heterodiegetic + zero focalisation · <b>Figural</b> = heterodiegetic + fixed internal focalisation.</div>
+<h3>Representation of consciousness (telling → showing)</h3>
+<div class="tl">
+<div><b>Narrative report</b><span>Mary pondered her next move.</span></div>
+<div><b>Indirect discourse</b><span>Mary wondered what she should do.</span></div>
+<div><b>Free indirect (FID)</b><span>What on earth should she do now?</span></div>
+<div><b>Direct discourse</b><span>Mary thought: “What shall I do?”</span></div>
+<div><b>Free direct</b><span>What on earth shall I do now? (interior monologue)</span></div>
+</div>
+<h3>Narrative time</h3>
+<div class="tw"><table><tr><th>Category</th><th>Content</th></tr>
+<tr><td>Order</td><td>chronology vs. <b>anachrony</b> (flashback/analepsis, flashforward/prolepsis)</td></tr>
+<tr><td>Frequency</td><td>singulative · repetitive · iterative</td></tr>
+<tr><td>Duration</td><td>scene (story = discourse time), summary (story &gt; discourse), stretch (story &lt; discourse), ellipsis (omission), pause (discourse only)</td></tr>
+<tr><td>Position</td><td>retrospective · concurrent · prospective</td></tr></table></div>
+<div class="box"><h3><span>✦</span>Metafiction</h3>Foregrounds discourse over story and stresses its own fictionality. <b>Implicit</b>: style, form, irony. <b>Explicit</b>: openly reflects on the text’s construction (e.g. an author character).</div>
+<div class="box these"><h3><span>❝</span>Larsen, <i>Passing</i> (Harlem Renaissance)</h3>
+Heterodiegetic, <b>mostly covert</b> with slightly overt moments; <b>fixed internal</b> focalisation through Irene, with shifts. Fluid boundaries in the discourse mirror the fluid boundaries between characters. Irene is an <b>unreliable focaliser</b> (memory, perception); whether there is an affair and whether Irene pushes Clare remains <b>undecidable</b>.<br>
+<b>Passing</b>: from black to white · as insincerity (inside/outside) · can one “become” something · subversive of racism <i>and</i> of the community. Tea party: <b>dramatic irony</b>, since John’s control over “race” is an illusion. Larsen: race is a <b>construct</b> and a lived experience.</div>
+<div class="box warn"><h3><span>⚠</span>Exam tip</h3><b>Voice</b> (who speaks) and <b>focalisation</b> (who sees) are separate categories. In homodiegetic texts the focaliser is always the narrating character.</div>
+</section>
+
+<section id="theory">
+<h2>Literary Theories</h2>
+<div class="box these"><h3><span>❝</span>Why theory?</h3>Without theory we would not know what a literary work is or how to read it. Approaches differ in focus: <b>author, text/code, reader or context</b>.</div>
+<div class="tw"><table><tr><th>Approach</th><th>Core idea</th><th>Question for Wheatley’s poem</th></tr>
+<tr><td>Positivist biographical</td><td>texts bear empirical traces of the author’s life; <b>one</b> meaning</td><td>Who was Wheatley? How does her life show in the poem?</td></tr>
+<tr><td>Hermeneutics</td><td>separate meaning (author) from significance (reader); <b>hermeneutic circle</b>: preconceptions → revise → reread</td><td>What are my preconceptions? How do I approach the authorial meaning?</td></tr>
+<tr><td>Psychoanalysis</td><td>text like a dream; <b>condensation</b> and <b>displacement</b></td><td>“black as Cain”: repressed anger, desire to kill the white “brothers”?</td></tr>
+<tr><td>New Criticism</td><td><b>close reading</b>; text as autonomous object</td><td>Tensions and paradoxes in form and content</td></tr>
+<tr><td>Structuralism</td><td>language as sign system (Saussure): signifier/signified, <b>binary oppositions</b>, langue vs. parole</td><td>black/white, devil/angel</td></tr>
+<tr><td>Post-structuralism / deconstruction</td><td>meaning is indeterminate; <b>différance</b> (Derrida); Barthes: <b>intertextuality</b></td><td>Binaries destabilise: white bears traces of black</td></tr>
+<tr><td>Discourse analysis (Foucault)</td><td>knowledge is power; discourses regulate access to the world</td><td>How did white people write about black people then? Which institutions supported this?</td></tr>
+<tr><td>Reader-response / reception</td><td>Iser: readers fill <b>gaps</b>; Fish: <b>interpretive communities</b>; Jauss: <b>horizon of expectations</b></td><td>What does the text provide, what does the reader? How do communities change meaning?</td></tr>
+<tr><td>Marxism / cultural materialism</td><td>base vs. superstructure; Althusser: <b>interpellation</b>, ideological state apparatuses</td><td>Which material conditions? Is there a <b>counterdiscourse</b>? Access to literature via Christianity</td></tr>
+<tr><td>Gender theory</td><td>revise the canon, deconstruct images of women, disrupt the <b>male gaze</b> (Butler)</td><td>Redemption by a male saviour as patriarchal structure?</td></tr>
+<tr><td>Postcolonial theory</td><td>challenges Eurocentrism, othering (Fanon, Said), the subaltern (Gramsci/Spivak)</td><td>Internalised racism? Christian symbols “hybridised”? Does the poet imitate, subvert or transcend?</td></tr></table></div>
+<div class="box"><h3><span>⚖</span>Key concepts</h3>
+<ul><li><b>Discourse</b>: systems of texts with similar selection, connection and framing; they construct subjects and worlds. Telling the past needs <b>selection, connection</b> (causal, contingent, adversary) and <b>framing</b>.</li>
+<li><b>Hegemony</b> (Gramsci): ideology is only effective if accepted, internalised and reproduced by the masses; it cannot be forced.</li>
+<li><b>Panopticon</b> (Foucault): acting as if one were observed, which produces self-observation.</li>
+<li><b>Culture industry</b> (Adorno/Horkheimer): popular culture as standardised mass production.</li></ul></div>
+<div class="box warn"><h3><span>⚠</span>Exam tip</h3>Know the <b>criticism</b> of each approach: psychoanalysis (texts are not dreams, displaces social critique), New Criticism (what relevance has “meaning”?), post-structuralism (neglects the world), Marxism (neglects the aesthetic), postcolonial theory (intellectuals speak <i>for</i> the subaltern).</div>
+</section>
+
+<section id="gloss">
+<h2>Glossary</h2>
+<div class="gl">
+<div><b>Eye-rhyme</b><span>Rhyme that looks alike but sounds different (move / dove).</span></div>
+<div><b>Volta (turn)</b><span>Shift in thought within a sonnet.</span></div>
+<div><b>Oxymoron</b><span>Combination of incongruous words (“O heavy lightness”).</span></div>
+<div><b>Paradox</b><span>Seemingly illogical but resolvable statement.</span></div>
+<div><b>Hamartia</b><span>Tragic error that triggers the downfall.</span></div>
+<div><b>Hubris</b><span>Overconfidence that leads to downfall.</span></div>
+<div><b>Catharsis</b><span>Cleansing through pity and fear.</span></div>
+<div><b>Dramatic irony</b><span>The audience understands more than the character.</span></div>
+<div><b>Homodiegetic</b><span>Narrator belongs to the narrated world.</span></div>
+<div><b>Heterodiegetic</b><span>Narrator stands outside the narrated world.</span></div>
+<div><b>Focalisation</b><span>The perspective from which events are told (“who sees?”).</span></div>
+<div><b>Free indirect discourse</b><span>Thoughts in third person without a reporting clause.</span></div>
+<div><b>Analepsis / prolepsis</b><span>Flashback / flashforward.</span></div>
+<div><b>Metafiction</b><span>Fiction that reflects on its own constructedness.</span></div>
+<div><b>Hermeneutic circle</b><span>Read with preconceptions, revise, reread.</span></div>
+<div><b>Différance</b><span>Derrida’s term: to differ and to defer meaning.</span></div>
+<div><b>Intertextuality</b><span>No text is original; everything was read or written before.</span></div>
+<div><b>Hegemony</b><span>Rule through internalised ideology (Gramsci).</span></div>
+<div><b>Interpellation</b><span>Being hailed into subjecthood by ideology (Althusser).</span></div>
+<div><b>Subaltern</b><span>Oppressed people who cannot enter discourse.</span></div>
+<div><b>Othering</b><span>Defining the self by constructing an “Other”.</span></div>
+<div><b>Passing</b><span>Being taken for a member of another “race” (mostly black to white).</span></div>
+</div>
+</section>
+
+<section id="cards">
+<h2>Flashcards</h2>
+<p class="hint">Click a card (or press Enter) to reveal the answer. Click again to flip back.</p>
+<div class="fc" id="fc"></div>
+</section>
+</main>
+
+<script>
+function showSection(id){
+  document.querySelectorAll('main section').forEach(function(s){s.style.display=(s.id===id)?'block':'none';});
+  document.querySelectorAll('#nav button').forEach(function(b){b.classList.toggle('active',b.dataset.t===id);});
+  window.scrollTo(0,0);
+}
+var cards=[
+["How do English and Italian sonnets differ?","English: 3 quatrains + couplet, turn after line 12. Italian: octave + sestet, turn after the octave."],
+["What is an eye-rhyme?","A rhyme that looks alike but sounds different, e.g. move / dove."],
+["Name the three Aristotelian unities.","Action (no subplots), time (24 h max), place (one setting)."],
+["Hamartia, hubris, catharsis?","Tragic error · overconfidence · cleansing effect of pity and fear."],
+["Five stages of Freytag’s pyramid?","Exposition, complication, climax, reversal, catastrophe/dénouement."],
+["Congruent vs. discrepant awareness?","Everyone knows the same vs. unequal knowledge; effect: dramatic irony."],
+["Homodiegetic vs. heterodiegetic?","Narrator inside the character world (usually “I”) vs. outside (usually third person)."],
+["Overt vs. covert narrator?","Overt: says “I”, comments, explains. Covert: neutral, unobtrusive, lets the story unfold."],
+["Five forms of internal focalisation?","Fixed, variable, multiple, collective, zero."],
+["Order from telling to showing?","Narrative report, indirect, free indirect, direct, free direct discourse."],
+["What is the hermeneutic circle?","Read with preconceptions, change them, return with a new perspective, repeat."],
+["What is hegemony (Gramsci)?","Ideology works only if the masses accept, internalise and reproduce it."],
+["Iser’s gaps vs. Fish’s interpretive communities?","Iser: readers fill gaps. Fish: community membership shapes interpretation."],
+["Three operations in telling the past?","Selection, connection (causal, contingent, adversary) and framing."]
+];
+var fc=document.getElementById('fc');
+cards.forEach(function(c){
+  var d=document.createElement('div');
+  d.className='card';d.tabIndex=0;d.setAttribute('role','button');
+  var f=document.createElement('div');f.className='front';f.textContent=c[0];
+  var b=document.createElement('div');b.className='back';b.textContent=c[1];
+  d.appendChild(f);d.appendChild(b);
+  d.addEventListener('click',function(){d.classList.toggle('flipped');});
+  d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();d.classList.toggle('flipped');}});
+  fc.appendChild(d);
+});
+</script>
+</body>
+</html>
